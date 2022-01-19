@@ -1,7 +1,7 @@
 {
   "name": "unplugin-vue",
   "version": "0.1.0",
-  "description": "Plugin for Vue 3",
+  "description": "Transform Vue 3 SFC to JavaScript.",
   "keywords": [
     "vue",
     "sfc",
@@ -49,7 +49,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "vitest",
-    "build": "tsup",
+    "build": "tsup && esno scripts/postbuild.ts",
     "release": "standard-version"
   },
   "engines": {
@@ -74,10 +74,12 @@
   "devDependencies": {
     "@sxzz/eslint-config-prettier": "^1.6.1",
     "@sxzz/eslint-config-ts": "^1.6.2",
+    "@sxzz/eslint-config-vue": "^1.6.4",
     "@types/hash-sum": "^1.0.0",
     "@types/node": "*",
     "eslint": "^8.7.0",
     "eslint-define-config": "^1.2.2",
+    "esno": "^0.14.0",
     "fast-glob": "^3.2.11",
     "rollup": "^2.64.0",
     "standard-version": "^9.3.2",

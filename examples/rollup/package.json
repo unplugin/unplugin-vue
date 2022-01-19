@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "author": "三咲智子 <sxzz@sxzz.moe>",
+  "scripts": {
+    "build": "esno build.ts",
+    "preview": "serve"
+  },
+  "dependencies": {
+    "vue": "^3.2.27"
+  },
+  "devDependencies": {
+    "esno": "^0.14.0",
+    "rollup": "^2.64.0",
+    "serve": "^13.0.2",
+    "unplugin-vue": "workspace:^0.1.0"
+  }
+}

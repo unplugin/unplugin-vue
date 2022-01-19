@@ -1,8 +1,7 @@
 {
-  "include": ["src"],
+  "include": ["./src/**/*"],
   "exclude": ["**/*.spec.ts"],
   "compilerOptions": {
-    "outDir": "dist",
     "target": "ES2019",
     "module": "commonjs",
     "moduleResolution": "node",

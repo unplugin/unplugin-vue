@@ -1,126 +1,33 @@
 # unplugin-vue [![npm](https://img.shields.io/npm/v/unplugin-vue.svg)](https://npmjs.com/package/unplugin-vue)
 
-Plugin for Vue 3. Support Rollup, Vite, Webpack, esbuild.
+Transform Vue 3 SFC to JavaScript.
 
-> Note: as of `vue` 3.2.13+ and `unplugin-vue` 1.9.0+, `@vue/compiler-sfc` is no longer required as a peer dependency.
+**This plugin is currently a very early beta! Use at your own risk.**
 
-```js
-// vite.config.js
-import vue from 'unplugin-vue'
+## Features
 
-export default {
-  plugins: [vue()],
-}
-```
+- ⚡️ Supports Vite, Webpack, Vue CLI, Rollup, esbuild and more, powered by [unplugin](https://github.com/unjs/unplugin).
+- ✨ Supports `<script setup>`
+- 💚 Supports [Reactivity Transform](https://github.com/vuejs/rfcs/discussions/369)
 
-## Options
+## Alternatives
 
-```ts
-export interface Options {
-  include?: string | RegExp | (string | RegExp)[]
-  exclude?: string | RegExp | (string | RegExp)[]
+- [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue) - For Vite and Vue 3.
+- [vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2) - For Vite and Vue 2.
+- ~~[rollup-plugin-vue](https://github.com/vuejs/rollup-plugin-vue)~~ - ⚠️ no longer maintained.
+- [vue-loader](https://github.com/vuejs/vue-loader) - For Webpack.
+- [esbuild-plugin-vue](https://github.com/egoist/esbuild-plugin-vue) - For ESBuild and Vue 3.
+- [esbuild-vue](https://github.com/apeschar/esbuild-vue) - For ESBuild and Vue 2.
 
-  ssr?: boolean
-  isProduction?: boolean
+## Credits
 
-  /**
-   * Transform Vue SFCs into custom elements (requires vue@^3.2.0)
-   * - `true` -> all `*.vue` imports are converted into custom elements
-   * - `string | RegExp` -> matched files are converted into custom elements
-   *
-   * @default /\.ce\.vue$/
-   */
-  customElement?: boolean | string | RegExp | (string | RegExp)[]
+- [Vite](https://github.com/vitejs/vite) - Next generation frontend tooling. It's fast!
+- [unplugin](https://github.com/unjs/unplugin) - Unified plugin system for Vite, Rollup, Webpack, and more
 
-  /**
-   * Enable Vue reactivity transform (experimental, requires vue@^3.2.25).
-   * https://github.com/vuejs/vue-next/tree/master/packages/reactivity-transform
-   *
-   * - `true`: transform will be enabled for all vue,js(x),ts(x) files except
-   *           those inside node_modules
-   * - `string | RegExp`: apply to vue + only matched files (will include
-   *                      node_modules, so specify directories in necessary)
-   * - `false`: disable in all cases
-   *
-   * @default false
-   */
-  reactivityTransform?: boolean | string | RegExp | (string | RegExp)[]
+## Thanks
 
-  // options to pass on to vue/compiler-sfc
-  script?: Partial<SFCScriptCompileOptions>
-  template?: Partial<SFCTemplateCompileOptions>
-  style?: Partial<SFCStyleCompileOptions>
-}
-```
-
-## Example for passing options to `@vue/compiler-dom`:
-
-```ts
-import vue from 'unplugin-vue'
-
-export default {
-  plugins: [
-    vue({
-      template: {
-        compilerOptions: {
-          // ...
-        },
-      },
-    }),
-  ],
-}
-```
-
-## Example for transforming custom blocks
-
-```ts
-import vue from 'unplugin-vue'
-
-const vueI18nPlugin = {
-  name: 'vue-i18n',
-  transform(code, id) {
-    if (!/vue&type=i18n/.test(id)) {
-      return
-    }
-    if (/\.ya?ml$/.test(id)) {
-      code = JSON.stringify(require('js-yaml').load(code.trim()))
-    }
-    return `export default Comp => {
-      Comp.i18n = ${code}
-    }`
-  },
-}
-
-export default {
-  plugins: [vue(), vueI18nPlugin],
-}
-```
-
-## Using Vue SFCs as Custom Elements
-
-> Requires `vue@^3.2.0` & `unplugin-vue@^1.4.0`
-
-Vue 3.2 introduces the `defineCustomElement` method, which works with SFCs. By default, `<style>` tags inside SFCs are extracted and merged into CSS files during build. However when shipping a library of custom elements, it may be desirable to inline the styles as JavaScript strings and inject them into the custom elements' shadow root instead.
-
-Starting in 1.4.0, files ending with `*.ce.vue` will be compiled in "custom elements" mode: its `<style>` tags are compiled into inlined CSS strings and attached to the component as its `styles` property:
-
-```js
-import { defineCustomElement } from 'vue'
-import Example from './Example.ce.vue'
-
-console.log(Example.styles) // ['/* css content */']
-
-// register
-customElements.define('my-example', defineCustomElement(Example))
-```
-
-Note in custom elements mode there is no need to use `<style scoped>` since the CSS is already scoped inside the shadow DOM.
-
-The `customElement` plugin option can be used to configure the behavior:
-
-- `{ customElement: true }` will import all `*.vue` files in custom element mode.
-- Use a string or regex pattern to change how files should be loaded as Custom Elements (this check is applied after `include` and `exclude` matches).
+Thanks to [Vite](https://github.com/vitejs/vite). This project is inherited from [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue).
 
 ## License
 
-MIT
+[MIT](./LICENSE) License © 2022 [三咲智子](https://github.com/sxzz)
