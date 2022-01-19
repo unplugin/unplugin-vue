@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/sxzz/unplugin-vue/compare/v0.0.2...v0.1.0) (2022-01-19)
+
+
+### Features
+
+* support unplugin ([d033042](https://github.com/sxzz/unplugin-vue/commit/d0330426611035186a87c4de794a39c595938a6c))
+
 ### 0.0.2 (2022-01-19)
 
 ### Features
