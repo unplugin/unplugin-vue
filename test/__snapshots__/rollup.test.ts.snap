@@ -42,6 +42,32 @@ console.log((ref2));
 "
 `;
 
+exports[`transform > fixtures > test/fixtures/reactivity-transform.vue 1`] = `
+"import { ref } from 'vue';
+
+const _sfc_main = {
+  setup(__props, { expose }) {
+  expose();
+
+const ref1 = ref('hello');
+const ref2 = (ref('hello'));
+
+console.log(ref1.value);
+console.log(ref2.value);
+console.log((ref1));
+console.log((ref2));
+
+const __returned__ = { ref1, ref2, ref };
+Object.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true });
+return __returned__
+}
+
+};
+
+export { _sfc_main as default };
+"
+`;
+
 exports[`transform > fixtures > test/fixtures/script-setup.vue 1`] = `
 "import { openBlock, createElementBlock, createElementVNode } from 'vue';
 
@@ -58,6 +84,7 @@ const _sfc_main = {
   expose();
 
 const foo = 'bar';
+
 
 const __returned__ = { foo };
 Object.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true });
@@ -77,6 +104,46 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 var scriptSetup = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]]);
 
 export { scriptSetup as default };
+"
+`;
+
+exports[`transform > fixtures > test/fixtures/script-setup-ts.vue 1`] = `
+"import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
+
+var _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
+
+const _sfc_main = /* @__PURE__ */ defineComponent({
+  props: {
+    foo: { type: String, required: true, default: \\"123\\" },
+    bar: { type: Number, required: true, default: 123 },
+    baz: { type: Boolean, required: true, default: true }
+  },
+  setup(__props, { expose }) {
+    const str = \\"bar\\";
+    expose({
+      str
+    });
+    const __returned__ = { str };
+    Object.defineProperty(__returned__, \\"__isScriptSetup\\", { enumerable: false, value: true });
+    return __returned__;
+  }
+});
+const _hoisted_1 = /* @__PURE__ */ createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
+const _hoisted_2 = [
+  _hoisted_1
+];
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock(\\"div\\", null, _hoisted_2);
+}
+var scriptSetupTs = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"render\\", _sfc_render]]);
+
+export { scriptSetupTs as default };
 "
 `;
 

@@ -3,4 +3,3 @@ dist
 .DS_Store
 pnpm-lock.yaml
 test/__snapshots__
-test/fixtures

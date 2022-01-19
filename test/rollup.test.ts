@@ -13,8 +13,7 @@ describe('transform', () => {
     })
 
     for (const file of files) {
-      // eslint-disable-next-line unicorn/prefer-string-replace-all
-      it(file.replace(/\\/g, '/'), async () => {
+      it(file.replaceAll('\\', '/'), async () => {
         const bundle = await rollup({
           input: [resolve(root, file)],
           external: ['vue'],
