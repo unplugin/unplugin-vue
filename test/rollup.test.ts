@@ -2,7 +2,7 @@ import { resolve } from 'path'
 import { describe, it, expect } from 'vitest'
 import { rollup } from 'rollup'
 import glob from 'fast-glob'
-import Vue from '../src'
+import Vue from '../src/rollup'
 
 describe('transform', () => {
   describe('fixtures', async () => {
