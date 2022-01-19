@@ -8,7 +8,7 @@ importers:
       '@sxzz/eslint-config-prettier': 1.6.1
       '@sxzz/eslint-config-ts': 1.6.2
       '@sxzz/eslint-config-vue': 1.6.4
-      '@types/debug': ^4.1.7
+      '@types/debug': 4.1.7
       '@types/hash-sum': 1.0.0
       '@types/node': '*'
       debug: ^4.3.3
