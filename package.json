@@ -1,6 +1,6 @@
 {
   "name": "@sxzz/rollup-plugin-vue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Rollup Plugin for Vue 3",
   "keywords": [
     "vue",
@@ -22,7 +22,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "vitest",
-    "build": "tsup"
+    "build": "tsup",
+    "release": "standard-version"
   },
   "engines": {
     "node": ">=12.0.0"
