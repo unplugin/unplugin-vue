@@ -153,7 +153,7 @@ export default createUnplugin((rawOptions: Options = {}) => {
         if (block) {
           return {
             code: block.content,
-            map: block.map,
+            map: block.map as any,
           }
         }
       }
