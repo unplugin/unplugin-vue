@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/sxzz/unplugin-vue/compare/v0.1.5...v0.1.6) (2022-01-19)
+
+
+### Features
+
+* add vite example ([fd176a4](https://github.com/sxzz/unplugin-vue/commit/fd176a4f37e5142ae836532f5f938c9e4ccf230d))
+
+
+### Bug Fixes
+
+* package slash ([d9f0a28](https://github.com/sxzz/unplugin-vue/commit/d9f0a280ca58275be6b8da18bb15ef7fb1d1d9f6))
+
 ### [0.1.5](https://github.com/sxzz/unplugin-vue/compare/v0.1.4...v0.1.5) (2022-01-19)
 
 
