@@ -35,7 +35,6 @@ importers:
       debug: 4.3.3
       hash-sum: 2.0.0
       querystring: 0.2.1
-      slash: 4.0.0
       source-map: 0.6.1
       unplugin: 0.3.0_rollup@2.64.0+vite@2.7.13
       vite: 2.7.13
@@ -53,6 +52,7 @@ importers:
       esno: 0.14.0_typescript@4.5.4
       fast-glob: 3.2.11
       rollup: 2.64.0
+      slash: 4.0.0
       standard-version: 9.3.2
       tsup: 5.11.11_typescript@4.5.4
       typescript: 4.5.4
@@ -88,6 +88,17 @@ importers:
       rollup: 2.64.0
       serve: 13.0.2
       unplugin-vue: link:../..
+
+  examples/vite:
+    specifiers:
+      unplugin-vue: workspace:^0.1.0
+      vite: ^2.7.13
+      vue: ^3.2.27
+    dependencies:
+      vue: 3.2.27
+    devDependencies:
+      unplugin-vue: link:../..
+      vite: 2.7.13
 
 packages:
 
@@ -3734,7 +3745,7 @@ packages:
   /slash/4.0.0:
     resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
     engines: {node: '>=12'}
-    dev: false
+    dev: true
 
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
