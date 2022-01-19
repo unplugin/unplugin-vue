@@ -1,12 +1,8 @@
 import type { CompilerError } from 'vue/compiler-sfc'
-import type { RollupError } from 'rollup'
 
-export function createRollupError(
-  id: string,
-  error: CompilerError | SyntaxError
-): RollupError {
+export function createError(id: string, error: CompilerError | SyntaxError) {
   const { message, name, stack } = error
-  const rollupError: RollupError = {
+  const _error: Record<string, any> = {
     id,
     plugin: 'vue',
     message,
@@ -15,12 +11,12 @@ export function createRollupError(
   }
 
   if ('code' in error && error.loc) {
-    rollupError.loc = {
+    _error.loc = {
       file: id,
       line: error.loc.start.line,
       column: error.loc.start.column,
     }
   }
 
-  return rollupError
+  return _error
 }

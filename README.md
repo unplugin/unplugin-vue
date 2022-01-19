@@ -1,13 +1,15 @@
-# @sxzz/rollup-plugin-vue [![npm](https://img.shields.io/npm/v/@sxzz/rollup-plugin-vue.svg)](https://npmjs.com/package/@sxzz/rollup-plugin-vue)
+# unplugin-vue [![npm](https://img.shields.io/npm/v/unplugin-vue.svg)](https://npmjs.com/package/unplugin-vue)
 
-> Note: as of `vue` 3.2.13+ and `@sxzz/rollup-plugin-vue` 1.9.0+, `@vue/compiler-sfc` is no longer required as a peer dependency.
+Plugin for Vue 3. Support Rollup, Vite, Webpack, esbuild.
+
+> Note: as of `vue` 3.2.13+ and `unplugin-vue` 1.9.0+, `@vue/compiler-sfc` is no longer required as a peer dependency.
 
 ```js
 // vite.config.js
-import vue from '@sxzz/rollup-plugin-vue'
+import vue from 'unplugin-vue'
 
 export default {
-  plugins: [vue()]
+  plugins: [vue()],
 }
 ```
 
@@ -54,7 +56,7 @@ export interface Options {
 ## Example for passing options to `@vue/compiler-dom`:
 
 ```ts
-import vue from '@sxzz/rollup-plugin-vue'
+import vue from 'unplugin-vue'
 
 export default {
   plugins: [
@@ -62,17 +64,17 @@ export default {
       template: {
         compilerOptions: {
           // ...
-        }
-      }
-    })
-  ]
+        },
+      },
+    }),
+  ],
 }
 ```
 
 ## Example for transforming custom blocks
 
 ```ts
-import vue from '@sxzz/rollup-plugin-vue'
+import vue from 'unplugin-vue'
 
 const vueI18nPlugin = {
   name: 'vue-i18n',
@@ -86,17 +88,17 @@ const vueI18nPlugin = {
     return `export default Comp => {
       Comp.i18n = ${code}
     }`
-  }
+  },
 }
 
 export default {
-  plugins: [vue(), vueI18nPlugin]
+  plugins: [vue(), vueI18nPlugin],
 }
 ```
 
 ## Using Vue SFCs as Custom Elements
 
-> Requires `vue@^3.2.0` & `@sxzz/rollup-plugin-vue@^1.4.0`
+> Requires `vue@^3.2.0` & `unplugin-vue@^1.4.0`
 
 Vue 3.2 introduces the `defineCustomElement` method, which works with SFCs. By default, `<style>` tags inside SFCs are extracted and merged into CSS files during build. However when shipping a library of custom elements, it may be desirable to inline the styles as JavaScript strings and inject them into the custom elements' shadow root instead.
 

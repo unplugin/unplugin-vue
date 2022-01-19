@@ -1,5 +1,5 @@
 import type { SFCDescriptor } from 'vue/compiler-sfc'
-import type { TransformPluginContext } from 'rollup'
+import type { UnpluginContext } from 'unplugin'
 import type { ResolvedOptions } from '.'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -8,7 +8,7 @@ export async function transformStyle(
   descriptor: SFCDescriptor,
   index: number,
   options: ResolvedOptions,
-  pluginContext: TransformPluginContext
+  context: UnpluginContext
 ) {
   const block = descriptor.styles[index]
   // vite already handles pre-processors and CSS module so this is only
@@ -31,7 +31,7 @@ export async function transformStyle(
           column: error.column,
         }
       }
-      pluginContext.error(error)
+      context.error(error)
     })
     return null
   }

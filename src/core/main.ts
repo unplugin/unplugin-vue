@@ -3,13 +3,15 @@ import path from 'path'
 import { normalizePath } from '@rollup/pluginutils'
 import { SourceMapConsumer, SourceMapGenerator } from 'source-map'
 import { transformWithEsbuild } from 'vite'
-import { createDescriptor, setSrcDescriptor } from './utils/descriptorCache'
+import {
+  createDescriptor /* , setSrcDescriptor */,
+} from './utils/descriptorCache'
 import { resolveScript, isUseInlineTemplate } from './script'
 import { transformTemplateInMain } from './template'
-import { createRollupError } from './utils/error'
+import { createError } from './utils/error'
 import { EXPORT_HELPER_ID } from './helper'
 import type { RawSourceMap } from 'source-map'
-import type { PluginContext, SourceMap, TransformPluginContext } from 'rollup'
+import type { UnpluginContext } from 'unplugin'
 import type { ResolvedOptions } from '.'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 
@@ -18,7 +20,7 @@ export async function transformMain(
   code: string,
   filename: string,
   options: ResolvedOptions,
-  pluginContext: TransformPluginContext,
+  pluginContext: UnpluginContext,
   ssr: boolean,
   asCustomElement: boolean
 ) {
@@ -28,7 +30,7 @@ export async function transformMain(
 
   if (errors.length > 0) {
     errors.forEach((error) =>
-      pluginContext.error(createRollupError(filename, error))
+      pluginContext.error(createError(filename, error))
     )
     return null
   }
@@ -169,7 +171,7 @@ export async function transformMain(
 async function genTemplateCode(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
-  pluginContext: PluginContext,
+  pluginContext: UnpluginContext,
   ssr: boolean
 ) {
   const template = descriptor.template!
@@ -205,14 +207,14 @@ async function genTemplateCode(
 async function genScriptCode(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
-  pluginContext: PluginContext,
+  pluginContext: UnpluginContext,
   ssr: boolean
 ): Promise<{
   code: string
   map: RawSourceMap
 }> {
   let scriptCode = `const _sfc_main = {}`
-  let map: RawSourceMap | SourceMap | undefined
+  let map: RawSourceMap | undefined
 
   const script = resolveScript(descriptor, options, ssr)
   if (script) {
@@ -247,7 +249,7 @@ async function genScriptCode(
 
 async function genStyleCode(
   descriptor: SFCDescriptor,
-  pluginContext: PluginContext,
+  pluginContext: UnpluginContext,
   asCustomElement: boolean,
   attachedProps: [string, string][]
 ) {
@@ -315,7 +317,7 @@ function genCSSModulesCode(
 
 async function genCustomBlockCode(
   descriptor: SFCDescriptor,
-  pluginContext: PluginContext
+  pluginContext: UnpluginContext
 ) {
   let code = ''
   for (let index = 0; index < descriptor.customBlocks.length; index++) {
@@ -342,13 +344,14 @@ async function genCustomBlockCode(
 async function linkSrcToDescriptor(
   src: string,
   descriptor: SFCDescriptor,
-  pluginContext: PluginContext
+  pluginContext: UnpluginContext
 ) {
-  const srcFile =
-    (await pluginContext.resolve(src, descriptor.filename))?.id || src
-  // #1812 if the src points to a dep file, the resolved id may contain a
-  // version query.
-  setSrcDescriptor(srcFile.replace(/\?.*$/, ''), descriptor)
+  pluginContext.error(new Error('not supported'))
+  // const srcFile =
+  //   (await pluginContext.resolve(src, descriptor.filename))?.id || src
+  // // #1812 if the src points to a dep file, the resolved id may contain a
+  // // version query.
+  // setSrcDescriptor(srcFile.replace(/\?.*$/, ''), descriptor)
 }
 
 // these are built-in query parameters so should be ignored
