@@ -65,6 +65,7 @@ export interface ResolvedOptions extends Options {
   compiler: typeof _compiler
   root: string
   sourceMap: boolean
+  ssr: boolean
 }
 
 export default function vuePlugin(rawOptions: Options = {}): Plugin {
@@ -99,6 +100,7 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin {
     root: process.cwd(),
     sourceMap: true,
     compiler: rawOptions.compiler || resolveCompiler(process.cwd()),
+    ssr: rawOptions.ssr ?? false,
   }
 
   // Temporal handling for 2.7 breaking change

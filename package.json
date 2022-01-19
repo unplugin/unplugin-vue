@@ -18,13 +18,22 @@
     "dist"
   ],
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "build": "tsup"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   },
   "bugs": {
     "url": "https://github.com/sxzz/rollup-plugin-vue/issues"
   },
   "homepage": "https://github.com/sxzz/rollup-plugin-vue#readme",
+  "peerDependencies": {
+    "vue": "^3.2.25"
+  },
   "devDependencies": {
     "@rollup/pluginutils": "^4.1.2",
     "@sxzz/eslint-config-prettier": "^1.6.1",
@@ -38,6 +47,7 @@
     "rollup": "^2.64.0",
     "slash": "^4.0.0",
     "source-map": "^0.6.1",
+    "tsup": "^5.11.11",
     "typescript": "^4.5.4",
     "vite": "^2.7.13",
     "vitest": "^0.1.23",
