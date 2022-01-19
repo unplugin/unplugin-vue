@@ -2,7 +2,39 @@ import { resolve } from 'path'
 import { describe, it, expect } from 'vitest'
 import { rollup } from 'rollup'
 import glob from 'fast-glob'
+import ViteVue from '@vitejs/plugin-vue'
+import * as vueCompiler from 'vue/compiler-sfc'
 import Vue from '../src/rollup'
+import type { Options } from '../src'
+
+async function getCode(file: string, plugin: any) {
+  const bundle = await rollup({
+    input: [file],
+    external: ['vue'],
+    plugins: [plugin],
+  })
+  const output = await bundle.generate({ format: 'esm' })
+  return output.output[0].code
+}
+
+function createPlugins(opt: Options) {
+  const vite = ViteVue({
+    reactivityTransform: true,
+    compiler: opt.compiler!,
+  })
+  vite.configResolved!({
+    root: opt.root!,
+    command: 'build',
+    isProduction: true,
+    build: {
+      sourcemap: false,
+    },
+  } as any)
+  return {
+    unplugin: Vue(opt),
+    vite,
+  }
+}
 
 describe('transform', () => {
   describe('fixtures', async () => {
@@ -13,18 +45,25 @@ describe('transform', () => {
     })
 
     for (const file of files) {
-      it(file.replaceAll('\\', '/'), async () => {
-        const bundle = await rollup({
-          input: [resolve(root, file)],
-          external: ['vue'],
-          plugins: [
-            Vue({
+      describe(file.replaceAll('\\', '/'), () => {
+        const filepath = resolve(root, file)
+
+        for (const isProduction of [true, false]) {
+          it(`isProduction is ${isProduction}`, async () => {
+            const { unplugin, vite } = createPlugins({
+              root,
+              compiler: vueCompiler,
               reactivityTransform: true,
-            }),
-          ],
-        })
-        const output = await bundle.generate({ format: 'esm' })
-        expect(output.output[0].code).toMatchSnapshot()
+              isProduction: true,
+            })
+
+            const unpluginCode = await getCode(filepath, unplugin)
+            expect(unpluginCode).toMatchSnapshot()
+
+            const viteCode = await getCode(filepath, vite)
+            expect(viteCode).toBe(unpluginCode)
+          })
+        }
       })
     }
   })
