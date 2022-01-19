@@ -63,21 +63,40 @@ export interface Options {
   compiler?: typeof _compiler
 }
 
-export interface ResolvedOptions extends Options {
-  compiler: typeof _compiler
-  root: string
-  ssr: boolean
-  sourceMap: boolean
-  isProduction: boolean
+export type ResolvedOptions = Options &
+  Required<
+    Pick<
+      Options,
+      | 'include'
+      | 'isProduction'
+      | 'ssr'
+      | 'sourceMap'
+      | 'root'
+      | 'customElement'
+      | 'reactivityTransform'
+      | 'compiler'
+    >
+  >
+
+function resolveOptions(rawOptions: Options): ResolvedOptions {
+  const root = rawOptions.root ?? process.cwd()
+  return {
+    ...rawOptions,
+    include: rawOptions.include ?? /\.vue$/,
+    isProduction:
+      rawOptions.isProduction ?? process.env.NODE_ENV === 'production',
+    ssr: rawOptions.ssr ?? false,
+    sourceMap: rawOptions.sourceMap ?? true,
+    root,
+    customElement: rawOptions.customElement ?? /\.ce\.vue$/,
+    reactivityTransform: rawOptions.reactivityTransform ?? false,
+    compiler: rawOptions.compiler || resolveCompiler(root),
+  }
 }
 
-const vuePlugin = createUnplugin((rawOptions: Options = {}) => {
-  const {
-    include = /\.vue$/,
-    exclude,
-    customElement = /\.ce\.vue$/,
-    reactivityTransform = false,
-  } = rawOptions
+export default createUnplugin((rawOptions: Options = {}) => {
+  const options = resolveOptions(rawOptions)
+  const { include, exclude, customElement, reactivityTransform } = options
 
   const filter = createFilter(include, exclude)
 
@@ -92,19 +111,6 @@ const vuePlugin = createUnplugin((rawOptions: Options = {}) => {
       : reactivityTransform === true
       ? createFilter(/\.(j|t)sx?$/, /node_modules/)
       : createFilter(reactivityTransform)
-
-  const options: ResolvedOptions = {
-    isProduction: process.env.NODE_ENV === 'production',
-    ...rawOptions,
-    include,
-    exclude,
-    customElement,
-    reactivityTransform,
-    compiler: rawOptions.compiler || resolveCompiler(process.cwd()),
-    sourceMap: rawOptions.sourceMap ?? true,
-    root: rawOptions.root ?? process.cwd(),
-    ssr: rawOptions.ssr ?? false,
-  }
 
   return {
     name: 'unplugin-vue',
@@ -135,7 +141,7 @@ const vuePlugin = createUnplugin((rawOptions: Options = {}) => {
         const descriptor = getDescriptor(filename, options)!
         let block: SFCBlock | null | undefined
         if (query.type === 'script') {
-          // handle <scrip> + <script setup> merge via compileScript()
+          // handle <script> + <script setup> merge via compileScript()
           block = getResolvedScript(descriptor, ssr)
         } else if (query.type === 'template') {
           block = descriptor.template!
@@ -147,7 +153,7 @@ const vuePlugin = createUnplugin((rawOptions: Options = {}) => {
         if (block) {
           return {
             code: block.content,
-            map: block.map as any,
+            map: block.map,
           }
         }
       }
@@ -204,4 +210,3 @@ const vuePlugin = createUnplugin((rawOptions: Options = {}) => {
     },
   }
 })
-export default vuePlugin

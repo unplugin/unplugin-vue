@@ -29,9 +29,7 @@ export async function transformMain(
   const { descriptor, errors } = createDescriptor(filename, code, options)
 
   if (errors.length > 0) {
-    errors.forEach((error) =>
-      pluginContext.error(createError(filename, error))
-    )
+    errors.forEach((error) => pluginContext.error(createError(filename, error)))
     return null
   }
 
@@ -346,7 +344,8 @@ async function linkSrcToDescriptor(
   descriptor: SFCDescriptor,
   pluginContext: UnpluginContext
 ) {
-  pluginContext.error(new Error('not supported'))
+  // TODO: unplugin implements context.resolve()
+  pluginContext.error(new Error('src not supported'))
   // const srcFile =
   //   (await pluginContext.resolve(src, descriptor.filename))?.id || src
   // // #1812 if the src points to a dep file, the resolved id may contain a
