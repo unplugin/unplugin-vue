@@ -1,3 +1,5 @@
+import path from 'path'
+import slash from 'slash'
 import { getResolvedScript } from './script'
 import { createError } from './utils/error'
 import type {
@@ -19,7 +21,18 @@ export async function transformTemplateAsModule(
 ) {
   const result = compile(code, descriptor, options, pluginContext, ssr)
 
-  const returnCode = result.code
+  let returnCode = result.code
+  if (
+    options.devServer &&
+    options.devServer.config.server.hmr !== false &&
+    !ssr &&
+    !options.isProduction
+  ) {
+    returnCode += `\nimport.meta.hot.accept(({ render }) => {
+      __VUE_HMR_RUNTIME__.rerender(${JSON.stringify(descriptor.id)}, render)
+    })`
+  }
+
   return {
     code: returnCode,
     map: result.map,
@@ -98,12 +111,24 @@ export function resolveTemplateCompilerOptions(
 
   let transformAssetUrls = options.template?.transformAssetUrls
   // compiler-sfc should export `AssetURLOptions`
-  //: AssetURLOptions | undefined
-
-  // build: force all asset urls into import requests so that they go through
-  // the assets plugin for asset registration
-  const assetUrlOptions = {
-    includeAbsolute: true,
+  let assetUrlOptions //: AssetURLOptions | undefined
+  if (options.devServer) {
+    // during dev, inject vite base so that compiler-sfc can transform
+    // relative paths directly to absolute paths without incurring an extra import
+    // request
+    if (filename.startsWith(options.root)) {
+      assetUrlOptions = {
+        base:
+          options.devServer.config.base +
+          slash(path.relative(options.root, path.dirname(filename))),
+      }
+    }
+  } else {
+    // build: force all asset urls into import requests so that they go through
+    // the assets plugin for asset registration
+    assetUrlOptions = {
+      includeAbsolute: true,
+    }
   }
 
   if (transformAssetUrls && typeof transformAssetUrls === 'object') {

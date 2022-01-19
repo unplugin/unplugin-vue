@@ -66,6 +66,7 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^4.1.2",
+    "debug": "^4.3.3",
     "hash-sum": "^2.0.0",
     "querystring": "^0.2.1",
     "slash": "^4.0.0",
@@ -77,6 +78,7 @@
     "@sxzz/eslint-config-prettier": "1.6.1",
     "@sxzz/eslint-config-ts": "1.6.2",
     "@sxzz/eslint-config-vue": "1.6.4",
+    "@types/debug": "^4.1.7",
     "@types/hash-sum": "1.0.0",
     "@types/node": "*",
     "eslint": "8.7.0",

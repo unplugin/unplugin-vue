@@ -9,6 +9,8 @@ import { transformStyle } from '../core/style'
 import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
 import { getDescriptor, getSrcDescriptor } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
+import { handleHotUpdate } from './handleHotUpdate'
+import type { ViteDevServer } from 'vite'
 // eslint-disable-next-line import/no-duplicates
 import type * as _compiler from 'vue/compiler-sfc'
 import type {
@@ -76,7 +78,10 @@ export type ResolvedOptions = Options &
       | 'reactivityTransform'
       | 'compiler'
     >
-  >
+  > & {
+    /** Vite only */
+    devServer?: ViteDevServer
+  }
 
 function resolveOptions(rawOptions: Options): ResolvedOptions {
   const root = rawOptions.root ?? process.cwd()
@@ -90,12 +95,12 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
     root,
     customElement: rawOptions.customElement ?? /\.ce\.vue$/,
     reactivityTransform: rawOptions.reactivityTransform ?? false,
-    compiler: rawOptions.compiler || resolveCompiler(root),
+    compiler: rawOptions.compiler as any, // to be set in buildStart
   }
 }
 
 export default createUnplugin((rawOptions: Options = {}) => {
-  const options = resolveOptions(rawOptions)
+  let options = resolveOptions(rawOptions)
   const { include, exclude, customElement, reactivityTransform } = options
 
   const filter = createFilter(include, exclude)
@@ -114,6 +119,47 @@ export default createUnplugin((rawOptions: Options = {}) => {
 
   return {
     name: 'unplugin-vue',
+
+    vite: {
+      handleHotUpdate(ctx) {
+        if (!filter(ctx.file)) {
+          return
+        }
+        return handleHotUpdate(ctx, options)
+      },
+
+      config(config) {
+        return {
+          define: {
+            __VUE_OPTIONS_API__: config.define?.__VUE_OPTIONS_API__ ?? true,
+            __VUE_PROD_DEVTOOLS__:
+              config.define?.__VUE_PROD_DEVTOOLS__ ?? false,
+          },
+          ssr: {
+            external: ['vue', '@vue/server-renderer'],
+          },
+        }
+      },
+
+      configResolved(config) {
+        options = {
+          ...options,
+          root: config.root,
+          sourceMap:
+            config.command === 'build' ? !!config.build.sourcemap : true,
+          isProduction: config.isProduction,
+          compiler: options.compiler || resolveCompiler(config.root),
+        }
+      },
+
+      configureServer(server) {
+        options.devServer = server
+      },
+    },
+
+    buildStart() {
+      if (!options.compiler) options.compiler = resolveCompiler(options.root)
+    },
 
     async resolveId(id) {
       // component export helper

@@ -12,6 +12,7 @@ export interface SFCParseResult {
 }
 
 const cache = new Map<string, SFCDescriptor>()
+const prevCache = new Map<string, SFCDescriptor | undefined>()
 
 export function createDescriptor(
   filename: string,
@@ -30,6 +31,17 @@ export function createDescriptor(
 
   cache.set(filename, descriptor)
   return { descriptor, errors }
+}
+
+export function getPrevDescriptor(filename: string): SFCDescriptor | undefined {
+  return prevCache.get(filename)
+}
+
+export function setPrevDescriptor(
+  filename: string,
+  entry: SFCDescriptor
+): void {
+  prevCache.set(filename, entry)
 }
 
 export function getDescriptor(

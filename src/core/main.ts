@@ -4,14 +4,18 @@ import { normalizePath } from '@rollup/pluginutils'
 import { SourceMapConsumer, SourceMapGenerator } from 'source-map'
 import { transformWithEsbuild } from 'vite'
 import {
-  createDescriptor /* , setSrcDescriptor */,
+  createDescriptor,
+  getPrevDescriptor,
+  // setSrcDescriptor,
 } from './utils/descriptorCache'
 import { resolveScript, isUseInlineTemplate } from './script'
 import { transformTemplateInMain } from './template'
+import { isOnlyTemplateChanged, isEqualBlock } from './handleHotUpdate'
 import { createError } from './utils/error'
 import { EXPORT_HELPER_ID } from './helper'
-import type { RawSourceMap } from 'source-map'
 import type { UnpluginContext } from 'unplugin'
+import type { RawSourceMap } from 'source-map'
+// import type { PluginContext, SourceMap, TransformPluginContext } from 'rollup'
 import type { ResolvedOptions } from '.'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 
@@ -24,8 +28,10 @@ export async function transformMain(
   ssr: boolean,
   asCustomElement: boolean
 ) {
-  const { isProduction } = options
+  const { devServer, isProduction } = options
 
+  // prev descriptor is only set and used for hmr
+  const prevDescriptor = getPrevDescriptor(filename)
   const { descriptor, errors } = createDescriptor(filename, code, options)
 
   if (errors.length > 0) {
@@ -47,7 +53,7 @@ export async function transformMain(
 
   // template
   const hasTemplateImport =
-    descriptor.template && !isUseInlineTemplate(descriptor, isProduction)
+    descriptor.template && !isUseInlineTemplate(descriptor, !devServer)
 
   let templateCode = ''
   let templateMap: RawSourceMap | undefined
@@ -64,6 +70,13 @@ export async function transformMain(
     attachedProps.push(
       ssr ? ['ssrRender', '_sfc_ssrRender'] : ['render', '_sfc_render']
     )
+  } else if (
+    prevDescriptor &&
+    !isEqualBlock(descriptor.template, prevDescriptor.template)
+  ) {
+    // #2128
+    // User may empty the template but we didn't provide rerender function before
+    attachedProps.push([ssr ? 'ssrRender' : 'render', '() => {}'])
   }
 
   // styles
@@ -85,6 +98,37 @@ export async function transformMain(
   ]
   if (hasScoped) {
     attachedProps.push([`__scopeId`, JSON.stringify(`data-v-${descriptor.id}`)])
+  }
+  if (devServer && !isProduction) {
+    // expose filename during serve for devtools to pickup
+    attachedProps.push([`__file`, JSON.stringify(filename)])
+  }
+
+  // HMR
+  if (
+    devServer &&
+    devServer.config.server.hmr !== false &&
+    !ssr &&
+    !isProduction
+  ) {
+    output.push(
+      `_sfc_main.__hmrId = ${JSON.stringify(descriptor.id)}`,
+      `typeof __VUE_HMR_RUNTIME__ !== 'undefined' && ` +
+        `__VUE_HMR_RUNTIME__.createRecord(_sfc_main.__hmrId, _sfc_main)`
+    )
+    // check if the template is the only thing that changed
+    if (prevDescriptor && isOnlyTemplateChanged(prevDescriptor, descriptor)) {
+      output.push(`export const _rerender_only = true`)
+    }
+    output.push(
+      `import.meta.hot.accept(({ default: updated, _rerender_only }) => {`,
+      `  if (_rerender_only) {`,
+      `    __VUE_HMR_RUNTIME__.rerender(updated.__hmrId, updated.render)`,
+      `  } else {`,
+      `    __VUE_HMR_RUNTIME__.reload(updated.__hmrId, updated)`,
+      `  }`,
+      `})`
+    )
   }
 
   // SSR module registration by wrapping user setup
