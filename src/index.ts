@@ -27,6 +27,8 @@ export interface Options {
 
   isProduction?: boolean
   ssr?: boolean
+  sourceMap?: boolean
+  root?: string
 
   // options to pass on to vue/compiler-sfc
   script?: Partial<SFCScriptCompileOptions>
@@ -64,8 +66,8 @@ export interface Options {
 export interface ResolvedOptions extends Options {
   compiler: typeof _compiler
   root: string
-  sourceMap: boolean
   ssr: boolean
+  sourceMap: boolean
 }
 
 export default function vuePlugin(rawOptions: Options = {}): Plugin {
@@ -97,17 +99,14 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin {
     exclude,
     customElement,
     reactivityTransform,
-    root: process.cwd(),
-    sourceMap: true,
     compiler: rawOptions.compiler || resolveCompiler(process.cwd()),
+    sourceMap: rawOptions.sourceMap ?? true,
+    root: rawOptions.root ?? process.cwd(),
     ssr: rawOptions.ssr ?? false,
   }
 
-  // Temporal handling for 2.7 breaking change
-  const isSSR = () => options.ssr
-
   return {
-    name: 'vite:vue',
+    name: 'rollup-plugin-vue',
 
     async resolveId(id) {
       // component export helper
@@ -121,7 +120,7 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin {
     },
 
     load(id) {
-      const ssr = isSSR()
+      const ssr = options.ssr
       if (id === EXPORT_HELPER_ID) {
         return helperCode
       }
@@ -154,7 +153,7 @@ export default function vuePlugin(rawOptions: Options = {}): Plugin {
     },
 
     transform(code, id) {
-      const ssr = isSSR()
+      const ssr = options.ssr
       const { filename, query } = parseVueRequest(id)
       if (query.raw) {
         return
