@@ -1,0 +1,88 @@
+// Vitest Snapshot v1
+
+exports[`transform > fixtures > test/fixtures/basic.vue 1`] = `
+"import { openBlock, createElementBlock, createElementVNode } from 'vue';
+
+var _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
+
+console.log('Hello world');
+
+const _sfc_main = {};
+
+const _hoisted_1 = /*#__PURE__*/createElementVNode(\\"h1\\", null, \\"Hello World\\", -1 /* HOISTED */);
+const _hoisted_2 = [
+  _hoisted_1
+];
+
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock(\\"div\\", null, _hoisted_2))
+}
+var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]]);
+
+export { basic as default };
+"
+`;
+
+exports[`transform > fixtures > test/fixtures/reactivity-transform.ts 1`] = `
+"import { ref } from 'vue';
+
+const ref1 = ref('hello');
+const ref2 = (ref('hello'));
+
+console.log(ref1.value);
+console.log(ref2.value);
+console.log((ref1));
+console.log((ref2));
+"
+`;
+
+exports[`transform > fixtures > test/fixtures/script-setup.vue 1`] = `
+"import { openBlock, createElementBlock, createElementVNode } from 'vue';
+
+var _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
+
+const _sfc_main = {
+  setup(__props, { expose }) {
+  expose();
+
+const foo = 'bar';
+
+const __returned__ = { foo };
+Object.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true });
+return __returned__
+}
+
+};
+
+const _hoisted_1 = /*#__PURE__*/createElementVNode(\\"h1\\", null, \\"Hello World\\", -1 /* HOISTED */);
+const _hoisted_2 = [
+  _hoisted_1
+];
+
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock(\\"div\\", null, _hoisted_2))
+}
+var scriptSetup = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]]);
+
+export { scriptSetup as default };
+"
+`;
+
+exports[`transform > fixtures > test/fixtures/typescript.vue 1`] = `
+"const _sfc_main = {};
+
+export { _sfc_main as default };
+"
+`;
