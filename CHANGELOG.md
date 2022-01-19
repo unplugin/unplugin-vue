@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/sxzz/unplugin-vue/compare/v0.1.6...v0.1.7) (2022-01-19)
+
+
+### Features
+
+* support src when rollup ([77ae387](https://github.com/sxzz/unplugin-vue/commit/77ae3877940a4e066604d39b850f685f4dd105c4))
+
 ### [0.1.6](https://github.com/sxzz/unplugin-vue/compare/v0.1.5...v0.1.6) (2022-01-19)
 
 
