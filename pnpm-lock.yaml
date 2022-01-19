@@ -21,7 +21,7 @@ importers:
       hash-sum: ^2.0.0
       querystring: ^0.2.1
       rollup: 2.64.0
-      slash: ^4.0.0
+      slash: 4.0.0
       source-map: ^0.6.1
       standard-version: 9.3.2
       tsup: 5.11.11
