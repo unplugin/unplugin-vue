@@ -74,20 +74,20 @@
     "vite": "^2.7.13"
   },
   "devDependencies": {
-    "@sxzz/eslint-config-prettier": "^1.6.1",
-    "@sxzz/eslint-config-ts": "^1.6.2",
-    "@sxzz/eslint-config-vue": "^1.6.4",
-    "@types/hash-sum": "^1.0.0",
+    "@sxzz/eslint-config-prettier": "1.6.1",
+    "@sxzz/eslint-config-ts": "1.6.2",
+    "@sxzz/eslint-config-vue": "1.6.4",
+    "@types/hash-sum": "1.0.0",
     "@types/node": "*",
-    "eslint": "^8.7.0",
-    "eslint-define-config": "^1.2.2",
-    "esno": "^0.14.0",
-    "fast-glob": "^3.2.11",
-    "rollup": "^2.64.0",
-    "standard-version": "^9.3.2",
-    "tsup": "^5.11.11",
-    "typescript": "^4.5.4",
-    "vitest": "^0.1.23",
-    "vue": "^3.2.27"
+    "eslint": "8.7.0",
+    "eslint-define-config": "1.2.3",
+    "esno": "0.14.0",
+    "fast-glob": "3.2.11",
+    "rollup": "2.64.0",
+    "standard-version": "9.3.2",
+    "tsup": "5.11.11",
+    "typescript": "4.5.4",
+    "vitest": "0.1.23",
+    "vue": "3.2.27"
   }
 }
