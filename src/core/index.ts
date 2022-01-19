@@ -205,18 +205,22 @@ export default createUnplugin((rawOptions: Options = {}) => {
       }
     },
 
+    transformInclude(id) {
+      const { filename, query } = parseVueRequest(id)
+      if (query.raw) return false
+
+      // Not Vue SFC and refTransform
+      if (!filter(filename) && !query.vue && !refTransformFilter(filename))
+        return false
+
+      return true
+    },
+
     transform(code, id) {
       const ssr = options.ssr
       const { filename, query } = parseVueRequest(id)
-      if (query.raw) {
-        return
-      }
       if (!filter(filename) && !query.vue) {
-        if (
-          !query.vue &&
-          refTransformFilter(filename) &&
-          options.compiler.shouldTransformRef(code)
-        ) {
+        if (options.compiler.shouldTransformRef(code)) {
           return options.compiler.transformRef(code, {
             filename,
             sourceMap: true,
