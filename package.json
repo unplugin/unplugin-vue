@@ -50,7 +50,9 @@
   "scripts": {
     "test": "vitest",
     "build": "tsup && esno scripts/postbuild.ts",
-    "release": "standard-version"
+    "release": "standard-version",
+    "lint": "eslint . --ext .vue,.ts --max-warnings 0",
+    "prepublishOnly": "pnpm run build"
   },
   "engines": {
     "node": ">=12.0.0"
