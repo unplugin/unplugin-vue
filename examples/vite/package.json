@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "author": "三咲智子 <sxzz@sxzz.moe>",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.27"
+  },
+  "devDependencies": {
+    "unplugin-vue": "workspace:^0.1.0",
+    "vite": "^2.7.13"
+  }
+}
