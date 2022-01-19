@@ -14,7 +14,15 @@ async function getCode(file: string, plugin: any) {
     plugins: [plugin],
   })
   const output = await bundle.generate({ format: 'esm' })
-  return output.output[0].code
+  return output.output
+    .map((file) => {
+      if (file.type === 'chunk') {
+        return file.code
+      } else {
+        return file.fileName
+      }
+    })
+    .join('\n')
 }
 
 function createPlugins(opt: Options) {
@@ -57,10 +65,10 @@ describe('transform', () => {
               isProduction: true,
             })
 
+            const viteCode = await getCode(filepath, vite)
             const unpluginCode = await getCode(filepath, unplugin)
             expect(unpluginCode).toMatchSnapshot()
 
-            const viteCode = await getCode(filepath, vite)
             expect(viteCode).toBe(unpluginCode)
           })
         }

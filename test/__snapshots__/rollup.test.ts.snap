@@ -232,6 +232,96 @@ export { _sfc_main as default };
 "
 `;
 
+exports[`transform > fixtures > test/fixtures/sfc-src.vue > isProduction is false 1`] = `
+"import { defineComponent, openBlock, createElementBlock, createElementVNode, toDisplayString } from 'vue';
+
+var _sfc_main = defineComponent({
+  setup() {
+    return []
+  }
+});
+
+const _hoisted_1 = /*#__PURE__*/createElementVNode(\\"h1\\", null, \\"Hello World\\", -1 /* HOISTED */);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock(\\"div\\", null, [
+    _hoisted_1,
+    createElementVNode(\\"h2\\", null, toDisplayString(_ctx.msg), 1 /* TEXT */)
+  ]))
+}
+
+var _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
+
+var sfcSrc = /*#__PURE__*/_export_sfc(_sfc_main, [['render',render]]);
+
+export { sfcSrc as default };
+"
+`;
+
+exports[`transform > fixtures > test/fixtures/sfc-src.vue > isProduction is true 1`] = `
+"import { defineComponent, openBlock, createElementBlock, createElementVNode, toDisplayString } from 'vue';
+
+var _sfc_main = defineComponent({
+  setup() {
+    return []
+  }
+});
+
+const _hoisted_1 = /*#__PURE__*/createElementVNode(\\"h1\\", null, \\"Hello World\\", -1 /* HOISTED */);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock(\\"div\\", null, [
+    _hoisted_1,
+    createElementVNode(\\"h2\\", null, toDisplayString(_ctx.msg), 1 /* TEXT */)
+  ]))
+}
+
+var _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
+
+var sfcSrc = /*#__PURE__*/_export_sfc(_sfc_main, [['render',render]]);
+
+export { sfcSrc as default };
+"
+`;
+
+exports[`transform > fixtures > test/fixtures/src-script.ts > isProduction is false 1`] = `
+"import { defineComponent } from 'vue';
+
+var srcScript = defineComponent({
+  setup() {
+    return []
+  }
+});
+
+export { srcScript as default };
+"
+`;
+
+exports[`transform > fixtures > test/fixtures/src-script.ts > isProduction is true 1`] = `
+"import { defineComponent } from 'vue';
+
+var srcScript = defineComponent({
+  setup() {
+    return []
+  }
+});
+
+export { srcScript as default };
+"
+`;
+
 exports[`transform > fixtures > test/fixtures/typescript.vue > isProduction is false 1`] = `
 "const _sfc_main = {};
 

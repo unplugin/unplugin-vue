@@ -6,13 +6,14 @@ import { transformWithEsbuild } from 'vite'
 import {
   createDescriptor,
   getPrevDescriptor,
-  // setSrcDescriptor,
+  setSrcDescriptor,
 } from './utils/descriptorCache'
 import { resolveScript, isUseInlineTemplate } from './script'
 import { transformTemplateInMain } from './template'
 import { isOnlyTemplateChanged, isEqualBlock } from './handleHotUpdate'
 import { createError } from './utils/error'
 import { EXPORT_HELPER_ID } from './helper'
+import type { PluginContext } from 'rollup'
 import type { UnpluginContext } from 'unplugin'
 import type { RawSourceMap } from 'source-map'
 // import type { PluginContext, SourceMap, TransformPluginContext } from 'rollup'
@@ -388,13 +389,18 @@ async function linkSrcToDescriptor(
   descriptor: SFCDescriptor,
   pluginContext: UnpluginContext
 ) {
-  // TODO: unplugin implements context.resolve()
-  pluginContext.error(new Error('src not supported'))
-  // const srcFile =
-  //   (await pluginContext.resolve(src, descriptor.filename))?.id || src
-  // // #1812 if the src points to a dep file, the resolved id may contain a
-  // // version query.
-  // setSrcDescriptor(srcFile.replace(/\?.*$/, ''), descriptor)
+  // support rollup only
+  if ((pluginContext as PluginContext).resolve) {
+    const srcFile =
+      (await (pluginContext as PluginContext).resolve(src, descriptor.filename))
+        ?.id || src
+    // #1812 if the src points to a dep file, the resolved id may contain a
+    // version query.
+    setSrcDescriptor(srcFile.replace(/\?.*$/, ''), descriptor)
+  } else {
+    // TODO: unplugin implements context.resolve()
+    pluginContext.error(new Error('src attribute is supported on Rollup only.'))
+  }
 }
 
 // these are built-in query parameters so should be ignored
