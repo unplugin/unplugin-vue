@@ -12,6 +12,6 @@
     "esbuild": "^0.14.11",
     "esno": "^0.14.0",
     "serve": "^13.0.2",
-    "unplugin-vue": "workspace:^0.1.0"
+    "unplugin-vue": "workspace:*"
   }
 }
