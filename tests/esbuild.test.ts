@@ -20,6 +20,10 @@ describe('transform', () => {
           it(`isProduction is ${isProduction}`, async () => {
             const result = await build({
               entryPoints: [filepath],
+              bundle: true,
+              external: ['vue'],
+              treeShaking: true,
+              format: 'esm',
               plugins: [
                 Vue({
                   root,
