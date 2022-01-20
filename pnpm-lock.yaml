@@ -12,7 +12,7 @@ importers:
       '@types/hash-sum': 1.0.0
       '@types/node': '*'
       '@vitejs/plugin-vue': 2.0.1
-      '@vitest/ui': 0.1.23
+      '@vitest/ui': 0.1.24
       debug: ^4.3.3
       esbuild: 0.14.11
       eslint: 8.7.0
@@ -47,7 +47,7 @@ importers:
       '@types/hash-sum': 1.0.0
       '@types/node': 17.0.10
       '@vitejs/plugin-vue': 2.0.1_vite@2.7.13+vue@3.2.27
-      '@vitest/ui': 0.1.23
+      '@vitest/ui': 0.1.24
       esbuild: 0.14.11
       eslint: 8.7.0
       eslint-define-config: 1.2.3
@@ -58,7 +58,7 @@ importers:
       standard-version: 9.3.2
       tsup: 5.11.11_typescript@4.5.4
       typescript: 4.5.4
-      vitest: 0.1.23_@vitest+ui@0.1.23
+      vitest: 0.1.23_@vitest+ui@0.1.24
       vue: 3.2.27
 
   examples/esbuild:
@@ -777,8 +777,8 @@ packages:
       vue: 3.2.27
     dev: true
 
-  /@vitest/ui/0.1.23:
-    resolution: {integrity: sha512-ijiKlCtDvqm5IY6cOso57zs91M7B4lAnEPb5nV1Z0yWqTMLNsO9s5yaDcuQePYlvodu4vEiP05jT8gGu2f17MQ==}
+  /@vitest/ui/0.1.24:
+    resolution: {integrity: sha512-DSy/wBVkXoPz0L3O5ky8jvj4G8j0Kub7rS2EiU8X9GR+c6k5LhquTSJ92cNzeFdVCa7Suo/myvuUyogakv6cYg==}
     dependencies:
       sirv: 2.0.2
     dev: true
@@ -5660,7 +5660,7 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /vitest/0.1.23_@vitest+ui@0.1.23:
+  /vitest/0.1.23_@vitest+ui@0.1.24:
     resolution: {integrity: sha512-Aq/hPNlyMPWqrkSuTzyvUOLcifnXY0IoVnqmhOhUJLEyNVvnPofsThe9r7M7jAkJu/EpqNZwPdOD2HFyZ5biIA==}
     engines: {node: '>=14.14.0'}
     hasBin: true
@@ -5681,7 +5681,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.0
       '@types/chai-subset': 1.3.3
-      '@vitest/ui': 0.1.23
+      '@vitest/ui': 0.1.24
       chai: 4.3.4
       local-pkg: 0.4.1
       tinypool: 0.1.1
