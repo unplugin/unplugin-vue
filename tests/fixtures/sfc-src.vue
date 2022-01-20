@@ -1,4 +1,4 @@
-<script src="./test/fixtures/src-script.ts"></script>
+<script src="./tests/fixtures/src-script.ts"></script>
 
-<template src="./test/fixtures/src-template.html">
+<template src="./tests/fixtures/src-template.html">
 </template>

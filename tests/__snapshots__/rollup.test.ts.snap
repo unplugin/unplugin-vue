@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`transform > fixtures > test/fixtures/basic.vue > isProduction is false 1`] = `
+exports[`transform > fixtures > tests/fixtures/basic.vue > isProduction is false 1`] = `
 "import { openBlock, createElementBlock, createElementVNode } from 'vue';
 
 var _export_sfc = (sfc, props) => {
@@ -29,7 +29,7 @@ export { basic as default };
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/basic.vue > isProduction is true 1`] = `
+exports[`transform > fixtures > tests/fixtures/basic.vue > isProduction is true 1`] = `
 "import { openBlock, createElementBlock, createElementVNode } from 'vue';
 
 var _export_sfc = (sfc, props) => {
@@ -58,7 +58,7 @@ export { basic as default };
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/reactivity-transform.ts > isProduction is false 1`] = `
+exports[`transform > fixtures > tests/fixtures/reactivity-transform.ts > isProduction is false 1`] = `
 "import { ref } from 'vue';
 
 const ref1 = ref('hello');
@@ -71,7 +71,7 @@ console.log((ref2));
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/reactivity-transform.ts > isProduction is true 1`] = `
+exports[`transform > fixtures > tests/fixtures/reactivity-transform.ts > isProduction is true 1`] = `
 "import { ref } from 'vue';
 
 const ref1 = ref('hello');
@@ -84,30 +84,7 @@ console.log((ref2));
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/reactivity-transform.vue > isProduction is false 1`] = `
-"import { ref } from 'vue';
-
-const _sfc_main = {
-  setup(__props) {
-
-const ref1 = ref('hello');
-const ref2 = (ref('hello'));
-
-console.log(ref1.value);
-console.log(ref2.value);
-console.log((ref1));
-console.log((ref2));
-
-return () => {}
-}
-
-};
-
-export { _sfc_main as default };
-"
-`;
-
-exports[`transform > fixtures > test/fixtures/reactivity-transform.vue > isProduction is true 1`] = `
+exports[`transform > fixtures > tests/fixtures/reactivity-transform.vue > isProduction is false 1`] = `
 "import { ref } from 'vue';
 
 const _sfc_main = {
@@ -130,7 +107,30 @@ export { _sfc_main as default };
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/script-setup.vue > isProduction is false 1`] = `
+exports[`transform > fixtures > tests/fixtures/reactivity-transform.vue > isProduction is true 1`] = `
+"import { ref } from 'vue';
+
+const _sfc_main = {
+  setup(__props) {
+
+const ref1 = ref('hello');
+const ref2 = (ref('hello'));
+
+console.log(ref1.value);
+console.log(ref2.value);
+console.log((ref1));
+console.log((ref2));
+
+return () => {}
+}
+
+};
+
+export { _sfc_main as default };
+"
+`;
+
+exports[`transform > fixtures > tests/fixtures/script-setup.vue > isProduction is false 1`] = `
 "import { openBlock, createElementBlock, createElementVNode } from 'vue';
 
 const _hoisted_1 = /*#__PURE__*/createElementVNode(\\"h1\\", null, \\"Hello World\\", -1 /* HOISTED */);
@@ -153,7 +153,7 @@ export { _sfc_main as default };
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/script-setup.vue > isProduction is true 1`] = `
+exports[`transform > fixtures > tests/fixtures/script-setup.vue > isProduction is true 1`] = `
 "import { openBlock, createElementBlock, createElementVNode } from 'vue';
 
 const _hoisted_1 = /*#__PURE__*/createElementVNode(\\"h1\\", null, \\"Hello World\\", -1 /* HOISTED */);
@@ -176,7 +176,7 @@ export { _sfc_main as default };
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/script-setup-ts.vue > isProduction is false 1`] = `
+exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProduction is false 1`] = `
 "import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
 
 const _hoisted_1 = /* @__PURE__ */ createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
@@ -204,7 +204,7 @@ export { _sfc_main as default };
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/script-setup-ts.vue > isProduction is true 1`] = `
+exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProduction is true 1`] = `
 "import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
 
 const _hoisted_1 = /* @__PURE__ */ createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
@@ -232,7 +232,7 @@ export { _sfc_main as default };
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/sfc-src.vue > isProduction is false 1`] = `
+exports[`transform > fixtures > tests/fixtures/sfc-src.vue > isProduction is false 1`] = `
 "import { defineComponent, openBlock, createElementBlock, createElementVNode, toDisplayString } from 'vue';
 
 var _sfc_main = defineComponent({
@@ -264,7 +264,7 @@ export { sfcSrc as default };
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/sfc-src.vue > isProduction is true 1`] = `
+exports[`transform > fixtures > tests/fixtures/sfc-src.vue > isProduction is true 1`] = `
 "import { defineComponent, openBlock, createElementBlock, createElementVNode, toDisplayString } from 'vue';
 
 var _sfc_main = defineComponent({
@@ -296,7 +296,7 @@ export { sfcSrc as default };
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/src-script.ts > isProduction is false 1`] = `
+exports[`transform > fixtures > tests/fixtures/src-script.ts > isProduction is false 1`] = `
 "import { defineComponent } from 'vue';
 
 var srcScript = defineComponent({
@@ -309,7 +309,7 @@ export { srcScript as default };
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/src-script.ts > isProduction is true 1`] = `
+exports[`transform > fixtures > tests/fixtures/src-script.ts > isProduction is true 1`] = `
 "import { defineComponent } from 'vue';
 
 var srcScript = defineComponent({
@@ -322,14 +322,14 @@ export { srcScript as default };
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/typescript.vue > isProduction is false 1`] = `
+exports[`transform > fixtures > tests/fixtures/typescript.vue > isProduction is false 1`] = `
 "const _sfc_main = {};
 
 export { _sfc_main as default };
 "
 `;
 
-exports[`transform > fixtures > test/fixtures/typescript.vue > isProduction is true 1`] = `
+exports[`transform > fixtures > tests/fixtures/typescript.vue > isProduction is true 1`] = `
 "const _sfc_main = {};
 
 export { _sfc_main as default };

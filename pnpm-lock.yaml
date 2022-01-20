@@ -14,6 +14,7 @@ importers:
       '@vitejs/plugin-vue': 2.0.1
       '@vitest/ui': 0.1.23
       debug: ^4.3.3
+      esbuild: ^0.14.11
       eslint: 8.7.0
       eslint-define-config: 1.2.3
       esno: 0.14.0
@@ -36,7 +37,7 @@ importers:
       hash-sum: 2.0.0
       querystring: 0.2.1
       source-map: 0.6.1
-      unplugin: 0.3.0_rollup@2.64.0+vite@2.7.13
+      unplugin: 0.3.0_f1163fc619aae5be7a2291f98077607c
       vite: 2.7.13
     devDependencies:
       '@sxzz/eslint-config-prettier': 1.6.1_eslint@8.7.0
@@ -47,6 +48,7 @@ importers:
       '@types/node': 17.0.10
       '@vitejs/plugin-vue': 2.0.1_vite@2.7.13+vue@3.2.27
       '@vitest/ui': 0.1.23
+      esbuild: 0.14.11
       eslint: 8.7.0
       eslint-define-config: 1.2.3
       esno: 0.14.0_typescript@4.5.4
@@ -5564,7 +5566,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /unplugin/0.3.0_rollup@2.64.0+vite@2.7.13:
+  /unplugin/0.3.0_f1163fc619aae5be7a2291f98077607c:
     resolution: {integrity: sha512-9yLlOo+XC4NdIRgpkDSHOAHkQDq2x4mbuVNO/eKVa3C8WTn5wWGfzEFfRJFL8euqnX3Gf7hEur0AhXxy+WSwkg==}
     peerDependencies:
       esbuild: '>=0.13'
@@ -5581,6 +5583,7 @@ packages:
       webpack:
         optional: true
     dependencies:
+      esbuild: 0.14.11
       rollup: 2.64.0
       vite: 2.7.13
       webpack-virtual-modules: 0.4.3

@@ -47,7 +47,7 @@ function createPlugins(opt: Options) {
 describe('transform', () => {
   describe('fixtures', async () => {
     const root = resolve(__dirname, '..')
-    const files = await glob('test/fixtures/*.{vue,js,ts}', {
+    const files = await glob('tests/fixtures/*.{vue,js,ts}', {
       cwd: root,
       onlyFiles: true,
     })
