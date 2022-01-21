@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/sxzz/unplugin-vue/compare/v0.2.0...v0.2.1) (2022-01-21)
+
+
+### Features
+
+* add webpack example ([3de64a5](https://github.com/sxzz/unplugin-vue/commit/3de64a54310fb2340867608dd5dd3c80f38ea1ea))
+
+
+### Bug Fixes
+
+* esbuild sourcemap ([319a600](https://github.com/sxzz/unplugin-vue/commit/319a60068731142a1f1171eecd4654c55d12cdfc))
+
 ## [0.2.0](https://github.com/sxzz/unplugin-vue/compare/v0.1.7...v0.2.0) (2022-01-19)
 
 ### [0.1.7](https://github.com/sxzz/unplugin-vue/compare/v0.1.6...v0.1.7) (2022-01-19)
