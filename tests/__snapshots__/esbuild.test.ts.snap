@@ -86,6 +86,29 @@ console.log(ref2);
 "
 `;
 
+exports[`transform > fixtures > tests/fixtures/reactivity-transform.vue > isProduction is false 1`] = `
+"// tests/fixtures/reactivity-transform.vue
+import { ref as _ref } from \\"vue\\";
+import { ref } from \\"vue\\";
+var _sfc_main = {
+  setup(__props) {
+    const ref1 = _ref(\\"hello\\");
+    const ref2 = ref(\\"hello\\");
+    console.log(ref1.value);
+    console.log(ref2.value);
+    console.log(ref1);
+    console.log(ref2);
+    return () => {
+    };
+  }
+};
+var reactivity_transform_default = _sfc_main;
+export {
+  reactivity_transform_default as default
+};
+"
+`;
+
 exports[`transform > fixtures > tests/fixtures/reactivity-transform.vue > isProduction is true 1`] = `
 "// tests/fixtures/reactivity-transform.vue
 import { ref as _ref } from \\"vue\\";
@@ -105,6 +128,28 @@ var _sfc_main = {
 var reactivity_transform_default = _sfc_main;
 export {
   reactivity_transform_default as default
+};
+"
+`;
+
+exports[`transform > fixtures > tests/fixtures/script-setup.vue > isProduction is false 1`] = `
+"// tests/fixtures/script-setup.vue
+import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"vue\\";
+var _hoisted_1 = /* @__PURE__ */ _createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
+var _hoisted_2 = [
+  _hoisted_1
+];
+var _sfc_main = {
+  setup(__props) {
+    const foo = \\"bar\\";
+    return (_ctx, _cache) => {
+      return _openBlock(), _createElementBlock(\\"div\\", null, _hoisted_2);
+    };
+  }
+};
+var script_setup_default = _sfc_main;
+export {
+  script_setup_default as default
 };
 "
 `;

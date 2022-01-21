@@ -27,7 +27,7 @@ importers:
       standard-version: 9.3.2
       tsup: 5.11.11
       typescript: 4.5.5
-      unplugin: ^0.3.0
+      unplugin: ^0.3.1
       vite: ^2.7.13
       vitest: 0.1.25
       vue: 3.2.27
@@ -37,7 +37,7 @@ importers:
       hash-sum: 2.0.0
       querystring: 0.2.1
       source-map: 0.6.1
-      unplugin: 0.3.0_5ac71a2c1a77119346a5d8e66ed33f9d
+      unplugin: 0.3.1_5ac71a2c1a77119346a5d8e66ed33f9d
       vite: 2.7.13
     devDependencies:
       '@sxzz/eslint-config-prettier': 1.6.1_eslint@8.7.0
@@ -5744,8 +5744,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /unplugin/0.3.0_5ac71a2c1a77119346a5d8e66ed33f9d:
-    resolution: {integrity: sha512-9yLlOo+XC4NdIRgpkDSHOAHkQDq2x4mbuVNO/eKVa3C8WTn5wWGfzEFfRJFL8euqnX3Gf7hEur0AhXxy+WSwkg==}
+  /unplugin/0.3.1_5ac71a2c1a77119346a5d8e66ed33f9d:
+    resolution: {integrity: sha512-AKagqOA5un8rT0vIoCyQ7ii1XcwAOynLYUmmd+DeyQdT9AkYtmRlk4eEsb0HOtovrufxGprOPOol1CwBTI4HRw==}
     peerDependencies:
       esbuild: '>=0.13'
       rollup: ^2.50.0
