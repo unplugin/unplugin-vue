@@ -6,10 +6,10 @@
     "preview": "serve"
   },
   "dependencies": {
-    "vue": "^3.2.27"
+    "vue": "^3.2.28"
   },
   "devDependencies": {
-    "esbuild": "^0.14.11",
+    "esbuild": "^0.14.12",
     "esno": "^0.14.0",
     "serve": "^13.0.2",
     "unplugin-vue": "workspace:*"
