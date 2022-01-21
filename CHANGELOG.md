@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/sxzz/unplugin-vue/compare/v0.2.1...v0.2.2) (2022-01-21)
+
+
+### Bug Fixes
+
+* **build:** node_modules hoist ([69aac15](https://github.com/sxzz/unplugin-vue/commit/69aac15104a32ea645fc79de1f301cf3141391b4))
+
 ### [0.2.1](https://github.com/sxzz/unplugin-vue/compare/v0.2.0...v0.2.1) (2022-01-21)
 
 
