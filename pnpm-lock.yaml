@@ -12,7 +12,7 @@ importers:
       '@types/hash-sum': 1.0.0
       '@types/node': '*'
       '@vitejs/plugin-vue': 2.1.0
-      '@vitest/ui': 0.1.25
+      '@vitest/ui': 0.2.0
       debug: ^4.3.3
       esbuild: 0.14.13
       eslint: 8.7.0
@@ -47,7 +47,7 @@ importers:
       '@types/hash-sum': 1.0.0
       '@types/node': 17.0.10
       '@vitejs/plugin-vue': 2.1.0_vite@2.7.13+vue@3.2.28
-      '@vitest/ui': 0.1.25
+      '@vitest/ui': 0.2.0
       esbuild: 0.14.13
       eslint: 8.7.0
       eslint-define-config: 1.2.3
@@ -58,7 +58,7 @@ importers:
       standard-version: 9.3.2
       tsup: 5.11.11_typescript@4.5.5
       typescript: 4.5.5
-      vitest: 0.2.0_@vitest+ui@0.1.25
+      vitest: 0.2.0_@vitest+ui@0.2.0
       vue: 3.2.28
 
   examples/esbuild:
@@ -777,8 +777,8 @@ packages:
       vue: 3.2.28
     dev: true
 
-  /@vitest/ui/0.1.25:
-    resolution: {integrity: sha512-lcyHy4D49netEogcSCW16n3L7VzHlbyAgDMZ6Qu4ayP19aRoogeRbbIP/k1okiyAUrXQhdTd15FZjkqNkPte1g==}
+  /@vitest/ui/0.2.0:
+    resolution: {integrity: sha512-obnebdaw4mQVkOrifxCa+R/6q9BBXpAf4Lkdw8/NHVn+fDYhDl2PZXQtxV7DbzArij8FEjEzHQR7t6hc48zjnw==}
     dependencies:
       sirv: 2.0.2
     dev: true
@@ -5837,7 +5837,7 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /vitest/0.2.0_@vitest+ui@0.1.25:
+  /vitest/0.2.0_@vitest+ui@0.2.0:
     resolution: {integrity: sha512-+8c0UN/KKQe/ye0CCCqYuPbOEZl12Fhb5hVkCiL2DdBA4jOEgHDd35AZqdHVBXaAoTedS3MD5G/LhkOxCWB8pw==}
     engines: {node: '>=14.14.0'}
     hasBin: true
@@ -5858,7 +5858,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.0
       '@types/chai-subset': 1.3.3
-      '@vitest/ui': 0.1.25
+      '@vitest/ui': 0.2.0
       chai: 4.3.4
       local-pkg: 0.4.1
       tinypool: 0.1.1
