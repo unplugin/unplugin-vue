@@ -29,7 +29,7 @@ importers:
       typescript: 4.5.5
       unplugin: ^0.3.1
       vite: ^2.7.13
-      vitest: 0.2.2
+      vitest: 0.2.3
       vue: 3.2.29
     dependencies:
       '@rollup/pluginutils': 4.1.2
@@ -58,7 +58,7 @@ importers:
       standard-version: 9.3.2
       tsup: 5.11.11_typescript@4.5.5
       typescript: 4.5.5
-      vitest: 0.2.2_@vitest+ui@0.2.3
+      vitest: 0.2.3_@vitest+ui@0.2.3
       vue: 3.2.29
 
   examples/esbuild:
@@ -5930,8 +5930,8 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /vitest/0.2.2_@vitest+ui@0.2.3:
-    resolution: {integrity: sha512-o8u+srvdZppgStsVC4HfOFXwqqAzUOiHJ/UXjU6GFU4A4ZMhXAMFRb+RVL523eQjGguFDNNEWr5XlRK/jnPvUw==}
+  /vitest/0.2.3_@vitest+ui@0.2.3:
+    resolution: {integrity: sha512-hkJpXkJJ52yyBrnoyqox6eoo4mzYmlm+OwSNSFqhMidY75wEGV1/DsAR6kx6WLucI3CtlToAzfI94WZGfgRUrg==}
     engines: {node: '>=14.14.0'}
     hasBin: true
     peerDependencies:
