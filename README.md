@@ -10,6 +10,10 @@ Transform Vue 3 SFC to JavaScript.
 - ✨ Supports `<script setup>`
 - 💚 Supports [Reactivity Transform](https://github.com/vuejs/rfcs/discussions/369)
 
+## Who is using
+
+- [vue-components-lib-seed](https://github.com/zouhangwithsweet/vue-components-lib-seed) - A vue3.0 components library template.
+
 ## Alternatives
 
 - [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue) - For Vite and Vue 3.
