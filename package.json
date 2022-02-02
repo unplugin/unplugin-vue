@@ -83,7 +83,7 @@
     "@vitejs/plugin-vue": "2.1.0",
     "@vitest/ui": "0.2.3",
     "esbuild": "0.14.17",
-    "eslint": "8.7.0",
+    "eslint": "8.8.0",
     "eslint-define-config": "1.2.3",
     "esno": "0.14.0",
     "fast-glob": "3.2.11",
