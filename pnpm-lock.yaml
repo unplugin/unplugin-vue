@@ -16,7 +16,7 @@ importers:
       debug: ^4.3.3
       esbuild: 0.14.17
       eslint: 8.8.0
-      eslint-define-config: 1.2.3
+      eslint-define-config: 1.2.4
       esno: 0.14.0
       fast-glob: 3.2.11
       hash-sum: ^2.0.0
@@ -50,7 +50,7 @@ importers:
       '@vitest/ui': 0.2.5
       esbuild: 0.14.17
       eslint: 8.8.0
-      eslint-define-config: 1.2.3
+      eslint-define-config: 1.2.4
       esno: 0.14.0_typescript@4.5.5
       fast-glob: 3.2.11
       rollup: 2.67.0
@@ -416,7 +416,7 @@ packages:
       eslint: '>=7.4.0'
     dependencies:
       eslint: 8.8.0
-      eslint-define-config: 1.2.3
+      eslint-define-config: 1.2.4
       eslint-plugin-html: 6.2.0
       eslint-plugin-import: 2.25.4_eslint@8.8.0
       eslint-plugin-jsonc: 1.7.0_eslint@8.8.0
@@ -433,7 +433,7 @@ packages:
     dependencies:
       eslint: 8.8.0
       eslint-config-prettier: 8.3.0_eslint@8.8.0
-      eslint-define-config: 1.2.3
+      eslint-define-config: 1.2.4
       eslint-plugin-prettier: 4.0.0_43197c8d12d1d439034cfcf65e1c48c2
       eslint-plugin-yml: 0.10.1_eslint@8.8.0
       prettier: 2.5.1
@@ -451,7 +451,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 5.10.0_b38207c5f69fd49ae45ebdea42f2b4a0
       '@typescript-eslint/parser': 5.10.0_eslint@8.8.0+typescript@4.5.5
       eslint: 8.8.0
-      eslint-define-config: 1.2.3
+      eslint-define-config: 1.2.4
       typescript: 4.5.5
     transitivePeerDependencies:
       - supports-color
@@ -464,7 +464,7 @@ packages:
     dependencies:
       '@sxzz/eslint-config-ts': 1.6.2_eslint@8.8.0+typescript@4.5.5
       eslint: 8.8.0
-      eslint-define-config: 1.2.3
+      eslint-define-config: 1.2.4
       eslint-plugin-vue: 8.3.0_eslint@8.8.0
     transitivePeerDependencies:
       - supports-color
@@ -2804,9 +2804,9 @@ packages:
       eslint: 8.8.0
     dev: true
 
-  /eslint-define-config/1.2.3:
-    resolution: {integrity: sha512-etSYUjXbFzj6SnHV2Abmc2z4yVTMlGiK0WwLvqS5QxFsuRZrgpZPIk6wTAc+R8dDuISWcw07MK6x2OcqDgUFpA==}
-    engines: {node: '>= 16.9.0', npm: '>= 7.0.0', pnpm: '>= 6.27.1'}
+  /eslint-define-config/1.2.4:
+    resolution: {integrity: sha512-HTdOfrqthSd6lpl/fRp2+BKSCR/d+knNi66c6mOIxEYjorSkqRdLkmPhmLAW5akOp3+MuP25YgKcFHSsknaigw==}
+    engines: {node: '>= 16.9.0', npm: '>= 7.0.0', pnpm: '>= 6.29.1'}
     dev: true
 
   /eslint-import-resolver-node/0.3.6:
