@@ -85,7 +85,7 @@
     "esbuild": "0.14.17",
     "eslint": "8.8.0",
     "eslint-define-config": "1.2.4",
-    "esno": "0.14.0",
+    "esno": "0.14.1",
     "fast-glob": "3.2.11",
     "rollup": "2.67.1",
     "slash": "4.0.0",

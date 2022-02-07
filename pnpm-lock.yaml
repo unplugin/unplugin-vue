@@ -17,7 +17,7 @@ importers:
       esbuild: 0.14.17
       eslint: 8.8.0
       eslint-define-config: 1.2.4
-      esno: 0.14.0
+      esno: 0.14.1
       fast-glob: 3.2.11
       hash-sum: ^2.0.0
       querystring: ^0.2.1
@@ -51,7 +51,7 @@ importers:
       esbuild: 0.14.17
       eslint: 8.8.0
       eslint-define-config: 1.2.4
-      esno: 0.14.0_typescript@4.5.5
+      esno: 0.14.1
       fast-glob: 3.2.11
       rollup: 2.67.1
       slash: 4.0.0
@@ -2574,6 +2574,12 @@ packages:
       typescript: 4.5.5
     dev: true
 
+  /esbuild-node-loader/0.6.5:
+    resolution: {integrity: sha512-uPP+dllWm38cFvDysdocutN3lfe5pTIbddAHp1ENyLzpHYqE2r+3Wo+pfg9X3p8DFWwzIisft5YkeBIthIcixw==}
+    dependencies:
+      esbuild: 0.14.17
+    dev: true
+
   /esbuild-openbsd-64/0.13.15:
     resolution: {integrity: sha512-wTfvtwYJYAFL1fSs8yHIdf5GEE4NkbtbXtjLWjM3Cw8mmQKqsg8kTiqJ9NJQe5NX/5Qlo7Xd9r1yKMMkHllp5g==}
     cpu: [x64]
@@ -2604,6 +2610,14 @@ packages:
       esbuild: '>=0.12 <1'
     dependencies:
       esbuild: 0.14.12
+    dev: true
+
+  /esbuild-register/3.3.2_esbuild@0.14.17:
+    resolution: {integrity: sha512-jceAtTO6zxPmCfSD5cBb3rgIK1vmuqCKYwgylHiS1BF4pq0jJiJb4K2QMuqF4BEw7XDBRatYzip0upyTzfkgsQ==}
+    peerDependencies:
+      esbuild: '>=0.12 <1'
+    dependencies:
+      esbuild: 0.14.17
     dev: true
 
   /esbuild-sunos-64/0.13.15:
@@ -3062,6 +3076,17 @@ packages:
       import-meta-resolve: 1.1.1
     transitivePeerDependencies:
       - typescript
+    dev: true
+
+  /esno/0.14.1:
+    resolution: {integrity: sha512-yDFYw6dGUjCT1qKsdG7WOc/RzIh/qwxUEVZ+ohCltaxBxEFMNqeqbQL9xjRl6Yvdwrfc5OCjUA9JbFmuu/8BKg==}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+      esbuild: 0.14.17
+      esbuild-node-loader: 0.6.5
+      esbuild-register: 3.3.2_esbuild@0.14.17
+      import-meta-resolve: 1.1.1
     dev: true
 
   /espree/6.2.1:
