@@ -87,7 +87,7 @@
     "eslint-define-config": "1.2.4",
     "esno": "0.14.0",
     "fast-glob": "3.2.11",
-    "rollup": "2.67.0",
+    "rollup": "2.67.1",
     "slash": "4.0.0",
     "standard-version": "9.3.2",
     "tsup": "5.11.13",
