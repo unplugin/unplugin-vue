@@ -80,7 +80,7 @@
     "@types/debug": "4.1.7",
     "@types/hash-sum": "1.0.0",
     "@types/node": "*",
-    "@vitejs/plugin-vue": "2.1.0",
+    "@vitejs/plugin-vue": "2.2.0",
     "@vitest/ui": "0.2.7",
     "esbuild": "0.14.20",
     "eslint": "8.8.0",
