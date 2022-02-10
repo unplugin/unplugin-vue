@@ -21,7 +21,7 @@ importers:
       fast-glob: 3.2.11
       hash-sum: ^2.0.0
       querystring: ^0.2.1
-      rollup: 2.67.1
+      rollup: 2.67.2
       slash: 4.0.0
       source-map: ^0.6.1
       standard-version: 9.3.2
@@ -37,7 +37,7 @@ importers:
       hash-sum: 2.0.0
       querystring: 0.2.1
       source-map: 0.6.1
-      unplugin: 0.3.1_05952d394fda153d43e1a89c1cd4c111
+      unplugin: 0.3.1_3d8e1de3ae9260235e90b2087b903d88
       vite: 2.7.13
     devDependencies:
       '@sxzz/eslint-config-prettier': 1.6.1_eslint@8.8.0
@@ -53,7 +53,7 @@ importers:
       eslint-define-config: 1.2.4
       esno: 0.14.1
       fast-glob: 3.2.11
-      rollup: 2.67.1
+      rollup: 2.67.2
       slash: 4.0.0
       standard-version: 9.3.2
       tsup: 5.11.13_typescript@4.5.5
@@ -5143,8 +5143,8 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /rollup/2.67.1:
-    resolution: {integrity: sha512-1Sbcs4OuW+aD+hhqpIRl+RqooIpF6uQcfzU/QSI7vGkwADY6cM4iLsBGRM2CGLXDTDN5y/yShohFmnKegSPWzg==}
+  /rollup/2.67.2:
+    resolution: {integrity: sha512-hoEiBWwZtf1QdK3jZIq59L0FJj4Fiv4RplCO4pvCRC86qsoFurWB4hKQIjoRf3WvJmk5UZ9b0y5ton+62fC7Tw==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -5803,7 +5803,7 @@ packages:
       joycon: 3.1.1
       postcss-load-config: 3.1.1
       resolve-from: 5.0.0
-      rollup: 2.67.1
+      rollup: 2.67.2
       source-map: 0.7.3
       sucrase: 3.20.3
       tree-kill: 1.2.2
@@ -5895,7 +5895,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /unplugin/0.3.1_05952d394fda153d43e1a89c1cd4c111:
+  /unplugin/0.3.1_3d8e1de3ae9260235e90b2087b903d88:
     resolution: {integrity: sha512-AKagqOA5un8rT0vIoCyQ7ii1XcwAOynLYUmmd+DeyQdT9AkYtmRlk4eEsb0HOtovrufxGprOPOol1CwBTI4HRw==}
     peerDependencies:
       esbuild: '>=0.13'
@@ -5913,7 +5913,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.14.20
-      rollup: 2.67.1
+      rollup: 2.67.2
       vite: 2.7.13
       webpack-virtual-modules: 0.4.3
     dev: false
