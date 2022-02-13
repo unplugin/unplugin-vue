@@ -84,7 +84,7 @@
     "@vitest/ui": "0.2.7",
     "esbuild": "0.14.20",
     "eslint": "8.8.0",
-    "eslint-define-config": "1.2.4",
+    "eslint-define-config": "1.2.5",
     "esno": "0.14.1",
     "fast-glob": "3.2.11",
     "rollup": "2.67.1",
