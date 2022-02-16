@@ -81,7 +81,7 @@
     "@types/hash-sum": "1.0.0",
     "@types/node": "*",
     "@vitejs/plugin-vue": "2.1.0",
-    "@vitest/ui": "0.2.7",
+    "@vitest/ui": "0.3.6",
     "esbuild": "0.14.20",
     "eslint": "8.8.0",
     "eslint-define-config": "1.2.5",
