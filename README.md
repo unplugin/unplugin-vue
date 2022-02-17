@@ -1,5 +1,7 @@
 # unplugin-vue [![npm](https://img.shields.io/npm/v/unplugin-vue.svg)](https://npmjs.com/package/unplugin-vue)
 
+[![Unit Test](https://github.com/sxzz/unplugin-vue/actions/workflows/unit-test.yml/badge.svg)](https://github.com/sxzz/unplugin-vue/actions/workflows/unit-test.yml)
+
 Transform Vue 3 SFC to JavaScript.
 
 **This plugin is currently a very early beta! Use at your own risk.**
