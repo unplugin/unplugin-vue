@@ -6,11 +6,10 @@
     "moduleResolution": "node",
     "strict": true,
     "declaration": true,
-    "sourceMap": true,
     "noUnusedLocals": true,
     "esModuleInterop": true,
-    "baseUrl": "..",
-    "types": ["node"]
+    "types": ["node"],
+    "baseUrl": ".." // fix tsup
   },
   "include": ["src", "tests"],
   "exclude": ["tests/fixtures"]
