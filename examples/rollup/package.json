@@ -6,11 +6,11 @@
     "preview": "serve"
   },
   "dependencies": {
-    "vue": "^3.2.28"
+    "vue": "^3.2.31"
   },
   "devDependencies": {
-    "esno": "^0.14.0",
-    "rollup": "^2.65.0",
+    "esno": "^0.14.1",
+    "rollup": "^2.67.3",
     "serve": "^13.0.2",
     "unplugin-vue": "workspace:*"
   }

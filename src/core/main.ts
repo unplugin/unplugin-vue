@@ -16,7 +16,6 @@ import { EXPORT_HELPER_ID } from './helper'
 import type { PluginContext } from 'rollup'
 import type { UnpluginContext } from 'unplugin'
 import type { RawSourceMap } from 'source-map'
-// import type { PluginContext, SourceMap, TransformPluginContext } from 'rollup'
 import type { ResolvedOptions } from '.'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 

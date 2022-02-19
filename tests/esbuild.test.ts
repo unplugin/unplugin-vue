@@ -1,4 +1,5 @@
 import { resolve } from 'path'
+import { TextDecoder } from 'util'
 import { describe, it, expect } from 'vitest'
 import { build } from 'esbuild'
 import glob from 'fast-glob'
@@ -14,7 +15,7 @@ describe('transform', () => {
     })
 
     for (const file of files) {
-      describe(file.replaceAll('\\', '/'), async () => {
+      describe(file.replace('\\', '/'), async () => {
         const filepath = resolve(root, file)
         for (const isProduction of [true, false]) {
           it(`isProduction is ${isProduction}`, async () => {

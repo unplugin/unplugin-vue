@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/prefer-string-replace-all */
+
 import { resolve } from 'path'
 import { describe, it, expect } from 'vitest'
 import { rollup } from 'rollup'
@@ -53,7 +55,7 @@ describe('transform', () => {
     })
 
     for (const file of files) {
-      describe(file.replaceAll('\\', '/'), () => {
+      describe(file.replace(/\\/g, '/'), () => {
         const filepath = resolve(root, file)
 
         for (const isProduction of [true, false]) {
