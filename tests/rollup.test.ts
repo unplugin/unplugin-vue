@@ -19,7 +19,7 @@ async function getCode(file: string, plugin: any) {
   return output.output
     .map((file) => {
       if (file.type === 'chunk') {
-        return file.code
+        return `//${file.fileName}\n${file.code}`
       } else {
         return file.fileName
       }
@@ -28,14 +28,11 @@ async function getCode(file: string, plugin: any) {
 }
 
 function createPlugins(opt: Options) {
-  const vite = ViteVue({
-    reactivityTransform: true,
-    compiler: opt.compiler!,
-  })
+  const vite = ViteVue(opt)
   vite.configResolved!({
     root: opt.root!,
     command: 'build',
-    isProduction: true,
+    isProduction: opt.isProduction,
     build: {
       sourcemap: false,
     },
@@ -64,7 +61,7 @@ describe('transform', () => {
               root,
               compiler: vueCompiler,
               reactivityTransform: true,
-              isProduction: true,
+              isProduction,
             })
 
             const viteCode = await getCode(filepath, vite)

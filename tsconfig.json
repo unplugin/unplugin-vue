@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
-    "module": "ESNext",
-    "lib": ["ES2019"],
-    "moduleResolution": "node",
+    "target": "es2019",
+    "module": "esnext",
+    "lib": ["es2019"],
     "strict": true,
-    "declaration": true,
-    "noUnusedLocals": true,
     "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
     "types": ["node"],
     "baseUrl": ".." // fix tsup
   },
-  "include": ["src", "tests"],
+  "include": ["src", "tests", "scripts"],
   "exclude": ["tests/fixtures"]
 }
