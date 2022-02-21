@@ -11,6 +11,7 @@
     },
   ],
   ignoreDeps: [
+    'node',
     'source-map', // `source-map:v0.7.0+` needs more investigation
   ],
 }
