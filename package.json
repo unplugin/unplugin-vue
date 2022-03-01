@@ -70,8 +70,8 @@
     "hash-sum": "^2.0.0",
     "querystring": "^0.2.1",
     "source-map": "^0.6.1",
-    "unplugin": "^0.3.2",
-    "vite": "^2.8.4"
+    "unplugin": "^0.3.3",
+    "vite": "^2.8.5"
   },
   "devDependencies": {
     "@sxzz/eslint-config-prettier": "^1.6.1",
@@ -80,18 +80,18 @@
     "@types/debug": "^4.1.7",
     "@types/hash-sum": "^1.0.0",
     "@types/node": "*",
-    "@vitejs/plugin-vue": "^2.2.2",
+    "@vitejs/plugin-vue": "^2.2.4",
     "@vitest/ui": "0.5.8",
     "esbuild": "^0.14.23",
-    "eslint": "^8.9.0",
+    "eslint": "^8.10.0",
     "eslint-define-config": "^1.2.5",
     "esno": "^0.14.1",
     "fast-glob": "^3.2.11",
-    "rollup": "^2.67.3",
+    "rollup": "^2.68.0",
     "slash": "^4.0.0",
     "standard-version": "^9.3.2",
     "tsup": "^5.11.13",
-    "typescript": "^4.5.5",
+    "typescript": "^4.6.2",
     "vitest": "0.5.8",
     "vue": "^3.2.31"
   }

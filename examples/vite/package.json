@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "unplugin-vue": "workspace:*",
-    "vite": "^2.8.4"
+    "vite": "^2.8.5"
   }
 }

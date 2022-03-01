@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "esno": "^0.14.1",
-    "rollup": "^2.67.3",
+    "rollup": "^2.68.0",
     "serve": "^13.0.2",
     "unplugin-vue": "workspace:*"
   }
