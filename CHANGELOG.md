@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/sxzz/unplugin-vue/compare/v0.2.2...v1.0.0) (2022-03-01)
+
+
+### Features
+
+* support node 12 ([aff7c06](https://github.com/sxzz/unplugin-vue/commit/aff7c06b6a2fd9ae76df7cc9711e10be1e971b5a))
+
+
+### Bug Fixes
+
+* adjust vue template sourcemap ([1fcee44](https://github.com/sxzz/unplugin-vue/commit/1fcee443638748f55d98ee1cf24fee3ae5b275d0))
+* build ([194ef34](https://github.com/sxzz/unplugin-vue/commit/194ef34d22bceedc850098c13f9f8050040ec675))
+* make cssm code tree shakeable ([b2a273b](https://github.com/sxzz/unplugin-vue/commit/b2a273b37ce514b693eed2952746fc5b06ab72bc))
+* setup jsx script no hmr ([582dfdd](https://github.com/sxzz/unplugin-vue/commit/582dfdd2df157e603e92d1829ee3cd5401bdd8bf))
+
 ### [0.2.2](https://github.com/sxzz/unplugin-vue/compare/v0.2.1...v0.2.2) (2022-01-21)
 
 
