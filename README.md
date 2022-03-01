@@ -4,8 +4,6 @@
 
 Transform Vue 3 SFC to JavaScript.
 
-**This plugin is currently a very early beta! Use at your own risk.**
-
 ## Features
 
 - ⚡️ Supports Vite, Webpack, Vue CLI, Rollup, esbuild and more, powered by [unplugin](https://github.com/unjs/unplugin).
