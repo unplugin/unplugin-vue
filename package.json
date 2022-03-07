@@ -81,7 +81,7 @@
     "@types/hash-sum": "^1.0.0",
     "@types/node": "*",
     "@vitejs/plugin-vue": "^2.2.4",
-    "@vitest/ui": "0.5.8",
+    "@vitest/ui": "0.5.9",
     "esbuild": "^0.14.23",
     "eslint": "^8.10.0",
     "eslint-define-config": "^1.2.5",
@@ -92,7 +92,7 @@
     "standard-version": "^9.3.2",
     "tsup": "^5.11.13",
     "typescript": "^4.6.2",
-    "vitest": "0.5.8",
+    "vitest": "0.5.9",
     "vue": "^3.2.31"
   }
 }
