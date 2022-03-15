@@ -1,3 +1,4 @@
+import { createRequire } from 'module'
 import type * as _compiler from 'vue/compiler-sfc'
 
 // extend the descriptor so we can store the scopeId on it
@@ -25,7 +26,10 @@ export function resolveCompiler(root: string): typeof _compiler {
 
 function tryRequire(id: string, from?: string) {
   try {
-    return from ? require(require.resolve(id, { paths: [from] })) : require(id)
+    const _require = createRequire(import.meta.url)
+    return from
+      ? _require(_require.resolve(id, { paths: [from] }))
+      : _require(id)
     // eslint-disable-next-line no-empty
   } catch {}
 }
