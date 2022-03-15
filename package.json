@@ -1,6 +1,6 @@
 {
   "name": "unplugin-vue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Transform Vue 3 SFC to JavaScript.",
   "keywords": [
     "vue",
