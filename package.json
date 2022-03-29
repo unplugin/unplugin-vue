@@ -11,16 +11,18 @@
     "rollup",
     "esbuild"
   ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sxzz/unplugin-vue.git"
+  "homepage": "https://github.com/sxzz/unplugin-vue#readme",
+  "bugs": {
+    "url": "https://github.com/sxzz/unplugin-vue/issues"
   },
+  "license": "MIT",
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "files": [
     "dist",
     "*.d.ts"
   ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -44,8 +46,10 @@
     },
     "./*": "./*"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sxzz/unplugin-vue.git"
+  },
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "vitest",
@@ -54,45 +58,41 @@
     "lint": "eslint . --ext .vue,.ts --max-warnings 0",
     "prepublishOnly": "pnpm run build"
   },
-  "engines": {
-    "node": ">=12.20.0"
-  },
-  "bugs": {
-    "url": "https://github.com/sxzz/unplugin-vue/issues"
-  },
-  "homepage": "https://github.com/sxzz/unplugin-vue#readme",
   "peerDependencies": {
+    "vite": "^2.5.10",
     "vue": "^3.2.25"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^4.1.2",
-    "debug": "^4.3.3",
+    "@rollup/pluginutils": "^4.2.0",
+    "debug": "^4.3.4",
     "hash-sum": "^2.0.0",
     "querystring": "^0.2.1",
     "source-map": "^0.6.1",
-    "unplugin": "^0.6.0",
-    "vite": "^2.8.5"
+    "unplugin": "^0.6.0"
   },
   "devDependencies": {
-    "@sxzz/eslint-config-prettier": "^1.6.1",
-    "@sxzz/eslint-config-ts": "^1.6.2",
-    "@sxzz/eslint-config-vue": "^1.6.4",
+    "@sxzz/eslint-config-prettier": "^2.1.0",
+    "@sxzz/eslint-config-ts": "^2.1.0",
+    "@sxzz/eslint-config-vue": "^2.1.0",
     "@types/debug": "^4.1.7",
     "@types/hash-sum": "^1.0.0",
     "@types/node": "*",
     "@vitejs/plugin-vue": "^2.2.4",
-    "@vitest/ui": "0.7.12",
-    "esbuild": "^0.14.23",
-    "eslint": "^8.10.0",
-    "eslint-define-config": "^1.2.5",
+    "@vitest/ui": "0.8.0",
+    "esbuild": "^0.14.28",
+    "eslint": "^8.12.0",
+    "eslint-define-config": "^1.3.0",
     "esno": "^0.14.1",
     "fast-glob": "^3.2.11",
-    "rollup": "^2.68.0",
+    "rollup": "^2.70.1",
     "slash": "^4.0.0",
     "standard-version": "^9.3.2",
-    "tsup": "^5.11.13",
-    "typescript": "^4.6.2",
-    "vitest": "0.7.12",
+    "tsup": "^5.12.1",
+    "typescript": "^4.6.3",
+    "vitest": "0.8.0",
     "vue": "^3.2.31"
+  },
+  "engines": {
+    "node": ">=12.20.0"
   }
 }
