@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/sxzz/unplugin-vue/compare/v1.0.1...v2.0.0) (2022-03-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop node 12 support
+
+### Features
+
+* drop node 12 support ([61cd132](https://github.com/sxzz/unplugin-vue/commit/61cd1323a9a5a8c9b1e35dc747353db7cb18c7e9))
+
 ### [1.0.1](https://github.com/sxzz/unplugin-vue/compare/v1.0.0...v1.0.1) (2022-03-15)
 
 
