@@ -9,7 +9,7 @@
     "vue": "^3.2.31"
   },
   "devDependencies": {
-    "esbuild": "^0.14.23",
+    "esbuild": "^0.14.28",
     "esno": "^0.14.1",
     "serve": "^13.0.2",
     "unplugin-vue": "workspace:*"
