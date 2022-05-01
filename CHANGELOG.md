@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/sxzz/unplugin-vue/compare/v2.0.0...v2.1.0) (2022-05-01)
+
+
+### Features
+
+* css sourcemap support during dev ([38ce2b8](https://github.com/sxzz/unplugin-vue/commit/38ce2b8a01f74a3a6f68d48aa9329315c9ec52fd))
+* **css:** css.devSourcemap option ([#7471](https://github.com/sxzz/unplugin-vue/issues/7471)) ([bc47201](https://github.com/sxzz/unplugin-vue/commit/bc472012c48df86f2acd377c2879aab49657541b))
+
+
+### Bug Fixes
+
+* **plugin-vue:** respect __VUE_PROD_DEVTOOLS__ setting ([01f157d](https://github.com/sxzz/unplugin-vue/commit/01f157d171dec6873cd9579ef568f4240027ca43))
+* webpack types ([a60fb2d](https://github.com/sxzz/unplugin-vue/commit/a60fb2de414dde71315d568d725173dd7d0a19c1))
+
 ## [2.0.0](https://github.com/sxzz/unplugin-vue/compare/v1.0.1...v2.0.0) (2022-03-29)
 
 
