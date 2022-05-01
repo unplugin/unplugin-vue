@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/prefer-string-replace-all */
 
-import { resolve } from 'path'
+import path, { resolve } from 'path'
 import { describe, expect, it } from 'vitest'
 import { rollup } from 'rollup'
 import glob from 'fast-glob'
@@ -71,7 +71,10 @@ describe('transform', () => {
             const unpluginCode = await getCode(filepath, unplugin)
 
             expect(
-              unpluginCode.replaceAll(process.cwd(), '__CWD__')
+              unpluginCode.replaceAll(
+                `${path.dirname(filepath)}${path.sep}`,
+                '__DIR__/'
+              )
             ).toMatchSnapshot()
             expect(viteCode).toBe(unpluginCode)
           })
