@@ -82,6 +82,7 @@ export type ResolvedOptions = Options &
     /** Vite only */
     devServer?: ViteDevServer
     devToolsEnabled?: boolean
+    cssDevSourcemap: boolean
   }
 
 function resolveOptions(rawOptions: Options): ResolvedOptions {
@@ -98,6 +99,7 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
     reactivityTransform: rawOptions.reactivityTransform ?? false,
     compiler: rawOptions.compiler as any, // to be set in buildStart
     devToolsEnabled: process.env.NODE_ENV !== 'production',
+    cssDevSourcemap: false,
   }
 }
 
@@ -149,6 +151,7 @@ export default createUnplugin((rawOptions: Options = {}) => {
           root: config.root,
           sourceMap:
             config.command === 'build' ? !!config.build.sourcemap : true,
+          cssDevSourcemap: config.css?.devSourcemap ?? false,
           isProduction: config.isProduction,
           compiler: options.compiler || resolveCompiler(config.root),
           devToolsEnabled:
