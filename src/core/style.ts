@@ -1,6 +1,9 @@
 import type { SFCDescriptor } from 'vue/compiler-sfc'
+import type { ExistingRawSourceMap } from 'rollup'
 import type { UnpluginContext } from 'unplugin'
 import type { ResolvedOptions } from '.'
+import type { RawSourceMap } from 'source-map'
+import { formatPostcssSourceMap } from 'vite'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function transformStyle(
@@ -8,7 +11,8 @@ export async function transformStyle(
   descriptor: SFCDescriptor,
   index: number,
   options: ResolvedOptions,
-  context: UnpluginContext
+  context: UnpluginContext,
+  filename: string
 ) {
   const block = descriptor.styles[index]
   // vite already handles pre-processors and CSS module so this is only
@@ -20,6 +24,13 @@ export async function transformStyle(
     isProd: options.isProduction,
     source: code,
     scoped: block.scoped,
+    postcssOptions: {
+      map: {
+        from: filename,
+        inline: false,
+        annotation: false,
+      },
+    },
   })
 
   if (result.errors.length > 0) {
@@ -36,8 +47,17 @@ export async function transformStyle(
     return null
   }
 
+  const map = result.map
+    ? formatPostcssSourceMap(
+        // version property of result.map is declared as string
+        // but actually it is a number
+        result.map as Omit<RawSourceMap, 'version'> as ExistingRawSourceMap,
+        filename
+      )
+    : ({ mappings: '' } as any)
+
   return {
     code: result.code,
-    map: result.map || ({ mappings: '' } as any),
+    map: map,
   }
 }

@@ -253,7 +253,8 @@ export default createUnplugin((rawOptions: Options = {}) => {
             descriptor,
             Number(query.index),
             options,
-            this
+            this,
+            filename
           )
         }
       }
