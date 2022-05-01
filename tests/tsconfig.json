@@ -3,6 +3,7 @@
   "include": ["./**/*"],
   "compilerOptions": {
     "target": "ES2021",
+    "lib": ["ES2021"],
     "allowJs": true,
     "noUnusedLocals": false
   }

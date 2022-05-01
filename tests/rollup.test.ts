@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/prefer-string-replace-all */
 
 import { resolve } from 'path'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { rollup } from 'rollup'
 import glob from 'fast-glob'
 import ViteVue from '@vitejs/plugin-vue'
@@ -36,6 +36,7 @@ function createPlugins(opt: Options) {
     build: {
       sourcemap: false,
     },
+    define: {},
   } as any)
   return {
     unplugin: Vue(opt),
@@ -57,6 +58,8 @@ describe('transform', () => {
 
         for (const isProduction of [true, false]) {
           it(`isProduction is ${isProduction}`, async () => {
+            process.env.NODE_ENV = isProduction ? 'production' : 'development'
+
             const { unplugin, vite } = createPlugins({
               root,
               compiler: vueCompiler,
@@ -66,8 +69,10 @@ describe('transform', () => {
 
             const viteCode = await getCode(filepath, vite)
             const unpluginCode = await getCode(filepath, unplugin)
-            expect(unpluginCode).toMatchSnapshot()
 
+            expect(
+              unpluginCode.replaceAll(process.cwd(), '__CWD__')
+            ).toMatchSnapshot()
             expect(viteCode).toBe(unpluginCode)
           })
         }

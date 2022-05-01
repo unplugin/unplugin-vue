@@ -3,10 +3,10 @@ import slash from 'slash'
 import { getResolvedScript } from './script'
 import { createError } from './utils/error'
 import type {
+  CompilerOptions,
   SFCDescriptor,
   SFCTemplateCompileOptions,
   SFCTemplateCompileResults,
-  CompilerOptions,
 } from 'vue/compiler-sfc'
 import type { UnpluginContext } from 'unplugin'
 import type { ResolvedOptions } from '.'

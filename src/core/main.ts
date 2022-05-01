@@ -8,9 +8,9 @@ import {
   getPrevDescriptor,
   setSrcDescriptor,
 } from './utils/descriptorCache'
-import { resolveScript, isUseInlineTemplate } from './script'
+import { isUseInlineTemplate, resolveScript } from './script'
 import { transformTemplateInMain } from './template'
-import { isOnlyTemplateChanged, isEqualBlock } from './handleHotUpdate'
+import { isEqualBlock, isOnlyTemplateChanged } from './handleHotUpdate'
 import { createError } from './utils/error'
 import { EXPORT_HELPER_ID } from './helper'
 import type { PluginContext } from 'rollup'

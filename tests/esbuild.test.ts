@@ -1,10 +1,12 @@
 import { resolve } from 'path'
 import { TextDecoder } from 'util'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { build } from 'esbuild'
 import glob from 'fast-glob'
 import * as vueCompiler from 'vue/compiler-sfc'
 import Vue from '../src/esbuild'
+
+process.env.NODE_ENV = 'production'
 
 describe('transform', () => {
   describe('fixtures', async () => {

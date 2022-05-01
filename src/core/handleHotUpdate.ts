@@ -6,7 +6,7 @@ import {
 } from './utils/descriptorCache'
 import { getResolvedScript, setResolvedScript } from './script'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
-import type { ModuleNode, HmrContext } from 'vite'
+import type { HmrContext, ModuleNode } from 'vite'
 import type { ResolvedOptions } from '.'
 
 const debug = _debug('vite:hmr')
@@ -45,7 +45,7 @@ export async function handleHotUpdate(
       (descriptor.script?.lang && !descriptor.script.src)
     ) {
       const scriptModuleRE = new RegExp(
-        `type=script.*&lang\.${
+        `type=script.*&lang\\.${
           descriptor.scriptSetup?.lang || descriptor.script?.lang
         }$`
       )
