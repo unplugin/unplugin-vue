@@ -32,6 +32,14 @@ Transform Vue 3 SFC to JavaScript.
 
 Thanks to [Vite](https://github.com/vitejs/vite). This project is inherited from [@vitejs/plugin-vue@2.2.3](https://github.com/vitejs/vite/tree/main/packages/plugin-vue).
 
+## Sponsors
+
+<p align="center">
+  <a href="https://cdn.jsdelivr.net/gh/sxzz/sponsors/sponsors.svg">
+    <img src='https://cdn.jsdelivr.net/gh/sxzz/sponsors/sponsors.svg'/>
+  </a>
+</p>
+
 ## License
 
 [MIT](./LICENSE) License © 2022 [三咲智子](https://github.com/sxzz)
