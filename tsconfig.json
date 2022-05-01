@@ -5,12 +5,13 @@
     "lib": ["es2019"],
     "strict": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true,
     "types": ["node"],
-    "baseUrl": ".." // fix tsup
+    "baseUrl": "..", // fix tsup
+    "declaration": true
   },
   "include": ["src", "tests", "scripts"],
   "exclude": ["tests/fixtures"]
