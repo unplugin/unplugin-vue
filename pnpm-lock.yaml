@@ -107,7 +107,9 @@ importers:
   examples/webpack:
     specifiers:
       '@types/webpack': ^5.28.0
+      cross-env: ^7.0.3
       html-webpack-plugin: ^5.5.0
+      rimraf: ^3.0.2
       serve: ^13.0.2
       sucrase: ^3.21.0
       unplugin-vue: workspace:*
@@ -119,7 +121,9 @@ importers:
       vue: 3.2.36
     devDependencies:
       '@types/webpack': 5.28.0_webpack-cli@4.9.2
+      cross-env: 7.0.3
       html-webpack-plugin: 5.5.0_webpack@5.72.1
+      rimraf: 3.0.2
       serve: 13.0.2
       sucrase: 3.21.0
       unplugin-vue: link:../..
@@ -1615,6 +1619,14 @@ packages:
 
   /core-util-is/1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
+    dev: true
+
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
     dev: true
 
   /cross-spawn/6.0.5:

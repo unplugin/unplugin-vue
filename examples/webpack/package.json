@@ -3,7 +3,7 @@
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "scripts": {
     "serve": "MODE=development webpack serve",
-    "build": "rm -fr dist && MODE=production webpack build",
+    "build": "rimraf dist && cross-env MODE=production webpack build",
     "preview": "serve dist"
   },
   "dependencies": {
@@ -11,7 +11,9 @@
   },
   "devDependencies": {
     "@types/webpack": "^5.28.0",
+    "cross-env": "^7.0.3",
     "html-webpack-plugin": "^5.5.0",
+    "rimraf": "^3.0.2",
     "serve": "^13.0.2",
     "sucrase": "^3.21.0",
     "unplugin-vue": "workspace:*",
