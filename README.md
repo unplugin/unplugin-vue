@@ -13,6 +13,7 @@ Transform Vue 3 SFC to JavaScript.
 ## Who is using
 
 - [vue-components-lib-seed](https://github.com/zouhangwithsweet/vue-components-lib-seed) - A vue3.0 components library template.
+- [Element Plus icon](https://github.com/element-plus/element-plus-icons)
 
 ## Alternatives
 
