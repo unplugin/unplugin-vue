@@ -4,8 +4,8 @@ exports[`transform > fixtures > tests/fixtures/basic.vue > isProduction is false
 "// tests/fixtures/basic.vue
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"vue\\";
 
-// unplugin-vue:plugin-vue:export-helper
-var plugin_vue_export_helper_default = (sfc, props) => {
+// unplugin-vue:/plugin-vue/export-helper
+var export_helper_default = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
     target[key] = val;
@@ -23,7 +23,7 @@ var _hoisted_2 = [
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createElementBlock(\\"div\\", null, _hoisted_2);
 }
-var basic_default = /* @__PURE__ */ plugin_vue_export_helper_default(_sfc_main, [[\\"render\\", _sfc_render]]);
+var basic_default = /* @__PURE__ */ export_helper_default(_sfc_main, [[\\"render\\", _sfc_render]]);
 export {
   basic_default as default
 };
@@ -34,8 +34,8 @@ exports[`transform > fixtures > tests/fixtures/basic.vue > isProduction is true 
 "// tests/fixtures/basic.vue
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"vue\\";
 
-// unplugin-vue:plugin-vue:export-helper
-var plugin_vue_export_helper_default = (sfc, props) => {
+// unplugin-vue:/plugin-vue/export-helper
+var export_helper_default = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
     target[key] = val;
@@ -53,7 +53,7 @@ var _hoisted_2 = [
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return _openBlock(), _createElementBlock(\\"div\\", null, _hoisted_2);
 }
-var basic_default = /* @__PURE__ */ plugin_vue_export_helper_default(_sfc_main, [[\\"render\\", _sfc_render]]);
+var basic_default = /* @__PURE__ */ export_helper_default(_sfc_main, [[\\"render\\", _sfc_render]]);
 export {
   basic_default as default
 };
@@ -91,6 +91,7 @@ exports[`transform > fixtures > tests/fixtures/reactivity-transform.vue > isProd
 import { ref as _ref } from \\"vue\\";
 import { ref } from \\"vue\\";
 var _sfc_main = {
+  name: \\"reactivity-transform\\",
   setup(__props) {
     const ref1 = _ref(\\"hello\\");
     const ref2 = ref(\\"hello\\");
@@ -114,6 +115,7 @@ exports[`transform > fixtures > tests/fixtures/reactivity-transform.vue > isProd
 import { ref as _ref } from \\"vue\\";
 import { ref } from \\"vue\\";
 var _sfc_main = {
+  name: \\"reactivity-transform\\",
   setup(__props) {
     const ref1 = _ref(\\"hello\\");
     const ref2 = ref(\\"hello\\");
@@ -140,6 +142,7 @@ var _hoisted_2 = [
   _hoisted_1
 ];
 var _sfc_main = {
+  name: \\"script-setup\\",
   setup(__props) {
     const foo = \\"bar\\";
     return (_ctx, _cache) => {
@@ -162,6 +165,7 @@ var _hoisted_2 = [
   _hoisted_1
 ];
 var _sfc_main = {
+  name: \\"script-setup\\",
   setup(__props) {
     const foo = \\"bar\\";
     return (_ctx, _cache) => {
@@ -185,6 +189,7 @@ var _hoisted_2 = [
   _hoisted_1
 ];
 var _sfc_main = /* @__PURE__ */ _defineComponent({
+  name: \\"script-setup-ts\\",
   props: {
     foo: { default: \\"123\\" },
     bar: { default: 123 },
@@ -216,6 +221,7 @@ var _hoisted_2 = [
   _hoisted_1
 ];
 var _sfc_main = /* @__PURE__ */ _defineComponent({
+  name: \\"script-setup-ts\\",
   props: {
     foo: { default: \\"123\\" },
     bar: { default: 123 },
