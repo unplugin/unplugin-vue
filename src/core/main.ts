@@ -18,7 +18,6 @@ import type { RawSourceMap } from 'source-map'
 import type { ResolvedOptions } from '.'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function transformMain(
   code: string,
   filename: string,
@@ -208,6 +207,11 @@ export async function transformMain(
     code: resolvedCode,
     map: resolvedMap || {
       mappings: '',
+    },
+    meta: {
+      vite: {
+        lang: descriptor.script?.lang || descriptor.scriptSetup?.lang || 'js',
+      },
     },
   }
 }
