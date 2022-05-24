@@ -10,7 +10,7 @@
     "noUnusedLocals": true,
     "resolveJsonModule": true,
     "types": ["node"],
-    "baseUrl": "..", // fix tsup
+    "baseUrl": ".",
     "declaration": true
   },
   "include": ["src", "tests", "scripts"],

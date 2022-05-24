@@ -50,10 +50,17 @@
     "type": "git",
     "url": "git+https://github.com/sxzz/unplugin-vue.git"
   },
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
+    }
+  },
   "scripts": {
     "test": "vitest",
-    "build": "tsup && esno scripts/postbuild.ts",
+    "build": "tsup && tsx scripts/postbuild.mts",
     "release": "standard-version",
     "lint": "eslint . --ext .vue,.ts --max-warnings 0",
     "prepublishOnly": "pnpm run build"
@@ -68,6 +75,7 @@
     "hash-sum": "^2.0.0",
     "querystring": "^0.2.1",
     "source-map": "^0.6.1",
+    "tsx": "^3.4.0",
     "unplugin": "^0.6.2"
   },
   "devDependencies": {
@@ -82,7 +90,6 @@
     "esbuild": "^0.14.38",
     "eslint": "^8.14.0",
     "eslint-define-config": "^1.4.0",
-    "esno": "^0.14.1",
     "fast-glob": "^3.2.11",
     "rollup": "^2.71.1",
     "slash": "^4.0.0",
