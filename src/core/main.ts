@@ -1,4 +1,3 @@
-import qs from 'querystring'
 import path from 'path'
 import { normalizePath } from '@rollup/pluginutils'
 import { SourceMapConsumer, SourceMapGenerator } from 'source-map'
@@ -427,8 +426,8 @@ function attrsToQuery(
   for (const name of Object.keys(attrs)) {
     const value = attrs[name]
     if (!ignoreList.includes(name)) {
-      query += `&${qs.escape(name)}${
-        value ? `=${qs.escape(String(value))}` : ``
+      query += `&${encodeURIComponent(name)}${
+        value ? `=${encodeURIComponent(value)}` : ``
       }`
     }
   }

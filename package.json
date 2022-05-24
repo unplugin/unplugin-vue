@@ -74,7 +74,6 @@
     "@rollup/pluginutils": "^4.2.1",
     "debug": "^4.3.4",
     "hash-sum": "^2.0.0",
-    "querystring": "^0.2.1",
     "source-map": "~0.6.1",
     "tsx": "^3.4.0",
     "unplugin": "^0.6.3"
