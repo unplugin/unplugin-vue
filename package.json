@@ -12,11 +12,15 @@
     "rollup",
     "esbuild"
   ],
+  "license": "MIT",
   "homepage": "https://github.com/sxzz/unplugin-vue#readme",
   "bugs": {
     "url": "https://github.com/sxzz/unplugin-vue/issues"
   },
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sxzz/unplugin-vue.git"
+  },
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "files": [
     "dist",
@@ -24,6 +28,7 @@
   ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "types": "index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -47,11 +52,6 @@
     },
     "./*": "./*"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sxzz/unplugin-vue.git"
-  },
-  "types": "index.d.ts",
   "typesVersions": {
     "*": {
       "*": [
