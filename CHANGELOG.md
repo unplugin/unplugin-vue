@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/sxzz/unplugin-vue/compare/v2.1.0...v2.2.0) (2022-05-24)
+
+
+### Features
+
+* import ts with .js in vue ([2e51872](https://github.com/sxzz/unplugin-vue/commit/2e51872d6626c79003a78c0ae44966fbc744aaaa))
+
+
+### Bug Fixes
+
+* fucking windows unit test ([874ed06](https://github.com/sxzz/unplugin-vue/commit/874ed0632003c0e9a39800d113b730075472a1c7))
+* fuxking windows ([aa13f14](https://github.com/sxzz/unplugin-vue/commit/aa13f14533ccac70d100e5dcb10f8ad6a8d0c603))
+* **plugin-vue:** allow overwriting template.transformAssetUrls.includeAbsolute ([e4a03a1](https://github.com/sxzz/unplugin-vue/commit/e4a03a1ce63b18663d3752d3dbc6ca958a1600b8))
+* test ([9c70417](https://github.com/sxzz/unplugin-vue/commit/9c70417446fc2f998de7a7ad5adb285978e69806))
+* typo ([94d0573](https://github.com/sxzz/unplugin-vue/commit/94d0573a1e65d8fabcff9c0f9c4db8e4b2debcaf))
+* webpack ([cd11c9f](https://github.com/sxzz/unplugin-vue/commit/cd11c9fa59058dc95b7eedf46f5295960be3e912))
+
 ## [2.1.0](https://github.com/sxzz/unplugin-vue/compare/v2.0.0...v2.1.0) (2022-05-01)
 
 

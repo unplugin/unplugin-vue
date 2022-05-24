@@ -1,6 +1,6 @@
 {
   "name": "unplugin-vue",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "packageManager": "pnpm@7.1.5",
   "description": "Transform Vue 3 SFC to JavaScript.",
   "keywords": [
