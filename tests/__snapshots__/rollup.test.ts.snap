@@ -24,7 +24,7 @@ const _hoisted_2 = [
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock(\\"div\\", null, _hoisted_2))
 }
-var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',\\"__DIR__/basic.vue\\"]]);
+var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file','#FILE#']]);
 
 export { basic as default };
 "
@@ -116,7 +116,7 @@ return () => {}
 }
 
 };
-var reactivityTransform = /*#__PURE__*/_export_sfc(_sfc_main, [['__file',\\"__DIR__/reactivity-transform.vue\\"]]);
+var reactivityTransform = /*#__PURE__*/_export_sfc(_sfc_main, [['__file','#FILE#']]);
 
 export { reactivityTransform as default };
 "
@@ -175,7 +175,7 @@ return (_ctx, _cache) => {
 }
 
 };
-var scriptSetup = /*#__PURE__*/_export_sfc(_sfc_main, [['__file',\\"__DIR__/script-setup.vue\\"]]);
+var scriptSetup = /*#__PURE__*/_export_sfc(_sfc_main, [['__file','#FILE#']]);
 
 export { scriptSetup as default };
 "
@@ -239,7 +239,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var scriptSetupTs = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"__DIR__/script-setup-ts.vue\\"]]);
+var scriptSetupTs = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", '#FILE#']]);
 
 export { scriptSetupTs as default };
 "
@@ -302,7 +302,7 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-var sfcSrc = /*#__PURE__*/_export_sfc(_sfc_main, [['render',render],['__file',\\"__DIR__/sfc-src.vue\\"]]);
+var sfcSrc = /*#__PURE__*/_export_sfc(_sfc_main, [['render',render],['__file','#FILE#']]);
 
 export { sfcSrc as default };
 "
@@ -380,7 +380,7 @@ var _export_sfc = (sfc, props) => {
 };
 
 const _sfc_main = {};
-var typescript = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", \\"__DIR__/typescript.vue\\"]]);
+var typescript = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\"__file\\", '#FILE#']]);
 
 export { typescript as default };
 "

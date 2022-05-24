@@ -1,6 +1,4 @@
-/* eslint-disable unicorn/prefer-string-replace-all */
-
-import path, { resolve } from 'path'
+import { resolve } from 'path'
 import { describe, expect, it } from 'vitest'
 import { rollup } from 'rollup'
 import glob from 'fast-glob'
@@ -53,7 +51,7 @@ describe('transform', () => {
     })
 
     for (const file of files) {
-      describe(file.replace(/\\/g, '/'), () => {
+      describe(file.replaceAll('\\', '/'), () => {
         const filepath = resolve(root, file)
 
         for (const isProduction of [true, false]) {
@@ -71,10 +69,7 @@ describe('transform', () => {
             const unpluginCode = await getCode(filepath, unplugin)
 
             expect(
-              unpluginCode.replaceAll(
-                `${path.dirname(filepath)}${path.sep}`,
-                '__DIR__/'
-              )
+              unpluginCode.replaceAll(JSON.stringify(filepath), "'#FILE#'")
             ).toMatchSnapshot()
             expect(viteCode).toBe(unpluginCode)
           })
