@@ -20,8 +20,8 @@ Transform Vue 3 SFC to JavaScript.
 - [vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2) - For Vite and Vue 2.
 - ~~[rollup-plugin-vue](https://github.com/vuejs/rollup-plugin-vue)~~ - ⚠️ no longer maintained.
 - [vue-loader](https://github.com/vuejs/vue-loader) - For Webpack.
-- [esbuild-plugin-vue](https://github.com/egoist/esbuild-plugin-vue) - For ESBuild and Vue 3.
-- [esbuild-vue](https://github.com/apeschar/esbuild-vue) - For ESBuild and Vue 2.
+- [esbuild-plugin-vue](https://github.com/egoist/esbuild-plugin-vue) - For esbuild and Vue 3.
+- [esbuild-vue](https://github.com/apeschar/esbuild-vue) - For esbuild and Vue 2.
 
 ## Credits
 
