@@ -7,10 +7,10 @@
   },
   "dependencies": {
     "tsx": "^3.4.0",
-    "vue": "^3.2.31"
+    "vue": "^3.2.36"
   },
   "devDependencies": {
-    "esbuild": "^0.14.28",
+    "esbuild": "^0.14.39",
     "serve": "^13.0.2",
     "unplugin-vue": "workspace:*"
   }
