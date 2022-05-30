@@ -23,7 +23,7 @@ importers:
       slash: ^4.0.0
       source-map: ~0.6.1
       standard-version: ^9.5.0
-      tsup: ^5.12.8
+      tsup: 6.0.1
       tsx: ^3.4.0
       typescript: ^4.6.4
       unplugin: ^0.6.3
@@ -54,7 +54,7 @@ importers:
       rollup: 2.74.1
       slash: 4.0.0
       standard-version: 9.5.0
-      tsup: 5.12.8_typescript@4.6.4
+      tsup: 6.0.1_typescript@4.6.4
       typescript: 4.6.4
       vite: 2.9.9
       vitest: 0.13.0_@vitest+ui@0.13.0
@@ -5308,12 +5308,19 @@ packages:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
     dev: true
 
-  /tsup/5.12.8_typescript@4.6.4:
-    resolution: {integrity: sha512-fSBzUBtrnAQ+XKPfj1KcZ2Pl0EUlKBqpbTmRAs+2mL34fQlowrm6ccQgOYyMe9MMAcejMP6/7Rw3qKjx1lreZA==}
+  /tsup/6.0.1_typescript@4.6.4:
+    resolution: {integrity: sha512-2Pl1YkEEvzfg4aYgwUILaHV0wwZQKO7mNHMQChyzdCNlQqf11eug7gWk86XCb3CvRofCXBX87x73BTGjyS3cOQ==}
+    engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
+      '@swc/core': ^1
+      postcss: ^8.4.12
       typescript: ^4.1.0
     peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      postcss:
+        optional: true
       typescript:
         optional: true
     dependencies:
@@ -5333,7 +5340,6 @@ packages:
       tree-kill: 1.2.2
       typescript: 4.6.4
     transitivePeerDependencies:
-      - postcss
       - supports-color
       - ts-node
     dev: true
