@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - 'v**'
+  # eslint-disable-next-line yml/no-empty-mapping-value
+  workflow_dispatch:
 
 jobs:
   release:
@@ -15,6 +17,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
+          registry-url: https://registry.npmjs.org/
 
       - name: Setup
         run: npm i -g @antfu/ni
