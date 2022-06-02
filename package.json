@@ -70,6 +70,11 @@
     "vite": "^2.5.10",
     "vue": "^3.2.25"
   },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  },
   "dependencies": {
     "@rollup/pluginutils": "^4.2.1",
     "debug": "^4.3.4",
