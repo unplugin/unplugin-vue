@@ -91,7 +91,7 @@ exports[`transform > fixtures > tests/fixtures/reactivity-transform.vue > isProd
 import { ref as _ref } from \\"vue\\";
 import { ref } from \\"vue\\";
 var _sfc_main = {
-  name: \\"reactivity-transform\\",
+  __name: \\"reactivity-transform\\",
   setup(__props) {
     const ref1 = _ref(\\"hello\\");
     const ref2 = ref(\\"hello\\");
@@ -115,7 +115,7 @@ exports[`transform > fixtures > tests/fixtures/reactivity-transform.vue > isProd
 import { ref as _ref } from \\"vue\\";
 import { ref } from \\"vue\\";
 var _sfc_main = {
-  name: \\"reactivity-transform\\",
+  __name: \\"reactivity-transform\\",
   setup(__props) {
     const ref1 = _ref(\\"hello\\");
     const ref2 = ref(\\"hello\\");
@@ -142,7 +142,7 @@ var _hoisted_2 = [
   _hoisted_1
 ];
 var _sfc_main = {
-  name: \\"script-setup\\",
+  __name: \\"script-setup\\",
   setup(__props) {
     const foo = \\"bar\\";
     return (_ctx, _cache) => {
@@ -165,7 +165,7 @@ var _hoisted_2 = [
   _hoisted_1
 ];
 var _sfc_main = {
-  name: \\"script-setup\\",
+  __name: \\"script-setup\\",
   setup(__props) {
     const foo = \\"bar\\";
     return (_ctx, _cache) => {
@@ -189,7 +189,7 @@ var _hoisted_2 = [
   _hoisted_1
 ];
 var _sfc_main = /* @__PURE__ */ _defineComponent({
-  name: \\"script-setup-ts\\",
+  __name: \\"script-setup-ts\\",
   props: {
     foo: { default: \\"123\\" },
     bar: { default: 123 },
@@ -221,7 +221,7 @@ var _hoisted_2 = [
   _hoisted_1
 ];
 var _sfc_main = /* @__PURE__ */ _defineComponent({
-  name: \\"script-setup-ts\\",
+  __name: \\"script-setup-ts\\",
   props: {
     foo: { default: \\"123\\" },
     bar: { default: 123 },
