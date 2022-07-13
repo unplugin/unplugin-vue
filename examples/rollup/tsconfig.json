@@ -1,5 +1,7 @@
 {
   "include": ["src/**/*"],
   "exclude": ["node_modules"],
-  "compilerOptions": {}
+  "compilerOptions": {
+    "jsx": "preserve"
+  }
 }
