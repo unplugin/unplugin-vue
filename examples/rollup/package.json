@@ -6,12 +6,12 @@
     "preview": "serve"
   },
   "dependencies": {
-    "tsx": "^3.7.1",
+    "tsx": "^3.8.0",
     "vue": "^3.2.37"
   },
   "devDependencies": {
-    "rollup": "^2.75.7",
-    "serve": "^13.0.2",
+    "rollup": "^2.76.0",
+    "serve": "^13.0.4",
     "unplugin-vue": "workspace:^2.2.1"
   }
 }
