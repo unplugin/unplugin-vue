@@ -24,9 +24,9 @@ export function resolveCompiler(root: string): typeof _compiler {
   return compiler
 }
 
+const _require = createRequire(import.meta.url)
 function tryRequire(id: string, from?: string) {
   try {
-    const _require = createRequire(import.meta.url)
     return from
       ? _require(_require.resolve(id, { paths: [from] }))
       : _require(id)
