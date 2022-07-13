@@ -116,11 +116,12 @@ export function resolveTemplateCompilerOptions(
     // during dev, inject vite base so that compiler-sfc can transform
     // relative paths directly to absolute paths without incurring an extra import
     // request
+    const devBase = options.devServer.config.base
     if (filename.startsWith(options.root)) {
       assetUrlOptions = {
         base:
           (options.devServer.config.server?.origin ?? '') +
-          options.devServer.config.base +
+          devBase +
           slash(path.relative(options.root, path.dirname(filename))),
       }
     }
