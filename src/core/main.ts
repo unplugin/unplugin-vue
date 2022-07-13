@@ -1,8 +1,7 @@
 import path from 'path'
-import { normalizePath } from '@rollup/pluginutils'
+import { normalizePath, transformWithEsbuild } from 'vite'
 import { TraceMap, eachMapping } from '@jridgewell/trace-mapping'
 import { addMapping, fromMap, toEncodedMap } from '@jridgewell/gen-mapping'
-import { transformWithEsbuild } from 'vite'
 import {
   createDescriptor,
   getPrevDescriptor,

@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { createFilter } from '@rollup/pluginutils'
+import { createFilter } from 'vite'
 import { createUnplugin } from 'unplugin'
 import { resolveCompiler } from '../core/compiler'
 import { getResolvedScript } from '../core/script'

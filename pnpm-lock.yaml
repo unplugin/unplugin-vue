@@ -6,7 +6,6 @@ importers:
     specifiers:
       '@jridgewell/gen-mapping': ^0.3.2
       '@jridgewell/trace-mapping': ^0.3.14
-      '@rollup/pluginutils': ^4.2.1
       '@sxzz/eslint-config-prettier': ^2.3.1
       '@sxzz/eslint-config-ts': ^2.3.1
       '@sxzz/eslint-config-vue': ^2.3.1
@@ -32,7 +31,6 @@ importers:
       vue: ^3.2.37
       webpack: ^5.73.0
     dependencies:
-      '@rollup/pluginutils': 4.2.1
       debug: 4.3.4
       tsx: 3.8.0
       unplugin: 0.7.2_rgkutw64np3zveoteybxes4cla
@@ -287,14 +285,6 @@ packages:
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
-
-  /@rollup/pluginutils/4.2.1:
-    resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
-    engines: {node: '>= 8.0.0'}
-    dependencies:
-      estree-walker: 2.0.2
-      picomatch: 2.3.1
-    dev: false
 
   /@sxzz/eslint-config-basic/2.3.1_rywvbqnelbznwddhxv2glfjuay:
     resolution: {integrity: sha512-ANt5JEh02wrwWPCMY2qK3t6bt4fLFbV5EySBi4iY3Kq+qB+j9AqR96eqMVPYPcSaZS7a2nogdhCy4e285e5y6Q==}

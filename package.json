@@ -76,7 +76,6 @@
     }
   },
   "dependencies": {
-    "@rollup/pluginutils": "^4.2.1",
     "debug": "^4.3.4",
     "tsx": "^3.8.0",
     "unplugin": "^0.7.2"
