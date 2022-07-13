@@ -67,7 +67,7 @@
     "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {
-    "vite": "^2.5.10",
+    "vite": "^3.0.0",
     "vue": "^3.2.25"
   },
   "peerDependenciesMeta": {
