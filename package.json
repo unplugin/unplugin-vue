@@ -78,7 +78,6 @@
   "dependencies": {
     "@rollup/pluginutils": "^4.2.1",
     "debug": "^4.3.4",
-    "hash-sum": "^2.0.0",
     "source-map": "~0.6.1",
     "tsx": "^3.7.1",
     "unplugin": "^0.7.1"
@@ -88,7 +87,6 @@
     "@sxzz/eslint-config-ts": "^2.2.2",
     "@sxzz/eslint-config-vue": "^2.2.2",
     "@types/debug": "^4.1.7",
-    "@types/hash-sum": "^1.0.0",
     "@types/node": "*",
     "@vitejs/plugin-vue": "2.3.3",
     "@vitest/ui": "0.17.0",

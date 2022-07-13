@@ -9,7 +9,6 @@ importers:
       '@sxzz/eslint-config-ts': ^2.2.2
       '@sxzz/eslint-config-vue': ^2.2.2
       '@types/debug': ^4.1.7
-      '@types/hash-sum': ^1.0.0
       '@types/node': '*'
       '@vitejs/plugin-vue': 2.3.3
       '@vitest/ui': 0.17.0
@@ -18,7 +17,6 @@ importers:
       eslint: ^8.19.0
       eslint-define-config: ^1.5.1
       fast-glob: ^3.2.11
-      hash-sum: ^2.0.0
       rollup: ^2.75.7
       slash: ^4.0.0
       source-map: ~0.6.1
@@ -34,7 +32,6 @@ importers:
     dependencies:
       '@rollup/pluginutils': 4.2.1
       debug: 4.3.4
-      hash-sum: 2.0.0
       source-map: 0.6.1
       tsx: 3.7.1
       unplugin: 0.7.1_d3ujsefq6twjqtlcm2g6vrdxvy
@@ -43,7 +40,6 @@ importers:
       '@sxzz/eslint-config-ts': 2.2.2_eslint@8.19.0
       '@sxzz/eslint-config-vue': 2.2.2_eslint@8.19.0
       '@types/debug': 4.1.7
-      '@types/hash-sum': 1.0.0
       '@types/node': 18.0.3
       '@vitejs/plugin-vue': 2.3.3_vite@2.9.13+vue@3.2.37
       '@vitest/ui': 0.17.0
@@ -436,10 +432,6 @@ packages:
       '@types/express-serve-static-core': 4.17.29
       '@types/qs': 6.9.7
       '@types/serve-static': 1.13.10
-    dev: true
-
-  /@types/hash-sum/1.0.0:
-    resolution: {integrity: sha512-FdLBT93h3kcZ586Aee66HPCVJ6qvxVjBlDWNmxSGSbCZe9hTsjRKdSsl4y1T+3zfujxo9auykQMnFsfyHWD7wg==}
     dev: true
 
   /@types/html-minifier-terser/6.1.0:
@@ -2987,10 +2979,6 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
-
-  /hash-sum/2.0.0:
-    resolution: {integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==}
-    dev: false
 
   /he/1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
