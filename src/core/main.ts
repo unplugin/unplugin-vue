@@ -15,16 +15,15 @@ import { EXPORT_HELPER_ID } from './helper'
 import type { RawSourceMap } from 'source-map'
 import type { EncodedSourceMap as GenEncodedSourceMap } from '@jridgewell/gen-mapping'
 import type { EncodedSourceMap as TraceEncodedSourceMap } from '@jridgewell/trace-mapping'
+import type { Context, ResolvedOptions } from '.'
 import type { PluginContext } from 'rollup'
-import type { UnpluginContext } from 'unplugin'
-import type { ResolvedOptions } from '.'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 
 export async function transformMain(
   code: string,
   filename: string,
   options: ResolvedOptions,
-  pluginContext: UnpluginContext,
+  pluginContext: Context,
   ssr: boolean,
   asCustomElement: boolean
 ) {
@@ -240,7 +239,7 @@ export async function transformMain(
 async function genTemplateCode(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
-  pluginContext: UnpluginContext,
+  pluginContext: Context,
   ssr: boolean
 ) {
   const template = descriptor.template!
@@ -287,7 +286,7 @@ async function genTemplateCode(
 async function genScriptCode(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
-  pluginContext: UnpluginContext,
+  pluginContext: Context,
   ssr: boolean
 ): Promise<{
   code: string
@@ -300,10 +299,8 @@ async function genScriptCode(
   if (script) {
     // If the script is js/ts and has no external src, it can be directly placed
     // in the main module.
-    if (
-      (!script.lang || (script.lang === 'ts' && options.devServer)) &&
-      !script.src
-    ) {
+    const inlineTs = pluginContext.framework === 'webpack' || options.devServer
+    if ((!script.lang || (script.lang === 'ts' && inlineTs)) && !script.src) {
       const userPlugins = options.script?.babelParserPlugins || []
       const defaultPlugins =
         script.lang === 'ts'
@@ -339,7 +336,7 @@ async function genScriptCode(
 
 async function genStyleCode(
   descriptor: SFCDescriptor,
-  pluginContext: UnpluginContext,
+  pluginContext: Context,
   asCustomElement: boolean,
   attachedProps: [string, string][]
 ) {
@@ -426,7 +423,7 @@ function genCSSModulesCode(
 
 async function genCustomBlockCode(
   descriptor: SFCDescriptor,
-  pluginContext: UnpluginContext
+  pluginContext: Context
 ) {
   let code = ''
   for (let index = 0; index < descriptor.customBlocks.length; index++) {
@@ -453,14 +450,22 @@ async function genCustomBlockCode(
 async function linkSrcToDescriptor(
   src: string,
   descriptor: SFCDescriptor,
-  pluginContext: UnpluginContext,
+  pluginContext: Context,
   scoped?: boolean
 ) {
   // support rollup only
-  if ((pluginContext as PluginContext).resolve) {
+
+  if (
+    pluginContext.framework === 'rollup' ||
+    pluginContext.framework === 'vite'
+  ) {
     const srcFile =
-      (await (pluginContext as PluginContext).resolve(src, descriptor.filename))
-        ?.id || src
+      (
+        await (pluginContext as unknown as PluginContext).resolve(
+          src,
+          descriptor.filename
+        )
+      )?.id || src
     // #1812 if the src points to a dep file, the resolved id may contain a
     // version query.
     setSrcDescriptor(srcFile.replace(/\?.*$/, ''), descriptor, scoped)

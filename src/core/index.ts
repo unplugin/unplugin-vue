@@ -10,6 +10,7 @@ import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
 import { getDescriptor, getSrcDescriptor } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
 import { handleHotUpdate } from './handleHotUpdate'
+import type { UnpluginContext, UnpluginContextMeta } from 'unplugin'
 import type { ViteDevServer } from 'vite'
 // eslint-disable-next-line import/no-duplicates
 import type * as _compiler from 'vue/compiler-sfc'
@@ -65,6 +66,8 @@ export interface Options {
   compiler?: typeof _compiler
 }
 
+export type Context = UnpluginContext & UnpluginContextMeta
+
 export type ResolvedOptions = Options &
   Required<
     Pick<
@@ -103,7 +106,7 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
   }
 }
 
-export default createUnplugin((rawOptions: Options = {}) => {
+export default createUnplugin((rawOptions: Options = {}, meta) => {
   let options = resolveOptions(rawOptions)
   const { include, exclude, customElement, reactivityTransform } = options
 
@@ -242,7 +245,7 @@ export default createUnplugin((rawOptions: Options = {}) => {
           code,
           filename,
           options,
-          this,
+          Object.assign({}, this, meta),
           ssr,
           customElementFilter(filename)
         )
