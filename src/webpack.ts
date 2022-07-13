@@ -1,4 +1,4 @@
 import unplugin from '.'
-import type { WebpackPluginInstance } from 'webpack'
+import {} from 'webpack'
 
-export default unplugin.webpack as WebpackPluginInstance
+export default unplugin.webpack
