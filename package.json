@@ -95,6 +95,7 @@
     "eslint-define-config": "^1.5.1",
     "fast-glob": "^3.2.11",
     "rollup": "^2.76.0",
+    "rollup-plugin-esbuild": "^4.9.1",
     "slash": "^4.0.0",
     "source-map": "~0.6.1",
     "standard-version": "^9.5.0",

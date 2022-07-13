@@ -19,6 +19,7 @@ importers:
       eslint-define-config: ^1.5.1
       fast-glob: ^3.2.11
       rollup: ^2.76.0
+      rollup-plugin-esbuild: ^4.9.1
       slash: ^4.0.0
       source-map: ~0.6.1
       standard-version: ^9.5.0
@@ -49,6 +50,7 @@ importers:
       eslint-define-config: 1.5.1
       fast-glob: 3.2.11
       rollup: 2.76.0
+      rollup-plugin-esbuild: 4.9.1_5yu4n7km4rpkzsnyi4ysdr3swq
       slash: 4.0.0
       source-map: 0.6.1
       standard-version: 9.5.0
@@ -284,6 +286,14 @@ packages:
 
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
+    dev: true
+
+  /@rollup/pluginutils/4.2.1:
+    resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      estree-walker: 2.0.2
+      picomatch: 2.3.1
     dev: true
 
   /@sxzz/eslint-config-basic/2.3.1_rywvbqnelbznwddhxv2glfjuay:
@@ -3461,6 +3471,10 @@ packages:
       semver: 7.3.7
     dev: true
 
+  /jsonc-parser/3.1.0:
+    resolution: {integrity: sha512-DRf0QjnNeCUds3xTjKlQQ3DpJD51GvDjJfnxUVWg6PZTo2otSm+slzNAxU/35hF8/oJIKoG9slq30JYOsF2azg==}
+    dev: true
+
   /jsonparse/1.3.1:
     resolution: {integrity: sha512-POQXvpdL69+CluYsillJ7SUhKvytYjW9vG/GKpnf+xP8UWgYEM/RaMzHHofbALDiKbbP1W8UEYmgGl39WkPZsg==}
     engines: {'0': node >= 0.2.0}
@@ -4474,6 +4488,24 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: true
+
+  /rollup-plugin-esbuild/4.9.1_5yu4n7km4rpkzsnyi4ysdr3swq:
+    resolution: {integrity: sha512-qn/x7Wz9p3Xnva99qcb+nopH0d2VJwVnsxJTGEg+Sh2Z3tqQl33MhOwzekVo1YTKgv+yAmosjcBRJygMfGrtLw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      esbuild: '>=0.10.1'
+      rollup: ^1.20.0 || ^2.0.0
+    dependencies:
+      '@rollup/pluginutils': 4.2.1
+      debug: 4.3.4
+      es-module-lexer: 0.9.3
+      esbuild: 0.14.49
+      joycon: 3.1.1
+      jsonc-parser: 3.1.0
+      rollup: 2.76.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /rollup/2.76.0:

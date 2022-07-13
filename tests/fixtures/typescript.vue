@@ -4,4 +4,6 @@ const bool: boolean = true
 const count: number = 123
 
 function foo(str: string) {}
+
+export default {}
 </script>

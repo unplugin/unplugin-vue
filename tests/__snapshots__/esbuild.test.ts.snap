@@ -181,14 +181,14 @@ export {
 `;
 
 exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProduction is false 1`] = `
-"// tests/fixtures/script-setup-ts.vue
+"// unplugin-vue:/Users/kevin/projects/unplugin-vue/tests/fixtures/script-setup-ts.vue?vue&type=script&setup=true&lang.ts
 import { defineComponent as _defineComponent } from \\"vue\\";
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"vue\\";
 var _hoisted_1 = /* @__PURE__ */ _createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
 var _hoisted_2 = [
   _hoisted_1
 ];
-var _sfc_main = /* @__PURE__ */ _defineComponent({
+var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ _defineComponent({
   __name: \\"script-setup-ts\\",
   props: {
     foo: { default: \\"123\\" },
@@ -205,7 +205,9 @@ var _sfc_main = /* @__PURE__ */ _defineComponent({
     };
   }
 });
-var script_setup_ts_default = _sfc_main;
+
+// tests/fixtures/script-setup-ts.vue
+var script_setup_ts_default = script_setup_ts_vue_vue_type_script_setup_true_lang_default;
 export {
   script_setup_ts_default as default
 };
@@ -213,14 +215,14 @@ export {
 `;
 
 exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProduction is true 1`] = `
-"// tests/fixtures/script-setup-ts.vue
+"// unplugin-vue:/Users/kevin/projects/unplugin-vue/tests/fixtures/script-setup-ts.vue?vue&type=script&setup=true&lang.ts
 import { defineComponent as _defineComponent } from \\"vue\\";
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"vue\\";
 var _hoisted_1 = /* @__PURE__ */ _createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
 var _hoisted_2 = [
   _hoisted_1
 ];
-var _sfc_main = /* @__PURE__ */ _defineComponent({
+var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ _defineComponent({
   __name: \\"script-setup-ts\\",
   props: {
     foo: { default: \\"123\\" },
@@ -237,7 +239,9 @@ var _sfc_main = /* @__PURE__ */ _defineComponent({
     };
   }
 });
-var script_setup_ts_default = _sfc_main;
+
+// tests/fixtures/script-setup-ts.vue
+var script_setup_ts_default = script_setup_ts_vue_vue_type_script_setup_true_lang_default;
 export {
   script_setup_ts_default as default
 };
@@ -273,9 +277,11 @@ export {
 `;
 
 exports[`transform > fixtures > tests/fixtures/typescript.vue > isProduction is false 1`] = `
-"// tests/fixtures/typescript.vue
-var _sfc_main = {};
-var typescript_default = _sfc_main;
+"// unplugin-vue:/Users/kevin/projects/unplugin-vue/tests/fixtures/typescript.vue?vue&type=script&lang.ts
+var typescript_vue_vue_type_script_lang_default = {};
+
+// tests/fixtures/typescript.vue
+var typescript_default = typescript_vue_vue_type_script_lang_default;
 export {
   typescript_default as default
 };
@@ -283,9 +289,11 @@ export {
 `;
 
 exports[`transform > fixtures > tests/fixtures/typescript.vue > isProduction is true 1`] = `
-"// tests/fixtures/typescript.vue
-var _sfc_main = {};
-var typescript_default = _sfc_main;
+"// unplugin-vue:/Users/kevin/projects/unplugin-vue/tests/fixtures/typescript.vue?vue&type=script&lang.ts
+var typescript_vue_vue_type_script_lang_default = {};
+
+// tests/fixtures/typescript.vue
+var typescript_default = typescript_vue_vue_type_script_lang_default;
 export {
   typescript_default as default
 };
