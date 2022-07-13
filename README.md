@@ -31,7 +31,7 @@ Transform Vue 3 SFC to JavaScript.
 
 ## Thanks
 
-Thanks to [Vite](https://github.com/vitejs/vite). This project is inherited from [@vitejs/plugin-vue@2.3.3](https://github.com/vitejs/vite/tree/plugin-vue@2.3.3/packages/plugin-vue).
+Thanks to [Vite](https://github.com/vitejs/vite). This project is inherited from [@vitejs/plugin-vue@3.0.0](https://github.com/vitejs/vite/tree/plugin-vue@3.0.0/packages/plugin-vue).
 
 ## Sponsors
 
