@@ -4,6 +4,8 @@ importers:
 
   .:
     specifiers:
+      '@jridgewell/gen-mapping': ^0.3.2
+      '@jridgewell/trace-mapping': ^0.3.14
       '@rollup/pluginutils': ^4.2.1
       '@sxzz/eslint-config-prettier': ^2.2.2
       '@sxzz/eslint-config-ts': ^2.2.2
@@ -32,10 +34,11 @@ importers:
     dependencies:
       '@rollup/pluginutils': 4.2.1
       debug: 4.3.4
-      source-map: 0.6.1
       tsx: 3.7.1
       unplugin: 0.7.1_d3ujsefq6twjqtlcm2g6vrdxvy
     devDependencies:
+      '@jridgewell/gen-mapping': 0.3.2
+      '@jridgewell/trace-mapping': 0.3.14
       '@sxzz/eslint-config-prettier': 2.2.2_eslint@8.19.0
       '@sxzz/eslint-config-ts': 2.2.2_eslint@8.19.0
       '@sxzz/eslint-config-vue': 2.2.2_eslint@8.19.0
@@ -49,6 +52,7 @@ importers:
       fast-glob: 3.2.11
       rollup: 2.75.7
       slash: 4.0.0
+      source-map: 0.6.1
       standard-version: 9.5.0
       tsup: 6.1.3_typescript@4.7.4
       typescript: 4.7.4

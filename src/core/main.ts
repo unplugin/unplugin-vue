@@ -1,6 +1,7 @@
 import path from 'path'
 import { normalizePath } from '@rollup/pluginutils'
-import { SourceMapConsumer, SourceMapGenerator } from 'source-map'
+import { TraceMap, eachMapping } from '@jridgewell/trace-mapping'
+import { addMapping, fromMap, toEncodedMap } from '@jridgewell/gen-mapping'
 import { transformWithEsbuild } from 'vite'
 import {
   createDescriptor,
@@ -12,9 +13,11 @@ import { transformTemplateInMain } from './template'
 import { isEqualBlock, isOnlyTemplateChanged } from './handleHotUpdate'
 import { createError } from './utils/error'
 import { EXPORT_HELPER_ID } from './helper'
+import type { RawSourceMap } from 'source-map'
+import type { EncodedSourceMap as GenEncodedSourceMap } from '@jridgewell/gen-mapping'
+import type { EncodedSourceMap as TraceEncodedSourceMap } from '@jridgewell/trace-mapping'
 import type { PluginContext } from 'rollup'
 import type { UnpluginContext } from 'unplugin'
-import type { RawSourceMap } from 'source-map'
 import type { ResolvedOptions } from '.'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 
@@ -154,13 +157,19 @@ export async function transformMain(
   // of templateMap, we need to concatenate the two source maps.
   let resolvedMap = options.sourceMap ? map : undefined
   if (resolvedMap && templateMap) {
-    const generator = SourceMapGenerator.fromSourceMap(
-      new SourceMapConsumer(map)
+    const gen = fromMap(
+      // version property of result.map is declared as string
+      // but actually it is `3`
+      map as Omit<RawSourceMap, 'version'> as TraceEncodedSourceMap
+    )
+    const tracer = new TraceMap(
+      // same above
+      templateMap as Omit<RawSourceMap, 'version'> as TraceEncodedSourceMap
     )
     const offset = (scriptCode.match(/\r?\n/g)?.length ?? 0) + 1
-    const templateMapConsumer = new SourceMapConsumer(templateMap)
-    templateMapConsumer.eachMapping((m) => {
-      generator.addMapping({
+    eachMapping(tracer, (m) => {
+      if (m.source == null) return
+      addMapping(gen, {
         source: m.source,
         original: { line: m.originalLine, column: m.originalColumn },
         generated: {
@@ -169,7 +178,12 @@ export async function transformMain(
         },
       })
     })
-    resolvedMap = (generator as any).toJSON() as RawSourceMap
+
+    // same above
+    resolvedMap = toEncodedMap(gen) as Omit<
+      GenEncodedSourceMap,
+      'version'
+    > as RawSourceMap
     // if this is a template only update, we will be reusing a cached version
     // of the main module compile result, which has outdated sourcesContent.
     resolvedMap.sourcesContent = templateMap.sourcesContent
