@@ -40,7 +40,7 @@ describe('transform', () => {
             const codes = result.outputFiles
               .map((file) => new TextDecoder('utf-8').decode(file.contents))
               .join('\n')
-            expect(codes).toMatchSnapshot()
+            expect(codes.replaceAll(filepath, '#FILE#')).toMatchSnapshot()
           })
         }
       })

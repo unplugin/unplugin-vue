@@ -181,7 +181,7 @@ export {
 `;
 
 exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProduction is false 1`] = `
-"// unplugin-vue:/Users/kevin/projects/unplugin-vue/tests/fixtures/script-setup-ts.vue?vue&type=script&setup=true&lang.ts
+"// unplugin-vue:#FILE#?vue&type=script&setup=true&lang.ts
 import { defineComponent as _defineComponent } from \\"vue\\";
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"vue\\";
 var _hoisted_1 = /* @__PURE__ */ _createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
@@ -215,7 +215,7 @@ export {
 `;
 
 exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProduction is true 1`] = `
-"// unplugin-vue:/Users/kevin/projects/unplugin-vue/tests/fixtures/script-setup-ts.vue?vue&type=script&setup=true&lang.ts
+"// unplugin-vue:#FILE#?vue&type=script&setup=true&lang.ts
 import { defineComponent as _defineComponent } from \\"vue\\";
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"vue\\";
 var _hoisted_1 = /* @__PURE__ */ _createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
@@ -277,7 +277,7 @@ export {
 `;
 
 exports[`transform > fixtures > tests/fixtures/typescript.vue > isProduction is false 1`] = `
-"// unplugin-vue:/Users/kevin/projects/unplugin-vue/tests/fixtures/typescript.vue?vue&type=script&lang.ts
+"// unplugin-vue:#FILE#?vue&type=script&lang.ts
 var typescript_vue_vue_type_script_lang_default = {};
 
 // tests/fixtures/typescript.vue
@@ -289,7 +289,7 @@ export {
 `;
 
 exports[`transform > fixtures > tests/fixtures/typescript.vue > isProduction is true 1`] = `
-"// unplugin-vue:/Users/kevin/projects/unplugin-vue/tests/fixtures/typescript.vue?vue&type=script&lang.ts
+"// unplugin-vue:#FILE#?vue&type=script&lang.ts
 var typescript_vue_vue_type_script_lang_default = {};
 
 // tests/fixtures/typescript.vue
