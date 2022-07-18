@@ -10,7 +10,7 @@
     "vue": "^3.2.37"
   },
   "devDependencies": {
-    "unplugin-vue": "workspace:^2.2.1",
+    "unplugin-vue": "workspace:*",
     "vite": "^3.0.0"
   }
 }

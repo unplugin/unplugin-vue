@@ -12,6 +12,6 @@
   "devDependencies": {
     "esbuild": "^0.14.49",
     "serve": "^14.0.0",
-    "unplugin-vue": "workspace:^2.2.1"
+    "unplugin-vue": "workspace:*"
   }
 }

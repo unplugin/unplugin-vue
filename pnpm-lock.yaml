@@ -66,7 +66,7 @@ importers:
       esbuild: ^0.14.49
       serve: ^14.0.0
       tsx: ^3.8.0
-      unplugin-vue: workspace:^2.2.1
+      unplugin-vue: workspace:*
       vue: ^3.2.37
     dependencies:
       tsx: 3.8.0
@@ -83,7 +83,7 @@ importers:
       rollup-plugin-esbuild: ^4.9.1
       serve: ^14.0.0
       tsx: ^3.8.0
-      unplugin-vue: workspace:^2.2.1
+      unplugin-vue: workspace:*
       vue: ^3.2.37
     dependencies:
       tsx: 3.8.0
@@ -97,7 +97,7 @@ importers:
 
   examples/vite:
     specifiers:
-      unplugin-vue: workspace:^2.2.1
+      unplugin-vue: workspace:*
       vite: ^3.0.0
       vue: ^3.2.37
     dependencies:
@@ -114,7 +114,7 @@ importers:
       rimraf: ^3.0.2
       serve: ^14.0.0
       sucrase: ^3.23.0
-      unplugin-vue: workspace:^2.2.1
+      unplugin-vue: workspace:*
       vue: ^3.2.37
       webpack: ^5.73.0
       webpack-cli: ^4.10.0
