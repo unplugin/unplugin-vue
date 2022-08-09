@@ -6,14 +6,14 @@
     "preview": "serve"
   },
   "dependencies": {
-    "tsx": "^3.8.0",
+    "tsx": "^3.8.1",
     "vue": "^3.2.37"
   },
   "devDependencies": {
-    "esbuild": "^0.14.49",
-    "rollup": "^2.76.0",
+    "esbuild": "^0.14.54",
+    "rollup": "^2.77.2",
     "rollup-plugin-esbuild": "^4.9.1",
-    "serve": "^14.0.0",
+    "serve": "^14.0.1",
     "unplugin-vue": "workspace:*"
   }
 }
