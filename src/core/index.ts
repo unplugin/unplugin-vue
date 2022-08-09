@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'node:fs'
 import { createFilter } from 'vite'
 import { createUnplugin } from 'unplugin'
 import { resolveCompiler } from '../core/compiler'

@@ -1,5 +1,5 @@
-import { resolve } from 'path'
-import { TextDecoder } from 'util'
+import { resolve } from 'node:path'
+import { TextDecoder } from 'node:util'
 import { describe, expect, it } from 'vitest'
 import { build } from 'esbuild'
 import glob from 'fast-glob'

@@ -1,4 +1,4 @@
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { rollup } from 'rollup'
 import glob from 'fast-glob'

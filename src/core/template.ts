@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import slash from 'slash'
 import { getResolvedScript } from './script'
 import { createError } from './utils/error'

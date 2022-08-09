@@ -1,4 +1,4 @@
-import { createRequire } from 'module'
+import { createRequire } from 'node:module'
 import type * as _compiler from 'vue/compiler-sfc'
 
 // extend the descriptor so we can store the scopeId on it

@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 import { normalizePath, transformWithEsbuild } from 'vite'
 import { TraceMap, eachMapping } from '@jridgewell/trace-mapping'
 import { addMapping, fromMap, toEncodedMap } from '@jridgewell/gen-mapping'
