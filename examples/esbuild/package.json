@@ -6,12 +6,12 @@
     "preview": "serve"
   },
   "dependencies": {
-    "tsx": "^3.8.0",
+    "tsx": "^3.8.1",
     "vue": "^3.2.37"
   },
   "devDependencies": {
-    "esbuild": "^0.14.49",
-    "serve": "^14.0.0",
+    "esbuild": "^0.14.54",
+    "serve": "^14.0.1",
     "unplugin-vue": "workspace:*"
   }
 }
