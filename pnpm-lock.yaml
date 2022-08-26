@@ -10,7 +10,7 @@ importers:
       '@sxzz/eslint-config-vue': ^2.4.1
       '@types/debug': ^4.1.7
       '@types/node': '*'
-      '@vitejs/plugin-vue': 3.0.1
+      '@vitejs/plugin-vue': 3.0.3
       '@vitest/ui': 0.22.1
       bumpp: ^8.2.1
       debug: ^4.3.4
@@ -41,7 +41,7 @@ importers:
       '@sxzz/eslint-config-vue': 2.4.1_i426k2p6qygnqteuxbgugm3bqa
       '@types/debug': 4.1.7
       '@types/node': 18.7.13
-      '@vitejs/plugin-vue': 3.0.1_vite@3.0.9+vue@3.2.37
+      '@vitejs/plugin-vue': 3.0.3_vite@3.0.9+vue@3.2.37
       '@vitest/ui': 0.22.1
       bumpp: 8.2.1
       esbuild: 0.15.5
@@ -698,8 +698,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitejs/plugin-vue/3.0.1_vite@3.0.9+vue@3.2.37:
-    resolution: {integrity: sha512-Ll9JgxG7ONIz/XZv3dssfoMUDu9qAnlJ+km+pBA0teYSXzwPCIzS/e1bmwNYl5dcQGs677D21amgfYAnzMl17A==}
+  /@vitejs/plugin-vue/3.0.3_vite@3.0.9+vue@3.2.37:
+    resolution: {integrity: sha512-U4zNBlz9mg+TA+i+5QPc3N5lQvdUXENZLO2h0Wdzp56gI1MWhqJOv+6R+d4kOzoaSSq6TnGPBdZAXKOe4lXy6g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^3.0.0

@@ -88,7 +88,7 @@
     "@sxzz/eslint-config-vue": "^2.4.1",
     "@types/debug": "^4.1.7",
     "@types/node": "*",
-    "@vitejs/plugin-vue": "3.0.1",
+    "@vitejs/plugin-vue": "3.0.3",
     "@vitest/ui": "0.22.1",
     "bumpp": "^8.2.1",
     "esbuild": "^0.15.5",
