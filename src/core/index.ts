@@ -193,6 +193,13 @@ export default createUnplugin((rawOptions: Options = {}, meta) => {
       }
     },
 
+    loadInclude(id) {
+      if (id === EXPORT_HELPER_ID) return true
+
+      const { query } = parseVueRequest(id)
+      return query.vue
+    },
+
     load(id) {
       const ssr = options.ssr
       if (id === EXPORT_HELPER_ID) {
