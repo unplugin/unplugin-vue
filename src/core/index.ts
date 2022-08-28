@@ -115,8 +115,8 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
   }
 }
 
-export default createUnplugin((rawOptions: Options = {}, meta) => {
-  let options = resolveOptions(rawOptions)
+export default createUnplugin((rawOptions: Options | undefined = {}, meta) => {
+  let options = resolveOptions(rawOptions || {})
   const { include, exclude, customElement, reactivityTransform } = options
 
   const filter = createFilter(include, exclude)
