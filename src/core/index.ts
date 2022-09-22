@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import { createFilter } from 'vite'
+import { createFilter, normalizePath } from 'vite'
 import { createUnplugin } from 'unplugin'
 import { resolveCompiler } from '../core/compiler'
 import { getResolvedScript } from '../core/script'
@@ -184,7 +184,7 @@ export default createUnplugin((rawOptions: Options | undefined = {}, meta) => {
 
     async resolveId(id) {
       // component export helper
-      if (id === EXPORT_HELPER_ID) {
+      if (normalizePath(id) === EXPORT_HELPER_ID) {
         return id
       }
       // serve sub-part requests (*?vue) as virtual modules
