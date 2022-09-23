@@ -28,6 +28,7 @@ async function getCode(file: string, plugin: any) {
 
 function createPlugins(opt: Options) {
   const vite = ViteVue(opt)
+  // @ts-expect-error
   vite.configResolved!({
     root: opt.root!,
     command: 'build',
