@@ -157,7 +157,7 @@ export async function transformMain(
   if (options.sourceMap) {
     if (scriptMap && templateMap) {
       // if the template is inlined into the main module (indicated by the presence
-      // of templateMap, we need to concatenate the two source maps.
+      // of templateMap), we need to concatenate the two source maps.
 
       const gen = fromMap(
         // version property of result.map is declared as string
