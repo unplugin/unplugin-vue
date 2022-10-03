@@ -216,7 +216,11 @@ export async function transformMain(
     const { code, map } = await transformWithEsbuild(
       resolvedCode,
       filename,
-      { loader: 'ts', sourcemap: options.sourceMap },
+      {
+        loader: 'ts',
+        target: pluginContext.framework === 'vite' ? 'esnext' : undefined,
+        sourcemap: options.sourceMap,
+      },
       resolvedMap
     )
     resolvedCode = code
