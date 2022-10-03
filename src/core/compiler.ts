@@ -24,7 +24,7 @@ export function resolveCompiler(root: string): typeof _compiler {
   return compiler
 }
 
-const _require = process.env.VITEST ? require : createRequire(import.meta.url)
+const _require = createRequire(import.meta.url || __filename)
 function tryRequire(id: string, from?: string) {
   try {
     return from
