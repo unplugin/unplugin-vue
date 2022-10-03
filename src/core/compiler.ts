@@ -24,8 +24,7 @@ export function resolveCompiler(root: string): typeof _compiler {
   return compiler
 }
 
-const _require =
-  typeof require !== 'undefined' ? require : createRequire(import.meta.url)
+const _require = createRequire(import.meta.url)
 function tryRequire(id: string, from?: string) {
   try {
     return from
