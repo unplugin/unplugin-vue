@@ -11,7 +11,7 @@ importers:
       '@types/debug': ^4.1.7
       '@types/node': '*'
       '@vitejs/plugin-vue': 3.1.2
-      '@vitest/ui': 0.24.0
+      '@vitest/ui': 0.24.3
       bumpp: ^8.2.1
       debug: ^4.3.4
       esbuild: ^0.15.5
@@ -27,7 +27,7 @@ importers:
       typescript: ^4.8.2
       unplugin: ~0.9.5
       vite: ^3.1.3
-      vitest: 0.24.0
+      vitest: 0.24.3
       vue: ^3.2.37
       webpack: ^5.74.0
     dependencies:
@@ -43,7 +43,7 @@ importers:
       '@types/debug': 4.1.7
       '@types/node': 18.7.13
       '@vitejs/plugin-vue': 3.1.2_vite@3.1.3+vue@3.2.37
-      '@vitest/ui': 0.24.0
+      '@vitest/ui': 0.24.3
       bumpp: 8.2.1
       esbuild: 0.15.5
       eslint: 8.22.0
@@ -55,7 +55,7 @@ importers:
       source-map: 0.6.1
       tsup: 6.2.3_typescript@4.8.2
       typescript: 4.8.2
-      vitest: 0.24.0_@vitest+ui@0.24.0
+      vitest: 0.24.3_@vitest+ui@0.24.3
       vue: 3.2.37
       webpack: 5.74.0_esbuild@0.15.5
 
@@ -726,8 +726,8 @@ packages:
       vue: 3.2.37
     dev: true
 
-  /@vitest/ui/0.24.0:
-    resolution: {integrity: sha512-E+Pn6YdQFmsM5kv06xyBaH/LW6zDgZueicAYfisQXK4wBU39498nWSK/9seP//ErpKD9OScbvCfIOTyDJHZc3Q==}
+  /@vitest/ui/0.24.3:
+    resolution: {integrity: sha512-f5agYA/sdkiipq42TZayJoeUGjWx+opDjIVeNnb1SG2BNxqObFqh6GuJlzpGHerg4a2+ZSoVo4f4p2+dEyXPmg==}
     dependencies:
       sirv: 2.0.2
     dev: true
@@ -5276,8 +5276,8 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /vitest/0.24.0_@vitest+ui@0.24.0:
-    resolution: {integrity: sha512-k5j3FPTor+MJx2x0pDW2gtVk+s9VC6nSHT3SoqOIk9Je5fFpPgict+Xy2eAVXUogvSixs45Ya1oZk+oK93BO0w==}
+  /vitest/0.24.3_@vitest+ui@0.24.3:
+    resolution: {integrity: sha512-aM0auuPPgMSstWvr851hB74g/LKaKBzSxcG3da7ejfZbx08Y21JpZmbmDYrMTCGhVZKqTGwzcnLMwyfz2WzkhQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -5301,7 +5301,7 @@ packages:
       '@types/chai': 4.3.3
       '@types/chai-subset': 1.3.3
       '@types/node': 18.7.13
-      '@vitest/ui': 0.24.0
+      '@vitest/ui': 0.24.3
       chai: 4.3.6
       debug: 4.3.4
       local-pkg: 0.4.2
