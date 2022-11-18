@@ -2,7 +2,7 @@
   "private": true,
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "scripts": {
-    "serve": "MODE=development webpack serve",
+    "serve": "cross-env MODE=development webpack serve",
     "build": "rimraf dist && cross-env MODE=production webpack build",
     "preview": "serve dist"
   },
