@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@jridgewell/gen-mapping': ^0.3.2
-      '@jridgewell/trace-mapping': ^0.3.15
+      '@jridgewell/trace-mapping': ^0.3.17
       '@sxzz/eslint-config-prettier': ^2.4.4
       '@sxzz/eslint-config-vue': ^2.4.4
       '@types/debug': ^4.1.7
@@ -20,7 +20,7 @@ importers:
       fast-glob: ^3.2.12
       rollup: ^3.7.0
       rollup-plugin-esbuild: ^5.0.0
-      slash: ^4.0.0
+      slash: ^5.0.0
       source-map: ~0.6.1
       tsup: ^6.5.0
       tsx: ^3.12.1
@@ -37,7 +37,7 @@ importers:
       vite: 4.0.0_@types+node@18.11.12
     devDependencies:
       '@jridgewell/gen-mapping': 0.3.2
-      '@jridgewell/trace-mapping': 0.3.15
+      '@jridgewell/trace-mapping': 0.3.17
       '@sxzz/eslint-config-prettier': 2.4.4_eslint@8.29.0
       '@sxzz/eslint-config-vue': 2.4.4_rsibta3vmmagu2awyzif4pq2lq
       '@types/debug': 4.1.7
@@ -51,7 +51,7 @@ importers:
       fast-glob: 3.2.12
       rollup: 3.7.0
       rollup-plugin-esbuild: 5.0.0_wreyrcgav7eotfbd7pnvfb26mu
-      slash: 4.0.0
+      slash: 5.0.0
       source-map: 0.6.1
       tsup: 6.5.0_typescript@4.9.4
       typescript: 4.9.4
@@ -435,7 +435,7 @@ packages:
     dependencies:
       '@jridgewell/set-array': 1.1.2
       '@jridgewell/sourcemap-codec': 1.4.14
-      '@jridgewell/trace-mapping': 0.3.15
+      '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
   /@jridgewell/resolve-uri/3.1.0:
@@ -452,18 +452,11 @@ packages:
     resolution: {integrity: sha512-m7O9o2uR8k2ObDysZYzdfhb08VuEml5oWGiosa1VdaPZ/A6QyPkAJuwN0Q1lhULOf6B7MtQmHENS743hWtCrgw==}
     dependencies:
       '@jridgewell/gen-mapping': 0.3.2
-      '@jridgewell/trace-mapping': 0.3.15
+      '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
   /@jridgewell/sourcemap-codec/1.4.14:
     resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
-    dev: true
-
-  /@jridgewell/trace-mapping/0.3.15:
-    resolution: {integrity: sha512-oWZNOULl+UbhsgB51uuZzglikfIKSUBO/M9W2OfEjn7cmqoAiCgmv9lyACTUacZwBz0ITnJ2NqjU8Tx0DHL88g==}
-    dependencies:
-      '@jridgewell/resolve-uri': 3.1.0
-      '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
   /@jridgewell/trace-mapping/0.3.17:
@@ -4595,9 +4588,9 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /slash/4.0.0:
-    resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
-    engines: {node: '>=12'}
+  /slash/5.0.0:
+    resolution: {integrity: sha512-n6KkmvKS0623igEVj3FF0OZs1gYYJ0o0Hj939yc1fyxl2xt+xYpLnzJB6xBSqOfV9ZFLEWodBBN/heZJahuIJQ==}
+    engines: {node: '>=14.16'}
     dev: true
 
   /sockjs/0.3.24:
