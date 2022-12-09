@@ -146,6 +146,9 @@ export default createUnplugin((rawOptions: Options | undefined = {}, meta) => {
 
       config(config) {
         return {
+          resolve: {
+            dedupe: config.build?.ssr ? [] : ['vue'],
+          },
           define: {
             __VUE_OPTIONS_API__: config.define?.__VUE_OPTIONS_API__ ?? true,
             __VUE_PROD_DEVTOOLS__:
