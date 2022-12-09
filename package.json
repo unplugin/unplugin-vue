@@ -65,6 +65,7 @@
     "build": "tsup && tsx scripts/postbuild.mts",
     "release": "bumpp",
     "lint": "eslint . --ext .vue,.ts --max-warnings 0",
+    "typecheck": "tsc --noEmit",
     "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {
