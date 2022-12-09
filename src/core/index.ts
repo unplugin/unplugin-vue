@@ -185,7 +185,7 @@ export default createUnplugin((rawOptions: Options | undefined = {}, meta) => {
       if (!options.compiler) options.compiler = resolveCompiler(options.root)
     },
 
-    async resolveId(id) {
+    resolveId(id) {
       // component export helper
       if (normalizePath(id) === EXPORT_HELPER_ID) {
         return id
