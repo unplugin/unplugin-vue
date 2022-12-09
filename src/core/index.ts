@@ -235,7 +235,7 @@ export default createUnplugin((rawOptions: Options | undefined = {}, meta) => {
 
     transformInclude(id) {
       const { filename, query } = parseVueRequest(id)
-      if (query.raw) return false
+      if (query.raw || query.url) return false
 
       // Not Vue SFC and refTransform
       if (!filter(filename) && !query.vue && !refTransformFilter(filename))
