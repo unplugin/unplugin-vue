@@ -13,6 +13,5 @@
     "baseUrl": ".",
     "declaration": true
   },
-  "include": ["src", "tests", "scripts"],
-  "exclude": ["tests/fixtures"]
+  "include": ["src", "scripts"]
 }

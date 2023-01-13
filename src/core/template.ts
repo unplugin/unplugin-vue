@@ -11,7 +11,7 @@ import type {
 import type { UnpluginContext } from 'unplugin'
 import type { ResolvedOptions } from '.'
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+// eslint-disable-next-line require-await
 export async function transformTemplateAsModule(
   code: string,
   descriptor: SFCDescriptor,

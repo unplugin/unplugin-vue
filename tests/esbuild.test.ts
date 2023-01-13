@@ -17,7 +17,7 @@ describe('transform', () => {
     })
 
     for (const file of files) {
-      describe(file.replace('\\', '/'), async () => {
+      describe(file.replace('\\', '/'), () => {
         const filepath = resolve(root, file)
         for (const isProduction of [true, false]) {
           it(`isProduction is ${isProduction}`, async () => {

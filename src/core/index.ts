@@ -146,6 +146,9 @@ export default createUnplugin((rawOptions: Options | undefined = {}, meta) => {
 
       config(config) {
         return {
+          resolve: {
+            dedupe: config.build?.ssr ? [] : ['vue'],
+          },
           define: {
             __VUE_OPTIONS_API__: config.define?.__VUE_OPTIONS_API__ ?? true,
             __VUE_PROD_DEVTOOLS__:
@@ -182,7 +185,7 @@ export default createUnplugin((rawOptions: Options | undefined = {}, meta) => {
       if (!options.compiler) options.compiler = resolveCompiler(options.root)
     },
 
-    async resolveId(id) {
+    resolveId(id) {
       // component export helper
       if (normalizePath(id) === EXPORT_HELPER_ID) {
         return id
@@ -235,7 +238,7 @@ export default createUnplugin((rawOptions: Options | undefined = {}, meta) => {
 
     transformInclude(id) {
       const { filename, query } = parseVueRequest(id)
-      if (query.raw) return false
+      if (query.raw || query.url) return false
 
       // Not Vue SFC and refTransform
       if (!filter(filename) && !query.vue && !refTransformFilter(filename))
