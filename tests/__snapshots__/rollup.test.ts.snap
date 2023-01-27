@@ -208,7 +208,13 @@ exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProductio
 "//script-setup-ts.js
 import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
 
-const _hoisted_1 = /* @__PURE__ */ createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
+const _hoisted_1 = /* @__PURE__ */ createElementVNode(
+  \\"h1\\",
+  null,
+  \\"Hello World\\",
+  -1
+  /* HOISTED */
+);
 const _hoisted_2 = [
   _hoisted_1
 ];
@@ -248,7 +254,13 @@ exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProductio
 "//script-setup-ts.js
 import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
 
-const _hoisted_1 = /* @__PURE__ */ createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
+const _hoisted_1 = /* @__PURE__ */ createElementVNode(
+  \\"h1\\",
+  null,
+  \\"Hello World\\",
+  -1
+  /* HOISTED */
+);
 const _hoisted_2 = [
   _hoisted_1
 ];
@@ -284,11 +296,23 @@ var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
   }
 });
 
-const _hoisted_1 = /* @__PURE__ */ createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
+const _hoisted_1 = /* @__PURE__ */ createElementVNode(
+  \\"h1\\",
+  null,
+  \\"Hello World\\",
+  -1
+  /* HOISTED */
+);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock(\\"div\\", null, [
     _hoisted_1,
-    createElementVNode(\\"h2\\", null, toDisplayString(_ctx.msg), 1)
+    createElementVNode(
+      \\"h2\\",
+      null,
+      toDisplayString(_ctx.msg),
+      1
+      /* TEXT */
+    )
   ]);
 }
 
@@ -316,11 +340,23 @@ var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
   }
 });
 
-const _hoisted_1 = /* @__PURE__ */ createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
+const _hoisted_1 = /* @__PURE__ */ createElementVNode(
+  \\"h1\\",
+  null,
+  \\"Hello World\\",
+  -1
+  /* HOISTED */
+);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock(\\"div\\", null, [
     _hoisted_1,
-    createElementVNode(\\"h2\\", null, toDisplayString(_ctx.msg), 1)
+    createElementVNode(
+      \\"h2\\",
+      null,
+      toDisplayString(_ctx.msg),
+      1
+      /* TEXT */
+    )
   ]);
 }
 
