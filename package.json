@@ -90,7 +90,7 @@
     "@types/node": "^18.11.18",
     "@vitejs/plugin-vue": "4.0.0",
     "@vitest/ui": "0.28.3",
-    "bumpp": "^8.2.1",
+    "bumpp": "^9.0.0",
     "esbuild": "0.17.4",
     "eslint": "^8.32.0",
     "eslint-define-config": "^1.14.0",
