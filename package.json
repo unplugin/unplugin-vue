@@ -57,6 +57,14 @@
     },
     "./*": "./*"
   },
+  "typesVersions": {
+    "<=4.9": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
   "scripts": {
     "test": "vitest",
     "dev": "tsup --watch",
