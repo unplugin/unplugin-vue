@@ -1,6 +1,6 @@
-import { basename, dirname, resolve } from 'path'
-import { readFile, writeFile } from 'fs/promises'
-import { fileURLToPath } from 'url'
+import { basename, dirname, resolve } from 'node:path'
+import { readFile, writeFile } from 'node:fs/promises'
+import { fileURLToPath } from 'node:url'
 import fg from 'fast-glob'
 
 // fix cjs exports
