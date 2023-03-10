@@ -8,7 +8,7 @@ Transform Vue 3 SFC to JavaScript.
 
 - ⚡️ Supports Vite, Webpack, Vue CLI, Rollup, esbuild and more, powered by [unplugin](https://github.com/unjs/unplugin).
 - ✨ Supports `<script setup>`
-- 💚 Supports [Reactivity Transform](https://github.com/vuejs/rfcs/discussions/369)
+- 💚 Supports [Reactivity Transform](https://github.com/vuejs/rfcs/discussions/369) (**Will be deprecated soon**)
 
 ## Who is using
 
