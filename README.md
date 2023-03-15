@@ -8,7 +8,7 @@ Transform Vue 3 SFC to JavaScript.
 
 - ⚡️ Supports Vite, Webpack, Vue CLI, Rollup, esbuild and more, powered by [unplugin](https://github.com/unjs/unplugin).
 - ✨ Supports `<script setup>`
-- 💚 Supports [Reactivity Transform](https://github.com/vuejs/rfcs/discussions/369)
+- 💚 Supports [Reactivity Transform](https://github.com/vuejs/rfcs/discussions/369) (**Will be deprecated soon**)
 
 ## Who is using
 
@@ -17,8 +17,9 @@ Transform Vue 3 SFC to JavaScript.
 
 ## Alternatives
 
-- [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue) - For Vite and Vue 3.
-- [vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2) - For Vite and Vue 2.
+- [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) - For Vite and Vue 3.
+- [@vitejs/plugin-vue2](https://github.com/vitejs/vite-plugin-vue2) - For Vite and Vue 2.
+- ~~[vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2) - For Vite and Vue 2.~~
 - ~~[rollup-plugin-vue](https://github.com/vuejs/rollup-plugin-vue)~~ - ⚠️ no longer maintained.
 - [vue-loader](https://github.com/vuejs/vue-loader) - For Webpack.
 - [esbuild-plugin-vue](https://github.com/egoist/esbuild-plugin-vue) - For esbuild and Vue 3.
@@ -43,4 +44,4 @@ Thanks to [Vite](https://github.com/vitejs/vite). This project is inherited from
 
 ## License
 
-[MIT](./LICENSE) License © 2022 [三咲智子](https://github.com/sxzz)
+[MIT](./LICENSE) License © 2022-PRESENT [三咲智子](https://github.com/sxzz)
