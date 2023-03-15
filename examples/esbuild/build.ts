@@ -12,6 +12,7 @@ import Vue from 'unplugin-vue/esbuild'
     plugins: [
       Vue({
         style: {
+          // @ts-expect-error
           preprocessLang: 'scss',
         },
       }),

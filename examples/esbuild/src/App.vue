@@ -10,6 +10,7 @@ const msg = ref('')
     <input v-model="msg" type="text" />
   </div>
 </template>
+
 <style lang="scss">
 body {
   background-color: aqua;
