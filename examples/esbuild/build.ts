@@ -9,6 +9,12 @@ import Vue from 'unplugin-vue/esbuild'
     define: {
       'process.env.NODE_ENV': JSON.stringify('production'),
     },
-    plugins: [Vue()],
+    plugins: [
+      Vue({
+        style: {
+          preprocessLang: 'scss',
+        },
+      }),
+    ],
   })
 })()

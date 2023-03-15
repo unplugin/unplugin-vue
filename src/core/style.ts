@@ -58,7 +58,7 @@ export async function transformStyle(
         result.map as Omit<RawSourceMap, 'version'> as ExistingRawSourceMap,
         filename
       )
-    : ({ mappings: '' } as any)
+    : (null as any)
 
   return {
     code: result.code,
