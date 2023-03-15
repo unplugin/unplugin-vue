@@ -12,7 +12,6 @@ import Vue from 'unplugin-vue/esbuild'
     plugins: [
       Vue({
         style: {
-          // @ts-ignore
           preprocessLang: 'scss',
         },
       }),

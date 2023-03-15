@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`transform > fixtures > tests/fixtures/basic.vue > isProduction is false 1`] = `
 "// tests/fixtures/basic.vue
@@ -16,7 +16,13 @@ var export_helper_default = (sfc, props) => {
 // tests/fixtures/basic.vue
 console.log(\\"Hello world\\");
 var _sfc_main = {};
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
+var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
+  \\"h1\\",
+  null,
+  \\"Hello World\\",
+  -1
+  /* HOISTED */
+);
 var _hoisted_2 = [
   _hoisted_1
 ];
@@ -46,7 +52,13 @@ var export_helper_default = (sfc, props) => {
 // tests/fixtures/basic.vue
 console.log(\\"Hello world\\");
 var _sfc_main = {};
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
+var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
+  \\"h1\\",
+  null,
+  \\"Hello World\\",
+  -1
+  /* HOISTED */
+);
 var _hoisted_2 = [
   _hoisted_1
 ];
@@ -137,7 +149,13 @@ export {
 exports[`transform > fixtures > tests/fixtures/script-setup.vue > isProduction is false 1`] = `
 "// tests/fixtures/script-setup.vue
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"vue\\";
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
+var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
+  \\"h1\\",
+  null,
+  \\"Hello World\\",
+  -1
+  /* HOISTED */
+);
 var _hoisted_2 = [
   _hoisted_1
 ];
@@ -160,7 +178,13 @@ export {
 exports[`transform > fixtures > tests/fixtures/script-setup.vue > isProduction is true 1`] = `
 "// tests/fixtures/script-setup.vue
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"vue\\";
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
+var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
+  \\"h1\\",
+  null,
+  \\"Hello World\\",
+  -1
+  /* HOISTED */
+);
 var _hoisted_2 = [
   _hoisted_1
 ];
@@ -184,7 +208,13 @@ exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProductio
 "// unplugin-vue:#FILE#?vue&type=script&setup=true&lang.ts
 import { defineComponent as _defineComponent } from \\"vue\\";
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"vue\\";
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
+var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
+  \\"h1\\",
+  null,
+  \\"Hello World\\",
+  -1
+  /* HOISTED */
+);
 var _hoisted_2 = [
   _hoisted_1
 ];
@@ -218,7 +248,13 @@ exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProductio
 "// unplugin-vue:#FILE#?vue&type=script&setup=true&lang.ts
 import { defineComponent as _defineComponent } from \\"vue\\";
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"vue\\";
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(\\"h1\\", null, \\"Hello World\\", -1);
+var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
+  \\"h1\\",
+  null,
+  \\"Hello World\\",
+  -1
+  /* HOISTED */
+);
 var _hoisted_2 = [
   _hoisted_1
 ];
