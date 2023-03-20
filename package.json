@@ -1,7 +1,7 @@
 {
   "name": "unplugin-vue",
   "version": "4.0.3",
-  "packageManager": "pnpm@7.29.1",
+  "packageManager": "pnpm@7.30.0",
   "description": "Transform Vue 3 SFC to JavaScript.",
   "keywords": [
     "vue",
@@ -96,10 +96,10 @@
     "@sxzz/eslint-config-vue": "^2.4.5",
     "@types/debug": "^4.1.7",
     "@types/node": "^18.15.3",
-    "@vitejs/plugin-vue": "4.0.0",
-    "@vitest/ui": "0.29.2",
+    "@vitejs/plugin-vue": "4.1.0",
+    "@vitest/ui": "0.29.3",
     "bumpp": "^9.0.0",
-    "esbuild": "0.17.11",
+    "esbuild": "0.17.12",
     "eslint": "^8.36.0",
     "eslint-define-config": "^1.16.0",
     "fast-glob": "^3.2.12",
@@ -110,7 +110,7 @@
     "tsup": "^6.6.3",
     "typescript": "^5.0.2",
     "vite": "^4.0.0",
-    "vitest": "0.29.2",
+    "vitest": "0.29.3",
     "vue": "^3.2.47",
     "webpack": "^5.76.1"
   },
