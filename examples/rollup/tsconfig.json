@@ -1,7 +1,9 @@
 {
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "*"],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "module": "esnext",
+    "moduleResolution": "bundler"
   }
 }
