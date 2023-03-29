@@ -314,11 +314,19 @@ async function genScriptCode(
             ? (['typescript'] as const)
             : (['typescript', 'decorators-legacy'] as const)
           : []
-      scriptCode = options.compiler.rewriteDefault(
-        script.content,
-        '_sfc_main',
-        [...defaultPlugins, ...userPlugins]
-      )
+      const as = '_sfc_main'
+      // @ts-expect-error
+      if (options.compiler.rewriteDefaultAST && script.scriptAst) {
+        // @ts-expect-error
+        options.compiler.rewriteDefaultAST(script.scriptAst, script.s, as)
+        // @ts-expect-error
+        scriptCode = script.s.toString()
+      } else {
+        scriptCode = options.compiler.rewriteDefault(script.content, as, [
+          ...defaultPlugins,
+          ...userPlugins,
+        ])
+      }
       map = script.map
     } else {
       if (script.src) {
