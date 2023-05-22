@@ -97,7 +97,7 @@
     "@types/debug": "^4.1.7",
     "@types/node": "^18.15.5",
     "@vitejs/plugin-vue": "4.2.3",
-    "@vitest/ui": "0.31.0",
+    "@vitest/ui": "0.31.1",
     "bumpp": "^9.0.0",
     "esbuild": "0.17.19",
     "eslint": "^8.36.0",
@@ -110,7 +110,7 @@
     "tsup": "^6.7.0",
     "typescript": "^5.0.2",
     "vite": "^4.0.0",
-    "vitest": "0.31.0",
+    "vitest": "0.31.1",
     "vue": "^3.3.2",
     "webpack": "^5.76.2"
   },
