@@ -1,7 +1,7 @@
 import path from 'node:path'
 import slash from 'slash'
 import { getResolvedScript } from './script'
-import { createError } from './utils/error'
+import { createRollupError } from './utils/error'
 import type {
   CompilerOptions,
   SFCDescriptor,
@@ -18,7 +18,10 @@ export async function transformTemplateAsModule(
   options: ResolvedOptions,
   pluginContext: UnpluginContext,
   ssr: boolean
-) {
+): Promise<{
+  code: string
+  map: any
+}> {
   const result = compile(code, descriptor, options, pluginContext, ssr)
 
   let returnCode = result.code
@@ -42,7 +45,6 @@ export async function transformTemplateAsModule(
 /**
  * transform the template directly in the main SFC module
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function transformTemplateInMain(
   code: string,
   descriptor: SFCDescriptor,
@@ -79,7 +81,7 @@ export function compile(
       pluginContext.error(
         typeof error === 'string'
           ? { id: filename, message: error }
-          : createError(filename, error)
+          : createRollupError(filename, error)
       )
     )
   }
@@ -116,8 +118,8 @@ export function resolveTemplateCompilerOptions(
     // during dev, inject vite base so that compiler-sfc can transform
     // relative paths directly to absolute paths without incurring an extra import
     // request
-    const devBase = options.devServer.config.base
     if (filename.startsWith(options.root)) {
+      const devBase = options.devServer.config.base
       assetUrlOptions = {
         base:
           (options.devServer.config.server?.origin ?? '') +
@@ -125,7 +127,7 @@ export function resolveTemplateCompilerOptions(
           slash(path.relative(options.root, path.dirname(filename))),
       }
     }
-  } else {
+  } else if (transformAssetUrls !== false) {
     // build: force all asset urls into import requests so that they go through
     // the assets plugin for asset registration
     assetUrlOptions = {

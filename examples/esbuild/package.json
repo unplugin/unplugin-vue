@@ -1,17 +1,17 @@
 {
   "private": true,
+  "type": "module",
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "scripts": {
-    "build": "tsx build.ts",
+    "build": "node build.js",
     "preview": "serve"
   },
   "dependencies": {
-    "tsx": "^3.12.6",
-    "vue": "^3.2.47"
+    "vue": "^3.3.4"
   },
   "devDependencies": {
-    "esbuild": "^0.17.12",
-    "sass": "^1.59.3",
+    "esbuild": "^0.17.19",
+    "sass": "^1.62.1",
     "serve": "^14.2.0",
     "unplugin-vue": "workspace:*"
   }

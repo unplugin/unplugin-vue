@@ -1,10 +1,21 @@
 import { resolveTemplateCompilerOptions } from './template'
+import { cache as descriptorCache } from './utils/descriptorCache'
 import type { SFCDescriptor, SFCScriptBlock } from 'vue/compiler-sfc'
-import type { ResolvedOptions } from '.'
+import type { Context, ResolvedOptions } from '.'
 
 // ssr and non ssr builds would output different script content
 const clientCache = new WeakMap<SFCDescriptor, SFCScriptBlock | null>()
 const ssrCache = new WeakMap<SFCDescriptor, SFCScriptBlock | null>()
+
+export const typeDepToSFCMap = new Map<string, Set<string>>()
+
+export function invalidateScript(filename: string): void {
+  const desc = descriptorCache.get(filename)
+  if (desc) {
+    clientCache.delete(desc)
+    ssrCache.delete(desc)
+  }
+}
 
 export function getResolvedScript(
   descriptor: SFCDescriptor,
@@ -31,7 +42,10 @@ export function isUseInlineTemplate(
   return isProd && !!descriptor.scriptSetup && !descriptor.template?.src
 }
 
+export const scriptIdentifier = `_sfc_main`
+
 export function resolveScript(
+  pluginContext: Context,
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   ssr: boolean
@@ -56,8 +70,51 @@ export function resolveScript(
     reactivityTransform: options.reactivityTransform !== false,
     templateOptions: resolveTemplateCompilerOptions(descriptor, options, ssr),
     sourceMap: options.sourceMap,
+    genDefaultAs: canInlineMain(pluginContext, descriptor, options)
+      ? scriptIdentifier
+      : undefined,
   })
+
+  if (!options.isProduction && resolved?.deps) {
+    for (const [key, sfcs] of typeDepToSFCMap) {
+      if (sfcs.has(descriptor.filename) && !resolved.deps.includes(key)) {
+        sfcs.delete(descriptor.filename)
+      }
+    }
+
+    for (const dep of resolved.deps) {
+      const existingSet = typeDepToSFCMap.get(dep)
+      if (!existingSet) {
+        typeDepToSFCMap.set(dep, new Set([descriptor.filename]))
+      } else {
+        existingSet.add(descriptor.filename)
+      }
+    }
+  }
 
   cacheToUse.set(descriptor, resolved)
   return resolved
+}
+
+// If the script is js/ts and has no external src, it can be directly placed
+// in the main module. Skip for build
+export function canInlineMain(
+  pluginContext: Context,
+  descriptor: SFCDescriptor,
+  options: ResolvedOptions
+): boolean {
+  if (descriptor.script?.src || descriptor.scriptSetup?.src) {
+    return false
+  }
+  const lang = descriptor.script?.lang || descriptor.scriptSetup?.lang
+  if (!lang) {
+    return true
+  }
+  if (
+    lang === 'ts' &&
+    (options.devServer || pluginContext.framework === 'webpack')
+  ) {
+    return true
+  }
+  return false
 }

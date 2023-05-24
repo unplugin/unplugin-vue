@@ -162,10 +162,10 @@ const _hoisted_2 = [
   _hoisted_1
 ];
 
-
 const _sfc_main = {
   __name: 'script-setup',
   setup(__props) {
+
 
 return (_ctx, _cache) => {
   return (openBlock(), createElementBlock(\\"div\\", null, _hoisted_2))
@@ -188,10 +188,10 @@ const _hoisted_2 = [
   _hoisted_1
 ];
 
-
 const _sfc_main = {
   __name: 'script-setup',
   setup(__props) {
+
 
 return (_ctx, _cache) => {
   return (openBlock(), createElementBlock(\\"div\\", null, _hoisted_2))
@@ -218,6 +218,7 @@ const _hoisted_1 = /* @__PURE__ */ createElementVNode(
 const _hoisted_2 = [
   _hoisted_1
 ];
+const str = \\"bar\\";
 var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
   __name: \\"script-setup-ts\\",
   props: {
@@ -225,9 +226,8 @@ var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ *
     bar: { default: 123 },
     baz: { type: Boolean, default: true }
   },
-  setup(__props, { expose }) {
-    const str = \\"bar\\";
-    expose({
+  setup(__props, { expose: __expose }) {
+    __expose({
       str
     });
     return (_ctx, _cache) => {
@@ -264,6 +264,7 @@ const _hoisted_1 = /* @__PURE__ */ createElementVNode(
 const _hoisted_2 = [
   _hoisted_1
 ];
+const str = \\"bar\\";
 var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
   __name: \\"script-setup-ts\\",
   props: {
@@ -271,9 +272,8 @@ var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ *
     bar: { default: 123 },
     baz: { type: Boolean, default: true }
   },
-  setup(__props, { expose }) {
-    const str = \\"bar\\";
-    expose({
+  setup(__props, { expose: __expose }) {
+    __expose({
       str
     });
     return (_ctx, _cache) => {

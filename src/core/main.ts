@@ -7,10 +7,15 @@ import {
   getPrevDescriptor,
   setSrcDescriptor,
 } from './utils/descriptorCache'
-import { isUseInlineTemplate, resolveScript } from './script'
+import {
+  canInlineMain,
+  isUseInlineTemplate,
+  resolveScript,
+  scriptIdentifier,
+} from './script'
 import { transformTemplateInMain } from './template'
 import { isEqualBlock, isOnlyTemplateChanged } from './handleHotUpdate'
-import { createError } from './utils/error'
+import { createRollupError } from './utils/error'
 import { EXPORT_HELPER_ID } from './helper'
 import type { RawSourceMap } from 'source-map'
 import type { EncodedSourceMap as GenEncodedSourceMap } from '@jridgewell/gen-mapping'
@@ -34,7 +39,9 @@ export async function transformMain(
   const { descriptor, errors } = createDescriptor(filename, code, options)
 
   if (errors.length > 0) {
-    errors.forEach((error) => pluginContext.error(createError(filename, error)))
+    errors.forEach((error) =>
+      pluginContext.error(createRollupError(filename, error))
+    )
     return null
   }
 
@@ -298,34 +305,31 @@ async function genScriptCode(
   code: string
   map: RawSourceMap | undefined
 }> {
-  let scriptCode = `const _sfc_main = {}`
+  let scriptCode = `const ${scriptIdentifier} = {}`
   let map: RawSourceMap | undefined
 
-  const script = resolveScript(descriptor, options, ssr)
+  const script = resolveScript(pluginContext, descriptor, options, ssr)
   if (script) {
     // If the script is js/ts and has no external src, it can be directly placed
     // in the main module.
-    const inlineTs = pluginContext.framework === 'webpack' || options.devServer
-    if ((!script.lang || (script.lang === 'ts' && inlineTs)) && !script.src) {
-      const userPlugins = options.script?.babelParserPlugins || []
-      const defaultPlugins =
-        script.lang === 'ts'
-          ? userPlugins.includes('decorators')
-            ? (['typescript'] as const)
-            : (['typescript', 'decorators-legacy'] as const)
-          : []
-      const as = '_sfc_main'
-      // @ts-expect-error
-      if (options.compiler.rewriteDefaultAST && script.scriptAst) {
-        // @ts-expect-error
-        options.compiler.rewriteDefaultAST(script.scriptAst, script.s, as)
-        // @ts-expect-error
-        scriptCode = script.s.toString()
+    if (canInlineMain(pluginContext, descriptor, options)) {
+      if (!options.compiler.version) {
+        // if compiler-sfc exposes no version, it's < 3.3 and doesn't support
+        // genDefaultAs option.
+        const userPlugins = options.script?.babelParserPlugins || []
+        const defaultPlugins =
+          script.lang === 'ts'
+            ? userPlugins.includes('decorators')
+              ? (['typescript'] as const)
+              : (['typescript', 'decorators-legacy'] as const)
+            : []
+        scriptCode = options.compiler.rewriteDefault(
+          script.content,
+          scriptIdentifier,
+          [...defaultPlugins, ...userPlugins]
+        )
       } else {
-        scriptCode = options.compiler.rewriteDefault(script.content, as, [
-          ...defaultPlugins,
-          ...userPlugins,
-        ])
+        scriptCode = script.content
       }
       map = script.map
     } else {
@@ -491,7 +495,16 @@ async function linkSrcToDescriptor(
 
 // these are built-in query parameters so should be ignored
 // if the user happen to add them as attrs
-const ignoreList = ['id', 'index', 'src', 'type', 'lang', 'module', 'scoped']
+const ignoreList = [
+  'id',
+  'index',
+  'src',
+  'type',
+  'lang',
+  'module',
+  'scoped',
+  'generic',
+]
 
 function attrsToQuery(
   attrs: SFCBlock['attrs'],

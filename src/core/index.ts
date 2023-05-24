@@ -2,27 +2,27 @@ import fs from 'node:fs'
 import { createFilter, normalizePath } from 'vite'
 import { createUnplugin } from 'unplugin'
 import { resolveCompiler } from '../core/compiler'
-import { getResolvedScript } from '../core/script'
+import { getResolvedScript, typeDepToSFCMap } from '../core/script'
 import { transformMain } from '../core/main'
 import { transformTemplateAsModule } from '../core/template'
 import { transformStyle } from '../core/style'
 import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
 import { getDescriptor, getSrcDescriptor } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
-import { handleHotUpdate } from './handleHotUpdate'
+import { handleHotUpdate, handleTypeDepChange } from './handleHotUpdate'
 import type { UnpluginContext, UnpluginContextMeta } from 'unplugin'
 import type { ViteDevServer } from 'vite'
-// eslint-disable-next-line import/no-duplicates
+/* eslint-disable import/no-duplicates */
 import type * as _compiler from 'vue/compiler-sfc'
 import type {
   SFCBlock,
   SFCScriptCompileOptions,
   SFCStyleCompileOptions,
   SFCTemplateCompileOptions,
-  // eslint-disable-next-line import/no-duplicates
 } from 'vue/compiler-sfc'
+/* eslint-enable import/no-duplicates */
 
-export { parseVueRequest, VueQuery } from './utils/query'
+export { parseVueRequest, type VueQuery } from './utils/query'
 
 export interface Options {
   include?: string | RegExp | (string | RegExp)[]
@@ -34,7 +34,16 @@ export interface Options {
   root?: string
 
   // options to pass on to vue/compiler-sfc
-  script?: Partial<Pick<SFCScriptCompileOptions, 'babelParserPlugins'>>
+  script?: Partial<
+    Pick<
+      SFCScriptCompileOptions,
+      | 'babelParserPlugins'
+      | 'defineModel'
+      | 'propsDestructure'
+      | 'fs'
+      | 'reactivityTransform'
+    >
+  >
   template?: Partial<
     Pick<
       SFCTemplateCompileOptions,
@@ -138,10 +147,15 @@ export default createUnplugin((rawOptions: Options | undefined = {}, meta) => {
 
     vite: {
       handleHotUpdate(ctx) {
-        if (!filter(ctx.file)) {
-          return
+        if (options.compiler.invalidateTypeCache) {
+          options.compiler.invalidateTypeCache(ctx.file)
         }
-        return handleHotUpdate(ctx, options)
+        if (typeDepToSFCMap.has(ctx.file)) {
+          return handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
+        }
+        if (filter(ctx.file)) {
+          return handleHotUpdate(ctx, options)
+        }
       },
 
       config(config) {
@@ -172,7 +186,7 @@ export default createUnplugin((rawOptions: Options | undefined = {}, meta) => {
           isProduction: config.isProduction,
           compiler: options.compiler || resolveCompiler(config.root),
           devToolsEnabled:
-            !!config.define?.__VUE_PROD_DEVTOOLS__ || !config.isProduction,
+            !!config.define!.__VUE_PROD_DEVTOOLS__ || !config.isProduction,
         }
       },
 
@@ -182,7 +196,14 @@ export default createUnplugin((rawOptions: Options | undefined = {}, meta) => {
     },
 
     buildStart() {
-      if (!options.compiler) options.compiler = resolveCompiler(options.root)
+      const compiler = (options.compiler =
+        options.compiler || resolveCompiler(options.root))
+
+      if (compiler.invalidateTypeCache) {
+        options.devServer?.watcher.on('unlink', (file) => {
+          compiler.invalidateTypeCache(file)
+        })
+      }
     },
 
     resolveId(id) {

@@ -7,18 +7,18 @@
     "preview": "serve dist"
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@types/webpack": "^5.28.0",
+    "@types/webpack": "^5.28.1",
     "cross-env": "^7.0.3",
-    "html-webpack-plugin": "^5.5.0",
-    "rimraf": "^4.4.0",
+    "html-webpack-plugin": "^5.5.1",
+    "rimraf": "^5.0.1",
     "serve": "^14.2.0",
-    "sucrase": "^3.30.0",
+    "sucrase": "^3.32.0",
     "unplugin-vue": "workspace:*",
-    "webpack": "^5.76.2",
-    "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.13.1"
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
   }
 }
