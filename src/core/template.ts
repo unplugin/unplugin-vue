@@ -1,15 +1,15 @@
 import path from 'node:path'
 import slash from 'slash'
+import {
+  type CompilerOptions,
+  type SFCDescriptor,
+  type SFCTemplateCompileOptions,
+  type SFCTemplateCompileResults,
+} from 'vue/compiler-sfc'
+import { type UnpluginContext } from 'unplugin'
 import { getResolvedScript } from './script'
 import { createRollupError } from './utils/error'
-import type {
-  CompilerOptions,
-  SFCDescriptor,
-  SFCTemplateCompileOptions,
-  SFCTemplateCompileResults,
-} from 'vue/compiler-sfc'
-import type { UnpluginContext } from 'unplugin'
-import type { ResolvedOptions } from '.'
+import { type ResolvedOptions } from '.'
 
 // eslint-disable-next-line require-await
 export async function transformTemplateAsModule(

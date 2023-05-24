@@ -1,7 +1,19 @@
 import path from 'node:path'
 import { normalizePath, transformWithEsbuild } from 'vite'
-import { TraceMap, eachMapping } from '@jridgewell/trace-mapping'
-import { addMapping, fromMap, toEncodedMap } from '@jridgewell/gen-mapping'
+import { type RawSourceMap } from 'source-map'
+import {
+  type EncodedSourceMap as GenEncodedSourceMap,
+  addMapping,
+  fromMap,
+  toEncodedMap,
+} from '@jridgewell/gen-mapping'
+import {
+  type EncodedSourceMap as TraceEncodedSourceMap,
+  TraceMap,
+  eachMapping,
+} from '@jridgewell/trace-mapping'
+import { type PluginContext } from 'rollup'
+import { type SFCBlock, type SFCDescriptor } from 'vue/compiler-sfc'
 import {
   createDescriptor,
   getPrevDescriptor,
@@ -17,12 +29,7 @@ import { transformTemplateInMain } from './template'
 import { isEqualBlock, isOnlyTemplateChanged } from './handleHotUpdate'
 import { createRollupError } from './utils/error'
 import { EXPORT_HELPER_ID } from './helper'
-import type { RawSourceMap } from 'source-map'
-import type { EncodedSourceMap as GenEncodedSourceMap } from '@jridgewell/gen-mapping'
-import type { EncodedSourceMap as TraceEncodedSourceMap } from '@jridgewell/trace-mapping'
-import type { Context, ResolvedOptions } from '.'
-import type { PluginContext } from 'rollup'
-import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
+import { type Context, type ResolvedOptions } from '.'
 
 export async function transformMain(
   code: string,

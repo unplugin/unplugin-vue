@@ -1,5 +1,6 @@
 import _debug from 'debug'
-import { isCSSRequest } from 'vite'
+import { type HmrContext, type ModuleNode, isCSSRequest } from 'vite'
+import { type SFCBlock, type SFCDescriptor } from 'vue/compiler-sfc'
 import {
   createDescriptor,
   getDescriptor,
@@ -10,9 +11,7 @@ import {
   invalidateScript,
   setResolvedScript,
 } from './script'
-import type { HmrContext, ModuleNode } from 'vite'
-import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
-import type { ResolvedOptions } from '.'
+import { type ResolvedOptions } from '.'
 
 const debug = _debug('vite:hmr')
 

@@ -1,6 +1,6 @@
 import Vue from 'unplugin-vue/webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import type { Configuration } from 'webpack'
+import { type Configuration } from 'webpack'
 
 const config: Configuration = {
   mode: (process.env.MODE as any) ?? 'development',

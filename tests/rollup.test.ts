@@ -6,7 +6,7 @@ import ViteVue from '@vitejs/plugin-vue'
 import * as vueCompiler from 'vue/compiler-sfc'
 import esbuild from 'rollup-plugin-esbuild'
 import Vue from '../src/rollup'
-import type { Options } from '../src'
+import { type Options } from '../src'
 
 async function getCode(file: string, plugin: any) {
   const bundle = await rollup({

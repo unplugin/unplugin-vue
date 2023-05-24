@@ -1,6 +1,17 @@
 import fs from 'node:fs'
-import { createFilter, normalizePath } from 'vite'
-import { createUnplugin } from 'unplugin'
+import { type ViteDevServer, createFilter, normalizePath } from 'vite'
+import {
+  type UnpluginContext,
+  type UnpluginContextMeta,
+  createUnplugin,
+} from 'unplugin'
+import {
+  type SFCBlock,
+  type SFCScriptCompileOptions,
+  type SFCStyleCompileOptions,
+  type SFCTemplateCompileOptions,
+  // eslint-disable-next-line import/no-duplicates
+} from 'vue/compiler-sfc'
 import { resolveCompiler } from '../core/compiler'
 import { getResolvedScript, typeDepToSFCMap } from '../core/script'
 import { transformMain } from '../core/main'
@@ -10,17 +21,8 @@ import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
 import { getDescriptor, getSrcDescriptor } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
 import { handleHotUpdate, handleTypeDepChange } from './handleHotUpdate'
-import type { UnpluginContext, UnpluginContextMeta } from 'unplugin'
-import type { ViteDevServer } from 'vite'
-/* eslint-disable import/no-duplicates */
+// eslint-disable-next-line import/no-duplicates
 import type * as _compiler from 'vue/compiler-sfc'
-import type {
-  SFCBlock,
-  SFCScriptCompileOptions,
-  SFCStyleCompileOptions,
-  SFCTemplateCompileOptions,
-} from 'vue/compiler-sfc'
-/* eslint-enable import/no-duplicates */
 
 export { parseVueRequest, type VueQuery } from './utils/query'
 

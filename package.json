@@ -70,7 +70,7 @@
     "dev": "tsup --watch",
     "build": "tsup && tsx scripts/postbuild.mts",
     "release": "bumpp",
-    "lint": "eslint . --ext .vue,.ts --max-warnings 0",
+    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs --max-warnings 0 .",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "pnpm run build"
   },
@@ -92,8 +92,7 @@
   "devDependencies": {
     "@jridgewell/gen-mapping": "^0.3.3",
     "@jridgewell/trace-mapping": "^0.3.18",
-    "@sxzz/eslint-config-prettier": "^2.4.6",
-    "@sxzz/eslint-config-vue": "^2.4.6",
+    "@sxzz/eslint-config": "^3.0.0-beta.11",
     "@types/debug": "^4.1.8",
     "@types/node": "^18.16.14",
     "@vitejs/plugin-vue": "4.2.3",
