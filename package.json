@@ -102,6 +102,7 @@
     "eslint": "^8.41.0",
     "eslint-define-config": "^1.20.0",
     "fast-glob": "^3.2.12",
+    "rimraf": "^5.0.1",
     "rollup": "^3.23.0",
     "rollup-plugin-esbuild": "^5.0.0",
     "slash": "^5.1.0",

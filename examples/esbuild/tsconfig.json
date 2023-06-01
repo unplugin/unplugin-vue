@@ -2,7 +2,10 @@
   "include": ["src/**/*", "*"],
   "exclude": ["node_modules"],
   "compilerOptions": {
+    "allowJs": true,
     "module": "esnext",
-    "moduleResolution": "bundler"
+    "target": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": true
   }
 }

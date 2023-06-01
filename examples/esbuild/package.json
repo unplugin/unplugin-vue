@@ -3,13 +3,14 @@
   "type": "module",
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "scripts": {
-    "build": "node build.js",
-    "preview": "serve"
+    "build": "rimraf dist && node build.js",
+    "preview": "serve dist"
   },
   "dependencies": {
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@chialab/esbuild-plugin-html": "^0.17.2",
     "esbuild": "^0.17.19",
     "sass": "^1.62.1",
     "serve": "^14.2.0",

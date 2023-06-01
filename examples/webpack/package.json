@@ -13,7 +13,6 @@
     "@types/webpack": "^5.28.1",
     "cross-env": "^7.0.3",
     "html-webpack-plugin": "^5.5.1",
-    "rimraf": "^5.0.1",
     "serve": "^14.2.0",
     "sucrase": "^3.32.0",
     "unplugin-vue": "workspace:*",

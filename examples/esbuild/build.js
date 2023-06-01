@@ -1,19 +1,26 @@
+// @ts-check
+
 import { build } from 'esbuild'
 import Vue from 'unplugin-vue/esbuild'
+import HtmlPlugin from '@chialab/esbuild-plugin-html'
 
 await build({
-  entryPoints: ['src/main.ts'],
+  entryPoints: ['index.html'],
   bundle: true,
-  outfile: 'dist/main.js',
+  outdir: 'dist',
   format: 'esm',
   define: {
     'process.env.NODE_ENV': JSON.stringify('production'),
   },
+  assetNames: '[name]-[hash]',
+  chunkNames: '[name]-[hash]',
   plugins: [
     Vue({
       style: {
+        // @ts-expect-error
         preprocessLang: 'scss',
       },
     }),
+    HtmlPlugin(),
   ],
 })
