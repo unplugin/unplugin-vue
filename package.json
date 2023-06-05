@@ -92,11 +92,11 @@
   "devDependencies": {
     "@jridgewell/gen-mapping": "^0.3.3",
     "@jridgewell/trace-mapping": "^0.3.18",
-    "@sxzz/eslint-config": "^3.0.0-beta.11",
+    "@sxzz/eslint-config": "^3.0.0-beta",
     "@types/debug": "^4.1.8",
     "@types/node": "^18.16.14",
     "@vitejs/plugin-vue": "4.2.3",
-    "@vitest/ui": "0.31.1",
+    "@vitest/ui": "0.31.4",
     "bumpp": "^9.1.0",
     "esbuild": "0.17.19",
     "eslint": "^8.41.0",
@@ -108,11 +108,11 @@
     "slash": "^5.1.0",
     "source-map": "~0.6.1",
     "tsup": "^6.7.0",
-    "typescript": "^5.0.4",
+    "typescript": "^5.1.3",
     "vite": "^4.0.0",
-    "vitest": "0.31.1",
+    "vitest": "0.31.4",
     "vue": "^3.3.4",
-    "webpack": "^5.83.1"
+    "webpack": "^5.85.0"
   },
   "engines": {
     "node": ">=14.17.0"
