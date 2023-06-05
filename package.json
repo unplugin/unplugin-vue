@@ -3,6 +3,7 @@
   "version": "4.2.0",
   "packageManager": "pnpm@8.6.0",
   "description": "Transform Vue 3 SFC to JavaScript.",
+  "type": "module",
   "keywords": [
     "vue",
     "sfc",
@@ -27,33 +28,33 @@
     "*.d.ts"
   ],
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./vite": {
       "types": "./dist/vite.d.ts",
-      "require": "./dist/vite.js",
-      "import": "./dist/vite.mjs"
+      "import": "./dist/vite.js",
+      "require": "./dist/vite.cjs"
     },
     "./webpack": {
       "types": "./dist/webpack.d.ts",
-      "require": "./dist/webpack.js",
-      "import": "./dist/webpack.mjs"
+      "import": "./dist/webpack.js",
+      "require": "./dist/webpack.cjs"
     },
     "./rollup": {
       "types": "./dist/rollup.d.ts",
-      "require": "./dist/rollup.js",
-      "import": "./dist/rollup.mjs"
+      "import": "./dist/rollup.js",
+      "require": "./dist/rollup.cjs"
     },
     "./esbuild": {
       "types": "./dist/esbuild.d.ts",
-      "require": "./dist/esbuild.js",
-      "import": "./dist/esbuild.mjs"
+      "import": "./dist/esbuild.js",
+      "require": "./dist/esbuild.cjs"
     },
     "./*": "./*"
   },
@@ -70,7 +71,7 @@
     "dev": "tsup --watch",
     "build": "tsup && tsx scripts/postbuild.mts",
     "release": "bumpp",
-    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs --max-warnings 0 .",
+    "lint": "eslint --max-warnings 0 .",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "pnpm run build"
   },
@@ -92,7 +93,7 @@
   "devDependencies": {
     "@jridgewell/gen-mapping": "^0.3.3",
     "@jridgewell/trace-mapping": "^0.3.18",
-    "@sxzz/eslint-config": "3.0.0-beta.12",
+    "@sxzz/eslint-config": "^3.0.0-beta.12",
     "@types/debug": "^4.1.8",
     "@types/node": "^18.16.16",
     "@vitejs/plugin-vue": "4.2.3",
@@ -115,9 +116,6 @@
     "webpack": "^5.85.1"
   },
   "engines": {
-    "node": ">=14.17.0"
-  },
-  "volta": {
-    "node": "16.14.2"
+    "node": ">=16.14.0"
   }
 }

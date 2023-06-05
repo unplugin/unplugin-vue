@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import fg from 'fast-glob'
 
 // fix cjs exports
-const files = await fg('*.js', {
+const files = await fg('*.cjs', {
   ignore: ['index.js', 'chunk-*'],
   absolute: true,
   cwd: resolve(dirname(fileURLToPath(import.meta.url)), '../dist'),
