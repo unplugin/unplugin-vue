@@ -84,6 +84,11 @@ export interface Options {
    * Use custom compiler-sfc instance. Can be used to force a specific version.
    */
   compiler?: typeof _compiler
+
+  /**
+   * @default true
+   */
+  inlineTemplate?: boolean
 }
 
 export type Context = UnpluginContext & UnpluginContextMeta
@@ -100,6 +105,7 @@ export type ResolvedOptions = Options &
       | 'customElement'
       | 'reactivityTransform'
       | 'compiler'
+      | 'inlineTemplate'
     >
   > & {
     /** Vite only */
@@ -123,6 +129,7 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
     compiler: rawOptions.compiler as any, // to be set in buildStart
     devToolsEnabled: process.env.NODE_ENV !== 'production',
     cssDevSourcemap: false,
+    inlineTemplate: rawOptions.inlineTemplate ?? true,
   }
 }
 
