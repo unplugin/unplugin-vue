@@ -10,7 +10,7 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "esbuild": "^0.17.19",
+    "esbuild": "^0.18.4",
     "rollup": "^3.25.1",
     "rollup-plugin-esbuild": "^5.0.0",
     "serve": "^14.2.0",
