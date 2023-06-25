@@ -30,6 +30,9 @@ importers:
       '@sxzz/eslint-config':
         specifier: ^3.1.0
         version: 3.1.0(eslint@8.43.0)(typescript@5.1.3)
+      '@sxzz/prettier-config':
+        specifier: ^1.0.2
+        version: 1.0.2
       '@types/debug':
         specifier: ^4.1.8
         version: 4.1.8
@@ -864,6 +867,10 @@ packages:
       - eslint-import-resolver-webpack
       - supports-color
       - typescript
+    dev: true
+
+  /@sxzz/prettier-config@1.0.2:
+    resolution: {integrity: sha512-ZYZkTmmWwJFtz2/TmIADY8Ez0InNUtYY7J5evu+viNzjDZ4olHMPzGw58gGLbORTN6/8T/TgDZTucmwLbAwGjg==}
     dev: true
 
   /@types/body-parser@1.19.2:
