@@ -11,8 +11,8 @@
   },
   "devDependencies": {
     "@chialab/esbuild-plugin-html": "^0.17.3",
-    "esbuild": "^0.18.4",
-    "sass": "^1.63.4",
+    "esbuild": "^0.18.8",
+    "sass": "^1.63.6",
     "serve": "^14.2.0",
     "unplugin-vue": "workspace:*"
   }

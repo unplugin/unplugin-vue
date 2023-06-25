@@ -93,18 +93,18 @@
   "devDependencies": {
     "@jridgewell/gen-mapping": "^0.3.3",
     "@jridgewell/trace-mapping": "^0.3.18",
-    "@sxzz/eslint-config": "^3.0.0",
+    "@sxzz/eslint-config": "^3.1.0",
     "@types/debug": "^4.1.8",
     "@types/node": "^20.3.1",
     "@vitejs/plugin-vue": "4.2.3",
     "@vitest/ui": "0.32.2",
     "bumpp": "^9.1.1",
-    "esbuild": "0.18.4",
+    "esbuild": "0.18.8",
     "eslint": "^8.43.0",
-    "eslint-define-config": "^1.20.0",
+    "eslint-define-config": "^1.21.0",
     "fast-glob": "^3.2.12",
     "rimraf": "^5.0.1",
-    "rollup": "^3.25.1",
+    "rollup": "^3.25.2",
     "rollup-plugin-esbuild": "^5.0.0",
     "slash": "^5.1.0",
     "source-map": "~0.6.1",
@@ -113,7 +113,7 @@
     "vite": "^4.0.0",
     "vitest": "0.32.2",
     "vue": "^3.3.4",
-    "webpack": "^5.87.0"
+    "webpack": "^5.88.0"
   },
   "engines": {
     "node": ">=16.14.0"
