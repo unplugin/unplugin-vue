@@ -32,27 +32,42 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": {
+        "import": "./dist/index.d.ts",
+        "require": "./dist/index.d.cts"
+      },
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
     "./vite": {
-      "types": "./dist/vite.d.ts",
+      "types": {
+        "import": "./dist/vite.d.ts",
+        "require": "./dist/vite.d.cts"
+      },
       "import": "./dist/vite.js",
       "require": "./dist/vite.cjs"
     },
     "./webpack": {
-      "types": "./dist/webpack.d.ts",
+      "types": {
+        "import": "./dist/webpack.d.ts",
+        "require": "./dist/webpack.d.cts"
+      },
       "import": "./dist/webpack.js",
       "require": "./dist/webpack.cjs"
     },
     "./rollup": {
-      "types": "./dist/rollup.d.ts",
+      "types": {
+        "import": "./dist/rollup.d.ts",
+        "require": "./dist/rollup.d.cts"
+      },
       "import": "./dist/rollup.js",
       "require": "./dist/rollup.cjs"
     },
     "./esbuild": {
-      "types": "./dist/esbuild.d.ts",
+      "types": {
+        "import": "./dist/esbuild.d.ts",
+        "require": "./dist/esbuild.d.cts"
+      },
       "import": "./dist/esbuild.js",
       "require": "./dist/esbuild.cjs"
     },
@@ -87,34 +102,34 @@
   "dependencies": {
     "debug": "^4.3.4",
     "tsx": "^3.12.7",
-    "unplugin": "~1.3.1",
-    "vite": "^4.3.9"
+    "unplugin": "~1.3.2",
+    "vite": "^4.4.2"
   },
   "devDependencies": {
     "@jridgewell/gen-mapping": "^0.3.3",
     "@jridgewell/trace-mapping": "^0.3.18",
     "@sxzz/eslint-config": "^3.1.0",
-    "@sxzz/prettier-config": "^1.0.2",
+    "@sxzz/prettier-config": "^1.0.3",
     "@types/debug": "^4.1.8",
-    "@types/node": "^20.3.1",
+    "@types/node": "^20.4.0",
     "@vitejs/plugin-vue": "4.2.3",
-    "@vitest/ui": "0.32.2",
+    "@vitest/ui": "0.33.0",
     "bumpp": "^9.1.1",
     "esbuild": "0.18.11",
-    "eslint": "^8.43.0",
+    "eslint": "^8.44.0",
     "eslint-define-config": "^1.21.0",
     "fast-glob": "^3.3.0",
     "rimraf": "^5.0.1",
-    "rollup": "^3.26.0",
+    "rollup": "^3.26.2",
     "rollup-plugin-esbuild": "^5.0.0",
     "slash": "^5.1.0",
-    "source-map": "~0.6.1",
-    "tsup": "^7.0.0",
-    "typescript": "^5.1.3",
+    "source-map": "~0.7.4",
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6",
     "vite": "^4.0.0",
-    "vitest": "0.32.2",
+    "vitest": "0.33.0",
     "vue": "^3.3.4",
-    "webpack": "^5.88.0"
+    "webpack": "^5.88.1"
   },
   "engines": {
     "node": ">=16.14.0"
