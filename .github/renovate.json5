@@ -1,17 +1,6 @@
 {
-  extends: ['config:js-lib', 'schedule:weekly', 'group:allNonMajor'],
-  labels: ['dependencies'],
-  pin: false,
-  rangeStrategy: 'bump',
-  node: false,
-  packageRules: [
-    {
-      depTypeList: ['peerDependencies'],
-      enabled: false,
-    },
-  ],
+  extends: ['github>sxzz/renovate-config'],
   ignoreDeps: [
-    'node',
     'source-map', // `source-map:v0.7.0+` needs more investigation
   ],
 }
