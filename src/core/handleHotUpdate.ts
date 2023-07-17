@@ -24,7 +24,7 @@ const directRequestRE = /(?:\?|&)direct\b/
 export async function handleHotUpdate(
   { file, modules, read }: HmrContext,
   options: ResolvedOptions
-): Promise<ModuleNode[] | void> {
+): Promise<ModuleNode[] | undefined> {
   const prevDescriptor = getDescriptor(file, options, false)
   if (!prevDescriptor) {
     // file hasn't been requested yet (e.g. async component)
