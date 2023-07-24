@@ -24,8 +24,8 @@
   },
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "files": [
-    "dist",
-    "*.d.ts"
+    "*.d.ts",
+    "dist"
   ],
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -33,43 +33,43 @@
   "exports": {
     ".": {
       "types": {
-        "import": "./dist/index.d.ts",
-        "require": "./dist/index.d.cts"
+        "require": "./dist/index.d.cts",
+        "import": "./dist/index.d.ts"
       },
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
     },
     "./vite": {
       "types": {
-        "import": "./dist/vite.d.ts",
-        "require": "./dist/vite.d.cts"
+        "require": "./dist/vite.d.cts",
+        "import": "./dist/vite.d.ts"
       },
-      "import": "./dist/vite.js",
-      "require": "./dist/vite.cjs"
+      "require": "./dist/vite.cjs",
+      "import": "./dist/vite.js"
     },
     "./webpack": {
       "types": {
-        "import": "./dist/webpack.d.ts",
-        "require": "./dist/webpack.d.cts"
+        "require": "./dist/webpack.d.cts",
+        "import": "./dist/webpack.d.ts"
       },
-      "import": "./dist/webpack.js",
-      "require": "./dist/webpack.cjs"
+      "require": "./dist/webpack.cjs",
+      "import": "./dist/webpack.js"
     },
     "./rollup": {
       "types": {
-        "import": "./dist/rollup.d.ts",
-        "require": "./dist/rollup.d.cts"
+        "require": "./dist/rollup.d.cts",
+        "import": "./dist/rollup.d.ts"
       },
-      "import": "./dist/rollup.js",
-      "require": "./dist/rollup.cjs"
+      "require": "./dist/rollup.cjs",
+      "import": "./dist/rollup.js"
     },
     "./esbuild": {
       "types": {
-        "import": "./dist/esbuild.d.ts",
-        "require": "./dist/esbuild.d.cts"
+        "require": "./dist/esbuild.d.cts",
+        "import": "./dist/esbuild.d.ts"
       },
-      "import": "./dist/esbuild.js",
-      "require": "./dist/esbuild.cjs"
+      "require": "./dist/esbuild.cjs",
+      "import": "./dist/esbuild.js"
     },
     "./*": "./*"
   },
