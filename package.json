@@ -1,7 +1,7 @@
 {
   "name": "unplugin-vue",
   "version": "4.2.5",
-  "packageManager": "pnpm@8.6.7",
+  "packageManager": "pnpm@8.6.10",
   "description": "Transform Vue 3 SFC to JavaScript.",
   "type": "module",
   "keywords": [
@@ -103,33 +103,33 @@
     "debug": "^4.3.4",
     "tsx": "^3.12.7",
     "unplugin": "~1.4.0",
-    "vite": "^4.4.4"
+    "vite": "^4.4.6"
   },
   "devDependencies": {
     "@jridgewell/gen-mapping": "^0.3.3",
     "@jridgewell/trace-mapping": "^0.3.18",
-    "@sxzz/eslint-config": "^3.2.1",
+    "@sxzz/eslint-config": "^3.2.3",
     "@sxzz/prettier-config": "^1.0.4",
     "@types/debug": "^4.1.8",
-    "@types/node": "^20.4.2",
+    "@types/node": "^20.4.4",
     "@vitejs/plugin-vue": "4.2.3",
     "@vitest/ui": "0.33.0",
     "bumpp": "^9.1.1",
-    "esbuild": "0.18.13",
+    "esbuild": "0.18.16",
     "eslint": "^8.45.0",
     "eslint-define-config": "^1.21.0",
-    "fast-glob": "^3.3.0",
+    "fast-glob": "^3.3.1",
     "rimraf": "^5.0.1",
-    "rollup": "^3.26.2",
+    "rollup": "^3.26.3",
     "rollup-plugin-esbuild": "^5.0.0",
     "slash": "^5.1.0",
     "source-map": "~0.6.1",
     "tsup": "^7.1.0",
     "typescript": "^5.1.6",
-    "vite": "^4.4.4",
+    "vite": "^4.4.6",
     "vitest": "0.33.0",
     "vue": "^3.3.4",
-    "webpack": "^5.88.1"
+    "webpack": "^5.88.2"
   },
   "engines": {
     "node": ">=16.14.0"
