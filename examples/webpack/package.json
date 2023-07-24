@@ -14,9 +14,9 @@
     "cross-env": "^7.0.3",
     "html-webpack-plugin": "^5.5.3",
     "serve": "^14.2.0",
-    "sucrase": "^3.32.0",
+    "sucrase": "^3.34.0",
     "unplugin-vue": "workspace:*",
-    "webpack": "^5.88.1",
+    "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   }
