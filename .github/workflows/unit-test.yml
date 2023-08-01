@@ -17,7 +17,7 @@ jobs:
       - name: Set node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: lts/*
 
       - name: Setup
         run: npm i -g @antfu/ni
@@ -35,7 +35,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node-version: [16, 18]
+        node-version: [16, 18, 20]
       fail-fast: false
 
     runs-on: ${{ matrix.os }}
