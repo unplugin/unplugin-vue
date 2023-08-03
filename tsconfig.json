@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "lib": ["es2019"],
+    "lib": ["es2022"],
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "bundler",
@@ -13,5 +13,5 @@
     "baseUrl": ".",
     "declaration": true
   },
-  "include": ["src", "scripts"]
+  "include": ["src"]
 }
