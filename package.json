@@ -117,7 +117,6 @@
     "bumpp": "^9.1.1",
     "esbuild": "0.18.17",
     "eslint": "^8.46.0",
-    "eslint-define-config": "^1.22.0",
     "fast-glob": "^3.3.1",
     "rimraf": "^5.0.1",
     "rollup": "^3.27.0",
