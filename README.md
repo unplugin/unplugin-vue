@@ -6,9 +6,9 @@ Transform Vue 3 SFC to JavaScript.
 
 ## Features
 
-- ⚡️ Supports Vite, Webpack, Vue CLI, Rollup, esbuild and more, powered by [unplugin](https://github.com/unjs/unplugin).
-- ✨ Supports `<script setup>`
-- 💚 Supports [Reactivity Transform](https://github.com/vuejs/rfcs/discussions/369) (**Will be deprecated soon**)
+- ⚡️ Support Vite, Webpack, Vue CLI, Rollup, esbuild and more, powered by [unplugin](https://github.com/unjs/unplugin).
+- ✨ Support `<script setup>`
+- 💚 Support ~~[Reactivity Transform](https://github.com/vuejs/rfcs/discussions/369)~~ (**deprecated, will be removed in Vue 3.4**)
 
 ## Who is using
 
@@ -32,7 +32,7 @@ Transform Vue 3 SFC to JavaScript.
 
 ## Thanks
 
-Thanks to [Vite](https://github.com/vitejs/vite). This project is inherited from [@vitejs/plugin-vue@4.2.3](https://github.com/vitejs/vite-plugin-vue/tree/plugin-vue@4.2.3/packages/plugin-vue).
+Thanks to [vite-plugin-vue](https://github.com/vitejs/vite-plugin-vue). This project is inherited from [@vitejs/plugin-vue@4.2.3](https://github.com/vitejs/vite-plugin-vue/tree/plugin-vue@4.2.3/packages/plugin-vue).
 
 ## Sponsors
 
