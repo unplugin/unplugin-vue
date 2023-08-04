@@ -40,6 +40,7 @@ export interface Options {
     Pick<
       SFCScriptCompileOptions,
       | 'babelParserPlugins'
+      | 'globalTypeFiles'
       | 'defineModel'
       | 'propsDestructure'
       | 'fs'
