@@ -6,17 +6,16 @@ import {
   type SFCTemplateCompileOptions,
   type SFCTemplateCompileResults,
 } from 'vue/compiler-sfc'
-import { type UnpluginContext } from 'unplugin'
-import { getResolvedScript } from './script'
+import { getResolvedScript, resolveScript } from './script'
 import { createRollupError } from './utils/error'
-import { type ResolvedOptions } from '.'
+import { type Context, type ResolvedOptions } from '.'
 
 // eslint-disable-next-line require-await
 export async function transformTemplateAsModule(
   code: string,
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
-  pluginContext: UnpluginContext,
+  pluginContext: Context,
   ssr: boolean
 ): Promise<{
   code: string
@@ -49,7 +48,7 @@ export function transformTemplateInMain(
   code: string,
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
-  pluginContext: UnpluginContext,
+  pluginContext: Context,
   ssr: boolean
 ): SFCTemplateCompileResults {
   const result = compile(code, descriptor, options, pluginContext, ssr)
@@ -62,15 +61,15 @@ export function transformTemplateInMain(
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function compile(
   code: string,
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
-  pluginContext: UnpluginContext,
+  pluginContext: Context,
   ssr: boolean
 ) {
   const filename = descriptor.filename
+  resolveScript(pluginContext, descriptor, options, ssr)
   const result = options.compiler.compileTemplate({
     ...resolveTemplateCompilerOptions(descriptor, options, ssr)!,
     source: code,

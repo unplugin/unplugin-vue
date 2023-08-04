@@ -1,7 +1,8 @@
 import { type SFCDescriptor, type SFCScriptBlock } from 'vue/compiler-sfc'
+import { type UnpluginContextMeta } from 'unplugin'
 import { resolveTemplateCompilerOptions } from './template'
 import { cache as descriptorCache } from './utils/descriptorCache'
-import { type Context, type ResolvedOptions } from '.'
+import { type ResolvedOptions } from '.'
 
 // ssr and non ssr builds would output different script content
 const clientCache = new WeakMap<SFCDescriptor, SFCScriptBlock | null>()
@@ -50,7 +51,7 @@ export function isUseInlineTemplate(
 export const scriptIdentifier = `_sfc_main`
 
 export function resolveScript(
-  pluginContext: Context,
+  pluginContext: UnpluginContextMeta,
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   ssr: boolean
@@ -104,7 +105,7 @@ export function resolveScript(
 // If the script is js/ts and has no external src, it can be directly placed
 // in the main module. Skip for build
 export function canInlineMain(
-  pluginContext: Context,
+  pluginContext: UnpluginContextMeta,
   descriptor: SFCDescriptor,
   options: ResolvedOptions
 ): boolean {

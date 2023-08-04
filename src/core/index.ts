@@ -292,13 +292,14 @@ export default createUnplugin<Options | undefined, false>(
           return
         }
 
+        const context = Object.assign({}, this, meta)
         if (!query.vue) {
           // main request
           return transformMain(
             code,
             filename,
             options,
-            Object.assign({}, this, meta),
+            context,
             ssr,
             customElementFilter(filename)
           )
@@ -313,7 +314,7 @@ export default createUnplugin<Options | undefined, false>(
               code,
               descriptor,
               options,
-              this,
+              context,
               ssr
             )
           } else if (query.type === 'style') {
