@@ -1,3 +1,7 @@
 import { sxzz } from '@sxzz/eslint-config'
 
-export default sxzz()
+export default sxzz({
+  rules: {
+    'unicorn/filename-case': 'off',
+  },
+})
