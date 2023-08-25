@@ -1,4 +1,5 @@
 import path from 'node:path'
+import fs from 'node:fs'
 import { normalizePath, transformWithEsbuild } from 'vite'
 import { type RawSourceMap } from 'source-map'
 import {
@@ -16,6 +17,7 @@ import { type PluginContext } from 'rollup'
 import { type SFCBlock, type SFCDescriptor } from 'vue/compiler-sfc'
 import {
   createDescriptor,
+  getDescriptor,
   getPrevDescriptor,
   setSrcDescriptor,
 } from './utils/descriptorCache'
@@ -41,9 +43,12 @@ export async function transformMain(
 ) {
   const { devServer, isProduction, devToolsEnabled } = options
 
-  // prev descriptor is only set and used for hmr
   const prevDescriptor = getPrevDescriptor(filename)
   const { descriptor, errors } = createDescriptor(filename, code, options)
+
+  if (fs.existsSync(filename))
+    // set descriptor for HMR if it's not set yet
+    getDescriptor(filename, options, true, true)
 
   if (errors.length > 0) {
     errors.forEach((error) =>
