@@ -10,10 +10,10 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@types/webpack": "^5.28.1",
+    "@types/webpack": "^5.28.2",
     "cross-env": "^7.0.3",
     "html-webpack-plugin": "^5.5.3",
-    "serve": "^14.2.0",
+    "serve": "^14.2.1",
     "sucrase": "^3.34.0",
     "unplugin-vue": "workspace:*",
     "webpack": "^5.88.2",
