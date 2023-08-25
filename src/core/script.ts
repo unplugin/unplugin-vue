@@ -113,7 +113,7 @@ export function canInlineMain(
     return false
   }
   const lang = descriptor.script?.lang || descriptor.scriptSetup?.lang
-  if (!lang) {
+  if (!lang || lang === 'js') {
     return true
   }
   if (
