@@ -18,6 +18,7 @@ import { transformMain } from '../core/main'
 import { transformTemplateAsModule } from '../core/template'
 import { transformStyle } from '../core/style'
 import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
+import { version } from '../../package.json'
 import { getDescriptor, getSrcDescriptor } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
 import { handleHotUpdate, handleTypeDepChange } from './handleHotUpdate'
@@ -137,7 +138,7 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
 
 export default createUnplugin<Options | undefined, false>(
   (rawOptions = {}, meta) => {
-    let options = resolveOptions(rawOptions || {})
+    let options = resolveOptions(rawOptions)
     const { include, exclude, customElement, reactivityTransform } = options
 
     const filter = createFilter(include, exclude)
@@ -154,10 +155,21 @@ export default createUnplugin<Options | undefined, false>(
         ? createFilter(/\.(j|t)sx?$/, /node_modules/)
         : createFilter(reactivityTransform)
 
+    const api = {
+      get options() {
+        return options
+      },
+      set options(value) {
+        options = value
+      },
+      version,
+    }
+
     return {
       name: 'unplugin-vue',
 
       vite: {
+        api,
         handleHotUpdate(ctx) {
           if (options.compiler.invalidateTypeCache) {
             options.compiler.invalidateTypeCache(ctx.file)
