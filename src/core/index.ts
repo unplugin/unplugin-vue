@@ -219,6 +219,10 @@ export default createUnplugin<Options | undefined, false>(
         },
       },
 
+      rollup: {
+        api,
+      },
+
       buildStart() {
         const compiler = (options.compiler =
           options.compiler || resolveCompiler(options.root))
