@@ -14,13 +14,13 @@
     "esbuild"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/sxzz/unplugin-vue#readme",
+  "homepage": "https://github.com/unplugin/unplugin-vue#readme",
   "bugs": {
-    "url": "https://github.com/sxzz/unplugin-vue/issues"
+    "url": "https://github.com/unplugin/unplugin-vue/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sxzz/unplugin-vue.git"
+    "url": "git+https://github.com/unplugin/unplugin-vue.git"
   },
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "files": [
