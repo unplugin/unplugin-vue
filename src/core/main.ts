@@ -1,7 +1,7 @@
 import path from 'node:path'
 import fs from 'node:fs'
 import { normalizePath, transformWithEsbuild } from 'vite'
-import { type RawSourceMap } from 'source-map'
+import { type RawSourceMap } from 'source-map-js'
 import {
   type EncodedSourceMap as GenEncodedSourceMap,
   addMapping,

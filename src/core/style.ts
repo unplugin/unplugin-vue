@@ -2,7 +2,7 @@ import { formatPostcssSourceMap } from 'vite'
 import { type SFCDescriptor } from 'vue/compiler-sfc'
 import { type ExistingRawSourceMap } from 'rollup'
 import { type UnpluginContext } from 'unplugin'
-import { type RawSourceMap } from 'source-map'
+import { type RawSourceMap } from 'source-map-js'
 import { type ResolvedOptions } from '.'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
