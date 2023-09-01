@@ -19,7 +19,7 @@ Transform Vue 3 SFC to JavaScript.
 
 - [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) - For Vite and Vue 3.
 - [@vitejs/plugin-vue2](https://github.com/vitejs/vite-plugin-vue2) - For Vite and Vue 2.
-- [unplugin-vue2](https://github.com/so1ve/unplugin-vue2) - For Vite 2.7+ and Vite, esbuild, Rollup, Webpack or more.
+- [unplugin-vue2](https://github.com/unplugin/unplugin-vue2) - For Vite 2.7+ and Vite, esbuild, Rollup, Webpack or more.
 - [vue-loader](https://github.com/vuejs/vue-loader) - For Webpack.
 - [esbuild-plugin-vue](https://github.com/egoist/esbuild-plugin-vue) - For esbuild and Vue 3.
 - [esbuild-vue](https://github.com/apeschar/esbuild-vue) - For esbuild and Vue 2.
