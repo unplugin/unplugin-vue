@@ -1,8 +1,8 @@
 {
-  "include": ["src/**/*", "*"],
-  "exclude": ["node_modules"],
   "compilerOptions": {
     "module": "esnext",
     "moduleResolution": "bundler"
-  }
+  },
+  "include": ["src/**/*", "*"],
+  "exclude": ["node_modules"]
 }

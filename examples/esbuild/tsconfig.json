@@ -1,11 +1,11 @@
 {
-  "include": ["src/**/*", "*"],
-  "exclude": ["node_modules"],
   "compilerOptions": {
-    "allowJs": true,
-    "module": "esnext",
     "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "bundler",
+    "allowJs": true,
     "noEmit": true
-  }
+  },
+  "include": ["src/**/*", "*"],
+  "exclude": ["node_modules"]
 }
