@@ -59,7 +59,17 @@ export interface Options {
       | 'transformAssetUrls'
     >
   >
-  style?: Partial<Pick<SFCStyleCompileOptions, 'trim'>>
+  style?: Partial<
+    Pick<
+      SFCStyleCompileOptions,
+      | 'trim'
+      | 'preprocessLang'
+      | 'preprocessOptions'
+      | 'preprocessCustomRequire'
+      | 'postcssOptions'
+      | 'postcssPlugins'
+    >
+  >
 
   /**
    * Transform Vue SFCs into custom elements.
