@@ -1,7 +1,6 @@
 import path from 'node:path'
 import fs from 'node:fs'
 import { normalizePath, transformWithEsbuild } from 'vite'
-import { type RawSourceMap } from 'source-map-js'
 import {
   type EncodedSourceMap as GenEncodedSourceMap,
   addMapping,
@@ -13,8 +12,6 @@ import {
   TraceMap,
   eachMapping,
 } from '@jridgewell/trace-mapping'
-import { type PluginContext } from 'rollup'
-import { type SFCBlock, type SFCDescriptor } from 'vue/compiler-sfc'
 import {
   createDescriptor,
   getDescriptor,
@@ -31,7 +28,10 @@ import { transformTemplateInMain } from './template'
 import { isEqualBlock, isOnlyTemplateChanged } from './handleHotUpdate'
 import { createRollupError } from './utils/error'
 import { EXPORT_HELPER_ID } from './helper'
-import { type Context, type ResolvedOptions } from '.'
+import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
+import type { PluginContext } from 'rollup'
+import type { RawSourceMap } from 'source-map-js'
+import type { Context, ResolvedOptions } from '.'
 
 export async function transformMain(
   code: string,

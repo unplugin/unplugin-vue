@@ -1,8 +1,8 @@
-import { type SFCDescriptor, type SFCScriptBlock } from 'vue/compiler-sfc'
-import { type UnpluginContextMeta } from 'unplugin'
 import { resolveTemplateCompilerOptions } from './template'
 import { cache as descriptorCache } from './utils/descriptorCache'
-import { type ResolvedOptions } from '.'
+import type { SFCDescriptor, SFCScriptBlock } from 'vue/compiler-sfc'
+import type { UnpluginContextMeta } from 'unplugin'
+import type { ResolvedOptions } from '.'
 
 // ssr and non ssr builds would output different script content
 const clientCache = new WeakMap<SFCDescriptor, SFCScriptBlock | null>()

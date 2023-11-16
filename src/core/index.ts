@@ -5,13 +5,6 @@ import {
   type UnpluginContextMeta,
   createUnplugin,
 } from 'unplugin'
-import {
-  type SFCBlock,
-  type SFCScriptCompileOptions,
-  type SFCStyleCompileOptions,
-  type SFCTemplateCompileOptions,
-  // eslint-disable-next-line import/no-duplicates
-} from 'vue/compiler-sfc'
 import { computed, shallowRef } from 'vue'
 import { resolveCompiler } from '../core/compiler'
 import { getResolvedScript, typeDepToSFCMap } from '../core/script'
@@ -27,6 +20,13 @@ import {
 } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
 import { handleHotUpdate, handleTypeDepChange } from './handleHotUpdate'
+import type {
+  SFCBlock,
+  SFCScriptCompileOptions,
+  SFCStyleCompileOptions,
+  SFCTemplateCompileOptions,
+  // eslint-disable-next-line import/no-duplicates
+} from 'vue/compiler-sfc'
 // eslint-disable-next-line import/no-duplicates
 import type * as _compiler from 'vue/compiler-sfc'
 
