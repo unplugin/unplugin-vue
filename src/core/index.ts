@@ -141,7 +141,7 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
   }
 }
 
-export default createUnplugin<Options | undefined, false>(
+export const plugin = createUnplugin<Options | undefined, false>(
   (rawOptions = {}, meta) => {
     const options = shallowRef(resolveOptions(rawOptions))
 

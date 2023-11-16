@@ -32,44 +32,28 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": {
-        "require": "./dist/index.d.cts",
-        "import": "./dist/index.d.ts"
-      },
       "require": "./dist/index.cjs",
       "import": "./dist/index.js"
     },
     "./vite": {
-      "types": {
-        "require": "./dist/vite.d.cts",
-        "import": "./dist/vite.d.ts"
-      },
       "require": "./dist/vite.cjs",
       "import": "./dist/vite.js"
     },
     "./webpack": {
-      "types": {
-        "require": "./dist/webpack.d.cts",
-        "import": "./dist/webpack.d.ts"
-      },
       "require": "./dist/webpack.cjs",
       "import": "./dist/webpack.js"
     },
     "./rollup": {
-      "types": {
-        "require": "./dist/rollup.d.cts",
-        "import": "./dist/rollup.d.ts"
-      },
       "require": "./dist/rollup.cjs",
       "import": "./dist/rollup.js"
     },
     "./esbuild": {
-      "types": {
-        "require": "./dist/esbuild.d.cts",
-        "import": "./dist/esbuild.d.ts"
-      },
       "require": "./dist/esbuild.cjs",
       "import": "./dist/esbuild.js"
+    },
+    "./api": {
+      "require": "./dist/api.cjs",
+      "import": "./dist/api.js"
     },
     "./*": "./*"
   },
