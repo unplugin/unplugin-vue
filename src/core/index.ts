@@ -12,6 +12,7 @@ import {
   type SFCTemplateCompileOptions,
   // eslint-disable-next-line import/no-duplicates
 } from 'vue/compiler-sfc'
+import { computed, shallowRef } from 'vue'
 import { resolveCompiler } from '../core/compiler'
 import { getResolvedScript, typeDepToSFCMap } from '../core/script'
 import { transformMain } from '../core/main'
@@ -142,29 +143,32 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
 
 export default createUnplugin<Options | undefined, false>(
   (rawOptions = {}, meta) => {
-    let options = resolveOptions(rawOptions)
-    const { include, exclude, customElement, reactivityTransform } = options
+    const options = shallowRef(resolveOptions(rawOptions))
 
-    const filter = createFilter(include, exclude)
+    const filter = computed(() =>
+      createFilter(options.value.include, options.value.exclude)
+    )
 
-    const customElementFilter =
-      typeof customElement === 'boolean'
-        ? () => customElement
-        : createFilter(customElement)
+    const customElementFilter = computed(() =>
+      typeof options.value.customElement === 'boolean'
+        ? () => options.value.customElement as boolean
+        : createFilter(options.value.customElement)
+    )
 
-    const refTransformFilter =
-      reactivityTransform === false
+    const refTransformFilter = computed(() =>
+      options.value.reactivityTransform === false
         ? () => false
-        : reactivityTransform === true
+        : options.value.reactivityTransform === true
         ? createFilter(/\.(j|t)sx?$/, /node_modules/)
-        : createFilter(reactivityTransform)
+        : createFilter(options.value.reactivityTransform)
+    )
 
     const api = {
       get options() {
-        return options
+        return options.value
       },
       set options(value) {
-        options = value
+        options.value = value
       },
       version,
     }
@@ -175,14 +179,14 @@ export default createUnplugin<Options | undefined, false>(
       vite: {
         api,
         handleHotUpdate(ctx) {
-          if (options.compiler.invalidateTypeCache) {
-            options.compiler.invalidateTypeCache(ctx.file)
+          if (options.value.compiler.invalidateTypeCache) {
+            options.value.compiler.invalidateTypeCache(ctx.file)
           }
           if (typeDepToSFCMap.has(ctx.file)) {
             return handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
           }
-          if (filter(ctx.file)) {
-            return handleHotUpdate(ctx, options)
+          if (filter.value(ctx.file)) {
+            return handleHotUpdate(ctx, options.value)
           }
         },
 
@@ -205,21 +209,21 @@ export default createUnplugin<Options | undefined, false>(
         },
 
         configResolved(config) {
-          options = {
-            ...options,
+          options.value = {
+            ...options.value,
             root: config.root,
             sourceMap:
               config.command === 'build' ? !!config.build.sourcemap : true,
             cssDevSourcemap: config.css?.devSourcemap ?? false,
             isProduction: config.isProduction,
-            compiler: options.compiler || resolveCompiler(config.root),
+            compiler: options.value.compiler || resolveCompiler(config.root),
             devToolsEnabled:
               !!config.define!.__VUE_PROD_DEVTOOLS__ || !config.isProduction,
           }
         },
 
         configureServer(server) {
-          options.devServer = server
+          options.value.devServer = server
         },
       },
 
@@ -228,11 +232,11 @@ export default createUnplugin<Options | undefined, false>(
       },
 
       buildStart() {
-        const compiler = (options.compiler =
-          options.compiler || resolveCompiler(options.root))
+        const compiler = (options.value.compiler =
+          options.value.compiler || resolveCompiler(options.value.root))
 
         if (compiler.invalidateTypeCache) {
-          options.devServer?.watcher.on('unlink', (file) => {
+          options.value.devServer?.watcher.on('unlink', (file) => {
             compiler.invalidateTypeCache(file)
           })
         }
@@ -257,7 +261,7 @@ export default createUnplugin<Options | undefined, false>(
       },
 
       load(id) {
-        const ssr = options.ssr
+        const ssr = options.value.ssr
         if (id === EXPORT_HELPER_ID) {
           return helperCode
         }
@@ -268,7 +272,7 @@ export default createUnplugin<Options | undefined, false>(
           if (query.src) {
             return fs.readFileSync(filename, 'utf-8')
           }
-          const descriptor = getDescriptor(filename, options)!
+          const descriptor = getDescriptor(filename, options.value)!
           let block: SFCBlock | null | undefined
           if (query.type === 'script') {
             // handle <script> + <script setup> merge via compileScript()
@@ -294,18 +298,22 @@ export default createUnplugin<Options | undefined, false>(
         if (query.raw || query.url) return false
 
         // Not Vue SFC and refTransform
-        if (!filter(filename) && !query.vue && !refTransformFilter(filename))
+        if (
+          !filter.value(filename) &&
+          !query.vue &&
+          !refTransformFilter.value(filename)
+        )
           return false
 
         return true
       },
 
       transform(code, id) {
-        const ssr = options.ssr
+        const ssr = options.value.ssr
         const { filename, query } = parseVueRequest(id)
-        if (!filter(filename) && !query.vue) {
-          if (options.compiler.shouldTransformRef(code)) {
-            return options.compiler.transformRef(code, {
+        if (!filter.value(filename) && !query.vue) {
+          if (options.value.compiler.shouldTransformRef(code)) {
+            return options.value.compiler.transformRef(code, {
               filename,
               sourceMap: true,
             })
@@ -319,23 +327,23 @@ export default createUnplugin<Options | undefined, false>(
           return transformMain(
             code,
             filename,
-            options,
+            options.value,
             context,
             ssr,
-            customElementFilter(filename)
+            customElementFilter.value(filename)
           )
         } else {
           // sub block request
           const descriptor = query.src
             ? getSrcDescriptor(filename, query) ||
               getTempSrcDescriptor(filename, query)
-            : getDescriptor(filename, options)!
+            : getDescriptor(filename, options.value)!
 
           if (query.type === 'template') {
             return transformTemplateAsModule(
               code,
               descriptor,
-              options,
+              options.value,
               context,
               ssr
             )
@@ -344,7 +352,7 @@ export default createUnplugin<Options | undefined, false>(
               code,
               descriptor,
               Number(query.index || 0),
-              options,
+              options.value,
               this,
               filename
             )
