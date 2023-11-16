@@ -3,7 +3,7 @@ import { type RollupError } from 'rollup'
 
 export function createRollupError(
   id: string,
-  error: CompilerError | SyntaxError
+  error: CompilerError | SyntaxError,
 ): RollupError {
   const { message, name, stack } = error
   const rollupError: RollupError = {

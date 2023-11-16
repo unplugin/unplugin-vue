@@ -71,7 +71,7 @@ describe('transform', () => {
             const unpluginCode = await getCode(filepath, unplugin)
 
             expect(
-              unpluginCode.replaceAll(JSON.stringify(filepath), "'#FILE#'")
+              unpluginCode.replaceAll(JSON.stringify(filepath), "'#FILE#'"),
             ).toMatchSnapshot()
             expect(viteCode).toBe(unpluginCode)
           })

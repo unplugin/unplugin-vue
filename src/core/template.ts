@@ -16,7 +16,7 @@ export async function transformTemplateAsModule(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   pluginContext: Context,
-  ssr: boolean
+  ssr: boolean,
 ): Promise<{
   code: string
   map: any
@@ -49,14 +49,14 @@ export function transformTemplateInMain(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   pluginContext: Context,
-  ssr: boolean
+  ssr: boolean,
 ): SFCTemplateCompileResults {
   const result = compile(code, descriptor, options, pluginContext, ssr)
   return {
     ...result,
     code: result.code.replace(
       /\nexport (function|const) (render|ssrRender)/,
-      '\n$1 _sfc_$2'
+      '\n$1 _sfc_$2',
     ),
   }
 }
@@ -66,7 +66,7 @@ export function compile(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   pluginContext: Context,
-  ssr: boolean
+  ssr: boolean,
 ) {
   const filename = descriptor.filename
   resolveScript(pluginContext, descriptor, options, ssr)
@@ -80,8 +80,8 @@ export function compile(
       pluginContext.error(
         typeof error === 'string'
           ? { id: filename, message: error }
-          : createRollupError(filename, error)
-      )
+          : createRollupError(filename, error),
+      ),
     )
   }
 
@@ -90,7 +90,7 @@ export function compile(
       pluginContext.warn({
         id: filename,
         message: tip,
-      })
+      }),
     )
   }
 
@@ -100,7 +100,7 @@ export function compile(
 export function resolveTemplateCompilerOptions(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
-  ssr: boolean
+  ssr: boolean,
 ): Omit<SFCTemplateCompileOptions, 'source'> | undefined {
   const block = descriptor.template
   if (!block) {

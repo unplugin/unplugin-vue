@@ -7,16 +7,16 @@
     "preview": "serve dist"
   },
   "dependencies": {
-    "vue": "^3.3.4"
+    "vue": "^3.3.8"
   },
   "devDependencies": {
-    "@types/webpack": "^5.28.2",
+    "@types/webpack": "^5.28.5",
     "cross-env": "^7.0.3",
     "html-webpack-plugin": "^5.5.3",
     "serve": "^14.2.1",
     "sucrase": "^3.34.0",
     "unplugin-vue": "workspace:*",
-    "webpack": "^5.88.2",
+    "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   }

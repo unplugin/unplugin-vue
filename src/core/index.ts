@@ -146,21 +146,21 @@ export default createUnplugin<Options | undefined, false>(
     const options = shallowRef(resolveOptions(rawOptions))
 
     const filter = computed(() =>
-      createFilter(options.value.include, options.value.exclude)
+      createFilter(options.value.include, options.value.exclude),
     )
 
     const customElementFilter = computed(() =>
       typeof options.value.customElement === 'boolean'
         ? () => options.value.customElement as boolean
-        : createFilter(options.value.customElement)
+        : createFilter(options.value.customElement),
     )
 
     const refTransformFilter = computed(() =>
       options.value.reactivityTransform === false
         ? () => false
         : options.value.reactivityTransform === true
-        ? createFilter(/\.(j|t)sx?$/, /node_modules/)
-        : createFilter(options.value.reactivityTransform)
+          ? createFilter(/\.(j|t)sx?$/, /node_modules/)
+          : createFilter(options.value.reactivityTransform),
     )
 
     const api = {
@@ -330,7 +330,7 @@ export default createUnplugin<Options | undefined, false>(
             options.value,
             context,
             ssr,
-            customElementFilter.value(filename)
+            customElementFilter.value(filename),
           )
         } else {
           // sub block request
@@ -345,7 +345,7 @@ export default createUnplugin<Options | undefined, false>(
               descriptor,
               options.value,
               context,
-              ssr
+              ssr,
             )
           } else if (query.type === 'style') {
             return transformStyle(
@@ -354,11 +354,11 @@ export default createUnplugin<Options | undefined, false>(
               Number(query.index || 0),
               options.value,
               this,
-              filename
+              filename,
             )
           }
         }
       },
     }
-  }
+  },
 )

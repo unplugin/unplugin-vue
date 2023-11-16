@@ -20,7 +20,7 @@ export function invalidateScript(filename: string): void {
 
 export function getResolvedScript(
   descriptor: SFCDescriptor,
-  ssr: boolean
+  ssr: boolean,
 ): SFCScriptBlock | null | undefined {
   return (ssr ? ssrCache : clientCache).get(descriptor)
 }
@@ -28,7 +28,7 @@ export function getResolvedScript(
 export function setResolvedScript(
   descriptor: SFCDescriptor,
   script: SFCScriptBlock,
-  ssr: boolean
+  ssr: boolean,
 ): void {
   ;(ssr ? ssrCache : clientCache).set(descriptor, script)
 }
@@ -38,7 +38,7 @@ export function setResolvedScript(
 // inlined template cannot be individually hot updated.
 export function isUseInlineTemplate(
   options: ResolvedOptions,
-  descriptor: SFCDescriptor
+  descriptor: SFCDescriptor,
 ): boolean {
   return (
     options.inlineTemplate &&
@@ -54,7 +54,7 @@ export function resolveScript(
   pluginContext: UnpluginContextMeta,
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
-  ssr: boolean
+  ssr: boolean,
 ): SFCScriptBlock | null {
   if (!descriptor.script && !descriptor.scriptSetup) {
     return null
@@ -107,7 +107,7 @@ export function resolveScript(
 export function canInlineMain(
   pluginContext: UnpluginContextMeta,
   descriptor: SFCDescriptor,
-  options: ResolvedOptions
+  options: ResolvedOptions,
 ): boolean {
   if (descriptor.script?.src || descriptor.scriptSetup?.src) {
     return false

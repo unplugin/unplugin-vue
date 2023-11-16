@@ -23,7 +23,7 @@ export function createDescriptor(
   filename: string,
   source: string,
   { root, isProduction, sourceMap, compiler }: ResolvedOptions,
-  hmr = false
+  hmr = false,
 ): SFCParseResult {
   const { descriptor, errors } = compiler.parse(source, {
     filename,
@@ -56,7 +56,7 @@ export function getDescriptor(
   options: ResolvedOptions,
   createIfNotFound = true,
   hmr = false,
-  code?: string
+  code?: string,
 ): SFCDescriptor | undefined {
   const _cache = hmr ? hmrCache : cache
   if (_cache.has(filename)) {
@@ -67,7 +67,7 @@ export function getDescriptor(
       filename,
       code ?? fs.readFileSync(filename, 'utf-8'),
       options,
-      hmr
+      hmr,
     )
     if (errors.length > 0 && !hmr) {
       throw errors[0]
@@ -78,7 +78,7 @@ export function getDescriptor(
 
 export function getSrcDescriptor(
   filename: string,
-  query: VueQuery
+  query: VueQuery,
 ): SFCDescriptor {
   if (query.scoped) {
     return cache.get(`${filename}?src=${query.src}`)!
@@ -88,7 +88,7 @@ export function getSrcDescriptor(
 
 export function getTempSrcDescriptor(
   filename: string,
-  query: VueQuery
+  query: VueQuery,
 ): SFCDescriptor {
   // this is only used for pre-compiled <style src> with scoped flag
   return {
@@ -109,7 +109,7 @@ export function getTempSrcDescriptor(
 export function setSrcDescriptor(
   filename: string,
   entry: SFCDescriptor,
-  scoped?: boolean
+  scoped?: boolean,
 ): void {
   if (scoped) {
     // if multiple Vue files use the same src file, they will be overwritten

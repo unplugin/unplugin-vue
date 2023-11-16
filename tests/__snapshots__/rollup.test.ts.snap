@@ -22,7 +22,7 @@ const _hoisted_2 = [
 ];
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock(\\"div\\", null, _hoisted_2))
+  return (openBlock(), createElementBlock(\\"div\\", null, [..._hoisted_2]))
 }
 var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file','#FILE#']]);
 

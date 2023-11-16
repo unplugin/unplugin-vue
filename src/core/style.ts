@@ -12,7 +12,7 @@ export async function transformStyle(
   index: number,
   options: ResolvedOptions,
   context: UnpluginContext,
-  filename: string
+  filename: string,
 ) {
   const block = descriptor.styles[index]
   // vite already handles pre-processors and CSS module so this is only
@@ -56,7 +56,7 @@ export async function transformStyle(
         // version property of result.map is declared as string
         // but actually it is a number
         result.map as Omit<RawSourceMap, 'version'> as ExistingRawSourceMap,
-        filename
+        filename,
       )
     : (null as any)
 
