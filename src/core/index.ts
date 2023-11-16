@@ -19,7 +19,11 @@ import { transformTemplateAsModule } from '../core/template'
 import { transformStyle } from '../core/style'
 import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
 import { version } from '../../package.json'
-import { getDescriptor, getSrcDescriptor } from './utils/descriptorCache'
+import {
+  getDescriptor,
+  getSrcDescriptor,
+  getTempSrcDescriptor,
+} from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
 import { handleHotUpdate, handleTypeDepChange } from './handleHotUpdate'
 // eslint-disable-next-line import/no-duplicates
@@ -323,7 +327,8 @@ export default createUnplugin<Options | undefined, false>(
         } else {
           // sub block request
           const descriptor = query.src
-            ? getSrcDescriptor(filename, query)!
+            ? getSrcDescriptor(filename, query) ||
+              getTempSrcDescriptor(filename, query)
             : getDescriptor(filename, options)!
 
           if (query.type === 'template') {
@@ -338,7 +343,7 @@ export default createUnplugin<Options | undefined, false>(
             return transformStyle(
               code,
               descriptor,
-              Number(query.index),
+              Number(query.index || 0),
               options,
               this,
               filename
