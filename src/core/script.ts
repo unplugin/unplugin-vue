@@ -118,7 +118,8 @@ export function canInlineMain(
   }
   if (
     lang === 'ts' &&
-    (options.devServer || pluginContext.framework === 'webpack')
+    (options.devServer ||
+      ['esbuild', 'rspack'].includes(pluginContext.framework))
   ) {
     return true
   }
