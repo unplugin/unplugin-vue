@@ -124,18 +124,19 @@ export type ResolvedOptions = Options &
 
 function resolveOptions(rawOptions: Options): ResolvedOptions {
   const root = rawOptions.root ?? process.cwd()
+  const isProduction =
+    rawOptions.isProduction ?? process.env.NODE_ENV === 'production'
   return {
     ...rawOptions,
     include: rawOptions.include ?? /\.vue$/,
-    isProduction:
-      rawOptions.isProduction ?? process.env.NODE_ENV === 'production',
+    isProduction,
     ssr: rawOptions.ssr ?? false,
     sourceMap: rawOptions.sourceMap ?? true,
     root,
     customElement: rawOptions.customElement ?? /\.ce\.vue$/,
     reactivityTransform: rawOptions.reactivityTransform ?? false,
     compiler: rawOptions.compiler as any, // to be set in buildStart
-    devToolsEnabled: process.env.NODE_ENV !== 'production',
+    devToolsEnabled: !isProduction,
     cssDevSourcemap: false,
     inlineTemplate: rawOptions.inlineTemplate ?? true,
   }
