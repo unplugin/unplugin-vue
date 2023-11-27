@@ -31,7 +31,6 @@ describe('transform', () => {
                 Vue({
                   root,
                   compiler: vueCompiler,
-                  reactivityTransform: true,
                   isProduction,
                 }),
               ],

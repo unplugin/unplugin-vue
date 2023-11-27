@@ -64,12 +64,12 @@ exports[`transform > fixtures > tests/fixtures/reactivity-transform.ts > isProdu
 "//reactivity-transform.js
 import { ref } from 'vue';
 
-const ref1 = ref(\\"hello\\");
-const ref2 = ref(\\"hello\\");
-console.log(ref1.value);
-console.log(ref2.value);
+const ref1 = $ref(\\"hello\\");
+const ref2 = $(ref(\\"hello\\"));
 console.log(ref1);
 console.log(ref2);
+console.log($$(ref1));
+console.log($$(ref2));
 "
 `;
 
@@ -77,12 +77,12 @@ exports[`transform > fixtures > tests/fixtures/reactivity-transform.ts > isProdu
 "//reactivity-transform.js
 import { ref } from 'vue';
 
-const ref1 = ref(\\"hello\\");
-const ref2 = ref(\\"hello\\");
-console.log(ref1.value);
-console.log(ref2.value);
+const ref1 = $ref(\\"hello\\");
+const ref2 = $(ref(\\"hello\\"));
 console.log(ref1);
 console.log(ref2);
+console.log($$(ref1));
+console.log($$(ref2));
 "
 `;
 
@@ -102,13 +102,13 @@ const _sfc_main = {
   __name: 'reactivity-transform',
   setup(__props) {
 
-const ref1 = ref('hello');
-const ref2 = (ref('hello'));
+const ref1 = $ref('hello');
+const ref2 = $(ref('hello'));
 
-console.log(ref1.value);
-console.log(ref2.value);
-console.log((ref1));
-console.log((ref2));
+console.log(ref1);
+console.log(ref2);
+console.log($$(ref1));
+console.log($$(ref2));
 
 return () => {}
 }
@@ -128,13 +128,13 @@ const _sfc_main = {
   __name: 'reactivity-transform',
   setup(__props) {
 
-const ref1 = ref('hello');
-const ref2 = (ref('hello'));
+const ref1 = $ref('hello');
+const ref2 = $(ref('hello'));
 
-console.log(ref1.value);
-console.log(ref2.value);
-console.log((ref1));
-console.log((ref2));
+console.log(ref1);
+console.log(ref2);
+console.log($$(ref1));
+console.log($$(ref2));
 
 return () => {}
 }
@@ -222,9 +222,9 @@ const str = \\"bar\\";
 var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
   __name: \\"script-setup-ts\\",
   props: {
-    foo: { default: \\"123\\" },
-    bar: { default: 123 },
-    baz: { type: Boolean, default: true }
+    foo: {},
+    bar: {},
+    baz: { type: Boolean }
   },
   setup(__props, { expose: __expose }) {
     __expose({
@@ -268,9 +268,9 @@ const str = \\"bar\\";
 var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
   __name: \\"script-setup-ts\\",
   props: {
-    foo: { default: \\"123\\" },
-    bar: { default: 123 },
-    baz: { type: Boolean, default: true }
+    foo: {},
+    bar: {},
+    baz: { type: Boolean }
   },
   setup(__props, { expose: __expose }) {
     __expose({

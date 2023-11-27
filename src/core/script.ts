@@ -73,7 +73,6 @@ export function resolveScript(
     id: descriptor.id,
     isProd: options.isProduction,
     inlineTemplate: isUseInlineTemplate(options, descriptor),
-    reactivityTransform: options.reactivityTransform !== false,
     templateOptions: resolveTemplateCompilerOptions(descriptor, options, ssr),
     sourceMap: options.sourceMap,
     genDefaultAs: canInlineMain(pluginContext, descriptor, options)

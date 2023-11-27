@@ -50,7 +50,6 @@ export interface Options {
       | 'defineModel'
       | 'propsDestructure'
       | 'fs'
-      | 'reactivityTransform'
       | 'hoistStatic'
     >
   >
@@ -76,19 +75,6 @@ export interface Options {
   customElement?: boolean | string | RegExp | (string | RegExp)[]
 
   /**
-   * Enable Vue reactivity transform (experimental).
-   * https://vuejs.org/guide/extras/reactivity-transform.html
-   * - `true`: transform will be enabled for all vue,js(x),ts(x) files except
-   *           those inside node_modules
-   * - `string | RegExp`: apply to vue + only matched files (will include
-   *                      node_modules, so specify directories if necessary)
-   * - `false`: disable in all cases
-   *
-   * @default false
-   */
-  reactivityTransform?: boolean | string | RegExp | (string | RegExp)[]
-
-  /**
    * Use custom compiler-sfc instance. Can be used to force a specific version.
    */
   compiler?: typeof _compiler
@@ -111,7 +97,6 @@ export type ResolvedOptions = Options &
       | 'sourceMap'
       | 'root'
       | 'customElement'
-      | 'reactivityTransform'
       | 'compiler'
       | 'inlineTemplate'
     >
@@ -134,7 +119,6 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
     sourceMap: rawOptions.sourceMap ?? true,
     root,
     customElement: rawOptions.customElement ?? /\.ce\.vue$/,
-    reactivityTransform: rawOptions.reactivityTransform ?? false,
     compiler: rawOptions.compiler as any, // to be set in buildStart
     devToolsEnabled: !isProduction,
     cssDevSourcemap: false,
@@ -154,14 +138,6 @@ export const plugin = createUnplugin<Options | undefined, false>(
       typeof options.value.customElement === 'boolean'
         ? () => options.value.customElement as boolean
         : createFilter(options.value.customElement),
-    )
-
-    const refTransformFilter = computed(() =>
-      options.value.reactivityTransform === false
-        ? () => false
-        : options.value.reactivityTransform === true
-          ? createFilter(/\.(j|t)sx?$/, /node_modules/)
-          : createFilter(options.value.reactivityTransform),
     )
 
     const api = {
@@ -299,14 +275,7 @@ export const plugin = createUnplugin<Options | undefined, false>(
       transformInclude(id) {
         const { filename, query } = parseVueRequest(id)
         if (query.raw || query.url) return false
-
-        // Not Vue SFC and refTransform
-        if (
-          !filter.value(filename) &&
-          !query.vue &&
-          !refTransformFilter.value(filename)
-        )
-          return false
+        if (!filter.value(filename) && !query.vue) return false
 
         return true
       },
@@ -314,17 +283,8 @@ export const plugin = createUnplugin<Options | undefined, false>(
       transform(code, id) {
         const ssr = options.value.ssr
         const { filename, query } = parseVueRequest(id)
-        if (!filter.value(filename) && !query.vue) {
-          if (options.value.compiler.shouldTransformRef(code)) {
-            return options.value.compiler.transformRef(code, {
-              filename,
-              sourceMap: true,
-            })
-          }
-          return
-        }
-
         const context = Object.assign({}, this, meta)
+
         if (!query.vue) {
           // main request
           return transformMain(

@@ -63,7 +63,6 @@ describe('transform', () => {
             const { unplugin, vite } = createPlugins({
               root,
               compiler: vueCompiler,
-              reactivityTransform: true,
               isProduction,
             })
 
