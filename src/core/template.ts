@@ -167,6 +167,9 @@ export function resolveTemplateCompilerOptions(
   return {
     ...options.template,
     id,
+    // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
+    // @ts-ignore TODO remove ignore when dep is updated to 3.4
+    ast: descriptor.template?.ast,
     filename,
     scoped: hasScoped,
     slotted: descriptor.slotted,
