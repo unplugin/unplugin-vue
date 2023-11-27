@@ -7,6 +7,16 @@ const config: Configuration = {
   entry: {
     app: './src/main.ts',
   },
+  module: {
+    rules: [
+      {
+        enforce: 'post',
+        test: /\.m?ts$/,
+        exclude: /(node_modules)/,
+        use: { loader: 'swc-loader' },
+      },
+    ],
+  },
   plugins: [
     Vue(),
     new HtmlWebpackPlugin({
