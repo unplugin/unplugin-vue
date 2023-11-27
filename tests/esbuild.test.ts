@@ -1,5 +1,4 @@
 import { resolve } from 'node:path'
-import { TextDecoder } from 'node:util'
 import { describe, expect, it } from 'vitest'
 import { build } from 'esbuild'
 import glob from 'fast-glob'
@@ -36,10 +35,10 @@ describe('transform', () => {
               ],
               write: false,
             })
-            const codes = result.outputFiles
-              .map((file) => new TextDecoder('utf-8').decode(file.contents))
-              .join('\n')
-            expect(codes.replaceAll(filepath, '#FILE#')).toMatchSnapshot()
+            const codes = result.outputFiles.map((file) => file.text).join('\n')
+            expect(
+              codes.replaceAll(JSON.stringify(filepath), '"#FILE#"'),
+            ).toMatchSnapshot()
           })
         }
       })
