@@ -85,7 +85,6 @@
   },
   "dependencies": {
     "debug": "^4.3.4",
-    "tsx": "^4.5.0",
     "unplugin": "~1.5.1",
     "vite": "^5.0.2"
   },
