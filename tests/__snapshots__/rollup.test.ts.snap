@@ -16,13 +16,13 @@ console.log('Hello world');
 
 const _sfc_main = {};
 
-const _hoisted_1 = /*#__PURE__*/createElementVNode(\\"h1\\", null, \\"Hello World\\", -1 /* HOISTED */);
+const _hoisted_1 = /*#__PURE__*/createElementVNode("h1", null, "Hello World", -1 /* HOISTED */);
 const _hoisted_2 = [
   _hoisted_1
 ];
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock(\\"div\\", null, [..._hoisted_2]))
+  return (openBlock(), createElementBlock("div", null, [..._hoisted_2]))
 }
 var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file','#FILE#']]);
 
@@ -46,13 +46,13 @@ console.log('Hello world');
 
 const _sfc_main = {};
 
-const _hoisted_1 = /*#__PURE__*/createElementVNode(\\"h1\\", null, \\"Hello World\\", -1 /* HOISTED */);
+const _hoisted_1 = /*#__PURE__*/createElementVNode("h1", null, "Hello World", -1 /* HOISTED */);
 const _hoisted_2 = [
   _hoisted_1
 ];
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock(\\"div\\", null, _hoisted_2))
+  return (openBlock(), createElementBlock("div", null, _hoisted_2))
 }
 var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]]);
 
@@ -64,8 +64,8 @@ exports[`transform > fixtures > tests/fixtures/reactivity-transform.ts > isProdu
 "//reactivity-transform.js
 import { ref } from 'vue';
 
-const ref1 = $ref(\\"hello\\");
-const ref2 = $(ref(\\"hello\\"));
+const ref1 = $ref("hello");
+const ref2 = $(ref("hello"));
 console.log(ref1);
 console.log(ref2);
 console.log($$(ref1));
@@ -77,8 +77,8 @@ exports[`transform > fixtures > tests/fixtures/reactivity-transform.ts > isProdu
 "//reactivity-transform.js
 import { ref } from 'vue';
 
-const ref1 = $ref(\\"hello\\");
-const ref2 = $(ref(\\"hello\\"));
+const ref1 = $ref("hello");
+const ref2 = $(ref("hello"));
 console.log(ref1);
 console.log(ref2);
 console.log($$(ref1));
@@ -157,7 +157,7 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-const _hoisted_1 = /*#__PURE__*/createElementVNode(\\"h1\\", null, \\"Hello World\\", -1 /* HOISTED */);
+const _hoisted_1 = /*#__PURE__*/createElementVNode("h1", null, "Hello World", -1 /* HOISTED */);
 const _hoisted_2 = [
   _hoisted_1
 ];
@@ -168,7 +168,7 @@ const _sfc_main = {
 
 
 return (_ctx, _cache) => {
-  return (openBlock(), createElementBlock(\\"div\\", null, _hoisted_2))
+  return (openBlock(), createElementBlock("div", null, _hoisted_2))
 }
 }
 
@@ -183,7 +183,7 @@ exports[`transform > fixtures > tests/fixtures/script-setup.vue > isProduction i
 "//script-setup.js
 import { openBlock, createElementBlock, createElementVNode } from 'vue';
 
-const _hoisted_1 = /*#__PURE__*/createElementVNode(\\"h1\\", null, \\"Hello World\\", -1 /* HOISTED */);
+const _hoisted_1 = /*#__PURE__*/createElementVNode("h1", null, "Hello World", -1 /* HOISTED */);
 const _hoisted_2 = [
   _hoisted_1
 ];
@@ -194,7 +194,7 @@ const _sfc_main = {
 
 
 return (_ctx, _cache) => {
-  return (openBlock(), createElementBlock(\\"div\\", null, _hoisted_2))
+  return (openBlock(), createElementBlock("div", null, _hoisted_2))
 }
 }
 
@@ -209,18 +209,18 @@ exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProductio
 import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
 
 const _hoisted_1 = /* @__PURE__ */ createElementVNode(
-  \\"h1\\",
+  "h1",
   null,
-  \\"Hello World\\",
+  "Hello World",
   -1
   /* HOISTED */
 );
 const _hoisted_2 = [
   _hoisted_1
 ];
-const str = \\"bar\\";
+const str = "bar";
 var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
-  __name: \\"script-setup-ts\\",
+  __name: "script-setup-ts",
   props: {
     foo: {},
     bar: {},
@@ -231,7 +231,7 @@ var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ *
       str
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(\\"div\\", null, _hoisted_2);
+      return openBlock(), createElementBlock("div", null, _hoisted_2);
     };
   }
 });
@@ -244,7 +244,7 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-var scriptSetupTs = /* @__PURE__ */ _export_sfc(script_setup_ts_vue_vue_type_script_setup_true_lang_default, [[\\"__file\\", '#FILE#']]);
+var scriptSetupTs = /* @__PURE__ */ _export_sfc(script_setup_ts_vue_vue_type_script_setup_true_lang_default, [["__file", '#FILE#']]);
 
 export { scriptSetupTs as default };
 "
@@ -255,18 +255,18 @@ exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProductio
 import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
 
 const _hoisted_1 = /* @__PURE__ */ createElementVNode(
-  \\"h1\\",
+  "h1",
   null,
-  \\"Hello World\\",
+  "Hello World",
   -1
   /* HOISTED */
 );
 const _hoisted_2 = [
   _hoisted_1
 ];
-const str = \\"bar\\";
+const str = "bar";
 var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
-  __name: \\"script-setup-ts\\",
+  __name: "script-setup-ts",
   props: {
     foo: {},
     bar: {},
@@ -277,7 +277,7 @@ var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ *
       str
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(\\"div\\", null, _hoisted_2);
+      return openBlock(), createElementBlock("div", null, _hoisted_2);
     };
   }
 });
@@ -297,17 +297,17 @@ var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
 });
 
 const _hoisted_1 = /* @__PURE__ */ createElementVNode(
-  \\"h1\\",
+  "h1",
   null,
-  \\"Hello World\\",
+  "Hello World",
   -1
   /* HOISTED */
 );
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock(\\"div\\", null, [
+  return openBlock(), createElementBlock("div", null, [
     _hoisted_1,
     createElementVNode(
-      \\"h2\\",
+      "h2",
       null,
       toDisplayString(_ctx.msg),
       1
@@ -341,17 +341,17 @@ var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
 });
 
 const _hoisted_1 = /* @__PURE__ */ createElementVNode(
-  \\"h1\\",
+  "h1",
   null,
-  \\"Hello World\\",
+  "Hello World",
   -1
   /* HOISTED */
 );
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock(\\"div\\", null, [
+  return openBlock(), createElementBlock("div", null, [
     _hoisted_1,
     createElementVNode(
-      \\"h2\\",
+      "h2",
       null,
       toDisplayString(_ctx.msg),
       1
@@ -414,7 +414,7 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-var typescript = /* @__PURE__ */ _export_sfc(typescript_vue_vue_type_script_lang_default, [[\\"__file\\", '#FILE#']]);
+var typescript = /* @__PURE__ */ _export_sfc(typescript_vue_vue_type_script_lang_default, [["__file", '#FILE#']]);
 
 export { typescript as default };
 "
