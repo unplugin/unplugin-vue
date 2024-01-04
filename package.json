@@ -95,7 +95,7 @@
     "@sxzz/prettier-config": "^2.0.0",
     "@types/debug": "^4.1.12",
     "@types/node": "^20.10.0",
-    "@vitejs/plugin-vue": "4.5.0",
+    "@vitejs/plugin-vue": "5.0.2",
     "@vitest/ui": "1.0.4",
     "bumpp": "^9.2.0",
     "esbuild": "0.19.8",

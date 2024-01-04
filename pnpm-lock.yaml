@@ -37,8 +37,8 @@ importers:
         specifier: ^20.10.0
         version: 20.10.0
       '@vitejs/plugin-vue':
-        specifier: 4.5.0
-        version: 4.5.0(vite@5.0.2)(vue@3.3.9)
+        specifier: 5.0.2
+        version: 5.0.2(vite@5.0.2)(vue@3.3.9)
       '@vitest/ui':
         specifier: 1.0.4
         version: 1.0.4(vitest@1.0.4)
@@ -1535,11 +1535,11 @@ packages:
       - typescript
     dev: true
 
-  /@vitejs/plugin-vue@4.5.0(vite@5.0.2)(vue@3.3.9):
-    resolution: {integrity: sha512-a2WSpP8X8HTEww/U00bU4mX1QpLINNuz/2KMNpLsdu3BzOpak3AGI1CJYBTXcc4SPhaD0eNRUp7IyQK405L5dQ==}
-    engines: {node: ^14.18.0 || >=16.0.0}
+  /@vitejs/plugin-vue@5.0.2(vite@5.0.2)(vue@3.3.9):
+    resolution: {integrity: sha512-kEjJHrLb5ePBvjD0SPZwJlw1QTRcjjCA9sB5VyfonoXVBxTS7TMnqL6EkLt1Eu61RDeiuZ/WN9Hf6PxXhPI2uA==}
+    engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
-      vite: ^4.0.0 || ^5.0.0
+      vite: ^5.0.0
       vue: ^3.2.25
     dependencies:
       vite: 5.0.2(@types/node@20.10.0)
