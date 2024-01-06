@@ -7,11 +7,11 @@
     "preview": "serve"
   },
   "dependencies": {
-    "vue": "^3.3.8"
+    "vue": "^3.4.5"
   },
   "devDependencies": {
-    "esbuild": "^0.19.5",
-    "rollup": "^4.4.1",
+    "esbuild": "^0.19.11",
+    "rollup": "^4.9.4",
     "rollup-plugin-esbuild": "^6.1.0",
     "serve": "^14.2.1",
     "unplugin-vue": "workspace:*"
