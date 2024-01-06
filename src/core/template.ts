@@ -191,9 +191,9 @@ export function resolveTemplateCompilerOptions(
   return {
     ...options.template,
     id,
-    // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
-    // @ts-ignore TODO remove ignore when dep is updated to 3.4
-    ast: descriptor.template?.ast,
+    ast: canReuseAST(options.compiler.version)
+      ? descriptor.template?.ast
+      : undefined,
     filename,
     scoped: hasScoped,
     slotted: descriptor.slotted,
@@ -212,4 +212,18 @@ export function resolveTemplateCompilerOptions(
       sourceMap: options.sourceMap,
     },
   }
+}
+
+/**
+ * Versions before 3.4.3 have issues when the user has passed additional
+ * template parse options e.g. `isCustomElement`.
+ */
+function canReuseAST(version: string | undefined) {
+  if (version) {
+    const [, minor, patch] = version.split('.').map(Number)
+    if (minor >= 4 && patch >= 3) {
+      return true
+    }
+  }
+  return false
 }
