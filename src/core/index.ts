@@ -162,7 +162,11 @@ export const plugin = createUnplugin<Options | undefined, false>(
             return handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
           }
           if (filter.value(ctx.file)) {
-            return handleHotUpdate(ctx, options.value)
+            return handleHotUpdate(
+              ctx,
+              options.value,
+              customElementFilter.value(ctx.file),
+            )
           }
         },
 
@@ -308,6 +312,7 @@ export const plugin = createUnplugin<Options | undefined, false>(
               options.value,
               context,
               ssr,
+              customElementFilter.value(filename),
             )
           } else if (query.type === 'style') {
             return transformStyle(
