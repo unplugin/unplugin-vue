@@ -47,7 +47,6 @@ export interface Options {
       SFCScriptCompileOptions,
       | 'babelParserPlugins'
       | 'globalTypeFiles'
-      | 'defineModel'
       | 'propsDestructure'
       | 'fs'
       | 'hoistStatic'
