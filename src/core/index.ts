@@ -179,6 +179,8 @@ export const plugin = createUnplugin<Options | undefined, false>(
               __VUE_OPTIONS_API__: config.define?.__VUE_OPTIONS_API__ ?? true,
               __VUE_PROD_DEVTOOLS__:
                 config.define?.__VUE_PROD_DEVTOOLS__ ?? false,
+              __VUE_PROD_HYDRATION_MISMATCH_DETAILS__:
+                config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ ?? false,
             },
             ssr: {
               // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
