@@ -69,7 +69,7 @@ export function compile(
   ssr: boolean,
 ) {
   const filename = descriptor.filename
-  resolveScript(pluginContext, descriptor, options, ssr)
+  resolveScript(pluginContext.framework, descriptor, options, ssr)
   const result = options.compiler.compileTemplate({
     ...resolveTemplateCompilerOptions(descriptor, options, ssr)!,
     source: code,

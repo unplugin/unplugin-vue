@@ -89,6 +89,7 @@
     "vite": "^5.0.11"
   },
   "devDependencies": {
+    "@babel/types": "^7.23.6",
     "@jridgewell/gen-mapping": "^0.3.3",
     "@jridgewell/trace-mapping": "^0.3.20",
     "@sxzz/eslint-config": "^3.7.6",

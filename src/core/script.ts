@@ -51,7 +51,7 @@ export function isUseInlineTemplate(
 export const scriptIdentifier = `_sfc_main`
 
 export function resolveScript(
-  pluginContext: UnpluginContextMeta,
+  framework: UnpluginContextMeta['framework'],
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   ssr: boolean,
@@ -74,7 +74,7 @@ export function resolveScript(
     inlineTemplate: isUseInlineTemplate(options, descriptor),
     templateOptions: resolveTemplateCompilerOptions(descriptor, options, ssr),
     sourceMap: options.sourceMap,
-    genDefaultAs: canInlineMain(pluginContext, descriptor, options)
+    genDefaultAs: canInlineMain(framework, descriptor, options)
       ? scriptIdentifier
       : undefined,
   })
@@ -103,7 +103,7 @@ export function resolveScript(
 // If the script is js/ts and has no external src, it can be directly placed
 // in the main module. Skip for build
 export function canInlineMain(
-  pluginContext: UnpluginContextMeta,
+  framework: UnpluginContextMeta['framework'],
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
 ): boolean {
@@ -116,8 +116,7 @@ export function canInlineMain(
   }
   if (
     lang === 'ts' &&
-    (options.devServer ||
-      ['esbuild', 'rspack'].includes(pluginContext.framework))
+    (options.devServer || ['esbuild', 'rspack'].includes(framework))
   ) {
     return true
   }

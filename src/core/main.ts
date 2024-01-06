@@ -333,11 +333,16 @@ async function genScriptCode(
   let scriptCode = `const ${scriptIdentifier} = {}`
   let map: RawSourceMap | undefined
 
-  const script = resolveScript(pluginContext, descriptor, options, ssr)
+  const script = resolveScript(
+    pluginContext.framework,
+    descriptor,
+    options,
+    ssr,
+  )
   if (script) {
     // If the script is js/ts and has no external src, it can be directly placed
     // in the main module.
-    if (canInlineMain(pluginContext, descriptor, options)) {
+    if (canInlineMain(pluginContext.framework, descriptor, options)) {
       if (!options.compiler.version) {
         // if compiler-sfc exposes no version, it's < 3.3 and doesn't support
         // genDefaultAs option.
