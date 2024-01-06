@@ -7,11 +7,13 @@ Transform Vue 3 SFC to JavaScript.
 ## Features
 
 - ⚡️ Support Vite, Webpack, Vue CLI, Rollup, esbuild and more, powered by [unplugin](https://github.com/unjs/unplugin).
-- ✨ Support `<script setup>`
-- 💚 Support ~~[Reactivity Transform](https://github.com/vuejs/rfcs/discussions/369)~~ (**deprecated, will be removed in Vue 3.4**)
+- ✨ Support `<script setup>` and macros.
+- 🔥 Hot module replacement (HMR) support for Vite.
+- 🔄 Sync code from [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) periodically.
 
 ## Who is using
 
+- [Vue Macros](https://github.com/vue-macros/vue-macros) - Explore and extend more macros and syntax sugar to Vue.
 - [vue-components-lib-seed](https://github.com/zouhangwithsweet/vue-components-lib-seed) - A vue3.0 components library template.
 - [Element Plus icon](https://github.com/element-plus/element-plus-icons)
 
