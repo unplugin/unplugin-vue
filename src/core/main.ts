@@ -26,7 +26,7 @@ import {
 } from './script'
 import { transformTemplateInMain } from './template'
 import { isEqualBlock, isOnlyTemplateChanged } from './handleHotUpdate'
-import { createRollupError } from './utils/error'
+import { createError } from './utils/error'
 import { EXPORT_HELPER_ID } from './helper'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 import type { PluginContext } from 'rollup'
@@ -64,9 +64,7 @@ export async function transformMain(
   }
 
   if (errors.length > 0) {
-    errors.forEach((error) =>
-      pluginContext.error(createRollupError(filename, error)),
-    )
+    errors.forEach((error) => pluginContext.error(createError(filename, error)))
     return null
   }
 

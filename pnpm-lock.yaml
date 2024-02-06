@@ -12,8 +12,8 @@ importers:
         specifier: ^4.3.4
         version: 4.3.4
       unplugin:
-        specifier: ~1.7.0
-        version: 1.7.0
+        specifier: ~1.7.1
+        version: 1.7.1
       vite:
         specifier: ^5.0.12
         version: 5.0.12(@types/node@20.11.16)
@@ -5736,8 +5736,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /unplugin@1.7.0:
-    resolution: {integrity: sha512-KW3wwZUi4z4bR3kmmBIqZB9IdASgu0S+2YWFFDuiz29GKvOxkct5ZDmVdXL6pYV+ZBv1fsbCaGethXOITMyQvw==}
+  /unplugin@1.7.1:
+    resolution: {integrity: sha512-JqzORDAPxxs8ErLV4x+LL7bk5pk3YlcWqpSNsIkAZj972KzFZLClc/ekppahKkOczGkwIG6ElFgdOgOlK4tXZw==}
     dependencies:
       acorn: 8.11.3
       chokidar: 3.5.3

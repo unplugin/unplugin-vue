@@ -1,7 +1,7 @@
 import path from 'node:path'
 import slash from 'slash'
 import { getResolvedScript, resolveScript } from './script'
-import { createRollupError } from './utils/error'
+import { createError } from './utils/error'
 import type {
   CompilerOptions,
   SFCDescriptor,
@@ -100,11 +100,7 @@ export function compile(
 
   if (result.errors.length > 0) {
     result.errors.forEach((error) =>
-      pluginContext.error(
-        typeof error === 'string'
-          ? { id: filename, message: error }
-          : createRollupError(filename, error),
-      ),
+      pluginContext.error(createError(filename, error)),
     )
   }
 
