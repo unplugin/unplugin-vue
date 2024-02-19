@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { build } from 'esbuild'
