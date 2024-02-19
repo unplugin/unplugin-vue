@@ -7,12 +7,12 @@
     "preview": "serve dist"
   },
   "dependencies": {
-    "vue": "^3.4.15"
+    "vue": "^3.4.19"
   },
   "devDependencies": {
     "@chialab/esbuild-plugin-html": "^0.18.0",
-    "esbuild": "^0.20.0",
-    "sass": "^1.70.0",
+    "esbuild": "^0.20.1",
+    "sass": "^1.71.0",
     "serve": "^14.2.1",
     "unplugin-vue": "workspace:*"
   }
