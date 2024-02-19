@@ -1,4 +1,4 @@
-import unplugin from '.'
+import { plugin } from './core'
 import type {} from 'webpack'
 
-export default unplugin.webpack
+export default plugin.webpack

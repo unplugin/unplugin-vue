@@ -1,3 +1,3 @@
-import unplugin from '.'
+import { plugin } from './core'
 
-export default unplugin.vite
+export default plugin.vite
