@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { rollup } from 'rollup'
@@ -6,7 +7,7 @@ import ViteVue from '@vitejs/plugin-vue'
 import * as vueCompiler from 'vue/compiler-sfc'
 import esbuild from 'rollup-plugin-esbuild'
 import Vue from '../src/rollup'
-import type { Options } from '../src'
+import type { Options } from '../src/api'
 
 async function getCode(file: string, plugin: any) {
   const bundle = await rollup({
