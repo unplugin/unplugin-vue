@@ -6,7 +6,7 @@ import {
   type UnpluginContextMeta,
   createUnplugin,
 } from 'unplugin'
-import { computed, shallowRef } from 'vue'
+import { computed, shallowRef } from '@vue/reactivity'
 import { resolveCompiler } from '../core/compiler'
 import { getResolvedScript, typeDepToSFCMap } from '../core/script'
 import { transformMain } from '../core/main'
