@@ -75,13 +75,7 @@
     "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {
-    "vite": "^5.0.0",
     "vue": "^3.2.25"
-  },
-  "peerDependenciesMeta": {
-    "vite": {
-      "optional": true
-    }
   },
   "dependencies": {
     "@vue/reactivity": "^3.4.21",
