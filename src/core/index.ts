@@ -190,7 +190,6 @@ export const plugin = createUnplugin<Options | undefined, false>(
                 config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ ?? false,
             },
             ssr: {
-              // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
               // @ts-ignore -- config.legacy.buildSsrCjsExternalHeuristics will be removed in Vite 5
               external: config.legacy?.buildSsrCjsExternalHeuristics
                 ? ['vue', '@vue/server-renderer']
