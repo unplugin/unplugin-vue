@@ -54,6 +54,7 @@ export interface Options {
       | 'genDefaultAs'
       | 'customElement'
       | 'defineModel'
+      | 'propsDestructure'
     >
   > & {
     /**
@@ -97,11 +98,7 @@ export interface Options {
   >
 
   /**
-   * Transform Vue SFCs into custom elements.
-   * - `true`: all `*.vue` imports are converted into custom elements
-   * - `string | RegExp`: matched files are converted into custom elements
-   *
-   * @default /\.ce\.vue$/
+   * @deprecated moved to `features.customElement`.
    */
   customElement?: boolean | string | RegExp | (string | RegExp)[]
 
@@ -114,11 +111,32 @@ export interface Options {
    * @default true
    */
   inlineTemplate?: boolean
+
+  features?: {
+    optionsAPI?: boolean
+    prodDevtools?: boolean
+    prodHydrationMismatchDetails?: boolean
+    /**
+     * Enable reactive destructure for `defineProps`.
+     * - Available in Vue 3.4 and later.
+     * - Defaults to true in Vue 3.5+
+     * - Defaults to false in Vue 3.4 (**experimental**)
+     */
+    propsDestructure?: boolean
+    /**
+     * Transform Vue SFCs into custom elements.
+     * - `true`: all `*.vue` imports are converted into custom elements
+     * - `string | RegExp`: matched files are converted into custom elements
+     *
+     * @default /\.ce\.vue$/
+     */
+    customElement?: boolean | string | RegExp | (string | RegExp)[]
+  }
 }
 
 export type Context = UnpluginContext & UnpluginContextMeta
 
-export type ResolvedOptions = Options &
+export type ResolvedOptions = Omit<Options, 'customElement'> &
   Required<
     Pick<
       Options,
@@ -127,7 +145,6 @@ export type ResolvedOptions = Options &
       | 'ssr'
       | 'sourceMap'
       | 'root'
-      | 'customElement'
       | 'compiler'
       | 'inlineTemplate'
     >
@@ -136,6 +153,7 @@ export type ResolvedOptions = Options &
     devServer?: ViteDevServer
     devToolsEnabled?: boolean
     cssDevSourcemap: boolean
+    features: NonNullable<Options['features']>
   }
 
 function resolveOptions(rawOptions: Options): ResolvedOptions {
@@ -149,11 +167,20 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
     ssr: rawOptions.ssr ?? false,
     sourceMap: rawOptions.sourceMap ?? true,
     root,
-    customElement: rawOptions.customElement ?? /\.ce\.vue$/,
     compiler: rawOptions.compiler as any, // to be set in buildStart
     devToolsEnabled: !isProduction,
     cssDevSourcemap: false,
     inlineTemplate: rawOptions.inlineTemplate ?? true,
+    features: {
+      optionsAPI: true,
+      prodDevtools: false,
+      prodHydrationMismatchDetails: false,
+      propsDestructure: false,
+      ...rawOptions.features,
+      customElement:
+        (rawOptions.features?.customElement || rawOptions.customElement) ??
+        /\.ce\.vue$/,
+    },
   }
 }
 
@@ -165,11 +192,12 @@ export const plugin = createUnplugin<Options | undefined, false>(
       createFilter(options.value.include, options.value.exclude),
     )
 
-    const customElementFilter = computed(() =>
-      typeof options.value.customElement === 'boolean'
-        ? () => options.value.customElement as boolean
-        : createFilter(options.value.customElement),
-    )
+    const customElementFilter = computed(() => {
+      const customElement = options.value.features.customElement
+      return typeof customElement === 'boolean'
+        ? () => customElement as boolean
+        : createFilter(customElement)
+    })
 
     const api = {
       get options() {
@@ -208,11 +236,18 @@ export const plugin = createUnplugin<Options | undefined, false>(
               dedupe: config.build?.ssr ? [] : ['vue'],
             },
             define: {
-              __VUE_OPTIONS_API__: config.define?.__VUE_OPTIONS_API__ ?? true,
+              __VUE_OPTIONS_API__:
+                (options.value.features.optionsAPI ||
+                  config.define?.__VUE_OPTIONS_API__) ??
+                true,
               __VUE_PROD_DEVTOOLS__:
-                config.define?.__VUE_PROD_DEVTOOLS__ ?? false,
+                (options.value.features.prodDevtools ||
+                  config.define?.__VUE_PROD_DEVTOOLS__) ??
+                false,
               __VUE_PROD_HYDRATION_MISMATCH_DETAILS__:
-                config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ ?? false,
+                (options.value.features.prodHydrationMismatchDetails ||
+                  config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__) ??
+                false,
             },
             ssr: {
               // @ts-ignore -- config.legacy.buildSsrCjsExternalHeuristics will be removed in Vite 5
@@ -232,8 +267,11 @@ export const plugin = createUnplugin<Options | undefined, false>(
             cssDevSourcemap: config.css?.devSourcemap ?? false,
             isProduction: config.isProduction,
             compiler: options.value.compiler || resolveCompiler(config.root),
-            devToolsEnabled:
-              !!config.define!.__VUE_PROD_DEVTOOLS__ || !config.isProduction,
+            devToolsEnabled: !!(
+              options.value.features.prodDevtools ||
+              config.define!.__VUE_PROD_DEVTOOLS__ ||
+              !config.isProduction
+            ),
           }
         },
 
