@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
-import slash from 'slash'
+import { normalizePath } from 'vite'
 import type { ResolvedOptions, VueQuery } from '..'
 import type { CompilerError, SFCDescriptor } from 'vue/compiler-sfc'
 
@@ -33,7 +33,7 @@ export function createDescriptor(
 
   // ensure the path is normalized in a way that is consistent inside
   // project (relative to root) and on different systems.
-  const normalizedPath = slash(path.normalize(path.relative(root, filename)))
+  const normalizedPath = normalizePath(path.relative(root, filename))
   descriptor.id = getHash(normalizedPath + (isProduction ? source : ''))
   ;(hmr ? hmrCache : cache).set(filename, descriptor)
   return { descriptor, errors }
