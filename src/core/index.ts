@@ -11,7 +11,11 @@ import { version } from '../../package.json'
 import { resolveCompiler } from '../core/compiler'
 import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
 import { transformMain } from '../core/main'
-import { getResolvedScript, typeDepToSFCMap } from '../core/script'
+import {
+  clearScriptCache,
+  getResolvedScript,
+  typeDepToSFCMap,
+} from '../core/script'
 import { transformStyle } from '../core/style'
 import { transformTemplateAsModule } from '../core/template'
 import { handleHotUpdate, handleTypeDepChange } from './handleHotUpdate'
@@ -396,6 +400,10 @@ export const plugin = createUnplugin<Options | undefined, false>(
             )
           }
         }
+      },
+
+      buildEnd() {
+        clearScriptCache()
       },
     }
   },

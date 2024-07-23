@@ -5,8 +5,8 @@ import type { UnpluginContextMeta } from 'unplugin'
 import type { SFCDescriptor, SFCScriptBlock } from 'vue/compiler-sfc'
 
 // ssr and non ssr builds would output different script content
-const clientCache = new WeakMap<SFCDescriptor, SFCScriptBlock | null>()
-const ssrCache = new WeakMap<SFCDescriptor, SFCScriptBlock | null>()
+let clientCache = new WeakMap<SFCDescriptor, SFCScriptBlock | null>()
+let ssrCache = new WeakMap<SFCDescriptor, SFCScriptBlock | null>()
 
 export const typeDepToSFCMap = new Map<string, Set<string>>()
 
@@ -31,6 +31,11 @@ export function setResolvedScript(
   ssr: boolean,
 ): void {
   ;(ssr ? ssrCache : clientCache).set(descriptor, script)
+}
+
+export function clearScriptCache(): void {
+  clientCache = new WeakMap()
+  ssrCache = new WeakMap()
 }
 
 // Check if we can use compile template as inlined render function
