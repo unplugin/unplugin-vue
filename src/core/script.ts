@@ -37,12 +37,13 @@ export function setResolvedScript(
 // inside <script setup>. This can only be done for build because
 // inlined template cannot be individually hot updated.
 export function isUseInlineTemplate(
-  options: ResolvedOptions,
   descriptor: SFCDescriptor,
+  options: ResolvedOptions,
 ): boolean {
   return (
     options.inlineTemplate &&
     !options.devServer &&
+    !options.devToolsEnabled &&
     !!descriptor.scriptSetup &&
     !descriptor.template?.src
   )
@@ -72,7 +73,7 @@ export function resolveScript(
     ...options.script,
     id: descriptor.id,
     isProd: options.isProduction,
-    inlineTemplate: isUseInlineTemplate(options, descriptor),
+    inlineTemplate: isUseInlineTemplate(descriptor, options),
     templateOptions: resolveTemplateCompilerOptions(descriptor, options, ssr),
     sourceMap: options.sourceMap,
     genDefaultAs: canInlineMain(framework, descriptor, options)
