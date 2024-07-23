@@ -1,23 +1,19 @@
-import path from 'node:path'
 import fs from 'node:fs'
-import { normalizePath, transformWithEsbuild } from 'vite'
+import path from 'node:path'
 import {
-  type EncodedSourceMap as GenEncodedSourceMap,
   addMapping,
   fromMap,
   toEncodedMap,
+  type EncodedSourceMap as GenEncodedSourceMap,
 } from '@jridgewell/gen-mapping'
 import {
-  type EncodedSourceMap as TraceEncodedSourceMap,
-  TraceMap,
   eachMapping,
+  TraceMap,
+  type EncodedSourceMap as TraceEncodedSourceMap,
 } from '@jridgewell/trace-mapping'
-import {
-  createDescriptor,
-  getDescriptor,
-  getPrevDescriptor,
-  setSrcDescriptor,
-} from './utils/descriptorCache'
+import { normalizePath, transformWithEsbuild } from 'vite'
+import { isEqualBlock, isOnlyTemplateChanged } from './handleHotUpdate'
+import { EXPORT_HELPER_ID } from './helper'
 import {
   canInlineMain,
   isUseInlineTemplate,
@@ -25,13 +21,17 @@ import {
   scriptIdentifier,
 } from './script'
 import { transformTemplateInMain } from './template'
-import { isEqualBlock, isOnlyTemplateChanged } from './handleHotUpdate'
+import {
+  createDescriptor,
+  getDescriptor,
+  getPrevDescriptor,
+  setSrcDescriptor,
+} from './utils/descriptorCache'
 import { createError } from './utils/error'
-import { EXPORT_HELPER_ID } from './helper'
-import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
+import type { Context, ResolvedOptions } from '.'
 import type { PluginContext } from 'rollup'
 import type { RawSourceMap } from 'source-map-js'
-import type { Context, ResolvedOptions } from '.'
+import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 
 export async function transformMain(
   code: string,

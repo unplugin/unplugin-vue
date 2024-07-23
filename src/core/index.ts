@@ -1,26 +1,26 @@
-import process from 'node:process'
 import fs from 'node:fs'
-import { type ViteDevServer, createFilter, normalizePath } from 'vite'
+import process from 'node:process'
+import { computed, shallowRef } from '@vue/reactivity'
 import {
+  createUnplugin,
   type UnpluginContext,
   type UnpluginContextMeta,
-  createUnplugin,
 } from 'unplugin'
-import { computed, shallowRef } from '@vue/reactivity'
-import { resolveCompiler } from '../core/compiler'
-import { getResolvedScript, typeDepToSFCMap } from '../core/script'
-import { transformMain } from '../core/main'
-import { transformTemplateAsModule } from '../core/template'
-import { transformStyle } from '../core/style'
-import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
+import { createFilter, normalizePath, type ViteDevServer } from 'vite'
 import { version } from '../../package.json'
+import { resolveCompiler } from '../core/compiler'
+import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
+import { transformMain } from '../core/main'
+import { getResolvedScript, typeDepToSFCMap } from '../core/script'
+import { transformStyle } from '../core/style'
+import { transformTemplateAsModule } from '../core/template'
+import { handleHotUpdate, handleTypeDepChange } from './handleHotUpdate'
 import {
   getDescriptor,
   getSrcDescriptor,
   getTempSrcDescriptor,
 } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
-import { handleHotUpdate, handleTypeDepChange } from './handleHotUpdate'
 import type {
   SFCBlock,
   SFCScriptCompileOptions,

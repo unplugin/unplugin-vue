@@ -2,13 +2,13 @@ import path from 'node:path'
 import slash from 'slash'
 import { getResolvedScript, resolveScript } from './script'
 import { createError } from './utils/error'
+import type { Context, ResolvedOptions } from '.'
 import type {
   CompilerOptions,
   SFCDescriptor,
   SFCTemplateCompileOptions,
   SFCTemplateCompileResults,
 } from 'vue/compiler-sfc'
-import type { Context, ResolvedOptions } from '.'
 
 // eslint-disable-next-line require-await
 export async function transformTemplateAsModule(

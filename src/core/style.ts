@@ -1,9 +1,9 @@
 import { formatPostcssSourceMap } from 'vite'
-import type { SFCDescriptor } from 'vue/compiler-sfc'
-import type { ExistingRawSourceMap } from 'rollup'
-import type { UnpluginContext } from 'unplugin'
-import type { RawSourceMap } from 'source-map-js'
 import type { ResolvedOptions } from '.'
+import type { ExistingRawSourceMap } from 'rollup'
+import type { RawSourceMap } from 'source-map-js'
+import type { UnpluginContext } from 'unplugin'
+import type { SFCDescriptor } from 'vue/compiler-sfc'
 
 export async function transformStyle(
   code: string,
