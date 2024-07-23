@@ -288,6 +288,14 @@ export const plugin = createUnplugin<Options | undefined, false>(
         api,
       },
 
+      rolldown: {
+        api,
+        options(opt) {
+          opt.moduleTypes ||= {}
+          opt.moduleTypes.vue ||= 'js'
+        },
+      },
+
       buildStart() {
         const compiler = (options.value.compiler =
           options.value.compiler || resolveCompiler(options.value.root))

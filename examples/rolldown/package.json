@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "type": "module",
+  "author": "三咲智子 <sxzz@sxzz.moe>",
+  "scripts": {
+    "build": "node build.js",
+    "preview": "serve"
+  },
+  "dependencies": {
+    "vue": "^3.4.33"
+  },
+  "devDependencies": {
+    "rolldown": "^0.12.2",
+    "serve": "^14.2.3",
+    "unplugin-vue": "workspace:*"
+  }
+}
