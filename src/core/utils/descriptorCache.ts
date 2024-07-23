@@ -1,9 +1,9 @@
+import { createHash } from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
-import { createHash } from 'node:crypto'
 import slash from 'slash'
-import type { CompilerError, SFCDescriptor } from 'vue/compiler-sfc'
 import type { ResolvedOptions, VueQuery } from '..'
+import type { CompilerError, SFCDescriptor } from 'vue/compiler-sfc'
 
 // compiler-sfc should be exported so it can be re-used
 export interface SFCParseResult {

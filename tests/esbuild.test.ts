@@ -1,8 +1,8 @@
-import process from 'node:process'
 import { resolve } from 'node:path'
-import { describe, expect, it } from 'vitest'
+import process from 'node:process'
 import { build } from 'esbuild'
 import glob from 'fast-glob'
+import { describe, expect, it } from 'vitest'
 import * as vueCompiler from 'vue/compiler-sfc'
 import Vue from '../src/esbuild'
 
