@@ -100,7 +100,8 @@ var _export_sfc = (sfc, props) => {
 
 const _sfc_main = {
   __name: 'reactivity-transform',
-  setup(__props) {
+  setup(__props, { expose: __expose }) {
+  __expose();
 
 const ref1 = $ref('hello');
 const ref2 = $(ref('hello'));
@@ -110,7 +111,9 @@ console.log(ref2);
 console.log($$(ref1));
 console.log($$(ref2));
 
-return () => {}
+const __returned__ = { ref1, ref2, ref };
+Object.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true });
+return __returned__
 }
 
 };
@@ -157,23 +160,30 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
+const foo = 'bar';
+
+const _sfc_main = {
+  __name: 'script-setup',
+  setup(__props, { expose: __expose }) {
+  __expose();
+
+
+const __returned__ = { foo };
+Object.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true });
+return __returned__
+}
+
+};
+
 const _hoisted_1 = /*#__PURE__*/createElementVNode("h1", null, "Hello World", -1 /* HOISTED */);
 const _hoisted_2 = [
   _hoisted_1
 ];
 
-const _sfc_main = {
-  __name: 'script-setup',
-  setup(__props) {
-
-
-return (_ctx, _cache) => {
-  return (openBlock(), createElementBlock("div", null, _hoisted_2))
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock("div", null, [..._hoisted_2]))
 }
-}
-
-};
-var scriptSetup = /*#__PURE__*/_export_sfc(_sfc_main, [['__file','#FILE#']]);
+var scriptSetup = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file','#FILE#']]);
 
 export { scriptSetup as default };
 "
@@ -208,31 +218,21 @@ exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProductio
 "//script-setup-ts.js
 import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
 
-const _hoisted_1 = /* @__PURE__ */ createElementVNode(
-  "h1",
-  null,
-  "Hello World",
-  -1
-  /* HOISTED */
-);
-const _hoisted_2 = [
-  _hoisted_1
-];
 const str = "bar";
 var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
   __name: "script-setup-ts",
   props: {
-    foo: {},
-    bar: {},
-    baz: { type: Boolean }
+    foo: { type: String, required: true },
+    bar: { type: Number, required: true },
+    baz: { type: Boolean, required: true }
   },
   setup(__props, { expose: __expose }) {
     __expose({
       str
     });
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", null, _hoisted_2);
-    };
+    const __returned__ = { str };
+    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    return __returned__;
   }
 });
 
@@ -244,7 +244,20 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-var scriptSetupTs = /* @__PURE__ */ _export_sfc(script_setup_ts_vue_vue_type_script_setup_true_lang_default, [["__file", '#FILE#']]);
+const _hoisted_1 = /* @__PURE__ */ createElementVNode(
+  "h1",
+  null,
+  "Hello World",
+  -1
+  /* HOISTED */
+);
+const _hoisted_2 = [
+  _hoisted_1
+];
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("div", null, [..._hoisted_2]);
+}
+var scriptSetupTs = /* @__PURE__ */ _export_sfc(script_setup_ts_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", '#FILE#']]);
 
 export { scriptSetupTs as default };
 "
