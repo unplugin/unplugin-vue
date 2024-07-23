@@ -1,8 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`transform > fixtures > tests/fixtures/basic.vue > isProduction is false 1`] = `
-"//basic.js
-import { openBlock, createElementBlock, createElementVNode } from 'vue';
+exports[`rollup > tests/fixtures/basic.vue > isProduction = false 1`] = `
+"// basic.js
+import { createElementVNode, openBlock, createElementBlock } from 'vue';
 
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -30,9 +30,9 @@ export { basic as default };
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/basic.vue > isProduction is true 1`] = `
-"//basic.js
-import { openBlock, createElementBlock, createElementVNode } from 'vue';
+exports[`rollup > tests/fixtures/basic.vue > isProduction = true 1`] = `
+"// basic.js
+import { createElementVNode, openBlock, createElementBlock } from 'vue';
 
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -60,8 +60,8 @@ export { basic as default };
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/reactivity-transform.ts > isProduction is false 1`] = `
-"//reactivity-transform.js
+exports[`rollup > tests/fixtures/reactivity-transform.ts > isProduction = false 1`] = `
+"// reactivity-transform.js
 import { ref } from 'vue';
 
 const ref1 = $ref("hello");
@@ -73,8 +73,8 @@ console.log($$(ref2));
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/reactivity-transform.ts > isProduction is true 1`] = `
-"//reactivity-transform.js
+exports[`rollup > tests/fixtures/reactivity-transform.ts > isProduction = true 1`] = `
+"// reactivity-transform.js
 import { ref } from 'vue';
 
 const ref1 = $ref("hello");
@@ -86,8 +86,8 @@ console.log($$(ref2));
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/reactivity-transform.vue > isProduction is false 1`] = `
-"//reactivity-transform.js
+exports[`rollup > tests/fixtures/reactivity-transform.vue > isProduction = false 1`] = `
+"// reactivity-transform.js
 import { ref } from 'vue';
 
 var _export_sfc = (sfc, props) => {
@@ -123,8 +123,8 @@ export { reactivityTransform as default };
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/reactivity-transform.vue > isProduction is true 1`] = `
-"//reactivity-transform.js
+exports[`rollup > tests/fixtures/reactivity-transform.vue > isProduction = true 1`] = `
+"// reactivity-transform.js
 import { ref } from 'vue';
 
 const _sfc_main = {
@@ -148,9 +148,9 @@ export { _sfc_main as default };
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/script-setup.vue > isProduction is false 1`] = `
-"//script-setup.js
-import { openBlock, createElementBlock, createElementVNode } from 'vue';
+exports[`rollup > tests/fixtures/script-setup.vue > isProduction = false 1`] = `
+"// script-setup.js
+import { createElementVNode, openBlock, createElementBlock } from 'vue';
 
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -189,14 +189,16 @@ export { scriptSetup as default };
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/script-setup.vue > isProduction is true 1`] = `
-"//script-setup.js
-import { openBlock, createElementBlock, createElementVNode } from 'vue';
+exports[`rollup > tests/fixtures/script-setup.vue > isProduction = true 1`] = `
+"// script-setup.js
+import { createElementVNode, openBlock, createElementBlock } from 'vue';
 
 const _hoisted_1 = /*#__PURE__*/createElementVNode("h1", null, "Hello World", -1 /* HOISTED */);
 const _hoisted_2 = [
   _hoisted_1
 ];
+
+const foo = 'bar';
 
 const _sfc_main = {
   __name: 'script-setup',
@@ -214,9 +216,9 @@ export { _sfc_main as default };
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProduction is false 1`] = `
-"//script-setup-ts.js
-import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
+exports[`rollup > tests/fixtures/script-setup-ts.vue > isProduction = false 1`] = `
+"// script-setup-ts.js
+import { defineComponent, createElementVNode, openBlock, createElementBlock } from 'vue';
 
 const str = "bar";
 var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
@@ -227,6 +229,11 @@ var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ *
     baz: { type: Boolean, required: true }
   },
   setup(__props, { expose: __expose }) {
+    const {
+      foo = "123",
+      bar = 123,
+      baz = true
+    } = __props;
     __expose({
       str
     });
@@ -263,9 +270,9 @@ export { scriptSetupTs as default };
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/script-setup-ts.vue > isProduction is true 1`] = `
-"//script-setup-ts.js
-import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
+exports[`rollup > tests/fixtures/script-setup-ts.vue > isProduction = true 1`] = `
+"// script-setup-ts.js
+import { createElementVNode, defineComponent, openBlock, createElementBlock } from 'vue';
 
 const _hoisted_1 = /* @__PURE__ */ createElementVNode(
   "h1",
@@ -286,6 +293,11 @@ var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ *
     baz: { type: Boolean }
   },
   setup(__props, { expose: __expose }) {
+    const {
+      foo = "123",
+      bar = 123,
+      baz = true
+    } = __props;
     __expose({
       str
     });
@@ -299,9 +311,9 @@ export { script_setup_ts_vue_vue_type_script_setup_true_lang_default as default 
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/sfc-src.vue > isProduction is false 1`] = `
-"//sfc-src.js
-import { defineComponent, openBlock, createElementBlock, createElementVNode, toDisplayString } from 'vue';
+exports[`rollup > tests/fixtures/sfc-src.vue > isProduction = false 1`] = `
+"// sfc-src.js
+import { defineComponent, createElementVNode, openBlock, createElementBlock, toDisplayString } from 'vue';
 
 var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
   setup() {
@@ -343,9 +355,9 @@ export { sfcSrc as default };
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/sfc-src.vue > isProduction is true 1`] = `
-"//sfc-src.js
-import { defineComponent, openBlock, createElementBlock, createElementVNode, toDisplayString } from 'vue';
+exports[`rollup > tests/fixtures/sfc-src.vue > isProduction = true 1`] = `
+"// sfc-src.js
+import { defineComponent, createElementVNode, openBlock, createElementBlock, toDisplayString } from 'vue';
 
 var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
   setup() {
@@ -387,8 +399,8 @@ export { sfcSrc as default };
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/src-script.ts > isProduction is false 1`] = `
-"//src-script.js
+exports[`rollup > tests/fixtures/src-script.ts > isProduction = false 1`] = `
+"// src-script.js
 import { defineComponent } from 'vue';
 
 var src_script_default = defineComponent({
@@ -401,8 +413,8 @@ export { src_script_default as default };
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/src-script.ts > isProduction is true 1`] = `
-"//src-script.js
+exports[`rollup > tests/fixtures/src-script.ts > isProduction = true 1`] = `
+"// src-script.js
 import { defineComponent } from 'vue';
 
 var src_script_default = defineComponent({
@@ -415,8 +427,13 @@ export { src_script_default as default };
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/typescript.vue > isProduction is false 1`] = `
-"//typescript.js
+exports[`rollup > tests/fixtures/typescript.vue > isProduction = false 1`] = `
+"// typescript.js
+const str = "123";
+const bool = true;
+const count = 123;
+function foo(str2) {
+}
 var typescript_vue_vue_type_script_lang_default = {};
 
 var _export_sfc = (sfc, props) => {
@@ -433,8 +450,13 @@ export { typescript as default };
 "
 `;
 
-exports[`transform > fixtures > tests/fixtures/typescript.vue > isProduction is true 1`] = `
-"//typescript.js
+exports[`rollup > tests/fixtures/typescript.vue > isProduction = true 1`] = `
+"// typescript.js
+const str = "123";
+const bool = true;
+const count = 123;
+function foo(str2) {
+}
 var typescript_vue_vue_type_script_lang_default = {};
 
 export { typescript_vue_vue_type_script_lang_default as default };

@@ -1,48 +1,39 @@
-import { resolve } from 'node:path'
 import process from 'node:process'
+import { testFixtures } from '@sxzz/test-utils'
 import { build } from 'esbuild'
-import glob from 'fast-glob'
-import { describe, expect, it } from 'vitest'
+import { describe, expect } from 'vitest'
 import * as vueCompiler from 'vue/compiler-sfc'
 import Vue from '../src/esbuild'
 
-process.env.NODE_ENV = 'production'
-
-describe('transform', () => {
-  describe('fixtures', async () => {
-    const root = resolve(__dirname, '..')
-    const files = await glob('tests/fixtures/!(sfc-src)*.{vue,js,ts}', {
-      cwd: root,
-      onlyFiles: true,
-    })
-
-    for (const file of files) {
-      describe(file.replace('\\', '/'), () => {
-        const filepath = resolve(root, file)
-        for (const isProduction of [true, false]) {
-          it(`isProduction is ${isProduction}`, async () => {
-            const result = await build({
-              entryPoints: [filepath],
-              bundle: true,
-              external: ['vue'],
-              treeShaking: true,
-              format: 'esm',
-              plugins: [
-                Vue({
-                  root,
-                  compiler: vueCompiler,
-                  isProduction,
-                }),
-              ],
-              write: false,
-            })
-            const codes = result.outputFiles.map((file) => file.text).join('\n')
-            expect(
-              codes.replaceAll(JSON.stringify(filepath), '"#FILE#"'),
-            ).toMatchSnapshot()
-          })
-        }
+describe('esbuild', async () => {
+  await testFixtures(
+    'tests/fixtures/!(sfc-src)*.{vue,js,ts}',
+    async (args, id) => {
+      const result = await build({
+        entryPoints: [id],
+        bundle: true,
+        external: ['vue'],
+        treeShaking: true,
+        format: 'esm',
+        plugins: [
+          Vue({
+            root: process.cwd(),
+            compiler: vueCompiler,
+            isProduction: args.isProduction,
+          }),
+        ],
+        write: false,
       })
-    }
-  })
+      const codes = result.outputFiles.map((file) => file.text).join('\n')
+      expect(
+        codes
+          .replaceAll(JSON.stringify(id), '"#FILE#"')
+          .replaceAll('\0', '[NULL]'),
+      ).toMatchSnapshot()
+    },
+    {
+      params: [['isProduction', [true, false]]],
+      promise: true,
+    },
+  )
 })

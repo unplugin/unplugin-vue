@@ -39,6 +39,9 @@ importers:
       '@sxzz/prettier-config':
         specifier: ^2.0.2
         version: 2.0.2
+      '@sxzz/test-utils':
+        specifier: ^0.2.1
+        version: 0.2.1(vitest@2.0.4(@types/node@20.14.11)(@vitest/ui@2.0.4)(sass@1.77.8)(terser@5.31.3))
       '@types/debug':
         specifier: ^4.1.12
         version: 4.1.12
@@ -823,6 +826,12 @@ packages:
 
   '@sxzz/prettier-config@2.0.2':
     resolution: {integrity: sha512-yBKxaIr6WqgHTaLgX0g6gxNuMllkwR1QGeXynfJGmyD+XrZqO96t9xT5Mfbr9H3+N56SXY9/yFvP/e8lcJI7KA==}
+
+  '@sxzz/test-utils@0.2.1':
+    resolution: {integrity: sha512-DmOdRZE68LW73YIT3pA6c6wErace7coM4sptQgCoV6IGZLPxWeGdoaxS8U/HWfuQCJ++n/zo3FOZoYuLxbQPhg==}
+    engines: {node: '>=18.12.0'}
+    peerDependencies:
+      vitest: ^2.0.3
 
   '@types/body-parser@1.19.5':
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
@@ -4183,6 +4192,13 @@ snapshots:
       - typescript
 
   '@sxzz/prettier-config@2.0.2': {}
+
+  '@sxzz/test-utils@0.2.1(vitest@2.0.4(@types/node@20.14.11)(@vitest/ui@2.0.4)(sass@1.77.8)(terser@5.31.3))':
+    dependencies:
+      '@rollup/pluginutils': 5.1.0(rollup@4.19.0)
+      fast-glob: 3.3.2
+      rollup: 4.19.0
+      vitest: 2.0.4(@types/node@20.14.11)(@vitest/ui@2.0.4)(sass@1.77.8)(terser@5.31.3)
 
   '@types/body-parser@1.19.5':
     dependencies:

@@ -1,37 +1,24 @@
-import { resolve } from 'node:path'
 import process from 'node:process'
+import { rollupBuild, testFixtures } from '@sxzz/test-utils'
 import ViteVue from '@vitejs/plugin-vue'
-import glob from 'fast-glob'
-import { rollup } from 'rollup'
 import esbuild from 'rollup-plugin-esbuild'
-import { describe, expect, it } from 'vitest'
+import { describe, expect } from 'vitest'
 import * as vueCompiler from 'vue/compiler-sfc'
 import Vue from '../src/rollup'
 import type { Options } from '../src/api'
 
 async function getCode(file: string, plugin: any) {
-  const bundle = await rollup({
-    input: [file],
+  const bundle = await rollupBuild(file, [plugin, esbuild({ format: 'esm' })], {
     external: ['vue'],
-    plugins: [plugin, esbuild({ format: 'esm' })],
   })
-  const output = await bundle.generate({ format: 'esm' })
-  return output.output
-    .map((file) => {
-      if (file.type === 'chunk') {
-        return `//${file.fileName}\n${file.code}`
-      } else {
-        return file.fileName
-      }
-    })
-    .join('\n')
+  return bundle.snapshot
 }
 
-function createPlugins(opt: Options) {
+function createPlugins(opt: Options & { root: string }) {
   const vite = ViteVue(opt)
   // @ts-expect-error
   vite.configResolved!({
-    root: opt.root!,
+    root: opt.root,
     command: 'build',
     isProduction: opt.isProduction,
     build: {
@@ -45,38 +32,25 @@ function createPlugins(opt: Options) {
   }
 }
 
-describe('transform', () => {
-  describe('fixtures', async () => {
-    const root = resolve(__dirname, '..')
-    const files = await glob('tests/fixtures/*.{vue,js,ts}', {
-      cwd: root,
-      onlyFiles: true,
-    })
-
-    for (const file of files) {
-      describe(file.replaceAll('\\', '/'), () => {
-        const filepath = resolve(root, file)
-
-        for (const isProduction of [true, false]) {
-          it(`isProduction is ${isProduction}`, async () => {
-            process.env.NODE_ENV = isProduction ? 'production' : 'development'
-
-            const { unplugin, vite } = createPlugins({
-              root,
-              compiler: vueCompiler,
-              isProduction,
-            })
-
-            const viteCode = await getCode(filepath, vite)
-            const unpluginCode = await getCode(filepath, unplugin)
-
-            expect(
-              unpluginCode.replaceAll(JSON.stringify(filepath), "'#FILE#'"),
-            ).toMatchSnapshot()
-            expect(viteCode).toBe(unpluginCode)
-          })
-        }
+describe('rollup', async () => {
+  await testFixtures(
+    'tests/fixtures/*.{vue,js,ts}',
+    async (args, id) => {
+      const { unplugin, vite } = createPlugins({
+        root: process.cwd(),
+        compiler: vueCompiler,
+        isProduction: args.isProduction,
       })
-    }
-  })
+
+      const viteCode = await getCode(id, vite)
+      const unpluginCode = await getCode(id, unplugin)
+
+      expect(viteCode).toBe(unpluginCode)
+      return unpluginCode.replaceAll(JSON.stringify(id), "'#FILE#'")
+    },
+    {
+      params: [['isProduction', [true, false]]],
+      promise: true,
+    },
+  )
 })
