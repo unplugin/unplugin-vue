@@ -2,8 +2,8 @@
   "private": true,
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "scripts": {
-    "serve": "cross-env MODE=development webpack serve",
-    "build": "rimraf dist && cross-env MODE=production webpack build",
+    "serve": "MODE=development webpack serve",
+    "build": "rimraf dist && MODE=production webpack build",
     "preview": "serve dist"
   },
   "dependencies": {
@@ -12,7 +12,6 @@
   "devDependencies": {
     "@swc/core": "^1.7.0",
     "@types/webpack": "^5.28.5",
-    "cross-env": "^7.0.3",
     "html-webpack-plugin": "^5.6.0",
     "serve": "^14.2.3",
     "sucrase": "^3.35.0",

@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "author": "三咲智子 <sxzz@sxzz.moe>",
+  "scripts": {
+    "serve": "MODE=development rspack serve",
+    "build": "rimraf dist && MODE=production rspack build",
+    "preview": "serve dist"
+  },
+  "dependencies": {
+    "vue": "^3.4.33"
+  },
+  "devDependencies": {
+    "@rspack/cli": "1.0.0-alpha.1",
+    "@rspack/core": "1.0.0-alpha.1",
+    "serve": "^14.2.3",
+    "swc-loader": "^0.2.6",
+    "ts-node": "^10.9.2",
+    "unplugin-vue": "workspace:*"
+  }
+}

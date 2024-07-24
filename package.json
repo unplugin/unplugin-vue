@@ -43,6 +43,10 @@
       "require": "./dist/webpack.cjs",
       "import": "./dist/webpack.js"
     },
+    "./rspack": {
+      "require": "./dist/rspack.cjs",
+      "import": "./dist/rspack.js"
+    },
     "./rollup": {
       "require": "./dist/rollup.cjs",
       "import": "./dist/rollup.js"
