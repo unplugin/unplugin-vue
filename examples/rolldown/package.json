@@ -7,7 +7,7 @@
     "preview": "serve"
   },
   "dependencies": {
-    "vue": "^3.4.34"
+    "vue": "^3.4.37"
   },
   "devDependencies": {
     "rolldown": "^0.12.2",
