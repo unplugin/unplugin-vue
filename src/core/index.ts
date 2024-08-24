@@ -190,6 +190,8 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
 
 export const plugin = createUnplugin<Options | undefined, false>(
   (rawOptions = {}, meta) => {
+    clearScriptCache()
+
     const options = shallowRef(resolveOptions(rawOptions))
 
     const filter = computed(() =>
@@ -408,10 +410,6 @@ export const plugin = createUnplugin<Options | undefined, false>(
             )
           }
         }
-      },
-
-      buildEnd() {
-        clearScriptCache()
       },
     }
   },
