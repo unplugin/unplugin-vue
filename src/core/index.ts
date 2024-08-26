@@ -155,19 +155,31 @@ export type ResolvedOptions = Omit<Options, 'customElement'> &
       | 'root'
       | 'compiler'
       | 'inlineTemplate'
+      | 'features'
     >
   > & {
     /** Vite only */
     devServer?: ViteDevServer
     devToolsEnabled?: boolean
     cssDevSourcemap: boolean
-    features: NonNullable<Options['features']>
   }
 
 function resolveOptions(rawOptions: Options): ResolvedOptions {
   const root = rawOptions.root ?? process.cwd()
   const isProduction =
     rawOptions.isProduction ?? process.env.NODE_ENV === 'production'
+  const features = {
+    ...rawOptions.features,
+    optionsAPI: true,
+    prodDevtools: false,
+    prodHydrationMismatchDetails: false,
+    propsDestructure: false,
+    ...rawOptions.features,
+    customElement:
+      (rawOptions.features?.customElement || rawOptions.customElement) ??
+      /\.ce\.vue$/,
+  }
+
   return {
     ...rawOptions,
     include: rawOptions.include ?? /\.vue$/,
@@ -176,19 +188,10 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
     sourceMap: rawOptions.sourceMap ?? true,
     root,
     compiler: rawOptions.compiler as any, // to be set in buildStart
-    devToolsEnabled: !isProduction,
+    devToolsEnabled: features.prodDevtools || !isProduction,
     cssDevSourcemap: false,
     inlineTemplate: rawOptions.inlineTemplate ?? true,
-    features: {
-      optionsAPI: true,
-      prodDevtools: false,
-      prodHydrationMismatchDetails: false,
-      propsDestructure: false,
-      ...rawOptions.features,
-      customElement:
-        (rawOptions.features?.customElement || rawOptions.customElement) ??
-        /\.ce\.vue$/,
-    },
+    features,
   }
 }
 
