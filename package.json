@@ -113,6 +113,7 @@
     "source-map-js": "^1.2.0",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
+    "unplugin-unused": "^0.1.4",
     "vitest": "2.0.5",
     "webpack": "^5.94.0"
   },

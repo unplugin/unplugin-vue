@@ -1,4 +1,5 @@
 import { defineConfig } from 'tsup'
+import Unused from 'unplugin-unused/esbuild'
 
 export default defineConfig({
   entry: ['./src/*.ts'],
@@ -9,4 +10,5 @@ export default defineConfig({
   splitting: true,
   cjsInterop: true,
   shims: true,
+  esbuildPlugins: [Unused()],
 })
