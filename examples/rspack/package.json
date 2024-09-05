@@ -12,8 +12,9 @@
   "devDependencies": {
     "@rspack/cli": "1.0.3",
     "@rspack/core": "1.0.3",
+    "css-loader": "^7.1.2",
     "serve": "^14.2.3",
-    "swc-loader": "^0.2.6",
+    "style-loader": "^4.0.0",
     "ts-node": "^10.9.2",
     "unplugin-vue": "workspace:*"
   }

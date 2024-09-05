@@ -13,8 +13,21 @@ const config = {
       {
         enforce: 'post',
         test: /\.m?ts$/,
-        exclude: /(node_modules)/,
-        use: { loader: 'swc-loader' },
+        exclude: /node_modules/,
+        loader: 'builtin:swc-loader',
+        options: {
+          jsc: {
+            parser: {
+              syntax: 'typescript',
+            },
+          },
+        },
+        type: 'javascript/auto',
+      },
+      {
+        test: /\.css$/,
+        enforce: 'post',
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },

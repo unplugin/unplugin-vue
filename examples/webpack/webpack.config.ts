@@ -13,8 +13,13 @@ const config: Configuration = {
       {
         enforce: 'post',
         test: /\.m?ts$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         use: { loader: 'swc-loader' },
+      },
+      {
+        test: /\.css$/,
+        enforce: 'post',
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
