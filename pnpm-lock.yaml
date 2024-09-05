@@ -40,8 +40,8 @@ importers:
         specifier: ^2.0.2
         version: 2.0.2
       '@sxzz/test-utils':
-        specifier: ^0.2.1
-        version: 0.2.1(vitest@2.0.5(@types/node@22.5.4)(@vitest/ui@2.0.5)(sass@1.78.0)(terser@5.31.6))
+        specifier: ^0.3.0
+        version: 0.3.0(rolldown@0.13.1)(rollup@4.21.2)(vitest@2.0.5(@types/node@22.5.4)(@vitest/ui@2.0.5)(sass@1.78.0)(terser@5.31.6))
       '@types/debug':
         specifier: ^4.1.12
         version: 4.1.12
@@ -69,6 +69,9 @@ importers:
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
+      rolldown:
+        specifier: ^0.13.1
+        version: 0.13.1
       rollup:
         specifier: ^4.21.2
         version: 4.21.2
@@ -1041,11 +1044,18 @@ packages:
   '@sxzz/prettier-config@2.0.2':
     resolution: {integrity: sha512-yBKxaIr6WqgHTaLgX0g6gxNuMllkwR1QGeXynfJGmyD+XrZqO96t9xT5Mfbr9H3+N56SXY9/yFvP/e8lcJI7KA==}
 
-  '@sxzz/test-utils@0.2.1':
-    resolution: {integrity: sha512-DmOdRZE68LW73YIT3pA6c6wErace7coM4sptQgCoV6IGZLPxWeGdoaxS8U/HWfuQCJ++n/zo3FOZoYuLxbQPhg==}
+  '@sxzz/test-utils@0.3.0':
+    resolution: {integrity: sha512-et8R5tInmzmqT1STb78onyQKlsesAxhJjWjJzrQzChWc4SsiyhQ+PuoTBS46Vwf5CLBq0/G/U0oJ/J89cU+XEg==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
+      rolldown: '*'
+      rollup: ^4.1.0
       vitest: ^2.0.3
+    peerDependenciesMeta:
+      rolldown:
+        optional: true
+      rollup:
+        optional: true
 
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -4914,12 +4924,14 @@ snapshots:
 
   '@sxzz/prettier-config@2.0.2': {}
 
-  '@sxzz/test-utils@0.2.1(vitest@2.0.5(@types/node@22.5.4)(@vitest/ui@2.0.5)(sass@1.78.0)(terser@5.31.6))':
+  '@sxzz/test-utils@0.3.0(rolldown@0.13.1)(rollup@4.21.2)(vitest@2.0.5(@types/node@22.5.4)(@vitest/ui@2.0.5)(sass@1.78.0)(terser@5.31.6))':
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@4.21.2)
       fast-glob: 3.3.2
-      rollup: 4.21.2
       vitest: 2.0.5(@types/node@22.5.4)(@vitest/ui@2.0.5)(sass@1.78.0)(terser@5.31.6)
+    optionalDependencies:
+      rolldown: 0.13.1
+      rollup: 4.21.2
 
   '@tsconfig/node10@1.0.11': {}
 
