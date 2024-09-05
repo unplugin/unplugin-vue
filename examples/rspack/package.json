@@ -7,11 +7,11 @@
     "preview": "serve dist"
   },
   "dependencies": {
-    "vue": "^3.4.34"
+    "vue": "^3.5.1"
   },
   "devDependencies": {
-    "@rspack/cli": "1.0.0-alpha.1",
-    "@rspack/core": "1.0.0-alpha.1",
+    "@rspack/cli": "1.0.3",
+    "@rspack/core": "1.0.3",
     "serve": "^14.2.3",
     "swc-loader": "^0.2.6",
     "ts-node": "^10.9.2",
