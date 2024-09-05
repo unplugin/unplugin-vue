@@ -9,7 +9,7 @@ Transform Vue 3 SFC to JavaScript.
 - ⚡️ Support Vite, Webpack, Vue CLI, Rollup, esbuild and more, powered by [unplugin](https://github.com/unjs/unplugin).
 - ✨ Support `<script setup>` and macros.
 - 🔥 Hot module replacement (HMR) support for Vite.
-- 🔄 Sync code from [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) periodically.
+- 🔄 Sync code from [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) periodically. Currently based on [@vitejs/plugin-vue@5.1.2](https://github.com/vitejs/vite-plugin-vue/tree/plugin-vue@5.1.2/packages/plugin-vue).
 
 ## Who is using
 
@@ -28,14 +28,11 @@ Transform Vue 3 SFC to JavaScript.
 - ~~[vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2) - For Vite and Vue 2.~~
 - ~~[rollup-plugin-vue](https://github.com/vuejs/rollup-plugin-vue)~~ - ⚠️ no longer maintained.
 
-## Credits
+## Thanks
 
 - [Vite](https://github.com/vitejs/vite) - Next generation frontend tooling. It's fast!
 - [unplugin](https://github.com/unjs/unplugin) - Unified plugin system for Vite, Rollup, Webpack, and more
-
-## Thanks
-
-Thanks to [vite-plugin-vue](https://github.com/vitejs/vite-plugin-vue). This project is inherited from [@vitejs/plugin-vue@5.1.2](https://github.com/vitejs/vite-plugin-vue/tree/plugin-vue@5.1.2/packages/plugin-vue).
+- [vite-plugin-vue](https://github.com/vitejs/vite-plugin-vue) - This project is inherited from it.
 
 ## Sponsors
 
