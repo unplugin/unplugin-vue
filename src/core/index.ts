@@ -173,7 +173,6 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
     optionsAPI: true,
     prodDevtools: false,
     prodHydrationMismatchDetails: false,
-    propsDestructure: false,
     ...rawOptions.features,
     customElement:
       (rawOptions.features?.customElement || rawOptions.customElement) ??

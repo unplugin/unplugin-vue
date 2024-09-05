@@ -16,18 +16,16 @@ var export_helper_default = (sfc, props) => {
 // tests/fixtures/basic.vue
 console.log("Hello world");
 var _sfc_main = {};
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "h1",
-  null,
-  "Hello World",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = [
-  _hoisted_1
-];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock("div", null, [..._hoisted_2]);
+  return _openBlock(), _createElementBlock("div", null, _cache[0] || (_cache[0] = [
+    _createElementVNode(
+      "h1",
+      null,
+      "Hello World",
+      -1
+      /* HOISTED */
+    )
+  ]));
 }
 var basic_default = /* @__PURE__ */ export_helper_default(_sfc_main, [["render", _sfc_render], ["__file", "#FILE#"]]);
 export {
@@ -54,18 +52,16 @@ var export_helper_default = (sfc, props) => {
 // tests/fixtures/basic.vue
 console.log("Hello world");
 var _sfc_main = {};
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "h1",
-  null,
-  "Hello World",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = [
-  _hoisted_1
-];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock("div", null, _hoisted_2);
+  return _openBlock(), _createElementBlock("div", null, _cache[0] || (_cache[0] = [
+    _createElementVNode(
+      "h1",
+      null,
+      "Hello World",
+      -1
+      /* HOISTED */
+    )
+  ]));
 }
 var basic_default = /* @__PURE__ */ export_helper_default(_sfc_main, [["render", _sfc_render]]);
 export {
@@ -191,18 +187,16 @@ var _sfc_main = {
     return __returned__;
   }
 };
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "h1",
-  null,
-  "Hello World",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = [
-  _hoisted_1
-];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock("div", null, [..._hoisted_2]);
+  return _openBlock(), _createElementBlock("div", null, _cache[0] || (_cache[0] = [
+    _createElementVNode(
+      "h1",
+      null,
+      "Hello World",
+      -1
+      /* HOISTED */
+    )
+  ]));
 }
 var script_setup_default = /* @__PURE__ */ export_helper_default(_sfc_main, [["render", _sfc_render], ["__file", "#FILE#"]]);
 export {
@@ -216,21 +210,19 @@ exports[`esbuild > tests/fixtures/script-setup.vue > isProduction = false 2`] = 
 exports[`esbuild > tests/fixtures/script-setup.vue > isProduction = true 1`] = `
 "// tests/fixtures/script-setup.vue
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "h1",
-  null,
-  "Hello World",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = [
-  _hoisted_1
-];
 var _sfc_main = {
   __name: "script-setup",
   setup(__props) {
     return (_ctx, _cache) => {
-      return _openBlock(), _createElementBlock("div", null, _hoisted_2);
+      return _openBlock(), _createElementBlock("div", null, _cache[0] || (_cache[0] = [
+        _createElementVNode(
+          "h1",
+          null,
+          "Hello World",
+          -1
+          /* HOISTED */
+        )
+      ]));
     };
   }
 };
@@ -262,16 +254,11 @@ var str = "bar";
 var _sfc_main = /* @__PURE__ */ _defineComponent({
   __name: "script-setup-ts",
   props: {
-    foo: { type: String, required: true },
-    bar: { type: Number, required: true },
-    baz: { type: Boolean, required: true }
+    foo: { type: String, required: true, default: "123" },
+    bar: { type: Number, required: true, default: 123 },
+    baz: { type: Boolean, required: true, default: true }
   },
   setup(__props, { expose: __expose }) {
-    const {
-      foo = "123",
-      bar = 123,
-      baz = true
-    } = __props;
     __expose({
       str
     });
@@ -280,18 +267,16 @@ var _sfc_main = /* @__PURE__ */ _defineComponent({
     return __returned__;
   }
 });
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "h1",
-  null,
-  "Hello World",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = [
-  _hoisted_1
-];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock("div", null, [..._hoisted_2]);
+  return _openBlock(), _createElementBlock("div", null, _cache[0] || (_cache[0] = [
+    _createElementVNode(
+      "h1",
+      null,
+      "Hello World",
+      -1
+      /* HOISTED */
+    )
+  ]));
 }
 var script_setup_ts_default = /* @__PURE__ */ export_helper_default(_sfc_main, [["render", _sfc_render], ["__file", "#FILE#"]]);
 export {
@@ -306,35 +291,28 @@ exports[`esbuild > tests/fixtures/script-setup-ts.vue > isProduction = true 1`] 
 "// tests/fixtures/script-setup-ts.vue
 import { defineComponent as _defineComponent } from "vue";
 import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
-var _hoisted_1 = /* @__PURE__ */ _createElementVNode(
-  "h1",
-  null,
-  "Hello World",
-  -1
-  /* HOISTED */
-);
-var _hoisted_2 = [
-  _hoisted_1
-];
 var str = "bar";
 var _sfc_main = /* @__PURE__ */ _defineComponent({
   __name: "script-setup-ts",
   props: {
-    foo: {},
-    bar: {},
-    baz: { type: Boolean }
+    foo: { default: "123" },
+    bar: { default: 123 },
+    baz: { type: Boolean, default: true }
   },
   setup(__props, { expose: __expose }) {
-    const {
-      foo = "123",
-      bar = 123,
-      baz = true
-    } = __props;
     __expose({
       str
     });
     return (_ctx, _cache) => {
-      return _openBlock(), _createElementBlock("div", null, _hoisted_2);
+      return _openBlock(), _createElementBlock("div", null, _cache[0] || (_cache[0] = [
+        _createElementVNode(
+          "h1",
+          null,
+          "Hello World",
+          -1
+          /* HOISTED */
+        )
+      ]));
     };
   }
 });

@@ -2,7 +2,7 @@
 
 exports[`rollup > tests/fixtures/basic.vue > isProduction = false 1`] = `
 "// basic.js
-import { createElementVNode, openBlock, createElementBlock } from 'vue';
+import { openBlock, createElementBlock, createElementVNode } from 'vue';
 
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -16,13 +16,10 @@ console.log('Hello world');
 
 const _sfc_main = {};
 
-const _hoisted_1 = /*#__PURE__*/createElementVNode("h1", null, "Hello World", -1 /* HOISTED */);
-const _hoisted_2 = [
-  _hoisted_1
-];
-
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", null, [..._hoisted_2]))
+  return (openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+    createElementVNode("h1", null, "Hello World", -1 /* HOISTED */)
+  ])))
 }
 var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file','#FILE#']]);
 
@@ -32,7 +29,7 @@ export { basic as default };
 
 exports[`rollup > tests/fixtures/basic.vue > isProduction = true 1`] = `
 "// basic.js
-import { createElementVNode, openBlock, createElementBlock } from 'vue';
+import { openBlock, createElementBlock, createElementVNode } from 'vue';
 
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -46,13 +43,10 @@ console.log('Hello world');
 
 const _sfc_main = {};
 
-const _hoisted_1 = /*#__PURE__*/createElementVNode("h1", null, "Hello World", -1 /* HOISTED */);
-const _hoisted_2 = [
-  _hoisted_1
-];
-
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", null, _hoisted_2))
+  return (openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+    createElementVNode("h1", null, "Hello World", -1 /* HOISTED */)
+  ])))
 }
 var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]]);
 
@@ -150,7 +144,7 @@ export { _sfc_main as default };
 
 exports[`rollup > tests/fixtures/script-setup.vue > isProduction = false 1`] = `
 "// script-setup.js
-import { createElementVNode, openBlock, createElementBlock } from 'vue';
+import { openBlock, createElementBlock, createElementVNode } from 'vue';
 
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -175,13 +169,10 @@ return __returned__
 
 };
 
-const _hoisted_1 = /*#__PURE__*/createElementVNode("h1", null, "Hello World", -1 /* HOISTED */);
-const _hoisted_2 = [
-  _hoisted_1
-];
-
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", null, [..._hoisted_2]))
+  return (openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+    createElementVNode("h1", null, "Hello World", -1 /* HOISTED */)
+  ])))
 }
 var scriptSetup = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file','#FILE#']]);
 
@@ -191,12 +182,7 @@ export { scriptSetup as default };
 
 exports[`rollup > tests/fixtures/script-setup.vue > isProduction = true 1`] = `
 "// script-setup.js
-import { createElementVNode, openBlock, createElementBlock } from 'vue';
-
-const _hoisted_1 = /*#__PURE__*/createElementVNode("h1", null, "Hello World", -1 /* HOISTED */);
-const _hoisted_2 = [
-  _hoisted_1
-];
+import { openBlock, createElementBlock, createElementVNode } from 'vue';
 
 const foo = 'bar';
 
@@ -206,7 +192,9 @@ const _sfc_main = {
 
 
 return (_ctx, _cache) => {
-  return (openBlock(), createElementBlock("div", null, _hoisted_2))
+  return (openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+    createElementVNode("h1", null, "Hello World", -1 /* HOISTED */)
+  ])))
 }
 }
 
@@ -218,22 +206,17 @@ export { _sfc_main as default };
 
 exports[`rollup > tests/fixtures/script-setup-ts.vue > isProduction = false 1`] = `
 "// script-setup-ts.js
-import { defineComponent, createElementVNode, openBlock, createElementBlock } from 'vue';
+import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
 
 const str = "bar";
 var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
   __name: "script-setup-ts",
   props: {
-    foo: { type: String, required: true },
-    bar: { type: Number, required: true },
-    baz: { type: Boolean, required: true }
+    foo: { type: String, required: true, default: "123" },
+    bar: { type: Number, required: true, default: 123 },
+    baz: { type: Boolean, required: true, default: true }
   },
   setup(__props, { expose: __expose }) {
-    const {
-      foo = "123",
-      bar = 123,
-      baz = true
-    } = __props;
     __expose({
       str
     });
@@ -251,18 +234,16 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-const _hoisted_1 = /* @__PURE__ */ createElementVNode(
-  "h1",
-  null,
-  "Hello World",
-  -1
-  /* HOISTED */
-);
-const _hoisted_2 = [
-  _hoisted_1
-];
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", null, [..._hoisted_2]);
+  return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+    createElementVNode(
+      "h1",
+      null,
+      "Hello World",
+      -1
+      /* HOISTED */
+    )
+  ]));
 }
 var scriptSetupTs = /* @__PURE__ */ _export_sfc(script_setup_ts_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", '#FILE#']]);
 
@@ -272,37 +253,30 @@ export { scriptSetupTs as default };
 
 exports[`rollup > tests/fixtures/script-setup-ts.vue > isProduction = true 1`] = `
 "// script-setup-ts.js
-import { createElementVNode, defineComponent, openBlock, createElementBlock } from 'vue';
+import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
 
-const _hoisted_1 = /* @__PURE__ */ createElementVNode(
-  "h1",
-  null,
-  "Hello World",
-  -1
-  /* HOISTED */
-);
-const _hoisted_2 = [
-  _hoisted_1
-];
 const str = "bar";
 var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
   __name: "script-setup-ts",
   props: {
-    foo: {},
-    bar: {},
-    baz: { type: Boolean }
+    foo: { default: "123" },
+    bar: { default: 123 },
+    baz: { type: Boolean, default: true }
   },
   setup(__props, { expose: __expose }) {
-    const {
-      foo = "123",
-      bar = 123,
-      baz = true
-    } = __props;
     __expose({
       str
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", null, _hoisted_2);
+      return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+        createElementVNode(
+          "h1",
+          null,
+          "Hello World",
+          -1
+          /* HOISTED */
+        )
+      ]));
     };
   }
 });
@@ -313,7 +287,7 @@ export { script_setup_ts_vue_vue_type_script_setup_true_lang_default as default 
 
 exports[`rollup > tests/fixtures/sfc-src.vue > isProduction = false 1`] = `
 "// sfc-src.js
-import { defineComponent, createElementVNode, openBlock, createElementBlock, toDisplayString } from 'vue';
+import { defineComponent, openBlock, createElementBlock, createElementVNode, toDisplayString } from 'vue';
 
 var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
   setup() {
@@ -321,16 +295,15 @@ var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
   }
 });
 
-const _hoisted_1 = /* @__PURE__ */ createElementVNode(
-  "h1",
-  null,
-  "Hello World",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", null, [
-    _hoisted_1,
+    _cache[0] || (_cache[0] = createElementVNode(
+      "h1",
+      null,
+      "Hello World",
+      -1
+      /* HOISTED */
+    )),
     createElementVNode(
       "h2",
       null,
@@ -357,7 +330,7 @@ export { sfcSrc as default };
 
 exports[`rollup > tests/fixtures/sfc-src.vue > isProduction = true 1`] = `
 "// sfc-src.js
-import { defineComponent, createElementVNode, openBlock, createElementBlock, toDisplayString } from 'vue';
+import { defineComponent, openBlock, createElementBlock, createElementVNode, toDisplayString } from 'vue';
 
 var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
   setup() {
@@ -365,16 +338,15 @@ var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
   }
 });
 
-const _hoisted_1 = /* @__PURE__ */ createElementVNode(
-  "h1",
-  null,
-  "Hello World",
-  -1
-  /* HOISTED */
-);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", null, [
-    _hoisted_1,
+    _cache[0] || (_cache[0] = createElementVNode(
+      "h1",
+      null,
+      "Hello World",
+      -1
+      /* HOISTED */
+    )),
     createElementVNode(
       "h2",
       null,
