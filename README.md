@@ -9,7 +9,7 @@ Transform Vue 3 SFC to JavaScript.
 - ⚡️ Support Vite, Webpack, Vue CLI, Rollup, esbuild and more, powered by [unplugin](https://github.com/unjs/unplugin).
 - ✨ Support `<script setup>` and macros.
 - 🔥 Hot module replacement (HMR) support for Vite.
-- 🔄 Sync code from [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) periodically. Currently based on [@vitejs/plugin-vue@5.1.2](https://github.com/vitejs/vite-plugin-vue/tree/plugin-vue@5.1.2/packages/plugin-vue).
+- 🔄 Sync code from [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) periodically. Currently based on [@vitejs/plugin-vue@5.1.3](https://github.com/vitejs/vite-plugin-vue/tree/plugin-vue@5.1.3/packages/plugin-vue).
 
 ## Who is using
 
