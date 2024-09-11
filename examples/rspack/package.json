@@ -7,11 +7,11 @@
     "preview": "serve dist"
   },
   "dependencies": {
-    "vue": "^3.5.1"
+    "vue": "^3.5.4"
   },
   "devDependencies": {
-    "@rspack/cli": "1.0.3",
-    "@rspack/core": "1.0.3",
+    "@rspack/cli": "1.0.4",
+    "@rspack/core": "1.0.4",
     "css-loader": "^7.1.2",
     "serve": "^14.2.3",
     "style-loader": "^4.0.0",
