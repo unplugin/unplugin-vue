@@ -7,10 +7,10 @@
     "preview": "serve"
   },
   "dependencies": {
-    "vue": "^3.5.1"
+    "vue": "^3.5.4"
   },
   "devDependencies": {
-    "rolldown": "^0.13.1",
+    "rolldown": "^0.13.2",
     "serve": "^14.2.3",
     "unplugin-vue": "workspace:*"
   }

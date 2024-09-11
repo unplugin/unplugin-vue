@@ -7,10 +7,10 @@
     "preview": "serve dist"
   },
   "dependencies": {
-    "vue": "^3.5.1"
+    "vue": "^3.5.4"
   },
   "devDependencies": {
-    "@swc/core": "^1.7.23",
+    "@swc/core": "^1.7.24",
     "@types/webpack": "^5.28.5",
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.0",
