@@ -15,8 +15,8 @@ importers:
         specifier: ^4.3.6
         version: 4.3.6
       unplugin:
-        specifier: ^1.13.1
-        version: 1.13.1(webpack-sources@3.2.3)
+        specifier: ^1.14.1
+        version: 1.14.1(webpack-sources@3.2.3)
       vite:
         specifier: ^5.4.3
         version: 5.4.3(@types/node@22.5.4)(sass@1.78.0)(terser@5.31.6)
@@ -3992,8 +3992,8 @@ packages:
     resolution: {integrity: sha512-oboBoI6jiuLOZ/OAzWH14rAbn+i1CjeRRQ/XpWxZMRrzghzpGCnIY5g47lQygn4VrZI4ux6/Yapu0akGmPGJCQ==}
     engines: {node: '>=18.12.0'}
 
-  unplugin@1.13.1:
-    resolution: {integrity: sha512-6Kq1iSSwg7KyjcThRUks9LuqDAKvtnioxbL9iEtB9ctTyBA5OmrB8gZd/d225VJu1w3UpUsKV7eGrvf59J7+VA==}
+  unplugin@1.14.1:
+    resolution: {integrity: sha512-lBlHbfSFPToDYp9pjXlUEFVxYLaue9f9T1HC+4OHlmj+HnMDdz9oZY+erXfoCe/5V/7gKUSY2jpXPb9S7f0f/w==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       webpack-sources: ^3
@@ -8347,12 +8347,12 @@ snapshots:
       js-tokens: 9.0.0
       picocolors: 1.1.0
       pkg-types: 1.2.0
-      unplugin: 1.13.1(webpack-sources@3.2.3)
+      unplugin: 1.14.1(webpack-sources@3.2.3)
     transitivePeerDependencies:
       - rollup
       - webpack-sources
 
-  unplugin@1.13.1(webpack-sources@3.2.3):
+  unplugin@1.14.1(webpack-sources@3.2.3):
     dependencies:
       acorn: 8.12.1
       webpack-virtual-modules: 0.6.2
