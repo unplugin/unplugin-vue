@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "esbuild": "^0.23.1",
-    "rollup": "^4.21.2",
+    "rollup": "^4.21.3",
     "rollup-plugin-esbuild": "^6.1.1",
     "serve": "^14.2.3",
     "unplugin-vue": "workspace:*"
