@@ -59,6 +59,10 @@
       "require": "./dist/esbuild.cjs",
       "import": "./dist/esbuild.js"
     },
+    "./farm": {
+      "require": "./dist/farm.cjs",
+      "import": "./dist/farm.js"
+    },
     "./api": {
       "require": "./dist/api.cjs",
       "import": "./dist/api.js"
@@ -93,6 +97,7 @@
   },
   "devDependencies": {
     "@babel/types": "^7.25.6",
+    "@farmfe/core": "^1.4.3",
     "@jridgewell/gen-mapping": "^0.3.5",
     "@jridgewell/trace-mapping": "^0.3.25",
     "@sxzz/eslint-config": "^4.2.0",

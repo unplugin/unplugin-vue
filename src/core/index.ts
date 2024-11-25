@@ -316,6 +316,8 @@ export const plugin = createUnplugin<Options | undefined, false>(
       },
 
       resolveId(id) {
+        console.log(id);
+        
         // component export helper
         if (normalizePath(id) === EXPORT_HELPER_ID) {
           return id
@@ -327,6 +329,8 @@ export const plugin = createUnplugin<Options | undefined, false>(
       },
 
       loadInclude(id) {
+        console.log(id);
+        
         if (id === EXPORT_HELPER_ID) return true
 
         const { query } = parseVueRequest(id)
