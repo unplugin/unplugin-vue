@@ -1,4 +1,4 @@
-import { createHash } from 'node:crypto'
+import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import { normalizePath } from 'vite'
@@ -121,6 +121,14 @@ export function setSrcDescriptor(
   cache.set(filename, entry)
 }
 
+const hash =
+  crypto.hash ??
+  ((
+    algorithm: string,
+    data: crypto.BinaryLike,
+    outputEncoding: crypto.BinaryToTextEncoding,
+  ) => crypto.createHash(algorithm).update(data).digest(outputEncoding))
+
 function getHash(text: string): string {
-  return createHash('sha256').update(text).digest('hex').slice(0, 8)
+  return hash('sha256', text, 'hex').slice(0, 8)
 }
