@@ -227,6 +227,12 @@ export const plugin = createUnplugin<Options | undefined, false>(
       vite: {
         api,
         handleHotUpdate(ctx) {
+          ctx.server.ws.send({
+            type: 'custom',
+            event: 'file-changed',
+            data: { file: normalizePath(ctx.file) },
+          })
+
           if (options.value.compiler.invalidateTypeCache) {
             options.value.compiler.invalidateTypeCache(ctx.file)
           }
