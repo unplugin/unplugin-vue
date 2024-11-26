@@ -13,7 +13,7 @@ import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
 import { transformMain } from '../core/main'
 import {
   clearScriptCache,
-  getResolvedScript,
+  resolveScript,
   typeDepToSFCMap,
 } from '../core/script'
 import { transformStyle } from '../core/style'
@@ -349,7 +349,13 @@ export const plugin = createUnplugin<Options | undefined, false>(
           let block: SFCBlock | null | undefined
           if (query.type === 'script') {
             // handle <script> + <script setup> merge via compileScript()
-            block = getResolvedScript(descriptor, ssr)
+            block = resolveScript(
+              meta.framework,
+              descriptor,
+              options.value,
+              ssr,
+              customElementFilter.value(filename),
+            )
           } else if (query.type === 'template') {
             block = descriptor.template!
           } else if (query.type === 'style') {
