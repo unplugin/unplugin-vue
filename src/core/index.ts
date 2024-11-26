@@ -30,9 +30,7 @@ import type {
   SFCScriptCompileOptions,
   SFCStyleCompileOptions,
   SFCTemplateCompileOptions,
-  // eslint-disable-next-line import/no-duplicates
 } from 'vue/compiler-sfc'
-// eslint-disable-next-line import/no-duplicates
 import type * as _compiler from 'vue/compiler-sfc'
 
 export { parseVueRequest, type VueQuery } from './utils/query'
