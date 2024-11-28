@@ -316,8 +316,6 @@ export const plugin = createUnplugin<Options | undefined, false>(
       },
 
       resolveId(id) {
-        console.log(id);
-        
         // component export helper
         if (normalizePath(id) === EXPORT_HELPER_ID) {
           return id
