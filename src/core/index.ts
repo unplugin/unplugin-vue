@@ -224,85 +224,85 @@ export const plugin = createUnplugin<Options | undefined, false>(
     return {
       name: 'unplugin-vue',
 
-      // vite: {
-      //   api,
-      //   handleHotUpdate(ctx) {
-      //     if (options.value.compiler.invalidateTypeCache) {
-      //       options.value.compiler.invalidateTypeCache(ctx.file)
-      //     }
-      //     if (typeDepToSFCMap.has(ctx.file)) {
-      //       return handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
-      //     }
-      //     if (filter.value(ctx.file)) {
-      //       return handleHotUpdate(
-      //         ctx,
-      //         options.value,
-      //         customElementFilter.value(ctx.file),
-      //       )
-      //     }
-      //   },
+      vite: {
+        api,
+        handleHotUpdate(ctx) {
+          if (options.value.compiler.invalidateTypeCache) {
+            options.value.compiler.invalidateTypeCache(ctx.file)
+          }
+          if (typeDepToSFCMap.has(ctx.file)) {
+            return handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
+          }
+          if (filter.value(ctx.file)) {
+            return handleHotUpdate(
+              ctx,
+              options.value,
+              customElementFilter.value(ctx.file),
+            )
+          }
+        },
 
-      //   config(config) {
-      //     return {
-      //       resolve: {
-      //         dedupe: config.build?.ssr ? [] : ['vue'],
-      //       },
-      //       define: {
-      //         __VUE_OPTIONS_API__: !!(
-      //           (options.value.features?.optionsAPI ?? true) ||
-      //           config.define?.__VUE_OPTIONS_API__
-      //         ),
-      //         __VUE_PROD_DEVTOOLS__: !!(
-      //           options.value.features?.prodDevtools ||
-      //           config.define?.__VUE_PROD_DEVTOOLS__
-      //         ),
-      //         __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: !!(
-      //           options.value.features?.prodHydrationMismatchDetails ||
-      //           config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__
-      //         ),
-      //       },
-      //       ssr: {
-      //         // @ts-ignore -- config.legacy.buildSsrCjsExternalHeuristics will be removed in Vite 5
-      //         external: config.legacy?.buildSsrCjsExternalHeuristics
-      //           ? ['vue', '@vue/server-renderer']
-      //           : [],
-      //       },
-      //     }
-      //   },
+        config(config) {
+          return {
+            resolve: {
+              dedupe: config.build?.ssr ? [] : ['vue'],
+            },
+            define: {
+              __VUE_OPTIONS_API__: !!(
+                (options.value.features?.optionsAPI ?? true) ||
+                config.define?.__VUE_OPTIONS_API__
+              ),
+              __VUE_PROD_DEVTOOLS__: !!(
+                options.value.features?.prodDevtools ||
+                config.define?.__VUE_PROD_DEVTOOLS__
+              ),
+              __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: !!(
+                options.value.features?.prodHydrationMismatchDetails ||
+                config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__
+              ),
+            },
+            ssr: {
+              // @ts-ignore -- config.legacy.buildSsrCjsExternalHeuristics will be removed in Vite 5
+              external: config.legacy?.buildSsrCjsExternalHeuristics
+                ? ['vue', '@vue/server-renderer']
+                : [],
+            },
+          }
+        },
 
-      //   configResolved(config) {
-      //     options.value = {
-      //       ...options.value,
-      //       root: config.root,
-      //       sourceMap:
-      //         config.command === 'build' ? !!config.build.sourcemap : true,
-      //       cssDevSourcemap: config.css?.devSourcemap ?? false,
-      //       isProduction: config.isProduction,
-      //       compiler: options.value.compiler || resolveCompiler(config.root),
-      //       devToolsEnabled: !!(
-      //         options.value.features.prodDevtools ||
-      //         config.define!.__VUE_PROD_DEVTOOLS__ ||
-      //         !config.isProduction
-      //       ),
-      //     }
-      //   },
+        configResolved(config) {
+          options.value = {
+            ...options.value,
+            root: config.root,
+            sourceMap:
+              config.command === 'build' ? !!config.build.sourcemap : true,
+            cssDevSourcemap: config.css?.devSourcemap ?? false,
+            isProduction: config.isProduction,
+            compiler: options.value.compiler || resolveCompiler(config.root),
+            devToolsEnabled: !!(
+              options.value.features.prodDevtools ||
+              config.define!.__VUE_PROD_DEVTOOLS__ ||
+              !config.isProduction
+            ),
+          }
+        },
 
-      //   configureServer(server) {
-      //     options.value.devServer = server
-      //   },
-      // },
+        configureServer(server) {
+          options.value.devServer = server
+        },
+      },
 
-      // rollup: {
-      //   api,
-      // },
+      rollup: {
+        api,
+      },
 
-      // rolldown: {
-      //   api,
-      //   options(opt) {
-      //     opt.moduleTypes ||= {}
-      //     opt.moduleTypes.vue ||= 'js'
-      //   },
-      // },
+      rolldown: {
+        api,
+        options(opt) {
+          opt.moduleTypes ||= {}
+          opt.moduleTypes.vue ||= 'js'
+        },
+      },
 
       buildStart() {
         const compiler = (options.value.compiler =
