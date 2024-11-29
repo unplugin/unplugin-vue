@@ -32,8 +32,11 @@ import HelloWorld from './components/HelloWorld.vue'
 </style> -->
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 const msg = ref('')
+watch(msg, (newVal, oldVal) => {
+  console.log('msg changed:', newVal, oldVal)
+})
 </script>
 
 <template>
