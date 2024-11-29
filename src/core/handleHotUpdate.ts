@@ -254,7 +254,6 @@ function isEqualAst(prev?: t.Statement[], next?: t.Statement[]): boolean {
     return prev === next
   }
 
-  // deep equal, but ignore start/end/loc/range/leadingComments/trailingComments/innerComments
   if (prev.length !== next.length) {
     return false
   }
@@ -262,6 +261,7 @@ function isEqualAst(prev?: t.Statement[], next?: t.Statement[]): boolean {
   for (const [i, prevNode] of prev.entries()) {
     const nextNode = next[i]
     if (
+      // deep equal, but ignore start/end/loc/range/leadingComments/trailingComments/innerComments
       !deepEqual(prevNode, nextNode, [
         'start',
         'end',
@@ -270,6 +270,12 @@ function isEqualAst(prev?: t.Statement[], next?: t.Statement[]): boolean {
         'leadingComments',
         'trailingComments',
         'innerComments',
+        // https://github.com/vuejs/core/issues/11923
+        // avoid comparing the following properties of typeParameters
+        // as it may be imported from 3rd lib and complex to compare
+        '_ownerScope',
+        '_resolvedReference',
+        '_resolvedElements',
       ])
     ) {
       return false

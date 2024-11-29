@@ -1,4 +1,4 @@
-import { createHash } from 'node:crypto'
+import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import { normalizePath } from 'vite'
@@ -22,7 +22,14 @@ const prevCache = new Map<string, SFCDescriptor | undefined>()
 export function createDescriptor(
   filename: string,
   source: string,
-  { root, isProduction, sourceMap, compiler, template }: ResolvedOptions,
+  {
+    root,
+    isProduction,
+    sourceMap,
+    compiler,
+    template,
+    features,
+  }: ResolvedOptions,
   hmr = false,
 ): SFCParseResult {
   const { descriptor, errors } = compiler.parse(source, {
@@ -34,6 +41,23 @@ export function createDescriptor(
   // ensure the path is normalized in a way that is consistent inside
   // project (relative to root) and on different systems.
   const normalizedPath = normalizePath(path.relative(root, filename))
+
+  const componentIdGenerator = features?.componentIdGenerator
+  if (componentIdGenerator === 'filepath') {
+    descriptor.id = getHash(normalizedPath)
+  } else if (componentIdGenerator === 'filepath-source') {
+    descriptor.id = getHash(normalizedPath + source)
+  } else if (typeof componentIdGenerator === 'function') {
+    descriptor.id = componentIdGenerator(
+      normalizedPath,
+      source,
+      isProduction,
+      getHash,
+    )
+  } else {
+    descriptor.id = getHash(normalizedPath + (isProduction ? source : ''))
+  }
+
   descriptor.id = getHash(normalizedPath + (isProduction ? source : ''))
   ;(hmr ? hmrCache : cache).set(filename, descriptor)
   return { descriptor, errors }
@@ -121,6 +145,14 @@ export function setSrcDescriptor(
   cache.set(filename, entry)
 }
 
+const hash =
+  crypto.hash ??
+  ((
+    algorithm: string,
+    data: crypto.BinaryLike,
+    outputEncoding: crypto.BinaryToTextEncoding,
+  ) => crypto.createHash(algorithm).update(data).digest(outputEncoding))
+
 function getHash(text: string): string {
-  return createHash('sha256').update(text).digest('hex').slice(0, 8)
+  return hash('sha256', text, 'hex').slice(0, 8)
 }

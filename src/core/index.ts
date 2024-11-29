@@ -13,7 +13,7 @@ import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
 import { transformMain } from '../core/main'
 import {
   clearScriptCache,
-  getResolvedScript,
+  resolveScript,
   typeDepToSFCMap,
 } from '../core/script'
 import { transformStyle } from '../core/style'
@@ -30,9 +30,7 @@ import type {
   SFCScriptCompileOptions,
   SFCStyleCompileOptions,
   SFCTemplateCompileOptions,
-  // eslint-disable-next-line import/no-duplicates
 } from 'vue/compiler-sfc'
-// eslint-disable-next-line import/no-duplicates
 import type * as _compiler from 'vue/compiler-sfc'
 
 export { parseVueRequest, type VueQuery } from './utils/query'
@@ -139,6 +137,23 @@ export interface Options {
      * @default /\.ce\.vue$/
      */
     customElement?: boolean | string | RegExp | (string | RegExp)[]
+    /**
+     * Customize the component ID generation strategy.
+     * - `'filepath'`: hash the file path (relative to the project root)
+     * - `'filepath-source'`: hash the file path and the source code
+     * - `function`: custom function that takes the file path, source code,
+     *   whether in production mode, and the default hash function as arguments
+     * - **default:** `'filepath'` in development, `'filepath-source'` in production
+     */
+    componentIdGenerator?:
+      | 'filepath'
+      | 'filepath-source'
+      | ((
+          filepath: string,
+          source: string,
+          isProduction: boolean | undefined,
+          getHash: (text: string) => string,
+        ) => string)
   }
 }
 
@@ -227,6 +242,12 @@ export const plugin = createUnplugin<Options | undefined, false>(
       vite: {
         api,
         handleHotUpdate(ctx) {
+          ctx.server.ws.send({
+            type: 'custom',
+            event: 'file-changed',
+            data: { file: normalizePath(ctx.file) },
+          })
+
           if (options.value.compiler.invalidateTypeCache) {
             options.value.compiler.invalidateTypeCache(ctx.file)
           }
@@ -350,7 +371,13 @@ export const plugin = createUnplugin<Options | undefined, false>(
           let block: SFCBlock | null | undefined
           if (query.type === 'script') {
             // handle <script> + <script setup> merge via compileScript()
-            block = getResolvedScript(descriptor, ssr)
+            block = resolveScript(
+              meta.framework,
+              descriptor,
+              options.value,
+              ssr,
+              customElementFilter.value(filename),
+            )
           } else if (query.type === 'template') {
             block = descriptor.template!
           } else if (query.type === 'style') {
