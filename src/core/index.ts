@@ -96,9 +96,7 @@ export interface Options {
       | 'cssDevSourcemap'
       | 'postcssOptions'
       | 'map'
-      | 'postcssPlugins'
       | 'preprocessCustomRequire'
-      | 'preprocessLang'
       | 'preprocessOptions'
     >
   >
