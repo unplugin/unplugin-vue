@@ -6,7 +6,7 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   target: 'node18',
   clean: true,
-  dts: true,
+  // dts: true,
   splitting: true,
   cjsInterop: true,
   shims: true,
