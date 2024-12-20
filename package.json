@@ -100,10 +100,10 @@
     "@sxzz/test-utils": "^0.3.11",
     "@types/debug": "^4.1.12",
     "@types/node": "^22.10.2",
-    "@vitejs/plugin-vue": "5.2.1",
-    "@vitest/ui": "2.1.8",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitest/ui": "^2.1.8",
     "bumpp": "^9.9.1",
-    "esbuild": "0.24.1",
+    "esbuild": "^0.24.2",
     "eslint": "^9.17.0",
     "fast-glob": "^3.3.2",
     "rimraf": "^6.0.1",
@@ -114,7 +114,7 @@
     "tsup": "^8.3.5",
     "typescript": "^5.7.2",
     "unplugin-unused": "^0.2.3",
-    "vitest": "2.1.8",
+    "vitest": "^2.1.8",
     "webpack": "^5.97.1"
   },
   "engines": {
