@@ -92,7 +92,7 @@
   "dependencies": {
     "@vue/reactivity": "^3.5.13",
     "debug": "^4.3.7",
-    "unplugin": "^1.16.0",
+    "unplugin": "/Users/adny/typescript/unplugin",
     "vite": "^6.0.0"
   },
   "devDependencies": {
