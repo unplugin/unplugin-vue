@@ -46,7 +46,10 @@ describe('rollup', async () => {
       const unpluginCode = await getCode(id, unplugin)
 
       expect(viteCode).toBe(unpluginCode)
-      return unpluginCode.replaceAll(JSON.stringify(id), "'#FILE#'")
+      return unpluginCode.replaceAll(
+        /(["']__file["']\s*,\s*['"]).*?(['"])/g,
+        (_, s1, s2) => `${s1}#FILE#${s2}`,
+      )
     },
     {
       params: [['isProduction', [true, false]]],
