@@ -21,7 +21,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     createElementVNode("h1", null, "Hello World", -1 /* HOISTED */)
   ])))
 }
-var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file','#FILE#']]);
+var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',"[CWD]/tests/fixtures/basic.vue"]]);
 
 export { basic as default };
 "
@@ -111,7 +111,7 @@ return __returned__
 }
 
 };
-var reactivityTransform = /*#__PURE__*/_export_sfc(_sfc_main, [['__file','#FILE#']]);
+var reactivityTransform = /*#__PURE__*/_export_sfc(_sfc_main, [['__file',"[CWD]/tests/fixtures/reactivity-transform.vue"]]);
 
 export { reactivityTransform as default };
 "
@@ -174,7 +174,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     createElementVNode("h1", null, "Hello World", -1 /* HOISTED */)
   ])))
 }
-var scriptSetup = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file','#FILE#']]);
+var scriptSetup = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',"[CWD]/tests/fixtures/script-setup.vue"]]);
 
 export { scriptSetup as default };
 "
@@ -245,7 +245,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     )
   ]));
 }
-var scriptSetupTs = /* @__PURE__ */ _export_sfc(script_setup_ts_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", '#FILE#']]);
+var scriptSetupTs = /* @__PURE__ */ _export_sfc(script_setup_ts_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "[CWD]/tests/fixtures/script-setup-ts.vue"]]);
 
 export { scriptSetupTs as default };
 "
@@ -322,7 +322,7 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-var sfcSrc = /*#__PURE__*/_export_sfc(src_script_ts_vue_type_script_src_true_lang_default, [['render',render],['__file','#FILE#']]);
+var sfcSrc = /*#__PURE__*/_export_sfc(src_script_ts_vue_type_script_src_true_lang_default, [['render',render],['__file',"[CWD]/tests/fixtures/sfc-src.vue"]]);
 
 export { sfcSrc as default };
 "
@@ -416,7 +416,7 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-var typescript = /* @__PURE__ */ _export_sfc(typescript_vue_vue_type_script_lang_default, [["__file", '#FILE#']]);
+var typescript = /* @__PURE__ */ _export_sfc(typescript_vue_vue_type_script_lang_default, [["__file", "[CWD]/tests/fixtures/typescript.vue"]]);
 
 export { typescript as default };
 "
