@@ -25,7 +25,11 @@ import {
   getTempSrcDescriptor,
 } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
-import type { PluginLoadHookParam, ResolvedUserConfig } from '@farmfe/core'
+import type {
+  PluginLoadHookParam,
+  ResolvedUserConfig,
+  Server,
+} from '@farmfe/core'
 import type {
   SFCBlock,
   SFCScriptCompileOptions,
@@ -33,7 +37,6 @@ import type {
   SFCTemplateCompileOptions,
 } from 'vue/compiler-sfc'
 import type * as _compiler from 'vue/compiler-sfc'
-import type { Server } from '@farmfe/core'
 
 export { parseVueRequest, type VueQuery } from './utils/query'
 
@@ -243,27 +246,27 @@ export const plugin = createUnplugin<Options | undefined, false>(
 
       vite: {
         api,
-        // handleHotUpdate(ctx) {
-        //   ctx.server.ws.send({
-        //     type: 'custom',
-        //     event: 'file-changed',
-        //     data: { file: normalizePath(ctx.file) },
-        //   })
-
-        //   if (options.value.compiler.invalidateTypeCache) {
-        //     options.value.compiler.invalidateTypeCache(ctx.file)
-        //   }
-        //   if (typeDepToSFCMap.has(ctx.file)) {
-        //     return handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
-        //   }
-        //   if (filter.value(ctx.file)) {
-        //     return handleHotUpdate(
-        //       ctx,
-        //       options.value,
-        //       customElementFilter.value(ctx.file),
-        //     )
-        //   }
-        // },
+        async handleHotUpdate(ctx) {
+          // console.log(ctx);
+          ctx.server.ws.send({
+            type: 'custom',
+            event: 'file-changed',
+            data: { file: normalizePath(ctx.file) },
+          })
+          if (options.value.compiler.invalidateTypeCache) {
+            options.value.compiler.invalidateTypeCache(ctx.file)
+          }
+          if (typeDepToSFCMap.has(ctx.file)) {
+            return handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
+          }
+          if (filter.value(ctx.file)) {
+            return handleHotUpdate(
+              ctx,
+              options.value,
+              customElementFilter.value(ctx.file),
+            )
+          }
+        },
 
         config(config) {
           return {
@@ -370,7 +373,39 @@ export const plugin = createUnplugin<Options | undefined, false>(
         },
 
         configureServer(server: Server) {
-          options.value.devServer = server
+          const {
+            config: {
+              compilation: {
+                output: { publicPath },
+              },
+            },
+          } = server
+          options.value.devServer = Object.assign(server, {
+            config: { ...server.config, base: publicPath },
+          })
+        },
+
+        updateModules: {
+          executor(ctx) {
+            options.value.devServer.ws.send({
+              type: 'custom',
+              event: 'file-changed',
+              data: { file: normalizePath(ctx.file) },
+            })
+            if (options.value.compiler.invalidateTypeCache) {
+              options.value.compiler.invalidateTypeCache(ctx.file)
+            }
+            if (typeDepToSFCMap.has(ctx.file)) {
+              return handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
+            }
+            if (filter.value(ctx.file)) {
+              return handleHotUpdate(
+                ctx,
+                options.value,
+                customElementFilter.value(ctx.file),
+              )
+            }
+          },
         },
       },
 
