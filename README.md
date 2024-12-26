@@ -11,6 +11,10 @@ Transform Vue 3 SFC to JavaScript.
 - 🔥 Hot module replacement (HMR) support for Vite.
 - 🔄 Sync code from [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) periodically. Currently based on [@vitejs/plugin-vue@5.2.1](https://github.com/vitejs/vite-plugin-vue/tree/plugin-vue@5.2.1/packages/plugin-vue).
 
+### Limitations
+
+⚠️ HMR is not supported for Webpack, Vue CLI, and Rspack.
+
 ## Who is using
 
 - [Vue Macros](https://github.com/vue-macros/vue-macros) - Explore and extend more macros and syntax sugar to Vue.
