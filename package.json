@@ -88,7 +88,7 @@
   "dependencies": {
     "@vue/reactivity": "^3.5.13",
     "debug": "^4.4.0",
-    "unplugin": "^1.16.0",
+    "unplugin": "^2.1.2",
     "vite": "^6.0.6"
   },
   "devDependencies": {
