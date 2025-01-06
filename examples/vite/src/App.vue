@@ -10,9 +10,3 @@ const msg = ref('')
     <input v-model="msg" type="text" />
   </div>
 </template>
-
-<style>
-body {
-  background-color: #fba;
-}
-</style>

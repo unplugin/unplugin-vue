@@ -151,14 +151,14 @@ export interface Options {
      * - **default:** `'filepath'` in development, `'filepath-source'` in production
      */
     componentIdGenerator?:
-    | 'filepath'
-    | 'filepath-source'
-    | ((
-      filepath: string,
-      source: string,
-      isProduction: boolean | undefined,
-      getHash: (text: string) => string,
-    ) => string)
+      | 'filepath'
+      | 'filepath-source'
+      | ((
+          filepath: string,
+          source: string,
+          isProduction: boolean | undefined,
+          getHash: (text: string) => string,
+        ) => string)
   }
 }
 
@@ -246,8 +246,7 @@ export const plugin = createUnplugin<Options | undefined, false>(
 
       vite: {
         api,
-        async handleHotUpdate(ctx) {
-          // console.log(ctx);
+        handleHotUpdate(ctx) {
           ctx.server.ws.send({
             type: 'custom',
             event: 'file-changed',
@@ -505,7 +504,7 @@ export const plugin = createUnplugin<Options | undefined, false>(
           // sub block request
           const descriptor = query.src
             ? getSrcDescriptor(filename, query) ||
-            getTempSrcDescriptor(filename, query)
+              getTempSrcDescriptor(filename, query)
             : getDescriptor(filename, options.value)!
 
           if (query.type === 'template') {
