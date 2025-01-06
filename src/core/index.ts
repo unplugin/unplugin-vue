@@ -248,6 +248,7 @@ export const plugin = createUnplugin<Options | undefined, false>(
             event: 'file-changed',
             data: { file: normalizePath(ctx.file) },
           })
+
           if (options.value.compiler.invalidateTypeCache) {
             options.value.compiler.invalidateTypeCache(ctx.file)
           }
@@ -440,7 +441,6 @@ export const plugin = createUnplugin<Options | undefined, false>(
         }
 
         const { filename, query } = parseVueRequest(id)
-
         // select corresponding block for sub-part virtual modules
         if (query.vue) {
           if (query.src) {
