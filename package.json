@@ -90,6 +90,7 @@
     "vue": "^3.2.25"
   },
   "dependencies": {
+    "@farmfe/core": "/Users/adny/rust/farm/packages/core",
     "@vue/reactivity": "^3.5.13",
     "debug": "^4.3.7",
     "unplugin": "/Users/adny/typescript/unplugin",

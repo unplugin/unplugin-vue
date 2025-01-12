@@ -25,11 +25,7 @@ import {
   getTempSrcDescriptor,
 } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
-import type {
-  PluginLoadHookParam,
-  ResolvedUserConfig,
-  Server,
-} from '@farmfe/core'
+import type { ResolvedUserConfig, Server } from '@farmfe/core'
 import type {
   SFCBlock,
   SFCScriptCompileOptions,
@@ -332,7 +328,9 @@ export const plugin = createUnplugin<Options | undefined, false>(
             compilation: {
               resolve: {
                 dedupe:
-                  config.compilation.output.targetEnv === 'node' ? [] : ['vue'],
+                  config.compilation.output?.targetEnv === 'node'
+                    ? []
+                    : ['vue'],
               },
               define: {
                 __VUE_OPTIONS_API__: !!(
@@ -429,7 +427,6 @@ export const plugin = createUnplugin<Options | undefined, false>(
 
       loadInclude(id) {
         if (id === EXPORT_HELPER_ID) return true
-
         const { query } = parseVueRequest(id)
         return query.vue
       },
@@ -481,7 +478,7 @@ export const plugin = createUnplugin<Options | undefined, false>(
         return true
       },
 
-      transform(code, id) {
+      async transform(code, id) {
         const ssr = options.value.ssr
         const { filename, query } = parseVueRequest(id)
         const context = Object.assign({}, this, meta)
