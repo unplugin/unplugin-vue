@@ -13,6 +13,6 @@
   "devDependencies": {
     "unplugin-vue": "workspace:*",
     "vite": "^6.0.6",
-    "vite-plugin-inspect": "^0.10.6"
+    "vite-plugin-inspect": "^10.0.6"
   }
 }
