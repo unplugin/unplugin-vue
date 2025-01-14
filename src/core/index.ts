@@ -232,10 +232,8 @@ export const plugin = createUnplugin<Options | undefined, false>(
       },
       version,
     }
-
     return {
       name: 'unplugin-vue',
-
       vite: {
         api,
         handleHotUpdate(ctx) {
@@ -497,7 +495,7 @@ export const plugin = createUnplugin<Options | undefined, false>(
           // sub block request
           const descriptor = query.src
             ? getSrcDescriptor(filename, query) ||
-              getTempSrcDescriptor(filename, query)
+            getTempSrcDescriptor(filename, query)
             : getDescriptor(filename, options.value)!
 
           if (query.type === 'template') {
