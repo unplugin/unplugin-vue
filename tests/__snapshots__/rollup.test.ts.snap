@@ -2,7 +2,7 @@
 
 exports[`rollup > tests/fixtures/basic.vue > isProduction = false 1`] = `
 "// basic.js
-import { openBlock, createElementBlock, createElementVNode } from 'vue';
+import { createElementBlock, openBlock, createElementVNode } from 'vue';
 
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -29,7 +29,7 @@ export { basic as default };
 
 exports[`rollup > tests/fixtures/basic.vue > isProduction = true 1`] = `
 "// basic.js
-import { openBlock, createElementBlock, createElementVNode } from 'vue';
+import { createElementBlock, openBlock, createElementVNode } from 'vue';
 
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -144,7 +144,7 @@ export { _sfc_main as default };
 
 exports[`rollup > tests/fixtures/script-setup.vue > isProduction = false 1`] = `
 "// script-setup.js
-import { openBlock, createElementBlock, createElementVNode } from 'vue';
+import { createElementBlock, openBlock, createElementVNode } from 'vue';
 
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -182,7 +182,7 @@ export { scriptSetup as default };
 
 exports[`rollup > tests/fixtures/script-setup.vue > isProduction = true 1`] = `
 "// script-setup.js
-import { openBlock, createElementBlock, createElementVNode } from 'vue';
+import { createElementBlock, openBlock, createElementVNode } from 'vue';
 
 const foo = 'bar';
 
@@ -206,7 +206,7 @@ export { _sfc_main as default };
 
 exports[`rollup > tests/fixtures/script-setup-ts.vue > isProduction = false 1`] = `
 "// script-setup-ts.js
-import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
+import { defineComponent, createElementBlock, openBlock, createElementVNode } from 'vue';
 
 const str = "bar";
 var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
@@ -253,7 +253,7 @@ export { scriptSetupTs as default };
 
 exports[`rollup > tests/fixtures/script-setup-ts.vue > isProduction = true 1`] = `
 "// script-setup-ts.js
-import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
+import { defineComponent, createElementBlock, openBlock, createElementVNode } from 'vue';
 
 const str = "bar";
 var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
@@ -287,7 +287,7 @@ export { script_setup_ts_vue_vue_type_script_setup_true_lang_default as default 
 
 exports[`rollup > tests/fixtures/sfc-src.vue > isProduction = false 1`] = `
 "// sfc-src.js
-import { defineComponent, openBlock, createElementBlock, createElementVNode, toDisplayString } from 'vue';
+import { defineComponent, createElementBlock, openBlock, createElementVNode, toDisplayString } from 'vue';
 
 var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
   setup() {
@@ -330,7 +330,7 @@ export { sfcSrc as default };
 
 exports[`rollup > tests/fixtures/sfc-src.vue > isProduction = true 1`] = `
 "// sfc-src.js
-import { defineComponent, openBlock, createElementBlock, createElementVNode, toDisplayString } from 'vue';
+import { defineComponent, createElementBlock, openBlock, createElementVNode, toDisplayString } from 'vue';
 
 var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
   setup() {
