@@ -1,3 +1,24 @@
-import { plugin } from './core'
+/**
+ * This entry file is for Rollup plugin.
+ *
+ * @module
+ */
 
-export default plugin.rollup as typeof plugin.rollup
+import unplugin from './index'
+
+/**
+ * Rollup plugin
+ *
+ * @example
+ * ```ts
+ * // rollup.config.js
+ * import Starter from 'unplugin-vue/rollup'
+ *
+ * export default {
+ *   plugins: [Starter()],
+ * }
+ * ```
+ */
+const rollup = unplugin.rollup as typeof unplugin.rollup
+export default rollup
+export { rollup as 'module.exports' }

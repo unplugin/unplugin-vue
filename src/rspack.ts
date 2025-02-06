@@ -1,3 +1,24 @@
-import { plugin } from './core'
+/**
+ * This entry file is for Rspack plugin.
+ *
+ * @module
+ */
 
-export default plugin.rspack as typeof plugin.rspack
+import unplugin from './index'
+
+/**
+ * Rspack plugin
+ *
+ * @example
+ * ```js
+ * // rspack.config.js
+ * import Vue from 'unplugin-vue/rspack'
+ *
+ * default export {
+ *  plugins: [Vue()],
+ * }
+ * ```
+ */
+const rspack = unplugin.rspack as typeof unplugin.rspack
+export default rspack
+export { rspack as 'module.exports' }
