@@ -5,6 +5,7 @@ import {
   createUnplugin,
   type UnpluginContext,
   type UnpluginContextMeta,
+  type UnpluginInstance,
 } from 'unplugin'
 import { createFilter, normalizePath, type ViteDevServer } from 'vite'
 import { version } from '../../package.json'
@@ -205,8 +206,8 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
   }
 }
 
-export const plugin = createUnplugin<Options | undefined, false>(
-  (rawOptions = {}, meta) => {
+export const plugin: UnpluginInstance<Options | undefined, false> =
+  createUnplugin((rawOptions = {}, meta) => {
     clearScriptCache()
 
     const options = shallowRef(resolveOptions(rawOptions))
@@ -441,5 +442,4 @@ export const plugin = createUnplugin<Options | undefined, false>(
         }
       },
     }
-  },
-)
+  })

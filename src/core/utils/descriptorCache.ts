@@ -11,12 +11,12 @@ export interface SFCParseResult {
   errors: Array<CompilerError | SyntaxError>
 }
 
-export const cache = new Map<string, SFCDescriptor>()
+export const cache: Map<string, SFCDescriptor> = new Map()
 // we use a separate descriptor cache for HMR purposes.
 // The main cached descriptors are parsed from SFCs that may have been
 // transformed by other plugins, e.g. vue-macros;
 // The HMR cached descriptors are based on the raw, pre-transform SFCs.
-export const hmrCache = new Map<string, SFCDescriptor>()
+export const hmrCache: Map<string, SFCDescriptor> = new Map()
 const prevCache = new Map<string, SFCDescriptor | undefined>()
 
 export function createDescriptor(

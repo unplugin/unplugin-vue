@@ -40,7 +40,7 @@ export async function transformMain(
   pluginContext: Context,
   ssr: boolean,
   customElement: boolean,
-) {
+): Promise<{ code: string; map: any; meta: any } | null> {
   const { devServer, isProduction, devToolsEnabled } = options
 
   const prevDescriptor = getPrevDescriptor(filename)

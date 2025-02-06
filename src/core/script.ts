@@ -8,7 +8,7 @@ import type { SFCDescriptor, SFCScriptBlock } from 'vue/compiler-sfc'
 let clientCache = new WeakMap<SFCDescriptor, SFCScriptBlock | null>()
 let ssrCache = new WeakMap<SFCDescriptor, SFCScriptBlock | null>()
 
-export const typeDepToSFCMap = new Map<string, Set<string>>()
+export const typeDepToSFCMap: Map<string, Set<string>> = new Map()
 
 export function invalidateScript(filename: string): void {
   const desc = descriptorCache.get(filename)

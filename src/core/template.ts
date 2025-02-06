@@ -84,7 +84,7 @@ export function compile(
   pluginContext: Context,
   ssr: boolean,
   customElement: boolean,
-) {
+): SFCTemplateCompileResults {
   const filename = descriptor.filename
   resolveScript(
     pluginContext.framework,

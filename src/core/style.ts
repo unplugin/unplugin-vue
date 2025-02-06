@@ -12,7 +12,7 @@ export async function transformStyle(
   options: ResolvedOptions,
   context: UnpluginContext,
   filename: string,
-) {
+): Promise<{ code: string; map: any } | null> {
   const block = descriptor.styles[index]
   // vite already handles pre-processors and CSS module so this is only
   // applying SFC-specific transforms like scoped mode and CSS vars rewrite (v-bind(var))
