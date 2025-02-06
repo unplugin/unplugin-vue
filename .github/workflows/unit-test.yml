@@ -13,23 +13,26 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4.0.0
+
       - name: Set node
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-
-      - name: Setup
-        run: npm i -g @antfu/ni
+          cache: pnpm
 
       - name: Install
-        run: nci
+        run: pnpm i
 
       - name: Type Check
-        run: nr typecheck
+        run: pnpm run typecheck
 
       - name: Lint
-        run: nr lint
+        run: pnpm run lint
 
   test:
     strategy:
@@ -42,19 +45,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4.0.0
+
       - name: Set node ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Setup
-        run: npm i -g @antfu/ni
+          cache: pnpm
 
       - name: Install
-        run: nci
+        run: pnpm i
 
       - name: Build
-        run: nr build
+        run: pnpm run build
 
       - name: Build Examples
         run: pnpm run -r --parallel build
