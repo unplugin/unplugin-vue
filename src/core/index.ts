@@ -388,10 +388,10 @@ export const plugin = createUnplugin<Options | undefined, false>(
               options.value.compiler.invalidateTypeCache(ctx.file)
             }
             if (typeDepToSFCMap.has(ctx.file)) {
-              return handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
+              handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
             }
             if (filter.value(ctx.file)) {
-              return handleHotUpdate(
+              handleHotUpdate(
                 ctx,
                 options.value,
                 customElementFilter.value(ctx.file),
