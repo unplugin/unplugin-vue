@@ -1,11 +1,11 @@
 import { rollup } from 'rollup'
-import esbuild from 'rollup-plugin-esbuild'
+import Oxc from 'unplugin-oxc/rollup'
 import Vue from 'unplugin-vue/rollup'
 
 const bundle = await rollup({
   input: ['./src/main.ts'],
   external: ['vue'],
-  plugins: [Vue(), esbuild({ format: 'esm' })],
+  plugins: [Vue(), Oxc()],
 })
 await bundle.write({
   dir: 'dist',

@@ -209,21 +209,34 @@ exports[`rollup > tests/fixtures/script-setup-ts.vue > isProduction = false 1`] 
 import { defineComponent, createElementBlock, openBlock, createElementVNode } from 'vue';
 
 const str = "bar";
-var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
-  __name: "script-setup-ts",
-  props: {
-    foo: { type: String, required: true, default: "123" },
-    bar: { type: Number, required: true, default: 123 },
-    baz: { type: Boolean, required: true, default: true }
-  },
-  setup(__props, { expose: __expose }) {
-    __expose({
-      str
-    });
-    const __returned__ = { str };
-    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
-    return __returned__;
-  }
+var _sfc_main = /*@__PURE__*/ defineComponent({
+	__name: "script-setup-ts",
+	props: {
+		foo: {
+			type: String,
+			required: true,
+			default: "123"
+		},
+		bar: {
+			type: Number,
+			required: true,
+			default: 123
+		},
+		baz: {
+			type: Boolean,
+			required: true,
+			default: true
+		}
+	},
+	setup(__props, { expose: __expose }) {
+		__expose({ str });
+		const __returned__ = { str };
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
 });
 
 var _export_sfc = (sfc, props) => {
@@ -245,7 +258,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     )
   ]));
 }
-var scriptSetupTs = /* @__PURE__ */ _export_sfc(script_setup_ts_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "#FILE#"]]);
+var scriptSetupTs = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "#FILE#"]]);
 
 export { scriptSetupTs as default };
 "
@@ -256,32 +269,31 @@ exports[`rollup > tests/fixtures/script-setup-ts.vue > isProduction = true 1`] =
 import { defineComponent, createElementBlock, openBlock, createElementVNode } from 'vue';
 
 const str = "bar";
-var script_setup_ts_vue_vue_type_script_setup_true_lang_default = /* @__PURE__ */ defineComponent({
-  __name: "script-setup-ts",
-  props: {
-    foo: { default: "123" },
-    bar: { default: 123 },
-    baz: { type: Boolean, default: true }
-  },
-  setup(__props, { expose: __expose }) {
-    __expose({
-      str
-    });
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
-        createElementVNode(
-          "h1",
-          null,
-          "Hello World",
-          -1
-          /* HOISTED */
-        )
-      ]));
-    };
-  }
+var _sfc_main = /*@__PURE__*/ defineComponent({
+	__name: "script-setup-ts",
+	props: {
+		foo: { default: "123" },
+		bar: { default: 123 },
+		baz: {
+			type: Boolean,
+			default: true
+		}
+	},
+	setup(__props, { expose: __expose }) {
+		__expose({ str });
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [createElementVNode(
+				"h1",
+				null,
+				"Hello World",
+				-1
+				/* HOISTED */
+)]));
+		};
+	}
 });
 
-export { script_setup_ts_vue_vue_type_script_setup_true_lang_default as default };
+export { _sfc_main as default };
 "
 `;
 
@@ -289,29 +301,24 @@ exports[`rollup > tests/fixtures/sfc-src.vue > isProduction = false 1`] = `
 "// sfc-src.js
 import { defineComponent, createElementBlock, openBlock, createElementVNode, toDisplayString } from 'vue';
 
-var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
-  setup() {
-    return [];
-  }
-});
+var _sfc_main = defineComponent({ setup() {
+	return [];
+} });
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", null, [
-    _cache[0] || (_cache[0] = createElementVNode(
-      "h1",
-      null,
-      "Hello World",
-      -1
-      /* HOISTED */
-    )),
-    createElementVNode(
-      "h2",
-      null,
-      toDisplayString(_ctx.msg),
-      1
-      /* TEXT */
-    )
-  ]);
+	return openBlock(), createElementBlock("div", null, [_cache[0] || (_cache[0] = createElementVNode(
+		"h1",
+		null,
+		"Hello World",
+		-1
+		/* HOISTED */
+)), createElementVNode(
+		"h2",
+		null,
+		toDisplayString(_ctx.msg),
+		1
+		/* TEXT */
+)]);
 }
 
 var _export_sfc = (sfc, props) => {
@@ -322,7 +329,7 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-var sfcSrc = /*#__PURE__*/_export_sfc(src_script_ts_vue_type_script_src_true_lang_default, [['render',render],['__file',"#FILE#"]]);
+var sfcSrc = /*#__PURE__*/_export_sfc(_sfc_main, [['render',render],['__file',"#FILE#"]]);
 
 export { sfcSrc as default };
 "
@@ -332,29 +339,24 @@ exports[`rollup > tests/fixtures/sfc-src.vue > isProduction = true 1`] = `
 "// sfc-src.js
 import { defineComponent, createElementBlock, openBlock, createElementVNode, toDisplayString } from 'vue';
 
-var src_script_ts_vue_type_script_src_true_lang_default = defineComponent({
-  setup() {
-    return [];
-  }
-});
+var _sfc_main = defineComponent({ setup() {
+	return [];
+} });
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", null, [
-    _cache[0] || (_cache[0] = createElementVNode(
-      "h1",
-      null,
-      "Hello World",
-      -1
-      /* HOISTED */
-    )),
-    createElementVNode(
-      "h2",
-      null,
-      toDisplayString(_ctx.msg),
-      1
-      /* TEXT */
-    )
-  ]);
+	return openBlock(), createElementBlock("div", null, [_cache[0] || (_cache[0] = createElementVNode(
+		"h1",
+		null,
+		"Hello World",
+		-1
+		/* HOISTED */
+)), createElementVNode(
+		"h2",
+		null,
+		toDisplayString(_ctx.msg),
+		1
+		/* TEXT */
+)]);
 }
 
 var _export_sfc = (sfc, props) => {
@@ -365,7 +367,7 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-var sfcSrc = /*#__PURE__*/_export_sfc(src_script_ts_vue_type_script_src_true_lang_default, [['render',render]]);
+var sfcSrc = /*#__PURE__*/_export_sfc(_sfc_main, [['render',render]]);
 
 export { sfcSrc as default };
 "
@@ -375,13 +377,11 @@ exports[`rollup > tests/fixtures/src-script.ts > isProduction = false 1`] = `
 "// src-script.js
 import { defineComponent } from 'vue';
 
-var src_script_default = defineComponent({
-  setup() {
-    return [];
-  }
-});
+var srcScript = defineComponent({ setup() {
+	return [];
+} });
 
-export { src_script_default as default };
+export { srcScript as default };
 "
 `;
 
@@ -389,13 +389,11 @@ exports[`rollup > tests/fixtures/src-script.ts > isProduction = true 1`] = `
 "// src-script.js
 import { defineComponent } from 'vue';
 
-var src_script_default = defineComponent({
-  setup() {
-    return [];
-  }
-});
+var srcScript = defineComponent({ setup() {
+	return [];
+} });
 
-export { src_script_default as default };
+export { srcScript as default };
 "
 `;
 
@@ -404,9 +402,8 @@ exports[`rollup > tests/fixtures/typescript.vue > isProduction = false 1`] = `
 const str = "123";
 const bool = true;
 const count = 123;
-function foo(str2) {
-}
-var typescript_vue_vue_type_script_lang_default = {};
+function foo(str) {}
+var _sfc_main = {};
 
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -416,7 +413,7 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-var typescript = /* @__PURE__ */ _export_sfc(typescript_vue_vue_type_script_lang_default, [["__file", "#FILE#"]]);
+var typescript = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "#FILE#"]]);
 
 export { typescript as default };
 "
@@ -427,10 +424,9 @@ exports[`rollup > tests/fixtures/typescript.vue > isProduction = true 1`] = `
 const str = "123";
 const bool = true;
 const count = 123;
-function foo(str2) {
-}
-var typescript_vue_vue_type_script_lang_default = {};
+function foo(str) {}
+var _sfc_main = {};
 
-export { typescript_vue_vue_type_script_lang_default as default };
+export { _sfc_main as default };
 "
 `;

@@ -1,14 +1,14 @@
 import process from 'node:process'
 import { rollupBuild, testFixtures } from '@sxzz/test-utils'
 import ViteVue from '@vitejs/plugin-vue'
-import esbuild from 'rollup-plugin-esbuild'
+import Oxc from 'unplugin-oxc/rollup'
 import { describe, expect } from 'vitest'
 import * as vueCompiler from 'vue/compiler-sfc'
 import Vue from '../src/rollup'
 import type { Options } from '../src/api'
 
 async function getCode(file: string, plugin: any) {
-  const bundle = await rollupBuild(file, [plugin, esbuild({ format: 'esm' })], {
+  const bundle = await rollupBuild(file, [plugin, Oxc()], {
     external: ['vue'],
   })
   return bundle.snapshot
