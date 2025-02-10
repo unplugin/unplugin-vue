@@ -17,7 +17,6 @@ await build({
   plugins: [
     Vue({
       style: {
-        // @ts-expect-error
         preprocessLang: 'scss',
       },
     }),
