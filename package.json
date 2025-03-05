@@ -22,7 +22,8 @@
     "type": "git",
     "url": "git+https://github.com/unplugin/unplugin-vue.git"
   },
-  "author": "三咲智子 <sxzz@sxzz.moe>",
+  "author": "三咲智子 Kevin Deng <sxzz@sxzz.moe>",
+  "funding": "https://github.com/sponsors/sxzz",
   "files": [
     "*.d.ts",
     "dist"
