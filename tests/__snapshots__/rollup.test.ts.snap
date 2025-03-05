@@ -209,7 +209,7 @@ exports[`rollup > tests/fixtures/script-setup-ts.vue > isProduction = false 1`] 
 import { defineComponent, createElementBlock, openBlock, createElementVNode } from 'vue';
 
 const str = "bar";
-var _sfc_main = /*@__PURE__*/ defineComponent({
+var _sfc_main = /* @__PURE__ */ defineComponent({
 	__name: "script-setup-ts",
 	props: {
 		foo: {
@@ -269,7 +269,7 @@ exports[`rollup > tests/fixtures/script-setup-ts.vue > isProduction = true 1`] =
 import { defineComponent, createElementBlock, openBlock, createElementVNode } from 'vue';
 
 const str = "bar";
-var _sfc_main = /*@__PURE__*/ defineComponent({
+var _sfc_main = /* @__PURE__ */ defineComponent({
 	__name: "script-setup-ts",
 	props: {
 		foo: { default: "123" },
