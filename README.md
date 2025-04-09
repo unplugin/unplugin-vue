@@ -19,8 +19,10 @@ Transform Vue 3 SFC to JavaScript.
 ## Who is using
 
 - [Vue Macros](https://github.com/vue-macros/vue-macros) - Explore and extend more macros and syntax sugar to Vue.
-- [vue-components-lib-seed](https://github.com/zouhangwithsweet/vue-components-lib-seed) - A vue3.0 components library template.
+- [Vue DevTools](https://github.com/vuejs/devtools) - ⚙️ Browser devtools extension for debugging Vue.js applications.
 - [Element Plus icon](https://github.com/element-plus/element-plus-icons)
+- [Onu UI](https://github.com/onu-ui/onu-ui) - Opinionated and lightweight UnoCSS ui library.
+- [vue-components-lib-seed](https://github.com/zouhangwithsweet/vue-components-lib-seed) - A vue3.0 components library template.
 
 ## Alternatives
 
