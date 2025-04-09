@@ -258,6 +258,7 @@ export async function transformMain(
       filename,
       {
         target: pluginContext.framework === 'vite' ? 'esnext' : undefined,
+        charset: 'utf8',
         // #430 support decorators in .vue file
         // target can be overridden by esbuild config target
         ...options.devServer?.config.esbuild,
