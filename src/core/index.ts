@@ -7,7 +7,12 @@ import {
   type UnpluginContextMeta,
   type UnpluginInstance,
 } from 'unplugin'
-import { createFilter, normalizePath, type ViteDevServer } from 'vite'
+import {
+  createFilter,
+  normalizePath,
+  type ModuleNode,
+  type ViteDevServer,
+} from 'vite'
 import { version } from '../../package.json'
 import { resolveCompiler } from '../core/compiler'
 import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
@@ -248,14 +253,22 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
           if (options.value.compiler.invalidateTypeCache) {
             options.value.compiler.invalidateTypeCache(ctx.file)
           }
+
+          let typeDepModules: ModuleNode[] | undefined
+          const matchesFilter = filter.value(ctx.file)
           if (typeDepToSFCMap.has(ctx.file)) {
-            return handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
+            typeDepModules = handleTypeDepChange(
+              typeDepToSFCMap.get(ctx.file)!,
+              ctx,
+            )
+            if (!matchesFilter) return typeDepModules
           }
-          if (filter.value(ctx.file)) {
+          if (matchesFilter) {
             return handleHotUpdate(
               ctx,
               options.value,
               customElementFilter.value(ctx.file),
+              typeDepModules,
             )
           }
         },
