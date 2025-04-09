@@ -430,6 +430,10 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
               getTempSrcDescriptor(filename, query)
             : getDescriptor(filename, options.value)!
 
+          if (query.src) {
+            this.addWatchFile(filename)
+          }
+
           if (query.type === 'template') {
             return transformTemplateAsModule(
               code,
