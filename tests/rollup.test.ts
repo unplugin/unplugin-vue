@@ -25,6 +25,7 @@ function createPlugins(opt: Options & { root: string }) {
       sourcemap: false,
     },
     define: {},
+    logger: {},
   } as any)
   return {
     unplugin: Vue(opt),
