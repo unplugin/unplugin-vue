@@ -238,6 +238,8 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
       version,
     }
 
+    let transformCachedModule = false
+
     return {
       name: 'unplugin-vue',
 
@@ -340,6 +342,18 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
             }
             _warn(...args)
           }
+
+          transformCachedModule =
+            config.command === 'build' &&
+            options.value.sourceMap &&
+            config.build.watch != null
+        },
+
+        shouldTransformCachedModule({ id }) {
+          if (transformCachedModule && parseVueRequest(id).query.vue) {
+            return true
+          }
+          return false
         },
 
         configureServer(server) {
