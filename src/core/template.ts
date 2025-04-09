@@ -16,7 +16,6 @@ export async function transformTemplateAsModule(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   pluginContext: Context,
-  ssr: boolean,
   customElement: boolean,
 ): Promise<{
   code: string
@@ -27,7 +26,6 @@ export async function transformTemplateAsModule(
     descriptor,
     options,
     pluginContext,
-    ssr,
     customElement,
   )
 
@@ -35,7 +33,7 @@ export async function transformTemplateAsModule(
   if (
     options.devServer &&
     options.devServer.config.server.hmr !== false &&
-    !ssr &&
+    !options.ssr &&
     !options.isProduction
   ) {
     returnCode += `\nimport.meta.hot.accept(({ render }) => {
@@ -57,7 +55,6 @@ export function transformTemplateInMain(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   pluginContext: Context,
-  ssr: boolean,
   customElement: boolean,
 ): SFCTemplateCompileResults {
   const result = compile(
@@ -65,7 +62,6 @@ export function transformTemplateInMain(
     descriptor,
     options,
     pluginContext,
-    ssr,
     customElement,
   )
   return {
@@ -82,19 +78,12 @@ export function compile(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   pluginContext: Context,
-  ssr: boolean,
   customElement: boolean,
 ): SFCTemplateCompileResults {
   const filename = descriptor.filename
-  resolveScript(
-    pluginContext.framework,
-    descriptor,
-    options,
-    ssr,
-    customElement,
-  )
+  resolveScript(pluginContext.framework, descriptor, options, customElement)
   const result = options.compiler.compileTemplate({
-    ...resolveTemplateCompilerOptions(descriptor, options, ssr)!,
+    ...resolveTemplateCompilerOptions(descriptor, options)!,
     source: code,
   })
 
@@ -119,13 +108,12 @@ export function compile(
 export function resolveTemplateCompilerOptions(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
-  ssr: boolean,
 ): Omit<SFCTemplateCompileOptions, 'source'> | undefined {
   const block = descriptor.template
   if (!block) {
     return
   }
-  const resolvedScript = getResolvedScript(descriptor, ssr)
+  const resolvedScript = getResolvedScript(descriptor, options.ssr)
   const hasScoped = descriptor.styles.some((s) => s.scoped)
   const { id, filename, cssVars } = descriptor
 
@@ -199,7 +187,7 @@ export function resolveTemplateCompilerOptions(
     slotted: descriptor.slotted,
     isProd: options.isProduction,
     inMap: block.src ? undefined : block.map,
-    ssr,
+    ssr: options.ssr,
     ssrCssVars: cssVars,
     transformAssetUrls,
     preprocessLang: block.lang === 'html' ? undefined : block.lang,

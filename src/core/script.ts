@@ -60,13 +60,13 @@ export function resolveScript(
   framework: UnpluginContextMeta['framework'],
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
-  ssr: boolean,
   customElement: boolean,
 ): SFCScriptBlock | null {
   if (!descriptor.script && !descriptor.scriptSetup) {
     return null
   }
 
+  const { ssr } = options
   const cached = getResolvedScript(descriptor, ssr)
   if (cached) {
     return cached
@@ -77,7 +77,7 @@ export function resolveScript(
     id: descriptor.id,
     isProd: options.isProduction,
     inlineTemplate: isUseInlineTemplate(descriptor, options),
-    templateOptions: resolveTemplateCompilerOptions(descriptor, options, ssr),
+    templateOptions: resolveTemplateCompilerOptions(descriptor, options),
     sourceMap: options.sourceMap,
     genDefaultAs: canInlineMain(framework, descriptor, options)
       ? scriptIdentifier

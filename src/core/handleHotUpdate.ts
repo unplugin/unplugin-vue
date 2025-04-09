@@ -44,7 +44,7 @@ export async function handleHotUpdate(
   const templateModule = modules.find((m) => /type=template/.test(m.url))
 
   // trigger resolveScript for descriptor so that we'll have the AST ready
-  resolveScript('vite', descriptor, options, false, customElement)
+  resolveScript('vite', descriptor, { ...options, ssr: false }, customElement)
   const scriptChanged = hasScriptChanged(prevDescriptor, descriptor)
   if (scriptChanged) {
     affectedModules.add(getScriptModule(modules) || mainModule)

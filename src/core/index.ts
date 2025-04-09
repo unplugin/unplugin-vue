@@ -352,7 +352,6 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
       },
 
       load(id) {
-        const ssr = options.value.ssr
         if (id === EXPORT_HELPER_ID) {
           return helperCode
         }
@@ -371,7 +370,6 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
               meta.framework,
               descriptor,
               options.value,
-              ssr,
               customElementFilter.value(filename),
             )
           } else if (query.type === 'template') {
@@ -399,7 +397,6 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
       },
 
       transform(code, id) {
-        const ssr = options.value.ssr
         const { filename, query } = parseVueRequest(id)
         const context = Object.assign({}, this, meta)
 
@@ -410,7 +407,6 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
             filename,
             options.value,
             context,
-            ssr,
             customElementFilter.value(filename),
           )
         } else {
@@ -426,7 +422,6 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
               descriptor,
               options.value,
               context,
-              ssr,
               customElementFilter.value(filename),
             )
           } else if (query.type === 'style') {

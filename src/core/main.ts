@@ -38,10 +38,9 @@ export async function transformMain(
   filename: string,
   options: ResolvedOptions,
   pluginContext: Context,
-  ssr: boolean,
   customElement: boolean,
 ): Promise<{ code: string; map: any; meta: any } | null> {
-  const { devServer, isProduction, devToolsEnabled } = options
+  const { devServer, isProduction, devToolsEnabled, ssr } = options
 
   const prevDescriptor = getPrevDescriptor(filename)
   const { descriptor, errors } = createDescriptor(filename, code, options)
@@ -77,7 +76,6 @@ export async function transformMain(
     descriptor,
     options,
     pluginContext,
-    ssr,
     customElement,
   )
 
@@ -92,7 +90,6 @@ export async function transformMain(
       descriptor,
       options,
       pluginContext,
-      ssr,
       customElement,
     ))
   }
@@ -290,7 +287,6 @@ async function genTemplateCode(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   pluginContext: Context,
-  ssr: boolean,
   customElement: boolean,
 ) {
   const template = descriptor.template!
@@ -305,7 +301,6 @@ async function genTemplateCode(
       descriptor,
       options,
       pluginContext,
-      ssr,
       customElement,
     )
   } else {
@@ -327,7 +322,7 @@ async function genTemplateCode(
     const attrsQuery = attrsToQuery(template.attrs, 'js', true)
     const query = `?vue&type=template${srcQuery}${scopedQuery}${attrsQuery}`
     const request = JSON.stringify(src + query)
-    const renderFnName = ssr ? 'ssrRender' : 'render'
+    const renderFnName = options.ssr ? 'ssrRender' : 'render'
     return {
       code: `import { ${renderFnName} as _sfc_${renderFnName} } from ${request}`,
       map: undefined,
@@ -339,7 +334,6 @@ async function genScriptCode(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   pluginContext: Context,
-  ssr: boolean,
   customElement: boolean,
 ): Promise<{
   code: string
@@ -352,7 +346,6 @@ async function genScriptCode(
     pluginContext.framework,
     descriptor,
     options,
-    ssr,
     customElement,
   )
   if (script) {
