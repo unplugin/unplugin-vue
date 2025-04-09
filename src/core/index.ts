@@ -303,6 +303,20 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
               !config.isProduction
             ),
           }
+
+          // #507 suppress warnings for non-recognized pseudo selectors from lightningcss
+          const _warn = config.logger.warn
+          config.logger.warn = (...args) => {
+            const msg = args[0]
+            if (
+              /\[lightningcss\] '(?:deep|slotted|global)' is not recognized as a valid pseudo-/.test(
+                msg,
+              )
+            ) {
+              return
+            }
+            _warn(...args)
+          }
         },
 
         configureServer(server) {
