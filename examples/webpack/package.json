@@ -11,7 +11,7 @@
     "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@swc/core": "^1.11.8",
+    "@swc/core": "^1.11.18",
     "@types/webpack": "^5.28.5",
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.3",
@@ -20,8 +20,8 @@
     "sucrase": "^3.35.0",
     "swc-loader": "^0.2.6",
     "unplugin-vue": "workspace:*",
-    "webpack": "^5.98.0",
+    "webpack": "^5.99.5",
     "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.0"
+    "webpack-dev-server": "^5.2.1"
   }
 }
