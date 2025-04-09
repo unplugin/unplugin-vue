@@ -83,6 +83,7 @@
     "esbuild": "^0.25.1",
     "eslint": "^9.22.0",
     "fast-glob": "^3.3.3",
+    "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
     "rollup": "^4.35.0",
     "slash": "^5.1.0",
