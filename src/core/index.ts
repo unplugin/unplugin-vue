@@ -29,6 +29,7 @@ import {
   getDescriptor,
   getSrcDescriptor,
   getTempSrcDescriptor,
+  type ExtendedSFCDescriptor,
 } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
 import type {
@@ -462,7 +463,7 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
           )
         } else {
           // sub block request
-          const descriptor = query.src
+          const descriptor: ExtendedSFCDescriptor = query.src
             ? getSrcDescriptor(filename, query) ||
               getTempSrcDescriptor(filename, query)
             : getDescriptor(filename, options.value)!

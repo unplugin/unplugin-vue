@@ -1,18 +1,18 @@
 import { formatPostcssSourceMap } from 'vite'
+import type { ExtendedSFCDescriptor } from './utils/descriptorCache'
 import type { ResolvedOptions } from '.'
 import type { ExistingRawSourceMap } from 'rollup'
 import type { RawSourceMap } from 'source-map-js'
 import type { UnpluginContext } from 'unplugin'
-import type { SFCDescriptor } from 'vue/compiler-sfc'
 
 export async function transformStyle(
   code: string,
-  descriptor: SFCDescriptor,
+  descriptor: ExtendedSFCDescriptor,
   index: number,
   options: ResolvedOptions,
   context: UnpluginContext,
   filename: string,
-): Promise<{ code: string; map: any } | null> {
+): Promise<{ code: string; map: any; meta: any } | null> {
   const block = descriptor.styles[index]
   // vite already handles pre-processors and CSS module so this is only
   // applying SFC-specific transforms like scoped mode and CSS vars rewrite (v-bind(var))
@@ -62,5 +62,13 @@ export async function transformStyle(
   return {
     code: result.code,
     map,
+    meta:
+      block.scoped && !descriptor.isTemp
+        ? {
+            vite: {
+              cssScopeTo: [descriptor.filename, 'default'],
+            },
+          }
+        : undefined,
   }
 }
