@@ -189,6 +189,8 @@ export function resolveTemplateCompilerOptions(
   return {
     ...options.template,
     id,
+    // @ts-expect-error TODO remove when 3.6 is out
+    vapor: descriptor.vapor,
     ast: canReuseAST(options.compiler.version)
       ? descriptor.template?.ast
       : undefined,
