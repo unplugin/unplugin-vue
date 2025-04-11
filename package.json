@@ -1,7 +1,7 @@
 {
   "name": "unplugin-vue",
-  "version": "5.2.1",
-  "packageManager": "pnpm@9.14.2",
+  "version": "6.1.0",
+  "packageManager": "pnpm@10.8.0",
   "description": "Transform Vue 3 SFC to JavaScript.",
   "type": "module",
   "keywords": [
@@ -22,7 +22,8 @@
     "type": "git",
     "url": "git+https://github.com/unplugin/unplugin-vue.git"
   },
-  "author": "三咲智子 <sxzz@sxzz.moe>",
+  "author": "三咲智子 Kevin Deng <sxzz@sxzz.moe>",
+  "funding": "https://github.com/sponsors/sxzz",
   "files": [
     "*.d.ts",
     "dist"
@@ -31,42 +32,14 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
-    },
-    "./vite": {
-      "require": "./dist/vite.cjs",
-      "import": "./dist/vite.js"
-    },
-    "./webpack": {
-      "require": "./dist/webpack.cjs",
-      "import": "./dist/webpack.js"
-    },
-    "./rspack": {
-      "require": "./dist/rspack.cjs",
-      "import": "./dist/rspack.js"
-    },
-    "./rollup": {
-      "require": "./dist/rollup.cjs",
-      "import": "./dist/rollup.js"
-    },
-    "./rolldown": {
-      "require": "./dist/rolldown.cjs",
-      "import": "./dist/rolldown.js"
-    },
-    "./esbuild": {
-      "require": "./dist/esbuild.cjs",
-      "import": "./dist/esbuild.js"
-    },
-    "./farm": {
-      "require": "./dist/farm.cjs",
-      "import": "./dist/farm.js"
-    },
-    "./api": {
-      "require": "./dist/api.cjs",
-      "import": "./dist/api.js"
-    },
+    ".": "./dist/index.js",
+    "./vite": "./dist/vite.js",
+    "./webpack": "./dist/webpack.js",
+    "./rspack": "./dist/rspack.js",
+    "./rollup": "./dist/rollup.js",
+    "./rolldown": "./dist/rolldown.js",
+    "./esbuild": "./dist/esbuild.js",
+    "./api": "./dist/api.js",
     "./*": "./*"
   },
   "typesVersions": {
@@ -79,8 +52,8 @@
   },
   "scripts": {
     "test": "vitest",
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "release": "bumpp",
     "lint": "eslint --max-warnings 0 .",
     "typecheck": "tsc --noEmit",
@@ -92,35 +65,35 @@
   "dependencies": {
     "@farmfe/core": "/Users/adny/rust/farm/packages/core",
     "@vue/reactivity": "^3.5.13",
-    "debug": "^4.3.7",
-    "unplugin": "/Users/adny/typescript/unplugin",
-    "vite": "^6.0.0"
+    "debug": "^4.4.0",
+    "unplugin": "^2.3.0",
+    "vite": "^6.2.5"
   },
   "devDependencies": {
-    "@babel/types": "^7.26.0",
-    "@jridgewell/gen-mapping": "^0.3.5",
+    "@babel/types": "^7.27.0",
+    "@jridgewell/gen-mapping": "^0.3.8",
     "@jridgewell/trace-mapping": "^0.3.25",
-    "@sxzz/eslint-config": "^4.5.0",
-    "@sxzz/prettier-config": "^2.0.2",
-    "@sxzz/test-utils": "^0.3.7",
+    "@sxzz/eslint-config": "^6.1.1",
+    "@sxzz/prettier-config": "^2.2.1",
+    "@sxzz/test-utils": "^0.5.4",
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.10.0",
-    "@vitejs/plugin-vue": "5.2.1",
-    "@vitest/ui": "2.1.6",
-    "bumpp": "^9.8.1",
-    "esbuild": "0.24.0",
-    "eslint": "^9.15.0",
-    "fast-glob": "^3.3.2",
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vitest/ui": "^3.1.1",
+    "bumpp": "^10.1.0",
+    "esbuild": "^0.25.2",
+    "eslint": "^9.24.0",
+    "fast-glob": "^3.3.3",
+    "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
-    "rollup": "^4.27.4",
-    "rollup-plugin-esbuild": "^6.1.1",
+    "rollup": "^4.39.0",
     "slash": "^5.1.0",
     "source-map-js": "^1.2.1",
-    "tsup": "^8.3.5",
-    "typescript": "^5.7.2",
-    "unplugin-unused": "^0.2.3",
-    "vitest": "2.1.6",
-    "webpack": "^5.96.1"
+    "tsdown": "^0.6.10",
+    "typescript": "^5.8.3",
+    "unplugin-oxc": "^0.3.3",
+    "vitest": "^3.1.1",
+    "webpack": "^5.99.5"
   },
   "engines": {
     "node": ">=18.0.0"

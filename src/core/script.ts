@@ -8,7 +8,7 @@ import type { SFCDescriptor, SFCScriptBlock } from 'vue/compiler-sfc'
 let clientCache = new WeakMap<SFCDescriptor, SFCScriptBlock | null>()
 let ssrCache = new WeakMap<SFCDescriptor, SFCScriptBlock | null>()
 
-export const typeDepToSFCMap = new Map<string, Set<string>>()
+export const typeDepToSFCMap: Map<string, Set<string>> = new Map()
 
 export function invalidateScript(filename: string): void {
   const desc = descriptorCache.get(filename)
@@ -60,26 +60,24 @@ export function resolveScript(
   framework: UnpluginContextMeta['framework'],
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
-  ssr: boolean,
   customElement: boolean,
 ): SFCScriptBlock | null {
   if (!descriptor.script && !descriptor.scriptSetup) {
     return null
   }
 
+  const { ssr } = options
   const cached = getResolvedScript(descriptor, ssr)
   if (cached) {
     return cached
   }
 
-  let resolved: SFCScriptBlock | null = null
-
-  resolved = options.compiler.compileScript(descriptor, {
+  const resolved: SFCScriptBlock = options.compiler.compileScript(descriptor, {
     ...options.script,
     id: descriptor.id,
     isProd: options.isProduction,
     inlineTemplate: isUseInlineTemplate(descriptor, options),
-    templateOptions: resolveTemplateCompilerOptions(descriptor, options, ssr),
+    templateOptions: resolveTemplateCompilerOptions(descriptor, options),
     sourceMap: options.sourceMap,
     genDefaultAs: canInlineMain(framework, descriptor, options)
       ? scriptIdentifier

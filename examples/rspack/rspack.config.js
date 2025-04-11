@@ -1,6 +1,6 @@
-const process = require('node:process')
-const rspack = require('@rspack/core')
-const Vue = require('unplugin-vue/rspack')
+import process from 'node:process'
+import { HtmlRspackPlugin } from '@rspack/core'
+import Vue from 'unplugin-vue/rspack'
 
 /** @type {import('@rspack/core').Configuration} */
 const config = {
@@ -33,10 +33,10 @@ const config = {
   },
   plugins: [
     Vue(),
-    new rspack.HtmlRspackPlugin({
+    new HtmlRspackPlugin({
       filename: 'index.html',
       template: 'public/index.html',
     }),
   ],
 }
-module.exports = config
+export default config

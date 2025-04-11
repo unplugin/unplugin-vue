@@ -11,12 +11,12 @@ export interface SFCParseResult {
   errors: Array<CompilerError | SyntaxError>
 }
 
-export const cache = new Map<string, SFCDescriptor>()
+export const cache: Map<string, SFCDescriptor> = new Map()
 // we use a separate descriptor cache for HMR purposes.
 // The main cached descriptors are parsed from SFCs that may have been
 // transformed by other plugins, e.g. vue-macros;
 // The HMR cached descriptors are based on the raw, pre-transform SFCs.
-export const hmrCache = new Map<string, SFCDescriptor>()
+export const hmrCache: Map<string, SFCDescriptor> = new Map()
 const prevCache = new Map<string, SFCDescriptor | undefined>()
 
 export function createDescriptor(
@@ -76,6 +76,10 @@ export function invalidateDescriptor(filename: string, hmr = false): void {
   }
 }
 
+export interface ExtendedSFCDescriptor extends SFCDescriptor {
+  isTemp?: boolean
+}
+
 export function getDescriptor(
   filename: string,
   options: ResolvedOptions,
@@ -114,8 +118,9 @@ export function getSrcDescriptor(
 export function getTempSrcDescriptor(
   filename: string,
   query: VueQuery,
-): SFCDescriptor {
+): ExtendedSFCDescriptor {
   // this is only used for pre-compiled <style src> with scoped flag
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   return {
     filename,
     id: query.id || '',
@@ -123,12 +128,12 @@ export function getTempSrcDescriptor(
       {
         scoped: query.scoped,
         loc: {
-          // @ts-expect-error
           start: { line: 0, column: 0 },
         },
-      },
+      } as any,
     ],
-  }
+    isTemp: true,
+  } as ExtendedSFCDescriptor
 }
 
 export function setSrcDescriptor(

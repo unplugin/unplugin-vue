@@ -28,6 +28,7 @@ export async function handleHotUpdate(
   { file, modules, read }: HmrContext,
   options: ResolvedOptions,
   customElement: boolean,
+  typeDepModules?: ModuleNode[],
 ): Promise<ModuleNode[] | undefined> {
   const prevDescriptor = getDescriptor(file, options, false, true)
   if (!prevDescriptor) {
@@ -44,7 +45,7 @@ export async function handleHotUpdate(
   const templateModule = modules.find((m) => /type=template/.test(m.url))
 
   // trigger resolveScript for descriptor so that we'll have the AST ready
-  resolveScript('vite', descriptor, options, false, customElement)
+  resolveScript('vite', descriptor, { ...options, ssr: false }, customElement)
   const scriptChanged = hasScriptChanged(prevDescriptor, descriptor)
   if (scriptChanged) {
     affectedModules.add(getScriptModule(modules) || mainModule)
@@ -167,7 +168,9 @@ export async function handleHotUpdate(
     }
     debug(`[vue:update(${updateType.join('&')})] ${file}`)
   }
-  return [...affectedModules].filter(Boolean) as ModuleNode[]
+  return [...affectedModules, ...(typeDepModules || [])].filter(
+    Boolean,
+  ) as ModuleNode[]
 }
 
 export function isEqualBlock(a: SFCBlock | null, b: SFCBlock | null): boolean {

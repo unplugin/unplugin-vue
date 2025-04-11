@@ -1,10 +1,10 @@
 import process from 'node:process'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import Vue from 'unplugin-vue/webpack'
-import type { Configuration } from 'webpack'
 
-const config: Configuration = {
-  mode: (process.env.MODE as any) ?? 'development',
+/** @type import('webpack').Configuration */
+const config = {
+  mode: process.env.MODE ?? 'development',
   entry: {
     app: './src/main.ts',
   },

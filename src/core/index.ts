@@ -5,8 +5,14 @@ import {
   createUnplugin,
   type UnpluginContext,
   type UnpluginContextMeta,
+  type UnpluginInstance,
 } from 'unplugin'
-import { createFilter, normalizePath, type ViteDevServer } from 'vite'
+import {
+  createFilter,
+  normalizePath,
+  type ModuleNode,
+  type ViteDevServer,
+} from 'vite'
 import { version } from '../../package.json'
 import { resolveCompiler } from '../core/compiler'
 import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
@@ -23,6 +29,7 @@ import {
   getDescriptor,
   getSrcDescriptor,
   getTempSrcDescriptor,
+  type ExtendedSFCDescriptor,
 } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
 import type { ResolvedUserConfig, Server } from '@farmfe/core'
@@ -206,8 +213,8 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
   }
 }
 
-export const plugin = createUnplugin<Options | undefined, false>(
-  (rawOptions = {}, meta) => {
+export const plugin: UnpluginInstance<Options | undefined, false> =
+  createUnplugin((rawOptions = {}, meta) => {
     clearScriptCache()
 
     const options = shallowRef(resolveOptions(rawOptions))
@@ -232,6 +239,9 @@ export const plugin = createUnplugin<Options | undefined, false>(
       },
       version,
     }
+
+    let transformCachedModule = false
+
     return {
       name: 'unplugin-vue',
       vite: {
@@ -246,36 +256,54 @@ export const plugin = createUnplugin<Options | undefined, false>(
           if (options.value.compiler.invalidateTypeCache) {
             options.value.compiler.invalidateTypeCache(ctx.file)
           }
+
+          let typeDepModules: ModuleNode[] | undefined
+          const matchesFilter = filter.value(ctx.file)
           if (typeDepToSFCMap.has(ctx.file)) {
-            return handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
+            typeDepModules = handleTypeDepChange(
+              typeDepToSFCMap.get(ctx.file)!,
+              ctx,
+            )
+            if (!matchesFilter) return typeDepModules
           }
-          if (filter.value(ctx.file)) {
+          if (matchesFilter) {
             return handleHotUpdate(
               ctx,
               options.value,
               customElementFilter.value(ctx.file),
+              typeDepModules,
             )
           }
         },
 
         config(config) {
+          const parseDefine = (v: unknown) => {
+            try {
+              return typeof v === 'string' ? JSON.parse(v) : v
+            } catch {
+              return v
+            }
+          }
+
           return {
             resolve: {
               dedupe: config.build?.ssr ? [] : ['vue'],
             },
             define: {
-              __VUE_OPTIONS_API__: !!(
-                (options.value.features?.optionsAPI ?? true) ||
-                config.define?.__VUE_OPTIONS_API__
-              ),
-              __VUE_PROD_DEVTOOLS__: !!(
-                options.value.features?.prodDevtools ||
-                config.define?.__VUE_PROD_DEVTOOLS__
-              ),
-              __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: !!(
-                options.value.features?.prodHydrationMismatchDetails ||
-                config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__
-              ),
+              __VUE_OPTIONS_API__:
+                options.value.features?.optionsAPI ??
+                parseDefine(config.define?.__VUE_OPTIONS_API__) ??
+                true,
+              __VUE_PROD_DEVTOOLS__:
+                (options.value.features?.prodDevtools ||
+                  parseDefine(config.define?.__VUE_PROD_DEVTOOLS__)) ??
+                false,
+              __VUE_PROD_HYDRATION_MISMATCH_DETAILS__:
+                (options.value.features?.prodHydrationMismatchDetails ||
+                  parseDefine(
+                    config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__,
+                  )) ??
+                false,
             },
             ssr: {
               // @ts-ignore -- config.legacy.buildSsrCjsExternalHeuristics will be removed in Vite 5
@@ -301,6 +329,32 @@ export const plugin = createUnplugin<Options | undefined, false>(
               !config.isProduction
             ),
           }
+
+          // #507 suppress warnings for non-recognized pseudo selectors from lightningcss
+          const _warn = config.logger.warn
+          config.logger.warn = (...args) => {
+            const msg = args[0]
+            if (
+              /\[lightningcss\] '(?:deep|slotted|global)' is not recognized as a valid pseudo-/.test(
+                msg,
+              )
+            ) {
+              return
+            }
+            _warn(...args)
+          }
+
+          transformCachedModule =
+            config.command === 'build' &&
+            options.value.sourceMap &&
+            config.build.watch != null
+        },
+
+        shouldTransformCachedModule({ id }) {
+          if (transformCachedModule && parseVueRequest(id).query.vue) {
+            return true
+          }
+          return false
         },
 
         configureServer(server) {
@@ -430,7 +484,6 @@ export const plugin = createUnplugin<Options | undefined, false>(
       },
 
       load(id) {
-        const ssr = options.value.ssr
         if (id === EXPORT_HELPER_ID) {
           return helperCode
         }
@@ -449,7 +502,6 @@ export const plugin = createUnplugin<Options | undefined, false>(
               meta.framework,
               descriptor,
               options.value,
-              ssr,
               customElementFilter.value(filename),
             )
           } else if (query.type === 'template') {
@@ -476,8 +528,7 @@ export const plugin = createUnplugin<Options | undefined, false>(
         return true
       },
 
-      async transform(code, id) {
-        const ssr = options.value.ssr
+      transform(code, id) {
         const { filename, query } = parseVueRequest(id)
         const context = Object.assign({}, this, meta)
 
@@ -488,15 +539,18 @@ export const plugin = createUnplugin<Options | undefined, false>(
             filename,
             options.value,
             context,
-            ssr,
             customElementFilter.value(filename),
           )
         } else {
           // sub block request
-          const descriptor = query.src
+          const descriptor: ExtendedSFCDescriptor = query.src
             ? getSrcDescriptor(filename, query) ||
             getTempSrcDescriptor(filename, query)
             : getDescriptor(filename, options.value)!
+
+          if (query.src) {
+            this.addWatchFile(filename)
+          }
 
           if (query.type === 'template') {
             return transformTemplateAsModule(
@@ -504,7 +558,6 @@ export const plugin = createUnplugin<Options | undefined, false>(
               descriptor,
               options.value,
               context,
-              ssr,
               customElementFilter.value(filename),
             )
           } else if (query.type === 'style') {
@@ -520,5 +573,4 @@ export const plugin = createUnplugin<Options | undefined, false>(
         }
       },
     }
-  },
-)
+  })

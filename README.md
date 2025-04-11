@@ -9,7 +9,8 @@ Transform Vue 3 SFC to JavaScript.
 - ⚡️ Support Vite, Webpack, Vue CLI, Rollup, esbuild and more, powered by [unplugin](https://github.com/unjs/unplugin).
 - ✨ Support `<script setup>` and macros.
 - 🔥 Hot module replacement (HMR) support for Vite.
-- 🔄 Sync code from [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) periodically. Currently based on [@vitejs/plugin-vue@5.2.1](https://github.com/vitejs/vite-plugin-vue/tree/plugin-vue@5.2.1/packages/plugin-vue).
+- 🔄 Sync code from [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) periodically.
+  Currently based on [@vitejs/plugin-vue@5.2.3](https://github.com/vitejs/vite-plugin-vue/tree/plugin-vue@5.2.3/packages/plugin-vue).
 
 ### Limitations
 
@@ -18,8 +19,10 @@ Transform Vue 3 SFC to JavaScript.
 ## Who is using
 
 - [Vue Macros](https://github.com/vue-macros/vue-macros) - Explore and extend more macros and syntax sugar to Vue.
-- [vue-components-lib-seed](https://github.com/zouhangwithsweet/vue-components-lib-seed) - A vue3.0 components library template.
+- [Vue DevTools](https://github.com/vuejs/devtools) - ⚙️ Browser devtools extension for debugging Vue.js applications.
 - [Element Plus icon](https://github.com/element-plus/element-plus-icons)
+- [Onu UI](https://github.com/onu-ui/onu-ui) - Opinionated and lightweight UnoCSS ui library.
+- [vue-components-lib-seed](https://github.com/zouhangwithsweet/vue-components-lib-seed) - A vue3.0 components library template.
 
 ## Alternatives
 
