@@ -64,7 +64,6 @@
     "vue": "^3.2.25"
   },
   "dependencies": {
-    "@farmfe/core": "2.0.0-nightly-20250411141103",
     "@vue/reactivity": "^3.5.13",
     "debug": "^4.4.0",
     "unplugin": "^2.3.0",
@@ -72,6 +71,7 @@
   },
   "devDependencies": {
     "@babel/types": "^7.27.0",
+    "@farmfe/core": "2.0.0-nightly-20250411141103",
     "@jridgewell/gen-mapping": "^0.3.8",
     "@jridgewell/trace-mapping": "^0.3.25",
     "@sxzz/eslint-config": "^6.1.1",

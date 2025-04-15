@@ -150,14 +150,14 @@ export interface Options {
      * - **default:** `'filepath'` in development, `'filepath-source'` in production
      */
     componentIdGenerator?:
-    | 'filepath'
-    | 'filepath-source'
-    | ((
-      filepath: string,
-      source: string,
-      isProduction: boolean | undefined,
-      getHash: (text: string) => string,
-    ) => string)
+      | 'filepath'
+      | 'filepath-source'
+      | ((
+          filepath: string,
+          source: string,
+          isProduction: boolean | undefined,
+          getHash: (text: string) => string,
+        ) => string)
   }
 }
 
@@ -244,6 +244,7 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
 
     return {
       name: 'unplugin-vue',
+
       vite: {
         api,
         handleHotUpdate(ctx) {
@@ -479,6 +480,7 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
 
       loadInclude(id) {
         if (id === EXPORT_HELPER_ID) return true
+
         const { query } = parseVueRequest(id)
         return query.vue
       },
@@ -545,7 +547,7 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
           // sub block request
           const descriptor: ExtendedSFCDescriptor = query.src
             ? getSrcDescriptor(filename, query) ||
-            getTempSrcDescriptor(filename, query)
+              getTempSrcDescriptor(filename, query)
             : getDescriptor(filename, options.value)!
 
           if (query.src) {
