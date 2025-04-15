@@ -381,22 +381,23 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
             compilation: {
               resolve: {
                 dedupe:
-                  config.compilation.output?.targetEnv === 'node'
+                  config.compilation?.output?.targetEnv === 'node'
                     ? []
                     : ['vue'],
               },
               define: {
                 __VUE_OPTIONS_API__: !!(
                   (options.value.features?.optionsAPI ?? true) ||
-                  config.define?.__VUE_OPTIONS_API__
+                  config?.compilation?.define?.__VUE_OPTIONS_API__
                 ),
                 __VUE_PROD_DEVTOOLS__: !!(
                   options.value.features?.prodDevtools ||
-                  config.define?.__VUE_PROD_DEVTOOLS__
+                  config?.compilation?.define?.__VUE_PROD_DEVTOOLS__
                 ),
                 __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: !!(
                   options.value.features?.prodHydrationMismatchDetails ||
-                  config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__
+                  config?.compilation?.define
+                    ?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__
                 ),
               },
             },
@@ -406,14 +407,15 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
         configResolved(config) {
           options.value = {
             ...options.value,
-            root: config.root,
-            sourceMap: config.compilation?.sourcemap,
-            cssDevSourcemap: config.compilation?.sourcemap,
+            root: config.root as string,
+            sourceMap: config.compilation?.sourcemap as boolean,
+            cssDevSourcemap: config.compilation?.sourcemap as boolean,
             isProduction: config.compilation?.mode === 'production',
-            compiler: options.value.compiler || resolveCompiler(config.root),
+            compiler:
+              options.value.compiler || resolveCompiler(config.root as string),
             devToolsEnabled: !!(
               options.value.features.prodDevtools ||
-              config.compilation.define!.__VUE_PROD_DEVTOOLS__ ||
+              config.compilation?.define?.__VUE_PROD_DEVTOOLS__ ||
               config.compilation?.mode !== 'production'
             ),
           }
