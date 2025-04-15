@@ -32,7 +32,7 @@ import {
   type ExtendedSFCDescriptor,
 } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
-import type { ResolvedUserConfig, Server } from '@farmfe/core'
+import type { Server } from '@farmfe/core'
 import type {
   SFCBlock,
   SFCScriptCompileOptions,
@@ -376,7 +376,7 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
       },
 
       farm: {
-        config(config: ResolvedUserConfig) {
+        config(config) {
           return {
             compilation: {
               resolve: {
