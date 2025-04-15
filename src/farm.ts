@@ -1,4 +1,27 @@
-import { plugin } from './core'
+import fs from 'node:fs'
+import { plugin, type Options } from './core'
+import type { JsPlugin, PluginLoadHookParam } from '@farmfe/core'
 
-// eslint-disable-next-line import/no-default-export
-export default plugin.farm as typeof plugin.farm
+const createFarmVuePlugins = (options?: Options): JsPlugin[] => {
+  const vuePlugin = plugin.farm(options)
+
+  const vueLoadPlugin = {
+    name: 'farm-load-vue-module-type',
+    priority: -100,
+    load: {
+      filters: {
+        resolvedPaths: ['.vue'],
+      },
+      executor: (param: PluginLoadHookParam) => {
+        const content = fs.readFileSync(param.resolvedPath, 'utf-8')
+        return {
+          content,
+          moduleType: 'js',
+        }
+      },
+    },
+  }
+  return [vuePlugin, vueLoadPlugin]
+}
+
+export default createFarmVuePlugins
