@@ -5,10 +5,9 @@ import Vue from 'unplugin-vue/farm'
 
 export default defineConfig({
   plugins: [Vue(), base()],
-  // vitePlugins: [Vue()],
   compilation: {
     progress: false,
-    persistentCache: false
+    persistentCache: false,
   },
 })
 

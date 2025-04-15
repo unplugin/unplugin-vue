@@ -39,6 +39,7 @@
     "./rollup": "./dist/rollup.js",
     "./rolldown": "./dist/rolldown.js",
     "./esbuild": "./dist/esbuild.js",
+    "./farm": "./dist/farm.js",
     "./api": "./dist/api.js",
     "./*": "./*"
   },
@@ -63,7 +64,7 @@
     "vue": "^3.2.25"
   },
   "dependencies": {
-    "@farmfe/core": "/Users/adny/rust/farm/packages/core",
+    "@farmfe/core": "2.0.0-nightly-20250411141103",
     "@vue/reactivity": "^3.5.13",
     "debug": "^4.4.0",
     "unplugin": "^2.3.0",

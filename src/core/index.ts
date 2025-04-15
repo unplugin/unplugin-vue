@@ -150,14 +150,14 @@ export interface Options {
      * - **default:** `'filepath'` in development, `'filepath-source'` in production
      */
     componentIdGenerator?:
-      | 'filepath'
-      | 'filepath-source'
-      | ((
-          filepath: string,
-          source: string,
-          isProduction: boolean | undefined,
-          getHash: (text: string) => string,
-        ) => string)
+    | 'filepath'
+    | 'filepath-source'
+    | ((
+      filepath: string,
+      source: string,
+      isProduction: boolean | undefined,
+      getHash: (text: string) => string,
+    ) => string)
   }
 }
 
