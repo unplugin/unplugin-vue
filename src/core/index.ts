@@ -425,10 +425,12 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
           const {
             config: {
               compilation: {
+                // @ts-ignore
                 output: { publicPath },
               },
             },
           } = server
+          // @ts-ignore
           options.value.devServer = Object.assign(server, {
             config: { ...server.config, base: publicPath },
           })
@@ -436,7 +438,7 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
 
         updateModules: {
           executor(ctx) {
-            options.value.devServer.ws.send({
+            options.value.devServer?.ws.send({
               type: 'custom',
               event: 'file-changed',
               data: { file: normalizePath(ctx.file) },
@@ -445,11 +447,11 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
               options.value.compiler.invalidateTypeCache(ctx.file)
             }
             if (typeDepToSFCMap.has(ctx.file)) {
-              handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx)
+              handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx as any)
             }
             if (filter.value(ctx.file)) {
               handleHotUpdate(
-                ctx,
+                ctx as any,
                 options.value,
                 customElementFilter.value(ctx.file),
               )
