@@ -90,7 +90,7 @@
     "rollup": "^4.39.0",
     "slash": "^5.1.0",
     "source-map-js": "^1.2.1",
-    "tsdown": "^0.6.10",
+    "tsdown": "^0.8.0-beta.4",
     "typescript": "^5.8.3",
     "unplugin-oxc": "^0.3.3",
     "vitest": "^3.1.1",
