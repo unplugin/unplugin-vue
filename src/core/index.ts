@@ -32,6 +32,7 @@ import {
   type ExtendedSFCDescriptor,
 } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
+import type { Server } from '@farmfe/core'
 import type {
   SFCBlock,
   SFCScriptCompileOptions,
@@ -371,6 +372,91 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
         options(opt) {
           opt.moduleTypes ||= {}
           opt.moduleTypes.vue ||= 'js'
+        },
+      },
+
+      farm: {
+        config(config) {
+          return {
+            compilation: {
+              resolve: {
+                dedupe:
+                  config.compilation?.output?.targetEnv === 'node'
+                    ? []
+                    : ['vue'],
+              },
+              define: {
+                __VUE_OPTIONS_API__: !!(
+                  (options.value.features?.optionsAPI ?? true) ||
+                  config?.compilation?.define?.__VUE_OPTIONS_API__
+                ),
+                __VUE_PROD_DEVTOOLS__: !!(
+                  options.value.features?.prodDevtools ||
+                  config?.compilation?.define?.__VUE_PROD_DEVTOOLS__
+                ),
+                __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: !!(
+                  options.value.features?.prodHydrationMismatchDetails ||
+                  config?.compilation?.define
+                    ?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__
+                ),
+              },
+            },
+          }
+        },
+
+        configResolved(config) {
+          options.value = {
+            ...options.value,
+            root: config.root as string,
+            sourceMap: config.compilation?.sourcemap as boolean,
+            cssDevSourcemap: config.compilation?.sourcemap as boolean,
+            isProduction: config.compilation?.mode === 'production',
+            compiler:
+              options.value.compiler || resolveCompiler(config.root as string),
+            devToolsEnabled: !!(
+              options.value.features.prodDevtools ||
+              config.compilation?.define?.__VUE_PROD_DEVTOOLS__ ||
+              config.compilation?.mode !== 'production'
+            ),
+          }
+        },
+
+        configureServer(server: Server) {
+          const {
+            config: {
+              compilation: {
+                // @ts-ignore
+                output: { publicPath },
+              },
+            },
+          } = server
+          // @ts-ignore
+          options.value.devServer = Object.assign(server, {
+            config: { ...server.config, base: publicPath },
+          })
+        },
+
+        updateModules: {
+          executor(ctx) {
+            options.value.devServer?.ws.send({
+              type: 'custom',
+              event: 'file-changed',
+              data: { file: normalizePath(ctx.file) },
+            })
+            if (options.value.compiler.invalidateTypeCache) {
+              options.value.compiler.invalidateTypeCache(ctx.file)
+            }
+            if (typeDepToSFCMap.has(ctx.file)) {
+              handleTypeDepChange(typeDepToSFCMap.get(ctx.file)!, ctx as any)
+            }
+            if (filter.value(ctx.file)) {
+              handleHotUpdate(
+                ctx as any,
+                options.value,
+                customElementFilter.value(ctx.file),
+              )
+            }
+          },
         },
       },
 
