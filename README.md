@@ -12,6 +12,98 @@ Transform Vue 3 SFC to JavaScript.
 - 🔄 Sync code from [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) periodically.
   Currently based on [@vitejs/plugin-vue@5.2.3](https://github.com/vitejs/vite-plugin-vue/tree/plugin-vue@5.2.3/packages/plugin-vue).
 
+## Installation
+
+```bash
+npm i -D unplugin-vue
+```
+
+<details>
+<summary>Vite</summary><br>
+
+```ts
+// vite.config.ts
+import Vue from 'unplugin-vue/vite'
+
+export default defineConfig({
+  plugins: [Vue()],
+})
+```
+
+<br></details>
+
+<details>
+<summary>Rollup</summary><br>
+
+```ts
+// rollup.config.js
+import Vue from 'unplugin-vue/rollup'
+
+export default {
+  plugins: [Vue()],
+}
+```
+
+<br></details>
+
+<details>
+<summary>Rolldown</summary><br>
+
+```ts
+// rolldown.config.js
+import Vue from 'unplugin-vue/rolldown'
+
+export default {
+  plugins: [Vue()],
+}
+```
+
+<br></details>
+
+<details>
+<summary>esbuild</summary><br>
+
+```ts
+import { build } from 'esbuild'
+import Vue from 'unplugin-vue/esbuild'
+
+build({
+  plugins: [Vue()],
+})
+```
+
+<br></details>
+
+<details>
+<summary>Webpack</summary><br>
+
+```js
+// webpack.config.js
+import Vue from 'unplugin-vue/webpack'
+
+export default {
+  /* ... */
+  plugins: [Vue()],
+}
+```
+
+<br></details>
+
+<details>
+<summary>Rspack</summary><br>
+
+```ts
+// rspack.config.js
+import Vue from 'unplugin-vue/rspack'
+
+export default {
+  /* ... */
+  plugins: [Vue()],
+}
+```
+
+<br></details>
+
 ### Limitations
 
 ⚠️ HMR is not supported for Webpack, Vue CLI, and Rspack.
