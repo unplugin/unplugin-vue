@@ -1,7 +1,7 @@
 {
   "name": "unplugin-vue",
   "version": "6.1.0",
-  "packageManager": "pnpm@10.8.0",
+  "packageManager": "pnpm@10.8.1",
   "description": "Transform Vue 3 SFC to JavaScript.",
   "type": "module",
   "keywords": [
@@ -66,8 +66,8 @@
   "dependencies": {
     "@vue/reactivity": "^3.5.13",
     "debug": "^4.4.0",
-    "unplugin": "^2.3.0",
-    "vite": "^6.2.5"
+    "unplugin": "^2.3.2",
+    "vite": "^6.3.2"
   },
   "devDependencies": {
     "@babel/types": "^7.27.0",
@@ -76,28 +76,31 @@
     "@jridgewell/trace-mapping": "^0.3.25",
     "@sxzz/eslint-config": "^6.1.1",
     "@sxzz/prettier-config": "^2.2.1",
-    "@sxzz/test-utils": "^0.5.4",
+    "@sxzz/test-utils": "^0.5.5",
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.14.0",
+    "@types/node": "^22.14.1",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vitest/ui": "^3.1.1",
     "bumpp": "^10.1.0",
     "esbuild": "^0.25.2",
-    "eslint": "^9.24.0",
+    "eslint": "^9.25.0",
     "fast-glob": "^3.3.3",
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
-    "rollup": "^4.39.0",
+    "rollup": "^4.40.0",
     "slash": "^5.1.0",
     "source-map-js": "^1.2.1",
-    "tsdown": "^0.8.0-beta.4",
+    "tsdown": "^0.8.1",
     "typescript": "^5.8.3",
     "unplugin-oxc": "^0.3.3",
     "vitest": "^3.1.1",
-    "webpack": "^5.99.5"
+    "webpack": "^5.99.6"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "resolutions": {
+    "rolldown": "1.0.0-beta.7-commit.a7cf9ac"
   },
   "prettier": "@sxzz/prettier-config"
 }
