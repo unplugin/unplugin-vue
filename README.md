@@ -104,6 +104,21 @@ export default {
 
 <br></details>
 
+<details>
+<summary>Farm</summary><br>
+
+```ts
+// farm.config.ts
+import Vue from 'unplugin-vue/farm'
+
+export default {
+  /* ... */
+  plugins: [Vue()],
+}
+```
+
+<br></details>
+
 ### Limitations
 
 ⚠️ HMR is not supported for Webpack, Vue CLI, and Rspack.
