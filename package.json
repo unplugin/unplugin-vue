@@ -74,7 +74,7 @@
     "@farmfe/core": "2.0.0-nightly-20250411141103",
     "@jridgewell/gen-mapping": "^0.3.8",
     "@jridgewell/trace-mapping": "^0.3.25",
-    "@sxzz/eslint-config": "^6.1.2",
+    "@sxzz/eslint-config": "^7.0.1",
     "@sxzz/prettier-config": "^2.2.1",
     "@sxzz/test-utils": "^0.5.5",
     "@types/debug": "^4.1.12",
