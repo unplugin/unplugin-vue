@@ -288,7 +288,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
 				"Hello World",
 				-1
 				/* HOISTED */
-)]));
+			)]));
 		};
 	}
 });
@@ -312,13 +312,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 		"Hello World",
 		-1
 		/* HOISTED */
-)), createElementVNode(
+	)), createElementVNode(
 		"h2",
 		null,
 		toDisplayString(_ctx.msg),
 		1
 		/* TEXT */
-)]);
+	)]);
 }
 
 var _export_sfc = (sfc, props) => {
@@ -350,13 +350,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 		"Hello World",
 		-1
 		/* HOISTED */
-)), createElementVNode(
+	)), createElementVNode(
 		"h2",
 		null,
 		toDisplayString(_ctx.msg),
 		1
 		/* TEXT */
-)]);
+	)]);
 }
 
 var _export_sfc = (sfc, props) => {

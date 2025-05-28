@@ -1,7 +1,7 @@
 {
   "name": "unplugin-vue",
   "version": "6.2.0",
-  "packageManager": "pnpm@10.9.0",
+  "packageManager": "pnpm@10.11.0",
   "description": "Transform Vue 3 SFC to JavaScript.",
   "type": "module",
   "keywords": [
@@ -64,37 +64,37 @@
     "vue": "^3.2.25"
   },
   "dependencies": {
-    "@vue/reactivity": "^3.5.13",
-    "debug": "^4.4.0",
-    "unplugin": "^2.3.2",
-    "vite": "^6.3.3"
+    "@vue/reactivity": "^3.5.15",
+    "debug": "^4.4.1",
+    "unplugin": "^2.3.5",
+    "vite": "^6.3.5"
   },
   "devDependencies": {
-    "@babel/types": "^7.27.0",
+    "@babel/types": "^7.27.3",
     "@farmfe/core": "2.0.0-nightly-20250411141103",
     "@jridgewell/gen-mapping": "^0.3.8",
     "@jridgewell/trace-mapping": "^0.3.25",
-    "@sxzz/eslint-config": "^6.1.2",
+    "@sxzz/eslint-config": "^7.0.1",
     "@sxzz/prettier-config": "^2.2.1",
-    "@sxzz/test-utils": "^0.5.5",
+    "@sxzz/test-utils": "^0.5.6",
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.15.2",
-    "@vitejs/plugin-vue": "^5.2.3",
-    "@vitest/ui": "^3.1.2",
-    "bumpp": "^10.1.0",
-    "esbuild": "^0.25.3",
-    "eslint": "^9.25.1",
+    "@types/node": "^22.15.23",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitest/ui": "^3.1.4",
+    "bumpp": "^10.1.1",
+    "esbuild": "^0.25.5",
+    "eslint": "^9.27.0",
     "fast-glob": "^3.3.3",
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
-    "rollup": "^4.40.0",
+    "rollup": "^4.41.1",
     "slash": "^5.1.0",
     "source-map-js": "^1.2.1",
-    "tsdown": "^0.9.6",
+    "tsdown": "^0.12.4",
     "typescript": "^5.8.3",
-    "unplugin-oxc": "^0.3.6",
-    "vitest": "^3.1.2",
-    "webpack": "^5.99.7"
+    "unplugin-oxc": "^0.4.4",
+    "vitest": "^3.1.4",
+    "webpack": "^5.99.9"
   },
   "engines": {
     "node": ">=18.0.0"
