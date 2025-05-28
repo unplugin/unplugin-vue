@@ -100,7 +100,7 @@
     "node": ">=18.0.0"
   },
   "resolutions": {
-    "rolldown": "1.0.0-beta.7-commit.a7cf9ac"
+    "rolldown": "1.0.0-beta.9-commit.d91dfb5"
   },
   "prettier": "@sxzz/prettier-config"
 }
