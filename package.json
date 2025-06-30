@@ -67,7 +67,7 @@
     "@vue/reactivity": "^3.5.15",
     "debug": "^4.4.1",
     "unplugin": "^2.3.5",
-    "vite": "^6.3.5"
+    "vite": "^7.0.0"
   },
   "devDependencies": {
     "@babel/types": "^7.27.3",
