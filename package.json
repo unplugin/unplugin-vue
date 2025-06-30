@@ -79,7 +79,7 @@
     "@sxzz/test-utils": "^0.5.6",
     "@types/debug": "^4.1.12",
     "@types/node": "^22.15.23",
-    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitejs/plugin-vue": "^6.0.0",
     "@vitest/ui": "^3.1.4",
     "bumpp": "^10.1.1",
     "esbuild": "^0.25.5",
