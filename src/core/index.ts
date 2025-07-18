@@ -561,6 +561,7 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
           if (query.type === 'template') {
             return transformTemplateAsModule(
               code,
+              filename,
               descriptor,
               options.value,
               context,

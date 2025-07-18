@@ -77,7 +77,11 @@ export function resolveScript(
     id: descriptor.id,
     isProd: options.isProduction,
     inlineTemplate: isUseInlineTemplate(descriptor, options),
-    templateOptions: resolveTemplateCompilerOptions(descriptor, options),
+    templateOptions: resolveTemplateCompilerOptions(
+      descriptor,
+      options,
+      descriptor.filename,
+    ),
     sourceMap: options.sourceMap,
     genDefaultAs: canInlineMain(framework, descriptor, options)
       ? scriptIdentifier

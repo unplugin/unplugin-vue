@@ -13,6 +13,7 @@ import type {
 // eslint-disable-next-line require-await
 export async function transformTemplateAsModule(
   code: string,
+  filename: string,
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   pluginContext: Context,
@@ -23,6 +24,7 @@ export async function transformTemplateAsModule(
 }> {
   const result = compile(
     code,
+    filename,
     descriptor,
     options,
     pluginContext,
@@ -59,6 +61,7 @@ export function transformTemplateInMain(
 ): SFCTemplateCompileResults {
   const result = compile(
     code,
+    descriptor.filename,
     descriptor,
     options,
     pluginContext,
@@ -75,15 +78,15 @@ export function transformTemplateInMain(
 
 export function compile(
   code: string,
+  filename: string,
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
   pluginContext: Context,
   customElement: boolean,
 ): SFCTemplateCompileResults {
-  const filename = descriptor.filename
   resolveScript(pluginContext.framework, descriptor, options, customElement)
   const result = options.compiler.compileTemplate({
-    ...resolveTemplateCompilerOptions(descriptor, options)!,
+    ...resolveTemplateCompilerOptions(descriptor, options, filename)!,
     source: code,
   })
 
@@ -108,6 +111,7 @@ export function compile(
 export function resolveTemplateCompilerOptions(
   descriptor: SFCDescriptor,
   options: ResolvedOptions,
+  filename: string,
 ): Omit<SFCTemplateCompileOptions, 'source'> | undefined {
   const block = descriptor.template
   if (!block) {
@@ -115,7 +119,7 @@ export function resolveTemplateCompilerOptions(
   }
   const resolvedScript = getResolvedScript(descriptor, options.ssr)
   const hasScoped = descriptor.styles.some((s) => s.scoped)
-  const { id, filename, cssVars } = descriptor
+  const { id, cssVars } = descriptor
 
   let transformAssetUrls = options.template?.transformAssetUrls
   // compiler-sfc should export `AssetURLOptions`
