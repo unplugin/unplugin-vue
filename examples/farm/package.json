@@ -10,11 +10,11 @@
     "clean": "farm clean"
   },
   "dependencies": {
-    "vue": "^3.5.15"
+    "vue": "^3.5.17"
   },
   "devDependencies": {
     "@farmfe/cli": "2.0.0-nightly-20250411100807",
-    "core-js": "^3.42.0",
+    "core-js": "^3.44.0",
     "unplugin-vue": "workspace:*"
   }
 }
