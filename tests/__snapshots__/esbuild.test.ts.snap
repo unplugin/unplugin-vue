@@ -23,7 +23,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       null,
       "Hello World",
       -1
-      /* HOISTED */
+      /* CACHED */
     )
   ]));
 }
@@ -59,7 +59,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       null,
       "Hello World",
       -1
-      /* HOISTED */
+      /* CACHED */
     )
   ]));
 }
@@ -194,7 +194,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       null,
       "Hello World",
       -1
-      /* HOISTED */
+      /* CACHED */
     )
   ]));
 }
@@ -220,7 +220,7 @@ var _sfc_main = {
           null,
           "Hello World",
           -1
-          /* HOISTED */
+          /* CACHED */
         )
       ]));
     };
@@ -274,7 +274,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       null,
       "Hello World",
       -1
-      /* HOISTED */
+      /* CACHED */
     )
   ]));
 }
@@ -310,7 +310,7 @@ var _sfc_main = /* @__PURE__ */ _defineComponent({
           null,
           "Hello World",
           -1
-          /* HOISTED */
+          /* CACHED */
         )
       ]));
     };

@@ -18,7 +18,7 @@ const _sfc_main = {};
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
-    createElementVNode("h1", null, "Hello World", -1 /* HOISTED */)
+    createElementVNode("h1", null, "Hello World", -1 /* CACHED */)
   ])))
 }
 var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',"#FILE#"]]);
@@ -45,7 +45,7 @@ const _sfc_main = {};
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
-    createElementVNode("h1", null, "Hello World", -1 /* HOISTED */)
+    createElementVNode("h1", null, "Hello World", -1 /* CACHED */)
   ])))
 }
 var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]]);
@@ -171,7 +171,7 @@ return __returned__
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
-    createElementVNode("h1", null, "Hello World", -1 /* HOISTED */)
+    createElementVNode("h1", null, "Hello World", -1 /* CACHED */)
   ])))
 }
 var scriptSetup = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',"#FILE#"]]);
@@ -193,7 +193,7 @@ const _sfc_main = {
 
 return (_ctx, _cache) => {
   return (openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
-    createElementVNode("h1", null, "Hello World", -1 /* HOISTED */)
+    createElementVNode("h1", null, "Hello World", -1 /* CACHED */)
   ])))
 }
 }
@@ -254,7 +254,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       null,
       "Hello World",
       -1
-      /* HOISTED */
+      /* CACHED */
     )
   ]));
 }
@@ -287,7 +287,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
 				null,
 				"Hello World",
 				-1
-				/* HOISTED */
+				/* CACHED */
 			)]));
 		};
 	}
@@ -311,7 +311,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 		null,
 		"Hello World",
 		-1
-		/* HOISTED */
+		/* CACHED */
 	)), createElementVNode(
 		"h2",
 		null,
@@ -349,7 +349,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 		null,
 		"Hello World",
 		-1
-		/* HOISTED */
+		/* CACHED */
 	)), createElementVNode(
 		"h2",
 		null,
