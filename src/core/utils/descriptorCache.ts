@@ -150,14 +150,6 @@ export function setSrcDescriptor(
   cache.set(filename, entry)
 }
 
-const hash =
-  crypto.hash ??
-  ((
-    algorithm: string,
-    data: crypto.BinaryLike,
-    outputEncoding: crypto.BinaryToTextEncoding,
-  ) => crypto.createHash(algorithm).update(data).digest(outputEncoding))
-
 function getHash(text: string): string {
-  return hash('sha256', text, 'hex').slice(0, 8)
+  return crypto.hash('sha256', text, 'hex').slice(0, 8)
 }
