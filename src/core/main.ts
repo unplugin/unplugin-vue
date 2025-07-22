@@ -348,7 +348,6 @@ async function genScriptCode(
   code: string
   map: RawSourceMap | undefined
 }> {
-  // @ts-expect-error TODO remove when 3.6 is out
   const vaporFlag = descriptor.vapor ? '__vapor: true' : ''
   let scriptCode = `const ${scriptIdentifier} = { ${vaporFlag} }`
   let map: RawSourceMap | undefined
