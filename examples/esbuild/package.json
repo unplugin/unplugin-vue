@@ -7,7 +7,7 @@
     "preview": "serve dist"
   },
   "dependencies": {
-    "vue": "^3.5.17"
+    "vue": "^3.5.18"
   },
   "devDependencies": {
     "@chialab/esbuild-plugin-html": "^0.18.2",
