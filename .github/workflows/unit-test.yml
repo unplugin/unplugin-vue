@@ -10,58 +10,7 @@ on:
       - main
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4.1.0
-
-      - name: Set node
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: pnpm
-
-      - name: Install
-        run: pnpm i
-
-      - name: Type Check
-        run: pnpm run typecheck
-
-      - name: Lint
-        run: pnpm run lint
-
-  test:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        node-version: [20, 22, 24]
-      fail-fast: false
-
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4.1.0
-
-      - name: Set node ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: pnpm
-
-      - name: Install
-        run: pnpm i
-
-      - name: Build
-        run: pnpm run build
-
-      - name: Build Examples
-        run: pnpm run -r --parallel build
-
-      - name: Unit Test
-        run: pnpm test
+  unit-test:
+    uses: sxzz/workflows/.github/workflows/unit-test.yml@v1
+    with:
+      test: pnpm run -r --parallel build && pnpm test
