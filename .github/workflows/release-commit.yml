@@ -3,6 +3,6 @@ on: [push, pull_request]
 
 jobs:
   release:
-    uses: sxzz/workflows/.github/workflows/release-pr.yml@v1
+    uses: sxzz/workflows/.github/workflows/release-commit.yml@v1
     with:
       compact: true
