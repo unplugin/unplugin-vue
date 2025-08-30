@@ -25,23 +25,22 @@
   "author": "Kevin Deng <sxzz@sxzz.moe>",
   "funding": "https://github.com/sponsors/sxzz",
   "files": [
-    "*.d.ts",
     "dist"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
-    "./vite": "./dist/vite.js",
-    "./webpack": "./dist/webpack.js",
-    "./rspack": "./dist/rspack.js",
-    "./rollup": "./dist/rollup.js",
-    "./rolldown": "./dist/rolldown.js",
+    "./api": "./dist/api.js",
     "./esbuild": "./dist/esbuild.js",
     "./farm": "./dist/farm.js",
-    "./api": "./dist/api.js",
-    "./*": "./*"
+    "./rolldown": "./dist/rolldown.js",
+    "./rollup": "./dist/rollup.js",
+    "./rspack": "./dist/rspack.js",
+    "./vite": "./dist/vite.js",
+    "./webpack": "./dist/webpack.js",
+    "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
