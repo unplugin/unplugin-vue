@@ -362,7 +362,9 @@ async function genScriptCode(
     // If the script is js/ts and has no external src, it can be directly placed
     // in the main module.
     if (canInlineMain(pluginContext.framework, descriptor, options)) {
-      if (!options.compiler.version) {
+      if (options.compiler.version) {
+        scriptCode = script.content
+      } else {
         // if compiler-sfc exposes no version, it's < 3.3 and doesn't support
         // genDefaultAs option.
         const userPlugins = options.script?.babelParserPlugins || []
@@ -377,8 +379,6 @@ async function genScriptCode(
           scriptIdentifier,
           [...defaultPlugins, ...userPlugins],
         )
-      } else {
-        scriptCode = script.content
       }
       map = script.map
     } else {
@@ -544,7 +544,7 @@ async function linkSrcToDescriptor(
 
 // these are built-in query parameters so should be ignored
 // if the user happen to add them as attrs
-const ignoreList = [
+const ignoreList = new Set([
   'id',
   'index',
   'src',
@@ -553,7 +553,7 @@ const ignoreList = [
   'module',
   'scoped',
   'generic',
-]
+])
 
 function attrsToQuery(
   attrs: SFCBlock['attrs'],
@@ -563,7 +563,7 @@ function attrsToQuery(
   let query = ``
   for (const name of Object.keys(attrs)) {
     const value = attrs[name]
-    if (!ignoreList.includes(name)) {
+    if (!ignoreList.has(name)) {
       query += `&${encodeURIComponent(name)}${
         value ? `=${encodeURIComponent(value)}` : ``
       }`

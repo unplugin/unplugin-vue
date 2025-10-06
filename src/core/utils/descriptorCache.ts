@@ -94,7 +94,7 @@ export function getDescriptor(
   if (createIfNotFound) {
     const { descriptor, errors } = createDescriptor(
       filename,
-      code ?? fs.readFileSync(filename, 'utf-8'),
+      code ?? fs.readFileSync(filename, 'utf8'),
       options,
       hmr,
     )

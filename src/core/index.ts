@@ -498,24 +498,36 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
         // select corresponding block for sub-part virtual modules
         if (query.vue) {
           if (query.src) {
-            return fs.readFileSync(filename, 'utf-8')
+            return fs.readFileSync(filename, 'utf8')
           }
           const descriptor = getDescriptor(filename, options.value)!
           let block: SFCBlock | null | undefined
-          if (query.type === 'script') {
-            // handle <script> + <script setup> merge via compileScript()
-            block = resolveScript(
-              meta.framework,
-              descriptor,
-              options.value,
-              customElementFilter.value(filename),
-            )
-          } else if (query.type === 'template') {
-            block = descriptor.template!
-          } else if (query.type === 'style') {
-            block = descriptor.styles[query.index!]
-          } else if (query.index != null) {
-            block = descriptor.customBlocks[query.index]
+          switch (query.type) {
+            case 'script': {
+              // handle <script> + <script setup> merge via compileScript()
+              block = resolveScript(
+                meta.framework,
+                descriptor,
+                options.value,
+                customElementFilter.value(filename),
+              )
+
+              break
+            }
+            case 'template': {
+              block = descriptor.template!
+
+              break
+            }
+            case 'style': {
+              block = descriptor.styles[query.index!]
+
+              break
+            }
+            default:
+              if (query.index != null) {
+                block = descriptor.customBlocks[query.index]
+              }
           }
           if (block) {
             return {
@@ -538,16 +550,7 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
         const { filename, query } = parseVueRequest(id)
         const context = Object.assign({}, this, meta)
 
-        if (!query.vue) {
-          // main request
-          return transformMain(
-            code,
-            filename,
-            options.value,
-            context,
-            customElementFilter.value(filename),
-          )
-        } else {
+        if (query.vue) {
           // sub block request
           const descriptor: ExtendedSFCDescriptor = query.src
             ? getSrcDescriptor(filename, query) ||
@@ -577,6 +580,15 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
               filename,
             )
           }
+        } else {
+          // main request
+          return transformMain(
+            code,
+            filename,
+            options.value,
+            context,
+            customElementFilter.value(filename),
+          )
         }
       },
     }

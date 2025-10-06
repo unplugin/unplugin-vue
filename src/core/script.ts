@@ -100,10 +100,10 @@ export function resolveScript(
 
     for (const dep of resolved.deps) {
       const existingSet = typeDepToSFCMap.get(dep)
-      if (!existingSet) {
-        typeDepToSFCMap.set(dep, new Set([descriptor.filename]))
-      } else {
+      if (existingSet) {
         existingSet.add(descriptor.filename)
+      } else {
+        typeDepToSFCMap.set(dep, new Set([descriptor.filename]))
       }
     }
   }

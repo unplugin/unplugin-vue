@@ -116,10 +116,7 @@ export async function handleHotUpdate(
 
   // custom blocks update causes a reload
   // because the custom block contents is changed and it may be used in JS.
-  if (prevCustoms.length !== nextCustoms.length) {
-    // block removed/added, force reload
-    affectedModules.add(mainModule)
-  } else {
+  if (prevCustoms.length === nextCustoms.length) {
     for (const [i, next] of nextCustoms.entries()) {
       const prev = prevCustoms[i]
       if (!prev || !isEqualBlock(prev, next)) {
@@ -133,6 +130,9 @@ export async function handleHotUpdate(
         }
       }
     }
+  } else {
+    // block removed/added, force reload
+    affectedModules.add(mainModule)
   }
 
   const updateType = []
@@ -253,7 +253,7 @@ function deepEqual(
 }
 
 function isEqualAst(prev?: t.Statement[], next?: t.Statement[]): boolean {
-  if (typeof prev === 'undefined' || typeof next === 'undefined') {
+  if (prev === undefined || next === undefined) {
     return prev === next
   }
 
@@ -328,7 +328,7 @@ function getMainModule(modules: ModuleNode[]) {
       // #9341
       // We pick the module with the shortest URL in order to pick the module
       // with the lowest number of query parameters.
-      .sort((m1, m2) => {
+      .toSorted((m1, m2) => {
         return m1.url.length - m2.url.length
       })[0]
   )

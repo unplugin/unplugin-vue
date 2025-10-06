@@ -13,7 +13,7 @@ const createFarmVuePlugins = (options?: Options): JsPlugin[] => {
         resolvedPaths: ['.vue'],
       },
       executor: (param: PluginLoadHookParam) => {
-        const content = fs.readFileSync(param.resolvedPath, 'utf-8')
+        const content = fs.readFileSync(param.resolvedPath, 'utf8')
         return {
           content,
           moduleType: 'js',
