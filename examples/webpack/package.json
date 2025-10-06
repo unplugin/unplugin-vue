@@ -8,18 +8,18 @@
     "preview": "serve dist"
   },
   "dependencies": {
-    "vue": "^3.5.18"
+    "vue": "^3.5.22"
   },
   "devDependencies": {
-    "@swc/core": "^1.13.3",
+    "@swc/core": "^1.13.5",
     "@types/webpack": "^5.28.5",
     "css-loader": "^7.1.2",
-    "html-webpack-plugin": "^5.6.3",
-    "serve": "^14.2.4",
+    "html-webpack-plugin": "^5.6.4",
+    "serve": "^14.2.5",
     "style-loader": "^4.0.0",
     "swc-loader": "^0.2.6",
     "unplugin-vue": "workspace:*",
-    "webpack": "^5.101.0",
+    "webpack": "^5.102.0",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
   }

@@ -8,11 +8,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.5.18"
+    "vue": "^3.5.22"
   },
   "devDependencies": {
     "unplugin-vue": "workspace:*",
-    "vite": "^7.0.6",
-    "vite-plugin-inspect": "^11.3.2"
+    "vite": "^7.1.9",
+    "vite-plugin-inspect": "^11.3.3"
   }
 }

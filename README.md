@@ -160,7 +160,7 @@ export default {
 
 ## License
 
-[MIT](./LICENSE) License © 2022-PRESENT [Kevin Deng](https://github.com/sxzz)
+[MIT](./LICENSE) License © 2021-PRESENT [Kevin Deng](https://github.com/sxzz)
 
 <!-- Badges -->
 
