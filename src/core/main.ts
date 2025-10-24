@@ -529,7 +529,9 @@ async function linkSrcToDescriptor(
     setSrcDescriptor(srcFile.replace(/\?.*$/, ''), descriptor, scoped)
   } else {
     // TODO: unplugin implements context.resolve()
-    pluginContext.error(new Error('src attribute is supported on Rollup only.'))
+    pluginContext.error(
+      new Error(`src attribute is not supported in ${pluginContext.framework}`),
+    )
   }
 }
 
