@@ -29,7 +29,6 @@ import {
 } from './utils/descriptorCache'
 import { createError } from './utils/error'
 import type { Context, ResolvedOptions } from '.'
-import type { PluginContext } from 'rollup'
 import type { RawSourceMap } from 'source-map-js'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 
@@ -522,17 +521,9 @@ async function linkSrcToDescriptor(
 ) {
   // support rollup only
 
-  if (
-    pluginContext.framework === 'rollup' ||
-    pluginContext.framework === 'vite'
-  ) {
+  if (pluginContext.resolve) {
     const srcFile =
-      (
-        await (pluginContext as unknown as PluginContext).resolve(
-          src,
-          descriptor.filename,
-        )
-      )?.id || src
+      (await pluginContext.resolve(src, descriptor.filename))?.id || src
     // #1812 if the src points to a dep file, the resolved id may contain a
     // version query.
     setSrcDescriptor(srcFile.replace(/\?.*$/, ''), descriptor, scoped)

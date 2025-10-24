@@ -33,6 +33,7 @@ import {
 } from './utils/descriptorCache'
 import { parseVueRequest } from './utils/query'
 import type { Server } from '@farmfe/core'
+import type { PluginContext } from 'rollup'
 import type {
   SFCBlock,
   SFCScriptCompileOptions,
@@ -161,7 +162,10 @@ export interface Options {
   }
 }
 
-export type Context = UnpluginContext & UnpluginContextMeta
+export type Context = UnpluginContext &
+  UnpluginContextMeta & {
+    resolve?: PluginContext['resolve']
+  }
 
 export type ResolvedOptions = Omit<Options, 'customElement'> &
   Required<
@@ -548,7 +552,14 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
 
       transform(code, id) {
         const { filename, query } = parseVueRequest(id)
-        const context = Object.assign({}, this, meta)
+
+        const context: Context = {
+          ...meta,
+          error: this.error.bind(this),
+          warn: this.warn.bind(this),
+          // @ts-expect-error resolve may not exist on this
+          resolve: this.resolve?.bind(this),
+        }
 
         if (query.vue) {
           // sub block request
