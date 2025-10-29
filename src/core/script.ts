@@ -128,7 +128,7 @@ export function canInlineMain(
   }
   if (
     lang === 'ts' &&
-    (options.devServer || ['esbuild', 'rspack'].includes(framework))
+    (options.devServer || ['esbuild', 'rspack', 'rolldown'].includes(framework))
   ) {
     return true
   }
