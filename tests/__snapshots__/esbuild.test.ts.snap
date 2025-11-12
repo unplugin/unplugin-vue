@@ -17,7 +17,7 @@ var export_helper_default = (sfc, props) => {
 console.log("Hello world");
 var _sfc_main = {};
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock("div", null, _cache[0] || (_cache[0] = [
+  return _openBlock(), _createElementBlock("div", null, [..._cache[0] || (_cache[0] = [
     _createElementVNode(
       "h1",
       null,
@@ -25,7 +25,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       -1
       /* CACHED */
     )
-  ]));
+  ])]);
 }
 var basic_default = /* @__PURE__ */ export_helper_default(_sfc_main, [["render", _sfc_render], ["__file", "#FILE#"]]);
 export {
@@ -53,7 +53,7 @@ var export_helper_default = (sfc, props) => {
 console.log("Hello world");
 var _sfc_main = {};
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock("div", null, _cache[0] || (_cache[0] = [
+  return _openBlock(), _createElementBlock("div", null, [..._cache[0] || (_cache[0] = [
     _createElementVNode(
       "h1",
       null,
@@ -61,7 +61,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       -1
       /* CACHED */
     )
-  ]));
+  ])]);
 }
 var basic_default = /* @__PURE__ */ export_helper_default(_sfc_main, [["render", _sfc_render]]);
 export {
@@ -188,7 +188,7 @@ var _sfc_main = {
   }
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock("div", null, _cache[0] || (_cache[0] = [
+  return _openBlock(), _createElementBlock("div", null, [..._cache[0] || (_cache[0] = [
     _createElementVNode(
       "h1",
       null,
@@ -196,7 +196,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       -1
       /* CACHED */
     )
-  ]));
+  ])]);
 }
 var script_setup_default = /* @__PURE__ */ export_helper_default(_sfc_main, [["render", _sfc_render], ["__file", "#FILE#"]]);
 export {
@@ -214,7 +214,7 @@ var _sfc_main = {
   __name: "script-setup",
   setup(__props) {
     return (_ctx, _cache) => {
-      return _openBlock(), _createElementBlock("div", null, _cache[0] || (_cache[0] = [
+      return _openBlock(), _createElementBlock("div", null, [..._cache[0] || (_cache[0] = [
         _createElementVNode(
           "h1",
           null,
@@ -222,7 +222,7 @@ var _sfc_main = {
           -1
           /* CACHED */
         )
-      ]));
+      ])]);
     };
   }
 };
@@ -268,7 +268,7 @@ var _sfc_main = /* @__PURE__ */ _defineComponent({
   }
 });
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock("div", null, _cache[0] || (_cache[0] = [
+  return _openBlock(), _createElementBlock("div", null, [..._cache[0] || (_cache[0] = [
     _createElementVNode(
       "h1",
       null,
@@ -276,7 +276,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       -1
       /* CACHED */
     )
-  ]));
+  ])]);
 }
 var script_setup_ts_default = /* @__PURE__ */ export_helper_default(_sfc_main, [["render", _sfc_render], ["__file", "#FILE#"]]);
 export {
@@ -304,7 +304,7 @@ var _sfc_main = /* @__PURE__ */ _defineComponent({
       str
     });
     return (_ctx, _cache) => {
-      return _openBlock(), _createElementBlock("div", null, _cache[0] || (_cache[0] = [
+      return _openBlock(), _createElementBlock("div", null, [..._cache[0] || (_cache[0] = [
         _createElementVNode(
           "h1",
           null,
@@ -312,7 +312,7 @@ var _sfc_main = /* @__PURE__ */ _defineComponent({
           -1
           /* CACHED */
         )
-      ]));
+      ])]);
     };
   }
 });

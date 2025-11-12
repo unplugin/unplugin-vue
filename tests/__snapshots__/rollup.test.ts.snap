@@ -17,9 +17,9 @@ console.log('Hello world');
 const _sfc_main = {};
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+  return (openBlock(), createElementBlock("div", null, [...(_cache[0] || (_cache[0] = [
     createElementVNode("h1", null, "Hello World", -1 /* CACHED */)
-  ])))
+  ]))]))
 }
 var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',"#FILE#"]]);
 
@@ -44,9 +44,9 @@ console.log('Hello world');
 const _sfc_main = {};
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+  return (openBlock(), createElementBlock("div", null, [...(_cache[0] || (_cache[0] = [
     createElementVNode("h1", null, "Hello World", -1 /* CACHED */)
-  ])))
+  ]))]))
 }
 var basic = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]]);
 
@@ -170,9 +170,9 @@ return __returned__
 };
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+  return (openBlock(), createElementBlock("div", null, [...(_cache[0] || (_cache[0] = [
     createElementVNode("h1", null, "Hello World", -1 /* CACHED */)
-  ])))
+  ]))]))
 }
 var scriptSetup = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',"#FILE#"]]);
 
@@ -192,9 +192,9 @@ const _sfc_main = {
 
 
 return (_ctx, _cache) => {
-  return (openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+  return (openBlock(), createElementBlock("div", null, [...(_cache[0] || (_cache[0] = [
     createElementVNode("h1", null, "Hello World", -1 /* CACHED */)
-  ])))
+  ]))]))
 }
 }
 
@@ -248,7 +248,7 @@ var _export_sfc = (sfc, props) => {
 };
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [
+  return openBlock(), createElementBlock("div", null, [..._cache[0] || (_cache[0] = [
     createElementVNode(
       "h1",
       null,
@@ -256,7 +256,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       -1
       /* CACHED */
     )
-  ]));
+  ])]);
 }
 var scriptSetupTs = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "#FILE#"]]);
 
@@ -282,13 +282,13 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
 	setup(__props, { expose: __expose }) {
 		__expose({ str });
 		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", null, _cache[0] || (_cache[0] = [createElementVNode(
+			return openBlock(), createElementBlock("div", null, [..._cache[0] || (_cache[0] = [createElementVNode(
 				"h1",
 				null,
 				"Hello World",
 				-1
 				/* CACHED */
-			)]));
+			)])]);
 		};
 	}
 });
