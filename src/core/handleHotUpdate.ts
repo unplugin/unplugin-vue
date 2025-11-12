@@ -1,4 +1,4 @@
-import _debug from 'debug'
+import { createDebug } from 'obug'
 import { isCSSRequest, type HmrContext, type ModuleNode } from 'vite'
 import {
   getResolvedScript,
@@ -17,7 +17,7 @@ import type * as t from '@babel/types'
 
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 
-const debug = _debug('vite:hmr')
+const debug = createDebug('vite:hmr')
 
 const directRequestRE = /[&?]direct\b/
 

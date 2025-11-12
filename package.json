@@ -66,7 +66,7 @@
     "@jridgewell/gen-mapping": "^0.3.13",
     "@jridgewell/trace-mapping": "^0.3.31",
     "@vue/reactivity": "^3.5.22",
-    "debug": "^4.4.3",
+    "obug": "^0.1.1",
     "unplugin": "^2.3.10",
     "vite": "^7.1.12"
   },
@@ -76,7 +76,6 @@
     "@sxzz/eslint-config": "^7.2.7",
     "@sxzz/prettier-config": "^2.2.4",
     "@sxzz/test-utils": "^0.5.12",
-    "@types/debug": "^4.1.12",
     "@types/node": "^24.9.1",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitest/ui": "^4.0.2",
