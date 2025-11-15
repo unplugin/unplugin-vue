@@ -1,4 +1,5 @@
-import { createRequire } from 'node:module'
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 import type * as _compiler from 'vue/compiler-sfc'
 
 // extend the descriptor so we can store the scopeId on it
@@ -30,11 +31,8 @@ function tryResolveCompiler(root?: string) {
   }
 }
 
-const _require = createRequire(import.meta.url || __filename)
 function tryRequire(id: string, from?: string) {
   try {
-    return from
-      ? _require(_require.resolve(id, { paths: [from] }))
-      : _require(id)
+    return from ? require(require.resolve(id, { paths: [from] })) : require(id)
   } catch {}
 }
