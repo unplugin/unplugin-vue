@@ -1,9 +1,9 @@
 {
   "private": true,
   "type": "module",
-  "author": "三咲智子 <sxzz@sxzz.moe>",
+  "author": "Kevin Deng <sxzz@sxzz.moe>",
   "scripts": {
-    "build": "rimraf dist && node build.js",
+    "build": "premove dist && node build.js",
     "preview": "serve dist"
   },
   "dependencies": {
