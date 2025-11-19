@@ -12,7 +12,7 @@ Transform Vue 3 SFC to JavaScript.
 - ✨ Support `<script setup>` and macros.
 - 🔥 Hot module replacement (HMR) support for Vite.
 - 🔄 Sync code from [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) periodically.
-  Currently based on [@vitejs/plugin-vue@6.0.0](https://github.com/vitejs/vite-plugin-vue/tree/plugin-vue@6.0.0/packages/plugin-vue).
+  Currently based on [@vitejs/plugin-vue@6.0.2](https://github.com/vitejs/vite-plugin-vue/tree/plugin-vue@6.0.2/packages/plugin-vue).
 
 ## Installation
 
@@ -49,10 +49,10 @@ export default {
 <br></details>
 
 <details>
-<summary>Rolldown</summary><br>
+<summary>Rolldown / tsdown</summary><br>
 
 ```ts
-// rolldown.config.js
+// rolldown.config.js / tsdown.config.ts
 import Vue from 'unplugin-vue/rolldown'
 
 export default {
