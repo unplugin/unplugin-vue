@@ -73,12 +73,12 @@
   "devDependencies": {
     "@babel/types": "^7.28.5",
     "@farmfe/core": "2.0.0-nightly-20250411141103",
-    "@sxzz/eslint-config": "^7.2.10",
-    "@sxzz/prettier-config": "^2.2.4",
+    "@sxzz/eslint-config": "^7.3.0",
+    "@sxzz/prettier-config": "^2.2.5",
     "@sxzz/test-utils": "^0.5.12",
     "@types/node": "^24.10.1",
-    "@vitejs/plugin-vue": "^6.0.1",
-    "@vitest/ui": "^4.0.9",
+    "@vitejs/plugin-vue": "^6.0.2",
+    "@vitest/ui": "^4.0.10",
     "bumpp": "^10.3.1",
     "esbuild": "^0.27.0",
     "eslint": "^9.39.1",
@@ -88,12 +88,12 @@
     "rollup": "^4.53.2",
     "slash": "^5.1.0",
     "source-map-js": "^1.2.1",
-    "tsdown": "^0.16.4",
+    "tsdown": "^0.16.5",
     "typescript": "^5.9.3",
-    "unplugin-oxc": "^0.5.4",
-    "vitest": "^4.0.9",
+    "unplugin-oxc": "^0.5.5",
+    "vitest": "^4.0.10",
     "vue": "^3.6.0-alpha.2",
-    "webpack": "^5.102.1"
+    "webpack": "^5.103.0"
   },
   "engines": {
     "node": ">=20.19.0"

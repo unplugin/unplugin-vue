@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@farmfe/cli": "2.0.0-nightly-20250411100807",
-    "core-js": "^3.46.0",
+    "core-js": "^3.47.0",
     "unplugin-vue": "workspace:*"
   }
 }
