@@ -4,6 +4,7 @@
  * @module
  */
 
+import {} from 'unplugin'
 import unplugin from './index'
 
 /**
