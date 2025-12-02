@@ -1,17 +1,17 @@
 {
-  "private": true,
   "type": "module",
+  "private": true,
   "author": "Kevin Deng <sxzz@sxzz.moe>",
   "scripts": {
     "build": "node build.js",
     "preview": "serve"
   },
   "dependencies": {
-    "vue": "^3.5.24"
+    "vue": "^3.5.25"
   },
   "devDependencies": {
     "esbuild": "^0.27.0",
-    "rollup": "^4.53.2",
+    "rollup": "^4.53.3",
     "serve": "^14.2.5",
     "unplugin-vue": "workspace:*"
   }
