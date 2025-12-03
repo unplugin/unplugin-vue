@@ -248,15 +248,13 @@ var _export_sfc = (sfc, props) => {
 };
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", null, [..._cache[0] || (_cache[0] = [
-    createElementVNode(
-      "h1",
-      null,
-      "Hello World",
-      -1
-      /* CACHED */
-    )
-  ])]);
+	return openBlock(), createElementBlock("div", null, [..._cache[0] || (_cache[0] = [createElementVNode(
+		"h1",
+		null,
+		"Hello World",
+		-1
+		/* CACHED */
+	)])]);
 }
 var scriptSetupTs = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "#FILE#"]]);
 

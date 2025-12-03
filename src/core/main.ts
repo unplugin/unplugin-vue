@@ -11,7 +11,7 @@ import {
   TraceMap,
   type EncodedSourceMap as TraceEncodedSourceMap,
 } from '@jridgewell/trace-mapping'
-import { normalizePath, transformWithEsbuild } from 'vite'
+import { normalizePath, transformWithOxc } from 'vite'
 import { isEqualBlock, isOnlyTemplateChanged } from './handleHotUpdate'
 import { EXPORT_HELPER_ID } from './helper'
 import {
@@ -260,16 +260,15 @@ export async function transformMain(
     /tsx?$/.test(lang) &&
     !descriptor.script?.src // only normal script can have src
   ) {
-    const { code, map } = await transformWithEsbuild(
+    const { code, map } = await transformWithOxc(
       resolvedCode,
       filename,
       {
-        target: pluginContext.framework === 'vite' ? 'esnext' : undefined,
-        charset: 'utf8',
         // #430 support decorators in .vue file
-        // target can be overridden by esbuild config target
-        ...options.devServer?.config.esbuild,
-        loader: 'ts',
+        // target can be overridden by oxc config target
+        // @ts-ignore Rolldown-specific
+        ...options.devServer?.config.oxc,
+        lang: 'ts',
         sourcemap: options.sourceMap,
       },
       resolvedMap,

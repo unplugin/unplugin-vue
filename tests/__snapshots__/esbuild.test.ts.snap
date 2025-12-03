@@ -254,29 +254,40 @@ var str = "bar";
 var _sfc_main = /* @__PURE__ */ _defineComponent({
   __name: "script-setup-ts",
   props: {
-    foo: { type: String, required: true, default: "123" },
-    bar: { type: Number, required: true, default: 123 },
-    baz: { type: Boolean, required: true, default: true }
+    foo: {
+      type: String,
+      required: true,
+      default: "123"
+    },
+    bar: {
+      type: Number,
+      required: true,
+      default: 123
+    },
+    baz: {
+      type: Boolean,
+      required: true,
+      default: true
+    }
   },
   setup(__props, { expose: __expose }) {
-    __expose({
-      str
-    });
+    __expose({ str });
     const __returned__ = { str };
-    Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
+    Object.defineProperty(__returned__, "__isScriptSetup", {
+      enumerable: false,
+      value: true
+    });
     return __returned__;
   }
 });
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return _openBlock(), _createElementBlock("div", null, [..._cache[0] || (_cache[0] = [
-    _createElementVNode(
-      "h1",
-      null,
-      "Hello World",
-      -1
-      /* CACHED */
-    )
-  ])]);
+  return _openBlock(), _createElementBlock("div", null, [..._cache[0] || (_cache[0] = [_createElementVNode(
+    "h1",
+    null,
+    "Hello World",
+    -1
+    /* CACHED */
+  )])]);
 }
 var script_setup_ts_default = /* @__PURE__ */ export_helper_default(_sfc_main, [["render", _sfc_render], ["__file", "#FILE#"]]);
 export {
@@ -297,22 +308,21 @@ var _sfc_main = /* @__PURE__ */ _defineComponent({
   props: {
     foo: { default: "123" },
     bar: { default: 123 },
-    baz: { type: Boolean, default: true }
+    baz: {
+      type: Boolean,
+      default: true
+    }
   },
   setup(__props, { expose: __expose }) {
-    __expose({
-      str
-    });
+    __expose({ str });
     return (_ctx, _cache) => {
-      return _openBlock(), _createElementBlock("div", null, [..._cache[0] || (_cache[0] = [
-        _createElementVNode(
-          "h1",
-          null,
-          "Hello World",
-          -1
-          /* CACHED */
-        )
-      ])]);
+      return _openBlock(), _createElementBlock("div", null, [..._cache[0] || (_cache[0] = [_createElementVNode(
+        "h1",
+        null,
+        "Hello World",
+        -1
+        /* CACHED */
+      )])]);
     };
   }
 });
