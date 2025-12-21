@@ -1,2 +1,8 @@
 packages:
   - examples/*
+
+allowBuilds:
+  '@parcel/watcher': false
+  '@swc/core': false
+  core-js: false
+  esbuild: false
