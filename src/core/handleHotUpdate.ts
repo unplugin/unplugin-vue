@@ -14,7 +14,6 @@ import {
 } from './utils/descriptorCache'
 import type { ResolvedOptions } from '.'
 import type * as t from '@babel/types'
-
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 
 const debug = createDebug('vite:hmr')

@@ -1,6 +1,6 @@
 import { formatPostcssSourceMap } from 'vite'
+import type { ResolvedOptions } from './index'
 import type { ExtendedSFCDescriptor } from './utils/descriptorCache'
-import type { ResolvedOptions } from '.'
 import type { ExistingRawSourceMap } from 'rollup'
 import type { RawSourceMap } from 'source-map-js'
 import type { UnpluginContext } from 'unplugin'
