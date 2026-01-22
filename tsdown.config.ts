@@ -1,7 +1,12 @@
-import { defineConfig } from 'tsdown'
+import { nodeLib } from 'tsdown-preset-sxzz'
 
-export default defineConfig({
-  entry: ['./src/*.ts'],
-  exports: true,
-  inlineOnly: ['slash', '@jridgewell/gen-mapping'],
-})
+export default nodeLib(
+  {
+    entry: 'shallow',
+    inlineDeps: ['slash'],
+  },
+  {
+    // type-only
+    external: ['rollup', '@farmfe/core'],
+  },
+)
