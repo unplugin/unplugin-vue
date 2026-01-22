@@ -13,4 +13,5 @@ jobs:
   unit-test:
     uses: sxzz/workflows/.github/workflows/unit-test.yml@v1
     with:
+      os-matrix: '"ubuntu-latest", "windows-latest"'
       test: pnpm run -r --parallel build && pnpm test
