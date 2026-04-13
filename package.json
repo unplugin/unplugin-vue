@@ -81,7 +81,7 @@
     "@typescript/native-preview": "7.0.0-dev.20260122.3",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vitest/ui": "^4.0.17",
-    "bumpp": "^10.4.0",
+    "bumpp": "^11.0.0",
     "esbuild": "^0.27.2",
     "eslint": "^9.39.2",
     "fast-glob": "^3.3.3",
