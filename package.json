@@ -92,7 +92,7 @@
     "source-map-js": "^1.2.1",
     "tsdown": "^0.20.0",
     "tsdown-preset-sxzz": "^0.3.1",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.0",
     "unplugin-oxc": "^0.5.7",
     "vitest": "^4.0.17",
     "vue": "^3.6.0-alpha.2",
