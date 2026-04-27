@@ -3,7 +3,7 @@
   "private": true,
   "author": "Kevin Deng <sxzz@sxzz.moe>",
   "scripts": {
-    "build": "premove dist && node build.js",
+    "build": "premove dist && node build.ts",
     "preview": "serve dist"
   },
   "dependencies": {

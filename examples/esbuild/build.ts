@@ -1,5 +1,3 @@
-// @ts-check
-
 import HtmlPlugin from '@chialab/esbuild-plugin-html'
 import { build } from 'esbuild'
 import Vue from 'unplugin-vue/esbuild'

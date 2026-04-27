@@ -1,10 +1,9 @@
 import process from 'node:process'
-import { HtmlRspackPlugin } from '@rspack/core'
+import { HtmlRspackPlugin, type Configuration } from '@rspack/core'
 import Vue from 'unplugin-vue/rspack'
 
-/** @type {import('@rspack/core').Configuration} */
-const config = {
-  mode: process.env.MODE ?? 'development',
+const config: Configuration = {
+  mode: (process.env.MODE as Configuration['mode']) ?? 'development',
   entry: {
     app: './src/main.ts',
   },
