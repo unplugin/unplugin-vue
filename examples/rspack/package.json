@@ -8,13 +8,13 @@
     "preview": "serve dist"
   },
   "dependencies": {
-    "vue": "^3.5.27"
+    "vue": "^3.5.33"
   },
   "devDependencies": {
-    "@rspack/cli": "^1.7.3",
-    "@rspack/core": "^1.7.3",
-    "css-loader": "^7.1.2",
-    "serve": "^14.2.5",
+    "@rspack/cli": "^2.0.0",
+    "@rspack/core": "^2.0.0",
+    "css-loader": "^7.1.4",
+    "serve": "^14.2.6",
     "style-loader": "^4.0.0",
     "unplugin-vue": "workspace:*"
   }
