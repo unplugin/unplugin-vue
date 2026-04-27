@@ -63,9 +63,6 @@ importers:
       eslint:
         specifier: ^10.2.1
         version: 10.2.1(jiti@2.6.1)
-      fast-glob:
-        specifier: ^3.3.3
-        version: 3.3.3
       premove:
         specifier: ^4.0.0
         version: 4.0.0
@@ -75,9 +72,6 @@ importers:
       rollup:
         specifier: ^4.60.2
         version: 4.60.2
-      slash:
-        specifier: ^5.1.0
-        version: 5.1.0
       source-map-js:
         specifier: ^1.2.1
         version: 1.2.1
@@ -4898,10 +4892,6 @@ packages:
   sirv@3.0.2:
     resolution: {integrity: sha512-2wcC/oGxHis/BoHkkPwldgiPSYcpZK3JU28WoMVv55yHJgcZ8rlXvuG9iZggz+sU1d4bRgIGASwyWqjxu3FM0g==}
     engines: {node: '>=18'}
-
-  slash@5.1.0:
-    resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
-    engines: {node: '>=14.16'}
 
   slashes@3.0.12:
     resolution: {integrity: sha512-Q9VME8WyGkc7pJf6QEkj3wE+2CnvZMI+XJhwdTPR8Z/kWQRXi7boAWLDibRPyHRTUTPx5FaU7MsyrjI3yLB4HA==}
@@ -10224,8 +10214,6 @@ snapshots:
       '@polka/url': 1.0.0-next.29
       mrmime: 2.0.1
       totalist: 3.0.1
-
-  slash@5.1.0: {}
 
   slashes@3.0.12: {}
 

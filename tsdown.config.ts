@@ -1,12 +1,11 @@
 import { nodeLib } from 'tsdown-preset-sxzz'
 
 export default nodeLib(
+  { entry: 'shallow' },
   {
-    entry: 'shallow',
-    inlineDeps: ['slash'],
-  },
-  {
-    // type-only
-    external: ['rollup', '@farmfe/core'],
+    deps: {
+      // type-only
+      neverBundle: ['rollup', '@farmfe/core'],
+    },
   },
 )

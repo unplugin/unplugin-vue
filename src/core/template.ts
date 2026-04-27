@@ -1,5 +1,4 @@
 import path from 'node:path'
-import slash from 'slash'
 import { getResolvedScript, resolveScript } from './script'
 import { createError } from './utils/error'
 import type { Context, ResolvedOptions } from '.'
@@ -9,6 +8,10 @@ import type {
   SFCTemplateCompileOptions,
   SFCTemplateCompileResults,
 } from 'vue/compiler-sfc'
+
+function slash(path: string): string {
+  return path.replaceAll('\\', '/')
+}
 
 // eslint-disable-next-line require-await
 export async function transformTemplateAsModule(
