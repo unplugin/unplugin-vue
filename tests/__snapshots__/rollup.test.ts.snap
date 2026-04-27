@@ -318,6 +318,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 		/* TEXT */
 	)]);
 }
+const multiRoot = undefined;
 
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -356,6 +357,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 		/* TEXT */
 	)]);
 }
+const multiRoot = undefined;
 
 var _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
