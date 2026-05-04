@@ -74,7 +74,7 @@
   "devDependencies": {
     "@babel/types": "^7.29.0",
     "@farmfe/core": "2.0.0-nightly-20250411141103",
-    "@sxzz/eslint-config": "^7.8.4",
+    "@sxzz/eslint-config": "^8.0.0",
     "@sxzz/prettier-config": "^2.3.1",
     "@sxzz/test-utils": "^0.5.18",
     "@types/node": "^25.6.0",
