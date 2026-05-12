@@ -36,20 +36,11 @@
     "./webpack": "./dist/webpack.mjs",
     "./package.json": "./package.json"
   },
-  "types": "./dist/index.d.mts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*.d.mts",
-        "./*"
-      ]
-    }
-  },
   "files": [
     "dist"
   ],
   "engines": {
-    "node": ">=20.19.0"
+    "node": "^22.18.0 || >=24.0.0"
   },
   "scripts": {
     "test": "vitest",
