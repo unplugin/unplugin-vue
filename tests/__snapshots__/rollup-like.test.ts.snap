@@ -373,6 +373,102 @@ export { sfcSrc as default };
 "
 `;
 
+exports[`rollup > tests/fixtures/sfc-src-scoped.vue > isProduction = false 1`] = `
+"// sfc-src-scoped.js
+import { openBlock, createElementBlock, createElementVNode, toDisplayString } from 'vue';
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", null, [_cache[0] || (_cache[0] = createElementVNode(
+		"h1",
+		null,
+		"Hello World",
+		-1
+		/* CACHED */
+	)), createElementVNode("h2", null, toDisplayString($setup.msg))]);
+}
+const multiRoot = undefined;
+
+var srcStyle_css_vue_type_style_index_0_src_#ID#_scoped_#ID#_lang = ".red[data-v-#ID#] { color: red;\\n}\\n";
+
+var block0 = (c) => { c.__docs = "<div>\\n  <h1>Hello World</h1>\\n  <h2>{{ msg }}</h2>\\n</div>\\n"; };
+
+var _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
+
+const msg = 'hello';
+
+const _sfc_main = {
+  __name: 'sfc-src-scoped',
+  setup(__props, { expose: __expose }) {
+  __expose();
+
+
+const __returned__ = { msg };
+Object.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true });
+return __returned__
+}
+
+};
+if (typeof block0 === 'function') block0(_sfc_main);
+var sfcSrcScoped = /*#__PURE__*/_export_sfc(_sfc_main, [['render',render],['__scopeId',"data-v-#ID#"],['__file',"#FILE#"]]);
+
+export { sfcSrcScoped as default };
+"
+`;
+
+exports[`rollup > tests/fixtures/sfc-src-scoped.vue > isProduction = true 1`] = `
+"// sfc-src-scoped.js
+import { openBlock, createElementBlock, createElementVNode, toDisplayString } from 'vue';
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", null, [_cache[0] || (_cache[0] = createElementVNode(
+		"h1",
+		null,
+		"Hello World",
+		-1
+		/* CACHED */
+	)), createElementVNode("h2", null, toDisplayString($setup.msg))]);
+}
+const multiRoot = undefined;
+
+var srcStyle_css_vue_type_style_index_0_src_#ID#_scoped_#ID#_lang = ".red[data-v-#ID#] { color: red;\\n}\\n";
+
+var block0 = (c) => { c.__docs = "<div>\\n  <h1>Hello World</h1>\\n  <h2>{{ msg }}</h2>\\n</div>\\n"; };
+
+var _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
+  for (const [key, val] of props) {
+    target[key] = val;
+  }
+  return target;
+};
+
+const msg = 'hello';
+
+const _sfc_main = {
+  __name: 'sfc-src-scoped',
+  setup(__props, { expose: __expose }) {
+  __expose();
+
+
+const __returned__ = { msg };
+Object.defineProperty(__returned__, '__isScriptSetup', { enumerable: false, value: true });
+return __returned__
+}
+
+};
+if (typeof block0 === 'function') block0(_sfc_main);
+var sfcSrcScoped = /*#__PURE__*/_export_sfc(_sfc_main, [['render',render],['__scopeId',"data-v-#ID#"]]);
+
+export { sfcSrcScoped as default };
+"
+`;
+
 exports[`rollup > tests/fixtures/src-script.ts > isProduction = false 1`] = `
 "// src-script.js
 import { defineComponent } from 'vue';

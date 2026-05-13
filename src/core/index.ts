@@ -1,8 +1,10 @@
 import fs from 'node:fs'
+import path from 'node:path'
 import process from 'node:process'
 import { computed, shallowRef } from '@vue/reactivity'
 import {
   createUnplugin,
+  type UnpluginBuildContext,
   type UnpluginContext,
   type UnpluginContextMeta,
   type UnpluginInstance,
@@ -496,15 +498,38 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
         }
       },
 
-      resolveId(id) {
+      async resolveId(
+        this: UnpluginBuildContext & UnpluginContext & Pick<Context, 'resolve'>,
+        id,
+        importer,
+      ) {
         // component export helper
         if (normalizePath(id) === EXPORT_HELPER_ID) {
           return id
         }
-        // serve sub-part requests (*?vue) as virtual modules
-        if (parseVueRequest(id).query.vue) {
-          return id
+        const { filename, query } = parseVueRequest(id)
+        if (!query.vue) return
+        // resolve SFC-relative `<… src>` imports (Vite does it before this hook)
+        if (
+          query.src &&
+          importer &&
+          this.resolve &&
+          !path.isAbsolute(filename) &&
+          !filename.startsWith('\0')
+        ) {
+          const owner = parseVueRequest(importer).filename
+          const resolved = await this.resolve(filename, owner, {
+            skipSelf: true,
+          })
+          if (resolved) {
+            return {
+              id: resolved.id.replace(/\?.*$/, '') + id.slice(filename.length),
+              external: !!resolved.external,
+            }
+          }
         }
+        // serve sub-part requests (*?vue) as virtual modules
+        return id
       },
 
       loadInclude(id) {
