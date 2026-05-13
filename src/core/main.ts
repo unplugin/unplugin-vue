@@ -337,15 +337,14 @@ async function genTemplateCode(
       multiRoot: needsMultiRoot ? result.multiRoot : undefined,
     }
   } else {
-    if (template.src) {
-      await linkSrcToDescriptor(
-        template.src,
-        descriptor,
-        pluginContext,
-        hasScoped,
-      )
-    }
-    const src = template.src || descriptor.filename
+    const src = template.src
+      ? await resolveAndLinkSrcToDescriptor(
+          template.src,
+          descriptor,
+          pluginContext,
+          hasScoped,
+        )
+      : descriptor.filename
     const srcQuery = template.src
       ? hasScoped
         ? `&src=${descriptor.id}`
@@ -408,10 +407,14 @@ async function genScriptCode(
       }
       map = script.map
     } else {
-      if (script.src) {
-        await linkSrcToDescriptor(script.src, descriptor, pluginContext, false)
-      }
-      const src = script.src || descriptor.filename
+      const src = script.src
+        ? await resolveAndLinkSrcToDescriptor(
+            script.src,
+            descriptor,
+            pluginContext,
+            false,
+          )
+        : descriptor.filename
       const langFallback = (script.src && path.extname(src).slice(1)) || 'js'
       const attrsQuery = attrsToQuery(script.attrs, langFallback)
       const srcQuery = script.src ? `&src=true` : ``
@@ -438,15 +441,14 @@ async function genStyleCode(
   if (descriptor.styles.length > 0) {
     for (let i = 0; i < descriptor.styles.length; i++) {
       const style = descriptor.styles[i]
-      if (style.src) {
-        await linkSrcToDescriptor(
-          style.src,
-          descriptor,
-          pluginContext,
-          style.scoped,
-        )
-      }
-      const src = style.src || descriptor.filename
+      const src = style.src
+        ? await resolveAndLinkSrcToDescriptor(
+            style.src,
+            descriptor,
+            pluginContext,
+            style.scoped,
+          )
+        : descriptor.filename
       // do not include module in default query, since we use it to indicate
       // that the module needs to export the modules json
       const attrsQuery = attrsToQuery(style.attrs, 'css')
@@ -521,10 +523,14 @@ async function genCustomBlockCode(
   let code = ''
   for (let index = 0; index < descriptor.customBlocks.length; index++) {
     const block = descriptor.customBlocks[index]
-    if (block.src) {
-      await linkSrcToDescriptor(block.src, descriptor, pluginContext, false)
-    }
-    const src = block.src || descriptor.filename
+    const src = block.src
+      ? await resolveAndLinkSrcToDescriptor(
+          block.src,
+          descriptor,
+          pluginContext,
+          false,
+        )
+      : descriptor.filename
     const attrsQuery = attrsToQuery(block.attrs, block.type)
     const srcQuery = block.src ? `&src=true` : ``
     const query = `?vue&type=${block.type}&index=${index}${srcQuery}${attrsQuery}`
@@ -536,16 +542,16 @@ async function genCustomBlockCode(
 }
 
 /**
- * For blocks with src imports, it is important to link the imported file
- * with its owner SFC descriptor so that we can get the information about
- * the owner SFC when compiling that file in the transform phase.
+ * For blocks with src imports, resolve src to a concrete file path and link
+ * the imported file with its owner SFC descriptor so that we can get the owner
+ * information when compiling that file in the transform phase.
  */
-async function linkSrcToDescriptor(
+async function resolveAndLinkSrcToDescriptor(
   src: string,
   descriptor: SFCDescriptor,
   pluginContext: Context,
   scoped?: boolean,
-) {
+): Promise<string> {
   // support rollup only
 
   if (pluginContext.resolve) {
@@ -553,12 +559,15 @@ async function linkSrcToDescriptor(
       (await pluginContext.resolve(src, descriptor.filename))?.id || src
     // #1812 if the src points to a dep file, the resolved id may contain a
     // version query.
-    setSrcDescriptor(srcFile.replace(/\?.*$/, ''), descriptor, scoped)
+    const cleanSrcFile = srcFile.replace(/\?.*$/, '')
+    setSrcDescriptor(cleanSrcFile, descriptor, scoped)
+    return cleanSrcFile
   } else {
     // TODO: unplugin implements context.resolve()
     pluginContext.error(
       new Error(`src attribute is not supported in ${pluginContext.framework}`),
     )
+    return src
   }
 }
 
