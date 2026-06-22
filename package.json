@@ -63,7 +63,7 @@
     "vite": "^8.0.12"
   },
   "devDependencies": {
-    "@babel/types": "^7.29.0",
+    "@babel/types": "^8.0.0",
     "@farmfe/core": "2.0.0-nightly-20250411141103",
     "@sxzz/eslint-config": "^8.1.0",
     "@sxzz/prettier-config": "^2.3.1",
