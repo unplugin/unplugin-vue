@@ -1,5 +1,5 @@
 import process from 'node:process'
-import { rollupBuild, testFixtures } from '@sxzz/test-utils'
+import { rolldownBuild, rollupBuild, testFixtures } from '@sxzz/test-utils'
 import ViteVue from '@vitejs/plugin-vue'
 import Oxc from 'unplugin-oxc/rollup'
 import { describe, expect } from 'vitest'
@@ -7,11 +7,30 @@ import * as vueCompiler from 'vue/compiler-sfc'
 import Vue from '../src/rollup'
 import type { Options } from '../src/api'
 
-async function getCode(file: string, plugin: any) {
-  const bundle = await rollupBuild(file, [plugin, Oxc()], {
-    external: ['vue'],
-  })
-  return bundle.snapshot
+async function getCode(
+  bundler: 'rollup' | 'rolldown',
+  file: string,
+  plugin: any,
+) {
+  if (bundler === 'rollup') {
+    return (
+      await rollupBuild(
+        file,
+        [plugin, Oxc()],
+        { external: ['vue'] },
+        { sourcemap: false },
+      )
+    ).snapshot
+  }
+
+  return (
+    await rolldownBuild(
+      file,
+      [plugin],
+      { external: ['vue'] },
+      { sourcemap: false, minify: true },
+    )
+  ).snapshot
 }
 
 function createPlugins(opt: Options & { root: string }) {
@@ -33,7 +52,7 @@ function createPlugins(opt: Options & { root: string }) {
   }
 }
 
-describe('rollup', async () => {
+describe.each(['rollup', 'rolldown'] as const)('%s', async (bundler) => {
   await testFixtures(
     'tests/fixtures/*.{vue,js,ts}',
     async (args, id) => {
@@ -43,8 +62,8 @@ describe('rollup', async () => {
         isProduction: args.isProduction,
       })
 
-      const viteCode = await getCode(id, vite)
-      const unpluginCode = await getCode(id, unplugin)
+      const viteCode = await getCode(bundler, id, vite)
+      const unpluginCode = await getCode(bundler, id, unplugin)
 
       expect(viteCode).toBe(unpluginCode)
       return unpluginCode.replaceAll(
@@ -55,6 +74,7 @@ describe('rollup', async () => {
     {
       params: [['isProduction', [true, false]]],
       promise: true,
+      snapshot: bundler === 'rollup',
     },
   )
 })
