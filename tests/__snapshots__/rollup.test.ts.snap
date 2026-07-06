@@ -209,7 +209,7 @@ exports[`rollup > tests/fixtures/script-setup-ts.vue > isProduction = false 1`] 
 import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
 
 const str = "bar";
-var _sfc_main = /* @__PURE__ */ defineComponent({
+var _sfc_main = /*@__PURE__*/ defineComponent({
 	__name: "script-setup-ts",
 	props: {
 		foo: {
@@ -256,7 +256,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 		/* CACHED */
 	)])]);
 }
-var scriptSetupTs = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "#FILE#"]]);
+var scriptSetupTs = /*#__PURE__*/ _export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "#FILE#"]]);
 
 export { scriptSetupTs as default };
 "
@@ -267,7 +267,7 @@ exports[`rollup > tests/fixtures/script-setup-ts.vue > isProduction = true 1`] =
 import { defineComponent, openBlock, createElementBlock, createElementVNode } from 'vue';
 
 const str = "bar";
-var _sfc_main = /* @__PURE__ */ defineComponent({
+var _sfc_main = /*@__PURE__*/ defineComponent({
 	__name: "script-setup-ts",
 	props: {
 		foo: { default: "123" },
@@ -413,7 +413,7 @@ var _export_sfc = (sfc, props) => {
   return target;
 };
 
-var typescript = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "#FILE#"]]);
+var typescript = /*#__PURE__*/ _export_sfc(_sfc_main, [["__file", "#FILE#"]]);
 
 export { typescript as default };
 "

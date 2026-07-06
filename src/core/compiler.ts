@@ -26,7 +26,7 @@ export function resolveCompiler(root: string): typeof _compiler {
 function tryResolveCompiler(root?: string) {
   const vueMeta = tryRequire('vue/package.json', root)
   // make sure to check the version is 3+ since 2.7 now also has vue/compiler-sfc
-  if (vueMeta && vueMeta.version.split('.')[0] >= 3) {
+  if (vueMeta && vueMeta.version.split('.', 1)[0] >= 3) {
     return tryRequire('vue/compiler-sfc', root)
   }
 }
