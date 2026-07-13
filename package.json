@@ -81,7 +81,7 @@
     "source-map-js": "^1.2.1",
     "tsdown": "^0.22.3",
     "tsdown-preset-sxzz": "^0.6.0",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.0",
     "unplugin-oxc": "^0.6.1",
     "vitest": "^4.1.9",
     "vue": "^3.6.0-beta.10",
