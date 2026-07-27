@@ -356,10 +356,7 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
         },
 
         shouldTransformCachedModule({ id }) {
-          if (transformCachedModule && parseVueRequest(id).query.vue) {
-            return true
-          }
-          return false
+          return transformCachedModule && !!parseVueRequest(id).query.vue
         },
 
         configureServer(server) {

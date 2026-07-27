@@ -206,7 +206,7 @@ export async function transformMain(
     )
   }
 
-  let resolvedMap: RawSourceMap | undefined = undefined
+  let resolvedMap: RawSourceMap | undefined
   if (options.sourceMap) {
     // the mappings of the source map for the inlined template should be moved
     // because the position does not include the script tag part.
@@ -417,8 +417,7 @@ async function genScriptCode(
       const srcQuery = script.src ? `&src=true` : ``
       const query = `?vue&type=script${srcQuery}${attrsQuery}`
       const request = JSON.stringify(src + query)
-      scriptCode =
-        `import _sfc_main from ${request}\n` + `export * from ${request}` // support named exports
+      scriptCode = `import _sfc_main from ${request}\nexport * from ${request}` // support named exports
     }
   }
   return {
@@ -581,8 +580,7 @@ function attrsToQuery(
   forceLangFallback = false,
 ): string {
   let query = ``
-  for (const name of Object.keys(attrs)) {
-    const value = attrs[name]
+  for (const [name, value] of Object.entries(attrs)) {
     if (!ignoreList.has(name)) {
       query += `&${encodeURIComponent(name)}${
         value ? `=${encodeURIComponent(value)}` : ``

@@ -1,5 +1,4 @@
 {
   "editor.formatOnSave": true,
-  "cSpell.words": ["unplugin"],
-  "eslint.experimental.useFlatConfig": true
+  "cSpell.words": ["unplugin"]
 }

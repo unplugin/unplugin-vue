@@ -3,9 +3,14 @@ import { nodeLib } from 'tsdown-preset-sxzz'
 export default nodeLib(
   { entry: 'shallow' },
   {
+    treeshake: {
+      moduleSideEffects: false,
+    },
     deps: {
-      // type-only
-      neverBundle: ['rollup', '@farmfe/core'],
+      dts: {
+        // type-only
+        neverBundle: ['rollup', '@farmfe/core'],
+      },
     },
   },
 )

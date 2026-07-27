@@ -33,6 +33,6 @@ function tryResolveCompiler(root?: string) {
 
 function tryRequire(id: string, from?: string) {
   try {
-    return from ? require(require.resolve(id, { paths: [from] })) : require(id)
+    return require(from ? require.resolve(id, { paths: [from] }) : id)
   } catch {}
 }
