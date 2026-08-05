@@ -10,7 +10,7 @@
     "vue": "^3.5.40"
   },
   "devDependencies": {
-    "rolldown": "1.2.0",
+    "rolldown": "1.2.3",
     "serve": "^14.2.6",
     "unplugin-vue": "workspace:*"
   }
