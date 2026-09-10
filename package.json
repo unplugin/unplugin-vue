@@ -72,7 +72,7 @@
     "@types/node": "^26.1.1",
     "@typescript/native-preview": "7.0.0-dev.20260707.2",
     "@vitejs/plugin-vue": "^6.0.8",
-    "@vitest/ui": "^4.1.10",
+    "@vitest/ui": "^5.0.0",
     "bumpp": "^12.0.0",
     "esbuild": "^0.28.1",
     "eslint": "^10.8.0",
@@ -84,7 +84,7 @@
     "tsdown-preset-sxzz": "^0.6.0",
     "typescript": "^6.0.3",
     "unplugin-oxc": "^0.6.1",
-    "vitest": "^4.1.10",
+    "vitest": "^5.0.0",
     "vue": "^3.6.0-beta.10",
     "webpack": "^5.109.0"
   },
