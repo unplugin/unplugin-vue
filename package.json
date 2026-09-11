@@ -2,7 +2,7 @@
   "name": "unplugin-vue",
   "type": "module",
   "version": "7.2.0",
-  "packageManager": "pnpm@11.17.0",
+  "packageManager": "pnpm@12.4.1",
   "description": "Transform Vue 3 SFC to JavaScript.",
   "author": "Kevin Deng <sxzz@sxzz.moe>",
   "license": "MIT",
