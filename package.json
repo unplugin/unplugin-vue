@@ -59,7 +59,7 @@
     "@jridgewell/gen-mapping": "^0.3.13",
     "@jridgewell/trace-mapping": "^0.3.31",
     "@vue/reactivity": "^3.5.40",
-    "obug": "^2.1.4",
+    "obug": "^3.0.0",
     "unplugin": "^3.3.0",
     "vite": "^8.1.5"
   },
