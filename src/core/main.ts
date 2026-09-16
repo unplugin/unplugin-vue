@@ -28,6 +28,7 @@ import {
   setSrcDescriptor,
 } from './utils/descriptorCache'
 import { createError } from './utils/error'
+import { isVaporMode } from './utils/vapor'
 import type { Context, ResolvedOptions } from '.'
 import type { RawSourceMap } from 'source-map-js'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
@@ -70,7 +71,9 @@ export async function transformMain(
   const attachedProps: [string, string][] = []
   const hasScoped = descriptor.styles.some((s) => s.scoped)
   const isTemplateOnlyVapor =
-    !descriptor.script && !descriptor.scriptSetup && descriptor.vapor
+    !descriptor.script &&
+    !descriptor.scriptSetup &&
+    isVaporMode(descriptor, options)
 
   // script
   const { code: scriptCode, map: scriptMap } = await genScriptCode(
@@ -319,7 +322,9 @@ async function genTemplateCode(
   const template = descriptor.template!
   const hasScoped = descriptor.styles.some((style) => style.scoped)
   const needsMultiRoot =
-    !descriptor.script && !descriptor.scriptSetup && descriptor.vapor
+    !descriptor.script &&
+    !descriptor.scriptSetup &&
+    isVaporMode(descriptor, options)
 
   // If the template is not using pre-processor AND is not using external src,
   // compile and inline it directly in the main module. When served in vite this
@@ -374,7 +379,7 @@ async function genScriptCode(
   code: string
   map: RawSourceMap | undefined
 }> {
-  const vaporFlag = descriptor.vapor ? '__vapor: true' : ''
+  const vaporFlag = isVaporMode(descriptor, options) ? '__vapor: true' : ''
   let scriptCode = `const ${scriptIdentifier} = { ${vaporFlag} }`
   let map: RawSourceMap | undefined
 

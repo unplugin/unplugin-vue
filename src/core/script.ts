@@ -1,5 +1,6 @@
 import { resolveTemplateCompilerOptions } from './template'
 import { cache as descriptorCache } from './utils/descriptorCache'
+import { isVaporMode } from './utils/vapor'
 import type { ResolvedOptions } from '.'
 import type { UnpluginContextMeta } from 'unplugin'
 import type { SFCDescriptor, SFCScriptBlock } from 'vue/compiler-sfc'
@@ -87,6 +88,7 @@ export function resolveScript(
       ? scriptIdentifier
       : undefined,
     customElement,
+    vapor: isVaporMode(descriptor, options),
     propsDestructure:
       options.features.propsDestructure ?? options.script?.propsDestructure,
   })

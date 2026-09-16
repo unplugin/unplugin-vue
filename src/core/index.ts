@@ -124,9 +124,6 @@ export interface Options {
   inlineTemplate?: boolean
 
   features?: {
-    optionsAPI?: boolean
-    prodDevtools?: boolean
-    prodHydrationMismatchDetails?: boolean
     /**
      * Enable reactive destructure for `defineProps`.
      * - Available in Vue 3.4 and later.
@@ -142,6 +139,33 @@ export interface Options {
      * @default /\.ce\.vue$/
      */
     customElement?: boolean | string | RegExp | (string | RegExp)[]
+    /**
+     * Force all <script setup> Vue SFC (`.vue`) files to compile in Vapor mode.
+     * When enabled, this acts as a plugin-level fallback for SFCs without the
+     * per-file `vapor` marker.
+     * - Available in Vue 3.6 and later.
+     * - **default:** `false`
+     */
+    vapor?: boolean
+    /**
+     * Set to `false` to disable Options API support and allow related code in
+     * Vue core to be dropped via dead-code elimination in production builds,
+     * resulting in smaller bundles.
+     * - **default:** `true`
+     */
+    optionsAPI?: boolean
+    /**
+     * Set to `true` to enable devtools support in production builds.
+     * Results in slightly larger bundles.
+     * - **default:** `false`
+     */
+    prodDevtools?: boolean
+    /**
+     * Set to `true` to enable detailed information for hydration mismatch
+     * errors in production builds. Results in slightly larger bundles.
+     * - **default:** `false`
+     */
+    prodHydrationMismatchDetails?: boolean
     /**
      * Customize the component ID generation strategy.
      * - `'filepath'`: hash the file path (relative to the project root)
@@ -191,7 +215,7 @@ function resolveOptions(rawOptions: Options): ResolvedOptions {
   const root = rawOptions.root ?? process.cwd()
   const isProduction =
     rawOptions.isProduction ?? process.env.NODE_ENV === 'production'
-  const features = {
+  const features: NonNullable<Options['features']> = {
     ...rawOptions.features,
     optionsAPI: true,
     prodDevtools: false,

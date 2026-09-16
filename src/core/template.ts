@@ -1,6 +1,7 @@
 import path from 'node:path'
 import { getResolvedScript, resolveScript } from './script'
 import { createError } from './utils/error'
+import { isVaporMode } from './utils/vapor'
 import type { Context, ResolvedOptions } from '.'
 import type {
   CompilerOptions,
@@ -185,7 +186,7 @@ export function resolveTemplateCompilerOptions(
   return {
     ...options.template,
     id,
-    vapor: descriptor.vapor,
+    vapor: isVaporMode(descriptor, options),
     ast: canReuseAST(options.compiler.version)
       ? descriptor.template?.ast
       : undefined,
