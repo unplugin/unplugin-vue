@@ -33,6 +33,9 @@ import type { Context, ResolvedOptions } from '.'
 import type { RawSourceMap } from 'source-map-js'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 
+const emptyScriptLangRE =
+  /<script[^>]*\slang\s*=\s*["']?(tsx?)\b[^>]*?(?:\/>|>\s*<\/script\s*>)/
+
 export async function transformMain(
   code: string,
   filename: string,
@@ -272,7 +275,12 @@ export async function transformMain(
 
   // handle TS transpilation
   let resolvedCode = output.join('\n')
-  const lang = descriptor.scriptSetup?.lang || descriptor.script?.lang
+  const lang =
+    descriptor.scriptSetup?.lang ||
+    descriptor.script?.lang ||
+    // the SFC parser discards empty script blocks, but their lang still
+    // applies to the code generated from the template
+    emptyScriptLangRE.exec(code)?.[1]
 
   if (
     lang &&
