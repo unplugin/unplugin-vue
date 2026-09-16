@@ -5,14 +5,14 @@ import {
   invalidateScript,
   resolveScript,
   setResolvedScript,
-} from './script'
+} from './script.ts'
 import {
   cache,
   createDescriptor,
   getDescriptor,
   invalidateDescriptor,
-} from './utils/descriptorCache'
-import type { ResolvedOptions } from '.'
+} from './utils/descriptorCache.ts'
+import type { ResolvedOptions } from './index.ts'
 import type * as t from '@babel/types'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 

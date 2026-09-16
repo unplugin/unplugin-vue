@@ -3,7 +3,7 @@ import { testFixtures } from '@sxzz/test-utils'
 import { build } from 'esbuild'
 import { describe, expect } from 'vitest'
 import * as vueCompiler from 'vue/compiler-sfc'
-import Vue from '../src/esbuild'
+import Vue from '../src/esbuild.ts'
 
 describe('esbuild', async () => {
   await testFixtures(

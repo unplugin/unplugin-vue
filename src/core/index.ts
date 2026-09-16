@@ -13,25 +13,25 @@ import {
   type ModuleNode,
   type ViteDevServer,
 } from 'vite'
-import { version } from '../../package.json'
-import { resolveCompiler } from '../core/compiler'
-import { EXPORT_HELPER_ID, helperCode } from '../core/helper'
-import { transformMain } from '../core/main'
+import packageJson from '../../package.json' with { type: 'json' }
+import { resolveCompiler } from '../core/compiler.ts'
+import { EXPORT_HELPER_ID, helperCode } from '../core/helper.ts'
+import { transformMain } from '../core/main.ts'
 import {
   clearScriptCache,
   resolveScript,
   typeDepToSFCMap,
-} from '../core/script'
-import { transformStyle } from '../core/style'
-import { transformTemplateAsModule } from '../core/template'
-import { handleHotUpdate, handleTypeDepChange } from './handleHotUpdate'
+} from '../core/script.ts'
+import { transformStyle } from '../core/style.ts'
+import { transformTemplateAsModule } from '../core/template.ts'
+import { handleHotUpdate, handleTypeDepChange } from './handleHotUpdate.ts'
 import {
   getDescriptor,
   getSrcDescriptor,
   getTempSrcDescriptor,
   type ExtendedSFCDescriptor,
-} from './utils/descriptorCache'
-import { parseVueRequest } from './utils/query'
+} from './utils/descriptorCache.ts'
+import { parseVueRequest } from './utils/query.ts'
 import type { Server } from '@farmfe/core'
 import type { PluginContext } from 'rollup'
 import type {
@@ -42,7 +42,7 @@ import type {
 } from 'vue/compiler-sfc'
 import type * as _compiler from 'vue/compiler-sfc'
 
-export { parseVueRequest, type VueQuery } from './utils/query'
+export { parseVueRequest, type VueQuery } from './utils/query.ts'
 
 export interface Options {
   include?: string | RegExp | (string | RegExp)[]
@@ -265,7 +265,7 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
       set options(value) {
         options.value = value
       },
-      version,
+      version: packageJson.version,
     }
 
     let transformCachedModule = false

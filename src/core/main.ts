@@ -12,24 +12,24 @@ import {
   type EncodedSourceMap as TraceEncodedSourceMap,
 } from '@jridgewell/trace-mapping'
 import { normalizePath, transformWithOxc } from 'vite'
-import { isEqualBlock, isOnlyTemplateChanged } from './handleHotUpdate'
-import { EXPORT_HELPER_ID } from './helper'
+import { isEqualBlock, isOnlyTemplateChanged } from './handleHotUpdate.ts'
+import { EXPORT_HELPER_ID } from './helper.ts'
 import {
   canInlineMain,
   isUseInlineTemplate,
   resolveScript,
   scriptIdentifier,
-} from './script'
-import { transformTemplateInMain } from './template'
+} from './script.ts'
+import { transformTemplateInMain } from './template.ts'
 import {
   createDescriptor,
   getDescriptor,
   getPrevDescriptor,
   setSrcDescriptor,
-} from './utils/descriptorCache'
-import { createError } from './utils/error'
-import { isVaporMode } from './utils/vapor'
-import type { Context, ResolvedOptions } from '.'
+} from './utils/descriptorCache.ts'
+import { createError } from './utils/error.ts'
+import { isVaporMode } from './utils/vapor.ts'
+import type { Context, ResolvedOptions } from './index.ts'
 import type { RawSourceMap } from 'source-map-js'
 import type { SFCBlock, SFCDescriptor } from 'vue/compiler-sfc'
 

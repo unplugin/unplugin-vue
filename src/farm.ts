@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import { plugin, type Options } from './core'
+import { plugin, type Options } from './core/index.ts'
 import type { JsPlugin, PluginLoadHookParam } from '@farmfe/core'
 
 const createFarmVuePlugins = (options?: Options): JsPlugin[] => {

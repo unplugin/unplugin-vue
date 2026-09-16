@@ -4,8 +4,8 @@ import ViteVue from '@vitejs/plugin-vue'
 import Oxc from 'unplugin-oxc/rollup'
 import { describe, expect } from 'vitest'
 import * as vueCompiler from 'vue/compiler-sfc'
-import Vue from '../src/rollup'
-import type { Options } from '../src/api'
+import Vue from '../src/rollup.ts'
+import type { Options } from '../src/api.ts'
 
 async function getCode(
   bundler: 'rollup' | 'rolldown',
