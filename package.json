@@ -55,7 +55,7 @@
     "dev": "tsdown --watch",
     "release": "bumpp",
     "lint": "eslint --max-warnings 0 .",
-    "typecheck": "tsgo --noEmit",
+    "typecheck": "tsc --noEmit",
     "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {
@@ -76,7 +76,7 @@
     "@sxzz/prettier-config": "^2.3.2",
     "@sxzz/test-utils": "^0.5.18",
     "@types/node": "^26.1.1",
-    "@typescript/native-preview": "7.0.0-dev.20260707.2",
+    "@typescript/native-preview": "npm:typescript@^7.0.2",
     "@vitejs/plugin-vue": "^6.0.9",
     "@vitest/ui": "^5.0.1",
     "bumpp": "^12.3.0",
