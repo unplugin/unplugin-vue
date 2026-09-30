@@ -71,7 +71,7 @@
   },
   "devDependencies": {
     "@babel/types": "^8.0.5",
-    "@farmfe/core": "2.0.0-nightly-20250411141103",
+    "@farmfe/core": "2.0.0-nightly-20250827162746",
     "@sxzz/eslint-config": "^8.6.0",
     "@sxzz/prettier-config": "^2.3.2",
     "@sxzz/test-utils": "^0.5.18",
