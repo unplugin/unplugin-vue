@@ -1,4 +1,5 @@
 import fs from 'node:fs'
+import path from 'node:path'
 import process from 'node:process'
 import { computed, shallowRef } from '@vue/reactivity'
 import {
@@ -496,13 +497,23 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
         }
       },
 
-      resolveId(id) {
+      resolveId(id, importer) {
         // component export helper
         if (normalizePath(id) === EXPORT_HELPER_ID) {
           return id
         }
         // serve sub-part requests (*?vue) as virtual modules
-        if (parseVueRequest(id).query.vue) {
+        const { filename, query } = parseVueRequest(id)
+        if (query.vue) {
+          // Unlike Vite, Rollup and Rolldown don't resolve the path before
+          // plugins see it, so a relative `src` would be read from cwd.
+          if (query.src && importer && filename.startsWith('.')) {
+            const owner = parseVueRequest(importer).filename
+            return (
+              path.resolve(path.dirname(owner), filename) +
+              id.slice(filename.length)
+            )
+          }
           return id
         }
       },
