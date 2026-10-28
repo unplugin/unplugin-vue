@@ -62,10 +62,13 @@ describe.each(['rollup', 'rolldown'] as const)('%s', async (bundler) => {
         isProduction: args.isProduction,
       })
 
-      const viteCode = await getCode(bundler, id, vite)
       const unpluginCode = await getCode(bundler, id, unplugin)
-
-      expect(viteCode).toBe(unpluginCode)
+      // @vitejs/plugin-vue relies on Vite to resolve relative `src`,
+      // so it can't build this fixture with plain Rollup/Rolldown
+      if (!id.endsWith('sfc-src.vue')) {
+        const viteCode = await getCode(bundler, id, vite)
+        expect(viteCode).toBe(unpluginCode)
+      }
       return unpluginCode.replaceAll(
         /(["']__file["']\s*,\s*['"]).*?(['"])/g,
         (_, s1, s2) => `${s1}#FILE#${s2}`,
