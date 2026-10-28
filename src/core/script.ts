@@ -13,10 +13,10 @@ export const typeDepToSFCMap: Map<string, Set<string>> = new Map()
 
 export function invalidateScript(filename: string): void {
   const desc = descriptorCache.get(filename)
-  if (desc) {
-    clientCache.delete(desc)
-    ssrCache.delete(desc)
-  }
+  if (!desc) return
+
+  clientCache.delete(desc)
+  ssrCache.delete(desc)
 }
 
 export function getResolvedScript(

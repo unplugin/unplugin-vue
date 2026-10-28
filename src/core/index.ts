@@ -348,8 +348,7 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
           options.value = {
             ...options.value,
             root: config.root,
-            sourceMap:
-              config.command === 'build' ? !!config.build.sourcemap : true,
+            sourceMap: config.command !== 'build' || !!config.build.sourcemap,
             cssDevSourcemap: config.css?.devSourcemap ?? false,
             isProduction: config.isProduction,
             compiler: options.value.compiler || resolveCompiler(config.root),
@@ -504,18 +503,18 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
         }
         // serve sub-part requests (*?vue) as virtual modules
         const { filename, query } = parseVueRequest(id)
-        if (query.vue) {
-          // Unlike Vite, Rollup and Rolldown don't resolve the path before
-          // plugins see it, so a relative `src` would be read from cwd.
-          if (query.src && importer && filename.startsWith('.')) {
-            const owner = parseVueRequest(importer).filename
-            return (
-              path.resolve(path.dirname(owner), filename) +
-              id.slice(filename.length)
-            )
-          }
-          return id
+        if (!query.vue) return
+
+        // Unlike Vite, Rollup and Rolldown don't resolve the path before
+        // plugins see it, so a relative `src` would be read from cwd.
+        if (query.src && importer && filename.startsWith('.')) {
+          const owner = parseVueRequest(importer).filename
+          return (
+            path.resolve(path.dirname(owner), filename) +
+            id.slice(filename.length)
+          )
         }
+        return id
       },
 
       loadInclude(id) {
@@ -532,44 +531,44 @@ export const plugin: UnpluginInstance<Options | undefined, false> =
 
         const { filename, query } = parseVueRequest(id)
         // select corresponding block for sub-part virtual modules
-        if (query.vue) {
-          if (query.src) {
-            return fs.readFileSync(filename, 'utf8')
+        if (!query.vue) return
+
+        if (query.src) {
+          return fs.readFileSync(filename, 'utf8')
+        }
+        const descriptor = getDescriptor(filename, options.value)!
+        let block: SFCBlock | null | undefined
+        switch (query.type) {
+          case 'script': {
+            // handle <script> + <script setup> merge via compileScript()
+            block = resolveScript(
+              meta.framework,
+              descriptor,
+              options.value,
+              customElementFilter.value(filename),
+            )
+
+            break
           }
-          const descriptor = getDescriptor(filename, options.value)!
-          let block: SFCBlock | null | undefined
-          switch (query.type) {
-            case 'script': {
-              // handle <script> + <script setup> merge via compileScript()
-              block = resolveScript(
-                meta.framework,
-                descriptor,
-                options.value,
-                customElementFilter.value(filename),
-              )
+          case 'template': {
+            block = descriptor.template!
 
-              break
-            }
-            case 'template': {
-              block = descriptor.template!
-
-              break
-            }
-            case 'style': {
-              block = descriptor.styles[query.index!]
-
-              break
-            }
-            default:
-              if (query.index != null) {
-                block = descriptor.customBlocks[query.index]
-              }
+            break
           }
-          if (block) {
-            return {
-              code: block.content,
-              map: block.map as any,
+          case 'style': {
+            block = descriptor.styles[query.index!]
+
+            break
+          }
+          default:
+            if (query.index != null) {
+              block = descriptor.customBlocks[query.index]
             }
+        }
+        if (block) {
+          return {
+            code: block.content,
+            map: block.map as any,
           }
         }
       },

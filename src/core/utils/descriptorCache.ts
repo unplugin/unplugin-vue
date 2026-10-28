@@ -91,18 +91,18 @@ export function getDescriptor(
   if (_cache.has(filename)) {
     return _cache.get(filename)!
   }
-  if (createIfNotFound) {
-    const { descriptor, errors } = createDescriptor(
-      filename,
-      code ?? fs.readFileSync(filename, 'utf8'),
-      options,
-      hmr,
-    )
-    if (errors.length > 0 && !hmr) {
-      throw errors[0]
-    }
-    return descriptor
+  if (!createIfNotFound) return
+
+  const { descriptor, errors } = createDescriptor(
+    filename,
+    code ?? fs.readFileSync(filename, 'utf8'),
+    options,
+    hmr,
+  )
+  if (errors.length > 0 && !hmr) {
+    throw errors[0]
   }
+  return descriptor
 }
 
 export function getSrcDescriptor(
